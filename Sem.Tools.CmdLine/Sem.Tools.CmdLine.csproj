@@ -3,6 +3,13 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
     <LangVersion>8.0</LangVersion>
+    <Version>1.0.1</Version>
+    <Authors>Sven Erik Matzen</Authors>
+    <Product>Sem.Tools</Product>
+    <Description>Command line tools.</Description>
+    <Copyright>Sven Erik Matzen</Copyright>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageProjectUrl>https://dev.azure.com/matzen/Sven</PackageProjectUrl>
   </PropertyGroup>
 
 </Project>
