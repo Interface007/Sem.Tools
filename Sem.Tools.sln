@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sem.Tools", "Sem.Tools\Sem.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sem.Tools.CmdLine", "Sem.Tools.CmdLine\Sem.Tools.CmdLine.csproj", "{D01CE206-D534-4EF1-A0E0-F4A1F5382E93}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sem.Tools.Logging", "..\Sem.Tools.Logging\Sem.Tools.Logging.csproj", "{BFF8143C-4868-4122-A53C-6AD20B5642B0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sem.Tools.Logging", "Sem.Tools.Logging\Sem.Tools.Logging.csproj", "{0A2931D1-CD68-4E7F-8F65-E2A148AEF152}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,10 +23,10 @@ Global
 		{D01CE206-D534-4EF1-A0E0-F4A1F5382E93}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D01CE206-D534-4EF1-A0E0-F4A1F5382E93}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D01CE206-D534-4EF1-A0E0-F4A1F5382E93}.Release|Any CPU.Build.0 = Release|Any CPU
-		{BFF8143C-4868-4122-A53C-6AD20B5642B0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{BFF8143C-4868-4122-A53C-6AD20B5642B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{BFF8143C-4868-4122-A53C-6AD20B5642B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{BFF8143C-4868-4122-A53C-6AD20B5642B0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0A2931D1-CD68-4E7F-8F65-E2A148AEF152}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0A2931D1-CD68-4E7F-8F65-E2A148AEF152}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0A2931D1-CD68-4E7F-8F65-E2A148AEF152}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0A2931D1-CD68-4E7F-8F65-E2A148AEF152}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
