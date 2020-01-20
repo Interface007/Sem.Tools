@@ -58,10 +58,15 @@ steps:
   displayName: 'dotnet pack Sem.Tools.Logging'
   inputs:
     command: pack
-    packagesToPack: 'Sem.Tools.Logging/Sem.Tools.Logging.csproj'    
+    packagesToPack: 'Sem.Tools.Logging/Sem.Tools.Logging.csproj'
 
-# - task: NuGetCommand@2
-#   displayName: 'NuGet push'
-#   inputs:
-#     command: push
-#     allowPackageConflicts: true
+- task: NuGetAuthenticate@0
+  inputs:
+    nuGetServiceConnections: 'NuGetPush'
+
+- task: NuGetCommand@2
+  displayName: 'NuGet push'
+  inputs:
+    command: 'push'
+    feedsToUse: 'config'
+    includeNugetOrg: true
