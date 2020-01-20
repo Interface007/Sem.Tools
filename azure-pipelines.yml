@@ -60,13 +60,9 @@ steps:
     command: pack
     packagesToPack: 'Sem.Tools.Logging/Sem.Tools.Logging.csproj'
 
-- task: NuGetAuthenticate@0
-  inputs:
-    nuGetServiceConnections: 'NuGetPush'
-
 - task: NuGetCommand@2
-  displayName: 'NuGet push'
   inputs:
     command: 'push'
-    feedsToUse: 'config'
-    includeNugetOrg: true
+    packagesToPush: '$(Build.ArtifactStagingDirectory)/**/*.nupkg;!$(Build.ArtifactStagingDirectory)/**/*.symbols.nupkg'
+    nuGetFeedType: 'external'
+    publishFeedCredentials: 'NuGetPush'
