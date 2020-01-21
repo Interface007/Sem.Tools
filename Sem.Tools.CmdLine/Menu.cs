@@ -3,6 +3,9 @@
     using System;
     using System.Threading.Tasks;
 
+    /// <summary>
+    /// Extension methods to handle command line menu definitions.
+    /// </summary>
     public static class Menu
     {
         /// <summary>

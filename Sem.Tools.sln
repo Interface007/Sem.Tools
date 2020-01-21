@@ -9,6 +9,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sem.Tools.CmdLine", "Sem.To
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sem.Tools.Logging", "Sem.Tools.Logging\Sem.Tools.Logging.csproj", "{0A2931D1-CD68-4E7F-8F65-E2A148AEF152}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sem.Tools.Logging.Tests", "..\Sem.Tools.Logging.Tests\Sem.Tools.Logging.Tests.csproj", "{C274E1E8-AB52-4E72-9A92-E9D26BA7E721}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{0A2931D1-CD68-4E7F-8F65-E2A148AEF152}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0A2931D1-CD68-4E7F-8F65-E2A148AEF152}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0A2931D1-CD68-4E7F-8F65-E2A148AEF152}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C274E1E8-AB52-4E72-9A92-E9D26BA7E721}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C274E1E8-AB52-4E72-9A92-E9D26BA7E721}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C274E1E8-AB52-4E72-9A92-E9D26BA7E721}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C274E1E8-AB52-4E72-9A92-E9D26BA7E721}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
