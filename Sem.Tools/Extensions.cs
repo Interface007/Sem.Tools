@@ -46,7 +46,7 @@
                 WriteIndented = true,
             };
 
-            // Since serialization using the generic method JsonSerializer.Serialize<T> does 
+            // Since serialization using the generic method JsonSerializer.Serialize<T> does
             // only serialize the properties of T, we use the non-generic method and determine
             // the type here explicitly.
             return JsonSerializer.Serialize(value, value.GetType(), serializeOptions);

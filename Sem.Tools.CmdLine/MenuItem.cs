@@ -84,6 +84,12 @@
                 });
         }
 
+        /// <summary>
+        /// Creates menu entries for public methods of <typeparamref name="T"/>.
+        /// </summary>
+        /// <typeparam name="T">The type to create entries for.</typeparam>
+        /// <param name="parameters">Parameter values for the methods.</param>
+        /// <returns>A menu entry with sub menu items.</returns>
         public static MenuItem For<T>(params object[] parameters)
         {
             var methods = typeof(T).GetMethods();
@@ -163,7 +169,7 @@
                 var value = parameters.FirstOrDefault(x => x.GetType() == parameterType)
                             ?? parameters
                                 .Where(x => x.GetType().Name.StartsWith("<", StringComparison.Ordinal))
-                                .SelectMany(x => x.GetType().GetProperties().Select(p => new { Value = p.GetValue(x), Name = p.Name }))
+                                .SelectMany(x => x.GetType().GetProperties().Select(p => new { Value = p.GetValue(x), p.Name }))
                                 .FirstOrDefault(x => x.Name == parameterInfo.Name && x.Value.GetType() == parameterType)?.Value;
 
                 if (value == null)
@@ -176,10 +182,10 @@
 
             var callParams = methodInfo
                 .GetParameters()
-                .Select(parameterInfo => LookupParameter(parameterInfo))
+                .Select(LookupParameter)
                 .ToArray();
 
-            var obj = methodInfo.IsStatic ? null : typeof(TClass).GetConstructor(new Type[0]).Invoke(new object[0]);
+            var obj = methodInfo.IsStatic ? null : typeof(TClass).GetConstructor(new Type[0])?.Invoke(new object[0]);
 
             return (TResult)methodInfo.Invoke(obj, callParams);
         }

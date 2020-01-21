@@ -1,5 +1,6 @@
 ﻿// ReSharper disable MemberCanBePrivate.Global
 // ReSharper disable ExplicitCallerInfoArgument
+// ReSharper disable AutoPropertyCanBeMadeGetOnly.Global
 namespace Sem.Tools.Logging
 {
     using System;
@@ -17,13 +18,18 @@ namespace Sem.Tools.Logging
 
         private readonly string scopeName;
 
+        /// <summary>
+        /// Gets the structure handling the hierarchy.
+        /// </summary>
+        private readonly ConcurrentStack<string> idStack;
+
         private LogScope(string scopeName, string member, string path, LogScope parent)
         {
             this.scopeName = scopeName;
-            this.IdStack = parent?.IdStack ?? new ConcurrentStack<string>();
+            this.idStack = parent?.idStack ?? new ConcurrentStack<string>();
 
             var newId = LogScope.IdFactory();
-            this.IdStack.Push($"{parent?.Id}/{newId.Substring(newId.Length - 4)}");
+            this.idStack.Push($"{parent?.Id}/{newId.Substring(newId.Length - 4)}");
 
             this.Log(LogCategory.Technical, LogLevel.Trace, $"Starting scope {scopeName} in member {member} of {path.Replace(LogScope.BasePath, string.Empty).Trim('\\').Trim('/')}.", null);
         }
@@ -49,17 +55,22 @@ namespace Sem.Tools.Logging
         public static Func<string> IdFactory { get; set; } = () => (DateTime.UtcNow.Ticks - 636818976000000000).ToString("X", CultureInfo.InvariantCulture);
 
         /// <summary>
-        /// Gets the hierarchical ID of the scope.
+        /// Gets or sets a path to be removed in logs.
         /// </summary>
-        public string Id => this.IdStack.TryPeek(out var id) ? id : "0000";
+        public static string BasePath { get; set; } = string.Empty;
 
         /// <summary>
-        /// Gets the structure handling the hierarchy.
+        /// Gets the hierarchical ID of the scope.
         /// </summary>
-        private ConcurrentStack<string> IdStack { get; }
+        public string Id => this.idStack.TryPeek(out var id) ? id : "0000";
 
-        public static string BasePath { get; set; } = "";
-
+        /// <summary>
+        /// Create a new scope instance.
+        /// </summary>
+        /// <param name="scopeName">Name of the scope.</param>
+        /// <param name="member">The member (method) that creates the instance.</param>
+        /// <param name="path">The path to the class file.</param>
+        /// <returns>A new logging scope.</returns>
         public static LogScope Create(string scopeName, [CallerMemberName] string member = "", [CallerFilePath] string path = "")
         {
             return new LogScope(scopeName, member, path, null);
@@ -108,7 +119,7 @@ namespace Sem.Tools.Logging
         public void Dispose()
         {
             var ms = (DateTime.UtcNow - this.start).TotalMilliseconds;
-            this.Log(LogCategory.Technical, LogLevel.Trace, $"Finished scope", new { this.scopeName, ms });
+            this.Log(LogCategory.Technical, LogLevel.Trace, "Finished scope", new { this.scopeName, ms });
         }
 
         /// <summary>
@@ -120,11 +131,13 @@ namespace Sem.Tools.Logging
         /// <param name="value">A value that should be included into the message as addition data.</param>
         public void Log(LogCategory logCategory, LogLevel logLevel, string message, object value)
         {
-            if ((logLevel >= Level) && (logCategory & Category) != 0)
+            if ((logLevel < Level) || (logCategory & Category) == 0)
             {
-                var data = value == null ? string.Empty : (" - Data: " + value.ToJson());
-                LogMethod?.Invoke(logCategory, logLevel, this, $"{this.scopeName} - {message}" + data);
+                return;
             }
+
+            var data = value == null ? string.Empty : (" - Data: " + value.ToJson());
+            LogMethod?.Invoke(logCategory, logLevel, this, $"{this.scopeName} - {message}" + data);
         }
     }
 }
