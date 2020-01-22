@@ -1,10 +1,6 @@
 // ReSharper disable UnusedVariable
 namespace Sem.Tools.Logging.Tests
 {
-    using System.Collections.Generic;
-    using System.IO;
-    using System.Runtime.CompilerServices;
-
     using Microsoft.VisualStudio.TestTools.UnitTesting;
 
     /// <summary>
@@ -16,7 +12,7 @@ namespace Sem.Tools.Logging.Tests
         /// Tests the constructor(s) or <see cref="LogScope"/>.
         /// </summary>
         [TestClass]
-        public class LogScopeConstructor
+        public class LogScopeConstructor : LoggerTestBase
         {
             /// <summary>
             /// Tests whether the ctor log line is formatted correctly.
@@ -24,19 +20,109 @@ namespace Sem.Tools.Logging.Tests
             [TestMethod]
             public void LogsScopeStart()
             {
-                var logger = new List<string>();
-                LogScope.LogMethod = (category, level, scope, message) => logger.Add(message);
-                LogScope.BasePath = this.BasePath();
+                using var logScope = LogScope.Create("NewScope", this.LogMethod);
 
-                using var logScope = LogScope.Create("NewScope");
+                var expected = "Technical, Trace, NewScope - Starting scope NewScope in member LogsScopeStart of ClassLogScope.cs.";
 
-                Assert.AreEqual(1, logger.Count);
-                Assert.AreEqual("NewScope - Starting scope NewScope in member LogsScopeStart of ClassLogScope.cs.", logger[0]);
+                Assert.AreEqual(1, this.LogMessages.Count);
+                Assert.AreEqual(expected, this.LogMessages[0]);
+            }
+        }
+
+        /// <summary>
+        /// Tests the method <see cref="LogScope.Log(string,object)"/>.
+        /// </summary>
+        [TestClass]
+        public class Log : LoggerTestBase
+        {
+            /// <summary>
+            /// Tests whether <see cref="LogScope.Log(string,object)"/> logs using the correct category and level.
+            /// </summary>
+            [TestMethod]
+            public void DefaultsTpCorrectLevelAndCategory()
+            {
+                using var logScope = LogScope.Create("NewScope", this.LogMethod);
+                this.LogMessages.Clear();
+
+                Assert.AreEqual(0, this.LogMessages.Count);
+
+                logScope.Log("Just a test");
+
+                Assert.AreEqual(1, this.LogMessages.Count);
+                Assert.AreEqual("Technical, Information, NewScope - Just a test", this.LogMessages[0]);
             }
 
-            private string BasePath([CallerFilePath] string path = "")
+            /// <summary>
+            /// Tests whether <see cref="LogScope.Log(string,object)"/> logs only the specified level(s).
+            /// </summary>
+            [TestMethod]
+            public void LogsOnlySpecifiedCategories()
             {
-                return Path.GetDirectoryName(path);
+                using var logScope = LogScope.Create("NewScope", this.LogMethod);
+
+                logScope.Category = LogCategory.Technical;
+                this.LogMessages.Clear();
+                logScope.Log(LogCategory.Technical, LogLevel.Trace, "Trace");
+                Assert.AreEqual(1, this.LogMessages.Count);
+                logScope.Log(LogCategory.Business, LogLevel.Trace, "Trace");
+                Assert.AreEqual(1, this.LogMessages.Count);
+
+                logScope.Category = LogCategory.Business;
+                this.LogMessages.Clear();
+                logScope.Log(LogCategory.Technical, LogLevel.Trace, "Trace");
+                Assert.AreEqual(0, this.LogMessages.Count);
+                logScope.Log(LogCategory.Business, LogLevel.Trace, "Trace");
+                Assert.AreEqual(1, this.LogMessages.Count);
+
+                logScope.Category = LogCategory.Business | LogCategory.Technical;
+                this.LogMessages.Clear();
+                logScope.Log(LogCategory.Technical, LogLevel.Trace, "Trace");
+                Assert.AreEqual(1, this.LogMessages.Count);
+                logScope.Log(LogCategory.Business, LogLevel.Trace, "Trace");
+                Assert.AreEqual(2, this.LogMessages.Count);
+            }
+
+            /// <summary>
+            /// Tests whether <see cref="LogScope.Log(string,object)"/> logs only the specified level(s).
+            /// </summary>
+            [TestMethod]
+            public void LogsOnlyToSpecifiedLevel()
+            {
+                using var logScope = LogScope.Create("NewScope", this.LogMethod);
+                this.LogMessages.Clear();
+
+                Assert.AreEqual(0, this.LogMessages.Count);
+
+                logScope.Level = LogLevel.Trace;
+                logScope.Log(LogCategory.Technical, LogLevel.Trace, "Trace");
+                logScope.Log(LogCategory.Technical, LogLevel.Information, "Information");
+                logScope.Log(LogCategory.Technical, LogLevel.Warning, "Warning");
+                logScope.Log(LogCategory.Technical, LogLevel.Exception, "Exception");
+                Assert.AreEqual(4, this.LogMessages.Count);
+
+                this.LogMessages.Clear();
+                logScope.Level = LogLevel.Information;
+                logScope.Log(LogCategory.Technical, LogLevel.Trace, "Trace");
+                logScope.Log(LogCategory.Technical, LogLevel.Information, "Information");
+                logScope.Log(LogCategory.Technical, LogLevel.Warning, "Warning");
+                logScope.Log(LogCategory.Technical, LogLevel.Exception, "Exception");
+                Assert.AreEqual(3, this.LogMessages.Count);
+
+                this.LogMessages.Clear();
+                logScope.Level = LogLevel.Warning;
+                logScope.Log(LogCategory.Technical, LogLevel.Trace, "Trace");
+                logScope.Log(LogCategory.Technical, LogLevel.Information, "Information");
+                logScope.Log(LogCategory.Technical, LogLevel.Warning, "Warning");
+                logScope.Log(LogCategory.Technical, LogLevel.Exception, "Exception");
+                Assert.AreEqual(2, this.LogMessages.Count);
+
+                this.LogMessages.Clear();
+                logScope.Level = LogLevel.Exception;
+                logScope.Log(LogCategory.Technical, LogLevel.Trace, "Trace");
+                logScope.Log(LogCategory.Technical, LogLevel.Information, "Information");
+                logScope.Log(LogCategory.Technical, LogLevel.Warning, "Warning");
+                logScope.Log(LogCategory.Technical, LogLevel.Exception, "Exception");
+                Assert.AreEqual(1, this.LogMessages.Count);
             }
         }
     }
