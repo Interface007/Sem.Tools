@@ -4,21 +4,44 @@ namespace Sem.Tools.Logging.Tests
     using System.IO;
     using System.Runtime.CompilerServices;
 
+    /// <summary>
+    /// Base class for tests of the logger class.
+    /// </summary>
     public class LoggerTestBase
     {
-        public List<string> LogMessages { get; set; } = new List<string>();
-
-        public LoggerTestBase()
+        /// <summary>
+        /// Initializes static members of the <see cref="LoggerTestBase"/> class.
+        /// Initializes the static values of <see cref="LogScope"/> to produce deterministic log entries.
+        /// </summary>
+        static LoggerTestBase()
         {
-            LogScope.BasePath = this.BasePath();
+            LogScope.BasePath = BasePath();
+            LogScope.IdFactory = x => $"{x.Id.Length:0000}";
         }
 
+        /// <summary>
+        /// Gets or sets the logged messages.
+        /// </summary>
+        protected IList<string> LogMessages { get; } = new List<string>();
+
+        /// <summary>
+        /// A log method that adds the log information to <see cref="LogMessages"/>.
+        /// </summary>
+        /// <param name="category">The category of the log entry.</param>
+        /// <param name="level">The log level.</param>
+        /// <param name="scope">The logging scope that renders the log entry.</param>
+        /// <param name="message">The log message.</param>
         protected void LogMethod(LogCategory category, LogLevel level, LogScope scope, string message)
         {
-            this.LogMessages.Add($"{category}, {level}, {message}");
+            this.LogMessages.Add($"{category}, {level}, {scope.Id}, {message}");
         }
 
-        private string BasePath([CallerFilePath] string path = "")
+        /// <summary>
+        /// Uses a compile time attribute to determine the source code path of this class.
+        /// </summary>
+        /// <param name="path">Path of this class will be set at compile time.</param>
+        /// <returns>The source code path of this class.</returns>
+        private static string BasePath([CallerFilePath] string path = "")
         {
             return Path.GetDirectoryName(path);
         }

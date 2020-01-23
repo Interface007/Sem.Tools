@@ -7,6 +7,7 @@ namespace Sem.Tools.Logging
     using System.Collections.Concurrent;
     using System.Globalization;
     using System.Runtime.CompilerServices;
+    using System.Text.Json;
     using System.Threading.Tasks;
 
     /// <summary>
@@ -31,10 +32,10 @@ namespace Sem.Tools.Logging
             this.idStack = parent?.idStack ?? new ConcurrentStack<string>();
             this.logMethod = logMethod ?? LogMethod;
 
-            var newId = LogScope.IdFactory();
+            var newId = LogScope.IdFactory(this);
             this.idStack.Push($"{parent?.Id}/{newId.Substring(newId.Length - 4)}");
 
-            this.Log(LogCategory.Technical, LogLevel.Trace, $"Starting scope {scopeName} in member {member} of {path.Replace(LogScope.BasePath, string.Empty).Trim('\\').Trim('/')}.", null);
+            this.Log(LogCategory.Technical, LogLevel.Trace, $"Starting scope {scopeName} in member {member} of {path.Replace(LogScope.BasePath, string.Empty).Trim('\\').Trim('/')}.");
         }
 
         /// <summary>
@@ -50,12 +51,13 @@ namespace Sem.Tools.Logging
         /// <summary>
         /// Gets or sets the method that will write the log information.
         /// </summary>
+        // ReSharper disable once UnusedAutoPropertyAccessor.Global
         public static Action<LogCategory, LogLevel, LogScope, string> LogMethod { get; set; }
 
         /// <summary>
         /// Gets or sets the method generating an ID for this logger instance - only the last 4 characters will be used.
         /// </summary>
-        public static Func<string> IdFactory { get; set; } = () => (DateTime.UtcNow.Ticks - 636818976000000000).ToString("X", CultureInfo.InvariantCulture);
+        public static Func<LogScope, string> IdFactory { get; set; } = x => (DateTime.UtcNow.Ticks - 636818976000000000).ToString("X", CultureInfo.InvariantCulture);
 
         /// <summary>
         /// Gets or sets a path to be removed in logs.
@@ -81,6 +83,7 @@ namespace Sem.Tools.Logging
         /// Create a new scope instance.
         /// </summary>
         /// <param name="scopeName">Name of the scope.</param>
+        /// <param name="logMethod">Method that renders the log entry.</param>
         /// <param name="member">The member (method) that creates the instance.</param>
         /// <param name="path">The path to the class file.</param>
         /// <returns>A new logging scope.</returns>
@@ -112,7 +115,11 @@ namespace Sem.Tools.Logging
         public LogScope Child(string childName, object value = null, [CallerMemberName] string member = "", [CallerFilePath] string path = "")
         {
             var scope = new LogScope(childName, member, path, this, this.logMethod);
-            scope.Log(LogCategory.Technical, LogLevel.Information, "scope value: ", value);
+            if (value != null)
+            {
+                scope.Log(LogCategory.Technical, LogLevel.Information, "scope value: ", value);
+            }
+
             return scope;
         }
 
@@ -159,7 +166,7 @@ namespace Sem.Tools.Logging
                 return;
             }
 
-            var data = value == null ? string.Empty : (" - Data: " + value.ToJson());
+            var data = value == null ? string.Empty : (" - Data: " + JsonSerializer.Serialize(value, value.GetType()));
             this.logMethod?.Invoke(logCategory, logLevel, this, $"{this.scopeName} - {message}" + data);
         }
     }

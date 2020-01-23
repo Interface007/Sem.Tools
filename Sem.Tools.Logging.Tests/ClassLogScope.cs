@@ -1,6 +1,8 @@
 // ReSharper disable UnusedVariable
 namespace Sem.Tools.Logging.Tests
 {
+    using System.Text.RegularExpressions;
+
     using Microsoft.VisualStudio.TestTools.UnitTesting;
 
     /// <summary>
@@ -9,7 +11,7 @@ namespace Sem.Tools.Logging.Tests
     public static class ClassLogScope
     {
         /// <summary>
-        /// Tests the constructor(s) or <see cref="LogScope"/>.
+        /// Tests the constructor(s) for <see cref="LogScope"/>.
         /// </summary>
         [TestClass]
         public class LogScopeConstructor : LoggerTestBase
@@ -22,7 +24,54 @@ namespace Sem.Tools.Logging.Tests
             {
                 using var logScope = LogScope.Create("NewScope", this.LogMethod);
 
-                var expected = "Technical, Trace, NewScope - Starting scope NewScope in member LogsScopeStart of ClassLogScope.cs.";
+                var expected = "Technical, Trace, /0004, NewScope - Starting scope NewScope in member LogsScopeStart of ClassLogScope.cs.";
+
+                Assert.AreEqual(1, this.LogMessages.Count);
+                Assert.AreEqual(expected, this.LogMessages[0]);
+            }
+        }
+
+        /// <summary>
+        /// Tests the method for <see cref="LogScope.Dispose"/>.
+        /// </summary>
+        [TestClass]
+        public class Dispose : LoggerTestBase
+        {
+            /// <summary>
+            /// Tests whether the ctor log line is formatted correctly.
+            /// </summary>
+            [TestMethod]
+            public void LogsScopeStart()
+            {
+                using (var logScope = LogScope.Create("NewScope", this.LogMethod))
+                {
+                    this.LogMessages.Clear();
+                }
+
+                var expected = "Technical, Trace, /0004, NewScope - Finished scope - Data: \\{\"scopeName\":\"NewScope\",\"ms\":\\d+\\.\\d+\\}";
+
+                Assert.AreEqual(1, this.LogMessages.Count);
+                Assert.IsTrue(Regex.IsMatch(this.LogMessages[0], expected));
+            }
+        }
+
+        /// <summary>
+        /// Tests the method <see cref="LogScope.Child"/>.
+        /// </summary>
+        [TestClass]
+        public class Child : LoggerTestBase
+        {
+            /// <summary>
+            /// Tests whether the ctor log line is formatted correctly.
+            /// </summary>
+            [TestMethod]
+            public void StartingChildScopeAddsIdToHierarchy()
+            {
+                using var logScope = LogScope.Create("NewScope", this.LogMethod);
+                this.LogMessages.Clear();
+
+                using var target = logScope.Child("the child");
+                var expected = "Technical, Trace, /0004/0005, the child - Starting scope the child in member StartingChildScopeAddsIdToHierarchy of ClassLogScope.cs.";
 
                 Assert.AreEqual(1, this.LogMessages.Count);
                 Assert.AreEqual(expected, this.LogMessages[0]);
@@ -39,7 +88,7 @@ namespace Sem.Tools.Logging.Tests
             /// Tests whether <see cref="LogScope.Log(string,object)"/> logs using the correct category and level.
             /// </summary>
             [TestMethod]
-            public void DefaultsTpCorrectLevelAndCategory()
+            public void DefaultsToCorrectLevelAndCategory()
             {
                 using var logScope = LogScope.Create("NewScope", this.LogMethod);
                 this.LogMessages.Clear();
@@ -49,7 +98,7 @@ namespace Sem.Tools.Logging.Tests
                 logScope.Log("Just a test");
 
                 Assert.AreEqual(1, this.LogMessages.Count);
-                Assert.AreEqual("Technical, Information, NewScope - Just a test", this.LogMessages[0]);
+                Assert.AreEqual("Technical, Information, /0004, NewScope - Just a test", this.LogMessages[0]);
             }
 
             /// <summary>
