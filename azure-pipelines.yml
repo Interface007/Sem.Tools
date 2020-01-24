@@ -60,7 +60,7 @@ steps:
     command: pack
     packagesToPack: 'Sem.Tools.Logging/Sem.Tools.Logging.csproj'
 
-- script: dotnet nuget push '$(Build.ArtifactStagingDirectory)/**/*.nupkg;!$(Build.ArtifactStagingDirectory)/**/*.symbols.nupkg' --source https://api.nuget.org/v3/index.json --api-key $(NUGET_API_KEY) --skip-duplicate
+- script: dotnet nuget push $(Build.ArtifactStagingDirectory)/**/*.nupkg --source https://api.nuget.org/v3/index.json --api-key $(NUGET_API_KEY) --skip-duplicate --no-symbols true
   displayName: 'Uploads nuGet packages'
 
 #- task: NuGetCommand@2
