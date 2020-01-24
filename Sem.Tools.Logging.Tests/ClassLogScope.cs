@@ -1,4 +1,7 @@
 // ReSharper disable UnusedVariable
+
+using System.Linq;
+
 namespace Sem.Tools.Logging.Tests
 {
     using System.Text.RegularExpressions;
@@ -38,10 +41,10 @@ namespace Sem.Tools.Logging.Tests
         public class Dispose : LoggerTestBase
         {
             /// <summary>
-            /// Tests whether the ctor log line is formatted correctly.
+            /// Tests whether the destructor log line is formatted correctly.
             /// </summary>
             [TestMethod]
-            public void LogsScopeStart()
+            public void LogsScopeEnd()
             {
                 using (var logScope = LogScope.Create("NewScope", this.LogMethod))
                 {
@@ -52,6 +55,26 @@ namespace Sem.Tools.Logging.Tests
 
                 Assert.AreEqual(1, this.LogMessages.Count);
                 Assert.IsTrue(Regex.IsMatch(this.LogMessages[0], expected));
+            }
+
+            /// <summary>
+            /// Tests whether the indentation of logs is correct.
+            /// </summary>
+            [TestMethod]
+            public void LogsScopeStart()
+            {
+                using (var logScopeLevel1 = LogScope.Create("NewScope", this.LogMethod))
+                {
+                    Assert.IsTrue(Regex.IsMatch(this.LogMessages.Last(), "Trace, /\\d{4}, NewScope"));
+                    using (var logScopeLevel2 = logScopeLevel1.Child("ChildScope"))
+                    {
+                        Assert.IsTrue(Regex.IsMatch(this.LogMessages.Last(), "Trace, /\\d{4}/\\d{4}, ChildScope"));
+                    }
+
+                    Assert.IsTrue(Regex.IsMatch(this.LogMessages.Last(), "Trace, /\\d{4}/\\d{4}, ChildScope"));
+                }
+
+                Assert.IsTrue(Regex.IsMatch(this.LogMessages.Last(), "Trace, /\\d{4}, NewScope"));
             }
         }
 

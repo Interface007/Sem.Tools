@@ -2,13 +2,12 @@
 // ReSharper disable ExplicitCallerInfoArgument
 // ReSharper disable AutoPropertyCanBeMadeGetOnly.Global
 
-using System.IO;
-
 namespace Sem.Tools.Logging
 {
     using System;
     using System.Collections.Concurrent;
     using System.Globalization;
+    using System.IO;
     using System.Runtime.CompilerServices;
     using System.Text.Json;
     using System.Threading.Tasks;
