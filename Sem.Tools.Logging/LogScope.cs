@@ -1,6 +1,9 @@
 ﻿// ReSharper disable MemberCanBePrivate.Global
 // ReSharper disable ExplicitCallerInfoArgument
 // ReSharper disable AutoPropertyCanBeMadeGetOnly.Global
+
+using System.IO;
+
 namespace Sem.Tools.Logging
 {
     using System;
@@ -35,7 +38,9 @@ namespace Sem.Tools.Logging
             var newId = LogScope.IdFactory(this);
             this.idStack.Push($"{parent?.Id}/{newId.Substring(newId.Length - 4)}");
 
-            this.Log(LogCategory.Technical, LogLevel.Trace, $"Starting scope {scopeName} in member {member} of {path.Replace(LogScope.BasePath, string.Empty).Trim('\\').Trim('/')}.");
+            var replace = string.IsNullOrEmpty(LogScope.BasePath) ? path : path.Replace(LogScope.BasePath, string.Empty);
+            var pat = replace.Trim('\\').Trim('/');
+            this.Log(LogCategory.Technical, LogLevel.Trace, $"Starting scope {scopeName} in member {member} of {pat}.");
         }
 
         /// <summary>
@@ -62,7 +67,7 @@ namespace Sem.Tools.Logging
         /// <summary>
         /// Gets or sets a path to be removed in logs.
         /// </summary>
-        public static string BasePath { get; set; } = string.Empty;
+        public static string BasePath { get; set; } = GetBasePath();
 
         /// <summary>
         /// Gets or sets the type of logs to be written.
@@ -140,6 +145,7 @@ namespace Sem.Tools.Logging
         {
             var ms = (DateTime.UtcNow - this.start).TotalMilliseconds;
             this.Log(LogCategory.Technical, LogLevel.Trace, "Finished scope", new { this.scopeName, ms });
+            this.idStack.TryPop(out _);
         }
 
         /// <summary>
@@ -168,6 +174,11 @@ namespace Sem.Tools.Logging
 
             var data = value == null ? string.Empty : (" - Data: " + JsonSerializer.Serialize(value, value.GetType()));
             this.logMethod?.Invoke(logCategory, logLevel, this, $"{this.scopeName} - {message}" + data);
+        }
+
+        private static string GetBasePath([CallerFilePath] string path = "")
+        {
+            return Path.GetDirectoryName(path);
         }
     }
 }
