@@ -32,15 +32,15 @@ steps:
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
 
-# - task: VSTest@2
-#   inputs:
-#     testSelector: 'testAssemblies'
-#     testAssemblyVer2: |
-#         **\SEM.*.Tests.dll
-#         !**\obj\**
-#     searchFolder: '$(System.DefaultWorkingDirectory)'
-#     diagnosticsEnabled: true
-#     codeCoverageEnabled: true
+- task: VSTest@2
+  inputs:
+    testSelector: 'testAssemblies'
+    testAssemblyVer2: |
+        **\SEM.*.Tests.dll
+         !**\obj\**
+    searchFolder: '$(System.DefaultWorkingDirectory)'
+    diagnosticsEnabled: true
+    codeCoverageEnabled: true
 
 - task: DotNetCoreCLI@2
   displayName: 'dotnet pack Sem.Tools'
