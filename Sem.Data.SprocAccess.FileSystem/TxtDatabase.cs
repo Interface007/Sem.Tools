@@ -29,16 +29,16 @@
         public async IAsyncEnumerable<T> WithReader<T>(string sproc, Func<IReader, Task<T>> readerToObject, LogScope logger = null, params KeyValuePair<string, object>[] parameters)
         {
             await using var scope = logger?.MethodStart(new { sproc, parameters });
-            
+
             // produce a file name that includes the parameters
             var fileName = parameters
-                .Aggregate(string.Empty, (s, pair) => $"{s}-{pair.Key}={pair.Value}")
+                .Aggregate("params-", (s, pair) => $"{s}-{pair.Key}={pair.Value}")
                 .Replace("@", string.Empty);
 
             var targetPath = Path.Combine(this.baseFolder, FileSystemTools.SanitizeFileName(sproc), FileSystemTools.SanitizeFileName(fileName));
-            
+
             var reader = new TxtReader(targetPath);
-            
+
             scope?.Log(LogCategory.Technical, LogLevel.Trace, "reader created", reader);
             while (await reader.Read())
             {

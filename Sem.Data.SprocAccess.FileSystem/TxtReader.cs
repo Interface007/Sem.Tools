@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 using System.IO;
 using System.Threading.Tasks;
 
@@ -28,7 +29,12 @@ namespace Sem.Data.SprocAccess.FileSystem
 
         public Task<T> Get<T>(int index)
         {
-            return Task.FromResult((T)Convert.ChangeType(this.fileLines[lineIndex + 1].Split('\t')[index], typeof(T)));
+            var value = this.fileLines[lineIndex + 1].Split('\t')[index];
+            var conversionType = typeof(T);
+            var typedValue = 
+                conversionType == typeof(DateTime) ? (T)(object)DateTime.ParseExact(value,"s", CultureInfo.InvariantCulture)
+                : (T)Convert.ChangeType(value, conversionType, CultureInfo.InvariantCulture);
+            return Task.FromResult(typedValue);
         }
 
         public Task NextResult()
