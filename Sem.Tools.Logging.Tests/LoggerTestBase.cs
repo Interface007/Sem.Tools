@@ -20,7 +20,7 @@ namespace Sem.Tools.Logging.Tests
         }
 
         /// <summary>
-        /// Gets or sets the logged messages.
+        /// Gets the logged messages.
         /// </summary>
         protected IList<string> LogMessages { get; } = new List<string>();
 

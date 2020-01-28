@@ -118,7 +118,12 @@ namespace Sem.Tools.Logging
         /// <returns>A new scope.</returns>
         public LogScope Child(string childName, object value = null, [CallerMemberName] string member = "", [CallerFilePath] string path = "")
         {
-            var scope = new LogScope(childName, member, path, this, this.logMethod);
+            var scope = new LogScope(childName, member, path, this, this.logMethod)
+            {
+                Level = this.Level,
+                Category = this.Category,
+            };
+
             if (value != null)
             {
                 scope.Log(LogCategory.Technical, LogLevel.Information, "scope value: ", value);
