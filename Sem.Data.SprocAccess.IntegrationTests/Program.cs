@@ -2,7 +2,7 @@
 {
     using System;
     using System.Threading.Tasks;
-    
+
     using Sem.Data.SprocAccess.SqlServer;
     using Sem.Tools.Logging;
 
@@ -12,7 +12,11 @@
     /// </summary>
     public static class Program
     {
-        public static async Task Main(string[] args)
+        /// <summary>
+        /// Entry point for the integration test program.
+        /// </summary>
+        /// <returns>A task to wait for.</returns>
+        public static async Task Main()
         {
             var con = "Server=.;Database=master;Trusted_Connection=True;";
             await using var db = (IDatabase)new SqlDatabase(con);
@@ -24,11 +28,11 @@
             await using var logger = LogScope.Create("DB Access");
 
             // executing the SPROC and map the result to a simple anonymous type with just one property "Name"
-            var enumerable = db.WithReader(
+            var enumerable = db.Execute(
                 "sys.sp_databases",
                 async reader => new
                 {
-                    Name = await reader.Get<string>(0)
+                    Name = await reader.Get<string>(0),
                 },
                 logger);
 

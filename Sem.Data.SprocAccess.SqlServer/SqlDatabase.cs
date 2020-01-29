@@ -15,16 +15,13 @@
         private readonly string connectionString;
 
         /// <summary>
-        /// 
+        /// Initializes a new instance of the <see cref="SqlDatabase"/> class.
         /// </summary>
-        /// <param name="connectionString"></param>
-        public SqlDatabase(string connectionString)
-        {
-            this.connectionString = connectionString;
-        }
+        /// <param name="connectionString">The database connection string to use for this instance.</param>
+        public SqlDatabase(string connectionString) => this.connectionString = connectionString;
 
         /// <inheritdoc />
-        public async IAsyncEnumerable<T> WithReader<T>(string sproc, Func<IReader, Task<T>> readerToObject, LogScope logger = null, params KeyValuePair<string, object>[] parameters)
+        public async IAsyncEnumerable<T> Execute<T>(string sproc, Func<IReader, Task<T>> readerToObject, LogScope logger = null, params KeyValuePair<string, object>[] parameters)
         {
             await using var scope = logger?.MethodStart(new { sproc, parameters });
             await using var con = new SqlConnection(this.connectionString);
@@ -38,12 +35,12 @@
                 cmd.Parameters.AddWithValue(key, value);
             }
 
-            await using (var subScope = scope?.Child("opening connection"))
+            await using (var unused = scope?.Child("opening connection"))
             {
                 await con.OpenAsync();
             }
 
-            await using (var subScope = scope?.Child("executing reader"))
+            await using (var unused = scope?.Child("executing reader"))
             {
                 var reader = new SqlReader(await cmd.ExecuteReaderAsync());
                 while (await reader.Read())

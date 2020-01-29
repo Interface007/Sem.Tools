@@ -28,36 +28,80 @@
     /// </example>
     public class MenuItem
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="MenuItem"/> class.
+        /// </summary>
+        /// <param name="displayString">The "label" that should be shown on the screen to describe the functionality.</param>
+        /// <param name="action">The action to perform when the user selects this menu item.</param>
+        /// <param name="suffixForMenu">A suffix for the display string.</param>
         public MenuItem(string displayString, Func<Task> action, string suffixForMenu = "")
         {
             this.DisplayString = displayString + suffixForMenu;
             this.Action = action;
         }
 
+        /// <summary>
+        /// Gets the "label" that should be shown on the screen to describe the functionality.
+        /// </summary>
         public string DisplayString { get; }
 
+        /// <summary>
+        /// Gets the action to perform when the user selects this menu item.
+        /// </summary>
         public Func<Task> Action { get; }
 
+        /// <summary>
+        /// Creates a <see cref="MenuItem"/> from an expression - is meant to be used with a <see cref="MethodCallExpression"/>.
+        /// </summary>
+        /// <param name="action">The expression to create a menu item for.</param>
+        /// <param name="suffixForMenu">A suffix for the description of the method (the description will be extracted from the documentation XML file).</param>
+        /// <returns>A new menu item.</returns>
         public static MenuItem Print(Expression<Func<IAsyncEnumerable<string>>> action, string suffixForMenu = "")
         {
             return Print(GetDescriptionFromXml(GetMethod(action)) + suffixForMenu, action.Compile());
         }
 
+        /// <summary>
+        /// Creates a <see cref="MenuItem"/> from an expression - is meant to be used with a <see cref="MethodCallExpression"/>.
+        /// </summary>
+        /// <param name="action">The expression to create a menu item for.</param>
+        /// <param name="suffixForMenu">A suffix for the description of the method (the description will be extracted from the documentation XML file).</param>
+        /// <returns>A new menu item.</returns>
         public static MenuItem Print(Expression<Func<Task<string>>> action, string suffixForMenu = "")
         {
             return Print(GetDescriptionFromXml(GetMethod(action)) + suffixForMenu, action.Compile());
         }
 
+        /// <summary>
+        /// Creates a <see cref="MenuItem"/> from an expression - is meant to be used with a <see cref="MethodCallExpression"/>.
+        /// </summary>
+        /// <param name="action">The expression to create a menu item for.</param>
+        /// <param name="suffixForMenu">A suffix for the description of the method (the description will be extracted from the documentation XML file).</param>
+        /// <returns>A new menu item.</returns>
         public static MenuItem Print(Expression<Func<Task<IEnumerable<string>>>> action, string suffixForMenu = "")
         {
             return Print(GetDescriptionFromXml(GetMethod(action)) + suffixForMenu, action.Compile());
         }
 
+        /// <summary>
+        /// Creates a <see cref="MenuItem"/> from an expression - is meant to be used with a <see cref="MethodCallExpression"/>.
+        /// </summary>
+        /// <param name="displayString">The explicit "label" to be used for the menu entry.</param>
+        /// <param name="action">The expression to create a menu item for.</param>
+        /// <param name="suffixForMenu">A suffix for the description of the method (the description will be extracted from the documentation XML file).</param>
+        /// <returns>A new menu item.</returns>
         public static MenuItem Print(string displayString, Func<Task<string>> action, string suffixForMenu = "")
         {
             return new MenuItem(displayString + suffixForMenu, async () => System.Console.WriteLine("\n" + await action.Invoke()));
         }
 
+        /// <summary>
+        /// Creates a <see cref="MenuItem"/> from an expression - is meant to be used with a <see cref="MethodCallExpression"/>.
+        /// </summary>
+        /// <param name="displayString">The explicit "label" to be used for the menu entry.</param>
+        /// <param name="action">The expression to create a menu item for.</param>
+        /// <param name="suffixForMenu">A suffix for the description of the method (the description will be extracted from the documentation XML file).</param>
+        /// <returns>A new menu item.</returns>
         public static MenuItem Print(string displayString, Func<IAsyncEnumerable<string>> action, string suffixForMenu = "")
         {
             return new MenuItem(
@@ -71,6 +115,13 @@
                 });
         }
 
+        /// <summary>
+        /// Creates a <see cref="MenuItem"/> from an expression - is meant to be used with a <see cref="MethodCallExpression"/>.
+        /// </summary>
+        /// <param name="displayString">The explicit "label" to be used for the menu entry.</param>
+        /// <param name="action">The expression to create a menu item for.</param>
+        /// <param name="suffixForMenu">A suffix for the description of the method (the description will be extracted from the documentation XML file).</param>
+        /// <returns>A new menu item.</returns>
         public static MenuItem Print(string displayString, Func<Task<IEnumerable<string>>> action, string suffixForMenu = "")
         {
             return new MenuItem(
@@ -97,14 +148,19 @@
                 GetDescriptionFromXml(typeof(T)),
                 async () =>
                 {
-                    await methods.Where(x => x.ReturnType == typeof(IAsyncEnumerable<string>)).Select(x => Print(GetDescriptionFromXml(x), () => GetAction<IAsyncEnumerable<string>, T>(x, parameters)))
-                        .Union(methods.Where(x => x.ReturnType == typeof(Task<string>)).Select(x => Print(GetDescriptionFromXml(x), () => GetAction<Task<string>, T>(x, parameters))))
+                    await methods.Where(x => x.ReturnType == typeof(IAsyncEnumerable<string>)).Select(x => Print(GetDescriptionFromXml(x), () => InvokeAction<IAsyncEnumerable<string>, T>(x, parameters)))
+                        .Union(methods.Where(x => x.ReturnType == typeof(Task<string>)).Select(x => Print(GetDescriptionFromXml(x), () => InvokeAction<Task<string>, T>(x, parameters))))
                         .ToArray()
                         .Show()
                         .ConfigureAwait(false);
                 });
         }
 
+        /// <summary>
+        /// Extracts the description from the XML documentation of a method (the XML file mst be generated while building the assembly).
+        /// </summary>
+        /// <param name="method">The method to get the description for.</param>
+        /// <returns>The extracted description.</returns>
         private static string GetDescriptionFromXml(MemberInfo method)
         {
             var assemblyFolder = method.DeclaringType?.Assembly.CodeBase.Replace("file:///", string.Empty, StringComparison.Ordinal) ?? ".";
@@ -130,6 +186,11 @@
             return documentation ?? $"[no description found for {method.Name}]";
         }
 
+        /// <summary>
+        /// Extracts the description from the XML documentation of a class (the XML file mst be generated while building the assembly).
+        /// </summary>
+        /// <param name="type">The class type to get the description for.</param>
+        /// <returns>The extracted description.</returns>
         private static string GetDescriptionFromXml(Type type)
         {
             var assemblyFolder = type.Assembly.CodeBase.Replace("file:///", string.Empty, StringComparison.Ordinal) ?? ".";
@@ -155,12 +216,26 @@
             return documentation ?? $"[no description found for {type.Name}]";
         }
 
+        /// <summary>
+        /// Gets the method information from a <see cref="MethodCallExpression"/>.
+        /// </summary>
+        /// <typeparam name="T">The return type of the method.</typeparam>
+        /// <param name="action">The expression calling a method.</param>
+        /// <returns>The method information from the called method.</returns>
         private static MethodInfo GetMethod<T>(Expression<Func<T>> action)
         {
             return ((MethodCallExpression)action.Body).Method;
         }
 
-        private static TResult GetAction<TResult, TClass>(MethodBase methodInfo, object[] parameters)
+        /// <summary>
+        /// Invokes a method with the needed parameters.
+        /// </summary>
+        /// <typeparam name="TResult">The result type of the method.</typeparam>
+        /// <typeparam name="TClass">The class type that contains the method.</typeparam>
+        /// <param name="methodInfo">The method information.</param>
+        /// <param name="parameters">The potential parameters for the method call.</param>
+        /// <returns>The call result.</returns>
+        private static TResult InvokeAction<TResult, TClass>(MethodBase methodInfo, object[] parameters)
         {
             object LookupParameter(ParameterInfo parameterInfo)
             {

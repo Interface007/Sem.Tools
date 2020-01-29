@@ -1,52 +1,122 @@
-﻿using System;
-using System.Globalization;
-using System.IO;
-using System.Threading.Tasks;
-
-namespace Sem.Data.SprocAccess.FileSystem
+﻿namespace Sem.Data.SprocAccess.FileSystem
 {
+    using System;
+    using System.Globalization;
+    using System.IO;
+    using System.Threading.Tasks;
+
+    /// <summary>
+    /// Reader implementation for a bunch of text files - <see cref="TxtDatabase"/>.
+    /// </summary>
     public class TxtReader : IReader
     {
+        /// <summary>
+        /// The file name of the data file for this result.
+        /// </summary>
         private readonly string fileName;
 
+        /// <summary>
+        /// The actual lines of the file.
+        /// TODO: would be better to read the file line by line - this is for simplicity of the class ... remember: it's a non-productive 'fun' project ;-).
+        /// </summary>
         private string[] fileLines;
 
-        private int lineIndex = -1;
+        /// <summary>
+        /// The "pointer" to the current row;.
+        /// </summary>
+        private int lineIndex;
 
+        /// <summary>
+        /// The index of the current result set - all data files contain a two-digit-index.
+        /// </summary>
         private int resultIndex;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="TxtReader"/> class.
+        /// </summary>
+        /// <param name="fileName">The name of the file containing the data.</param>
         public TxtReader(string fileName)
         {
             this.fileName = fileName;
-            this.fileLines = File.ReadAllLines(fileName + ".txt");
+            this.Init();
         }
 
+        /// <summary>
+        /// Increments the line pointer.
+        /// </summary>
+        /// <returns>A value indicating whether there is still data at this line.</returns>
         public Task<bool> Read()
         {
             this.lineIndex++;
-            return Task.FromResult(this.lineIndex < fileLines.Length - 1);
+            return Task.FromResult(this.lineIndex < this.fileLines.Length - 1);
         }
 
-        public Task<T> Get<T>(int index)
+        /// <summary>
+        /// Reads the value of a column by its index.
+        /// </summary>
+        /// <typeparam name="T">The type of the result.</typeparam>
+        /// <param name="index">The column index.</param>
+        /// <returns>The value of the column in the current row.</returns>
+        public async Task<T> Get<T>(int index)
         {
-            var value = this.fileLines[lineIndex + 1].Split('\t')[index];
-            var conversionType = typeof(T);
-            var typedValue = 
-                conversionType == typeof(DateTime) ? (T)(object)DateTime.ParseExact(value,"s", CultureInfo.InvariantCulture)
-                : (T)Convert.ChangeType(value, conversionType, CultureInfo.InvariantCulture);
+            return (T)(await this.Get(index, typeof(T)));
+        }
+
+        /// <summary>
+        /// Reads the value of a column by its index.
+        /// </summary>
+        /// <param name="index">The column index.</param>
+        /// <param name="type">The type of the result.</param>
+        /// <returns>The value of the column in the current row.</returns>
+        public Task<object> Get(int index, Type type)
+        {
+            var value = this.fileLines[this.lineIndex + 1].Split('\t')[index];
+            var typedValue =
+                type == typeof(DateTime) ? DateTime.ParseExact(value, "s", CultureInfo.InvariantCulture)
+                    : Convert.ChangeType(value, type, CultureInfo.InvariantCulture);
             return Task.FromResult(typedValue);
         }
 
+        /// <summary>
+        /// Advances to the next result set.
+        /// </summary>
+        /// <returns>A task to wait for.</returns>
         public Task NextResult()
         {
             this.resultIndex++;
-            this.fileLines = File.ReadAllLines(fileName + $"+{this.resultIndex}.txt");
+            this.Init();
             return Task.CompletedTask;
         }
 
+        /// <summary>
+        /// Closes the reader.
+        /// </summary>
+        /// <returns>A task to wait for.</returns>
         public Task Close()
         {
             return Task.CompletedTask;
+        }
+
+        /// <summary>
+        /// Gets the index of a column by its name (case-insensitive).
+        /// When there are two columns with the same name, the first index will be returned.
+        /// </summary>
+        /// <param name="columnName">The name of the column to search.</param>
+        /// <returns>The index of the column.</returns>
+        public int IndexByName(string columnName)
+        {
+            return Array.IndexOf(
+                this.fileLines[0].ToLowerInvariant().Split('\t'),
+                columnName.ToLowerInvariant());
+        }
+
+        /// <summary>
+        /// Reads the text file and initializes the line-pointer.
+        /// </summary>
+        private void Init()
+        {
+            this.fileLines = File.ReadAllLines($"{this.fileName}+{this.resultIndex.ToString("00", CultureInfo.InvariantCulture)}.txt");
+            this.lineIndex = -1;
         }
     }
 }

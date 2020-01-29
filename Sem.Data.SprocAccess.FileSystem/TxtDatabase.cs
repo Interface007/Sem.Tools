@@ -20,13 +20,17 @@
         /// </summary>
         private readonly string baseFolder;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="TxtDatabase"/> class.
+        /// </summary>
+        /// <param name="baseFolder">The base folder for the data files.</param>
         public TxtDatabase(string baseFolder)
         {
             this.baseFolder = baseFolder;
         }
 
         /// <inheritdoc />
-        public async IAsyncEnumerable<T> WithReader<T>(string sproc, Func<IReader, Task<T>> readerToObject, LogScope logger = null, params KeyValuePair<string, object>[] parameters)
+        public async IAsyncEnumerable<T> Execute<T>(string sproc, Func<IReader, Task<T>> readerToObject, LogScope logger = null, params KeyValuePair<string, object>[] parameters)
         {
             await using var scope = logger?.MethodStart(new { sproc, parameters });
 

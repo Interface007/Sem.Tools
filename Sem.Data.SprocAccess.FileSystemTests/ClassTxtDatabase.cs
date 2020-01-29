@@ -1,7 +1,6 @@
-using System;
-
 namespace Sem.Data.SprocAccess.FileSystemTests
 {
+    using System;
     using System.Threading.Tasks;
 
     using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -13,28 +12,40 @@ namespace Sem.Data.SprocAccess.FileSystemTests
     /// </summary>
     public static class ClassTxtDatabase
     {
+        /// <summary>
+        /// Tests for the method <see cref="TxtDatabase.Execute{T}"/>.
+        /// </summary>
         [TestClass]
-        public class WithReader
+        public class Execute
         {
+            /// <summary>
+            /// Tests whether the <see cref="int"/> column can be mapped correctly.
+            /// </summary>
+            /// <returns>A task to wait for.</returns>
             [TestMethod]
             public async Task ReadsIntFromCorrectColumn()
             {
                 var target = new TxtDatabase("Data");
-                var result = target.WithReader("sample", async reader => new { Id = await reader.Get<int>(0) });
+                var result = target.Execute("sample", async reader => new { Id = await reader.Get<int>(0) });
                 await foreach (var item in result)
                 {
                     Assert.AreEqual(42, item.Id);
                 }
             }
 
+            /// <summary>
+            /// Tests whether the <see cref="DateTime"/> column can be mapped correctly.
+            /// </summary>
+            /// <returns>A task to wait for.</returns>
             [TestMethod]
             public async Task ReadsDateTimeFromCorrectColumn()
             {
                 var target = new TxtDatabase("Data");
-                var result = target.WithReader("sample", async reader => new { Date = await reader.Get<DateTime>(1) });
+                var result = target.Execute("sample", async reader => new { Date = await reader.Get<DateTime>(1) });
                 await foreach (var item in result)
                 {
-                    Assert.AreEqual(new DateTime(2020, 12, 23, 22, 44, 33), item.Date);
+                    var expected = new DateTime(2020, 12, 23, 22, 44, 33);
+                    Assert.AreEqual(expected, item.Date);
                 }
             }
         }
