@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Sem.Data.SprocAccess.SqlServer</name>
+    </assembly>
+    <members>
+        <member name="T:Sem.Data.SprocAccess.SqlServer.SqlDatabase">
+            <summary>
+            An implementation of <see cref="T:Sem.Data.SprocAccess.IDatabase"/> using SQL server as a backend.
+            </summary>
+        </member>
+        <member name="M:Sem.Data.SprocAccess.SqlServer.SqlDatabase.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sem.Data.SprocAccess.SqlServer.SqlDatabase"/> class.
+            </summary>
+            <param name="connectionString">The database connection string to use for this instance.</param>
+        </member>
+        <member name="M:Sem.Data.SprocAccess.SqlServer.SqlDatabase.Execute``1(System.String,System.Func{Sem.Data.SprocAccess.IReader,System.Threading.Tasks.Task{``0}},Sem.Tools.Logging.LogScope,System.Collections.Generic.KeyValuePair{System.String,System.Object}[])">
+            <inheritdoc />
+        </member>
+        <member name="M:Sem.Data.SprocAccess.SqlServer.SqlDatabase.DisposeAsync">
+            <inheritdoc />
+        </member>
+        <member name="T:Sem.Data.SprocAccess.SqlServer.SqlReader">
+            <summary>
+            SQL serer implementation of the reader interface <see cref="T:Sem.Data.SprocAccess.IReader"/>.
+            </summary>
+        </member>
+        <member name="M:Sem.Data.SprocAccess.SqlServer.SqlReader.#ctor(System.Data.SqlClient.SqlDataReader)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sem.Data.SprocAccess.SqlServer.SqlReader"/> class.
+            </summary>
+            <param name="sqlDataReader">The data reader to read from.</param>
+        </member>
+        <member name="M:Sem.Data.SprocAccess.SqlServer.SqlReader.Read">
+            <inheritdoc />
+        </member>
+        <member name="M:Sem.Data.SprocAccess.SqlServer.SqlReader.Get``1(System.Int32)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sem.Data.SprocAccess.SqlServer.SqlReader.Get(System.Int32,System.Type)">
+            <inheritdoc />
+        </member>
+        <member name="M:Sem.Data.SprocAccess.SqlServer.SqlReader.NextResult">
+            <inheritdoc />
+        </member>
+        <member name="M:Sem.Data.SprocAccess.SqlServer.SqlReader.Close">
+            <inheritdoc />
+        </member>
+        <member name="M:Sem.Data.SprocAccess.SqlServer.SqlReader.IndexByName(System.String)">
+            <inheritdoc />
+        </member>
+    </members>
+</doc>

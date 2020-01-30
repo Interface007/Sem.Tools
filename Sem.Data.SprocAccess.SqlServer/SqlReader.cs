@@ -1,4 +1,8 @@
-﻿namespace Sem.Data.SprocAccess.SqlServer
+﻿// <copyright file="SqlReader.cs" company="Sven Erik Matzen">
+// Copyright (c) Sven Erik Matzen. All rights reserved.
+// </copyright>
+
+namespace Sem.Data.SprocAccess.SqlServer
 {
     using System;
     using System.Data.SqlClient;

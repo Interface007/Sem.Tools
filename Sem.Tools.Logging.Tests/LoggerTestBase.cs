@@ -1,3 +1,7 @@
+// <copyright file="LoggerTestBase.cs" company="Sven Erik Matzen">
+// Copyright (c) Sven Erik Matzen. All rights reserved.
+// </copyright>
+
 namespace Sem.Tools.Logging.Tests
 {
     using System.Collections.Generic;
@@ -31,8 +35,9 @@ namespace Sem.Tools.Logging.Tests
         /// <param name="level">The log level.</param>
         /// <param name="scope">The logging scope that renders the log entry.</param>
         /// <param name="message">The log message.</param>
-        protected void LogMethod(LogCategory category, LogLevel level, LogScope scope, string message)
+        protected void LogMethod(LogCategories category, LogLevel level, LogScope scope, string message)
         {
+            scope.MustNotBeNull(nameof(scope));
             this.LogMessages.Add($"{category}, {level}, {scope.Id}, {message}");
         }
 

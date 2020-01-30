@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Sem.Data.SprocAccess.IntegrationTests</name>
+    </assembly>
+    <members>
+        <member name="T:Sem.Data.SprocAccess.IntegrationTests.Program">
+            <summary>
+            Simple executable that will read the database named of a local SQL server instance
+            using a trusted connection (current user must be able to execute SPROC [sys].[sp_databases]).
+            </summary>
+        </member>
+        <member name="M:Sem.Data.SprocAccess.IntegrationTests.Program.Main">
+            <summary>
+            Entry point for the integration test program.
+            </summary>
+            <returns>A task to wait for.</returns>
+        </member>
+    </members>
+</doc>

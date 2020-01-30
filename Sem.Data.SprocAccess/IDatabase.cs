@@ -1,4 +1,8 @@
-﻿namespace Sem.Data.SprocAccess
+﻿// <copyright file="IDatabase.cs" company="Sven Erik Matzen">
+// Copyright (c) Sven Erik Matzen. All rights reserved.
+// </copyright>
+
+namespace Sem.Data.SprocAccess
 {
     using System;
     using System.Collections.Generic;

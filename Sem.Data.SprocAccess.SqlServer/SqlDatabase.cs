@@ -1,10 +1,15 @@
-﻿namespace Sem.Data.SprocAccess.SqlServer
+﻿// <copyright file="SqlDatabase.cs" company="Sven Erik Matzen">
+// Copyright (c) Sven Erik Matzen. All rights reserved.
+// </copyright>
+
+namespace Sem.Data.SprocAccess.SqlServer
 {
     using System;
     using System.Collections.Generic;
     using System.Data.SqlClient;
     using System.Threading.Tasks;
 
+    using Sem.Tools;
     using Sem.Tools.Logging;
 
     /// <summary>
@@ -23,6 +28,11 @@
         /// <inheritdoc />
         public async IAsyncEnumerable<T> Execute<T>(string sproc, Func<IReader, Task<T>> readerToObject, LogScope logger = null, params KeyValuePair<string, object>[] parameters)
         {
+            if (sproc.MustNotBeNullOrEmpty(nameof(sproc)).Contains('\'', StringComparison.Ordinal))
+            {
+                throw new ArgumentOutOfRangeException(nameof(sproc), "Must not contain the character >'<");
+            }
+
             await using var scope = logger?.MethodStart(new { sproc, parameters });
             await using var con = new SqlConnection(this.connectionString);
             await using var cmd = new SqlCommand(sproc, con)
@@ -37,15 +47,15 @@
 
             await using (var unused = scope?.Child("opening connection"))
             {
-                await con.OpenAsync();
+                await con.OpenAsync().ConfigureAwait(false);
             }
 
             await using (var unused = scope?.Child("executing reader"))
             {
-                var reader = new SqlReader(await cmd.ExecuteReaderAsync());
-                while (await reader.Read())
+                var reader = new SqlReader(await cmd.ExecuteReaderAsync().ConfigureAwait(false));
+                while (await reader.Read().ConfigureAwait(false))
                 {
-                    yield return await readerToObject(reader);
+                    yield return await readerToObject(reader).ConfigureAwait(false);
                 }
             }
         }

@@ -1,4 +1,8 @@
-﻿namespace Sem.Tools
+﻿// <copyright file="FileSystemTools.cs" company="Sven Erik Matzen">
+// Copyright (c) Sven Erik Matzen. All rights reserved.
+// </copyright>
+
+namespace Sem.Tools
 {
     using System.IO;
     using System.Text.RegularExpressions;

@@ -1,4 +1,8 @@
-﻿namespace Sem.Tools.Logging
+﻿// <copyright file="LogLevel.cs" company="Sven Erik Matzen">
+// Copyright (c) Sven Erik Matzen. All rights reserved.
+// </copyright>
+
+namespace Sem.Tools.Logging
 {
     /// <summary>
     /// The "chattiness" level.

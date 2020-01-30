@@ -1,6 +1,12 @@
+// <copyright file="Map.cs" company="Sven Erik Matzen">
+// Copyright (c) Sven Erik Matzen. All rights reserved.
+// </copyright>
+
 namespace Sem.Data.SprocAccess.FileSystemTests
 {
     using System.Threading.Tasks;
+
+    using Sem.Tools;
 
     /// <summary>
     /// Helper class that implements a slow, bt generic mapper method.
@@ -19,12 +25,13 @@ namespace Sem.Data.SprocAccess.FileSystemTests
         public static async Task<T> To<T>(IReader reader)
             where T : new()
         {
+            reader.MustNotBeNull(nameof(reader));
             var properties = typeof(T).GetProperties();
             var value = new T();
             foreach (var property in properties)
             {
                 var index = reader.IndexByName(property.Name);
-                property.SetValue(value, await reader.Get(index, property.PropertyType));
+                property.SetValue(value, await reader.Get(index, property.PropertyType).ConfigureAwait(false));
             }
 
             return value;

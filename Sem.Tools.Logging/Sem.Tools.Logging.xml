@@ -1,0 +1,182 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Sem.Tools.Logging</name>
+    </assembly>
+    <members>
+        <member name="T:Sem.Tools.Logging.LogCategories">
+            <summary>
+            The logging category distinguishes between technical and business information.
+            </summary>
+        </member>
+        <member name="F:Sem.Tools.Logging.LogCategories.None">
+            <summary>
+            The context is not determined.
+            </summary>
+        </member>
+        <member name="F:Sem.Tools.Logging.LogCategories.Technical">
+            <summary>
+            The log information is pure technical.
+            </summary>
+        </member>
+        <member name="F:Sem.Tools.Logging.LogCategories.Business">
+            <summary>
+            The log information is pure business.
+            </summary>
+        </member>
+        <member name="T:Sem.Tools.Logging.LogCategoryExtensions">
+            <summary>
+            Extension class for the enum type <see cref="T:Sem.Tools.Logging.LogCategories"/>.
+            </summary>
+        </member>
+        <member name="M:Sem.Tools.Logging.LogCategoryExtensions.HasFlag``1(``0,``0)">
+            <summary>
+            Tests whether a value has a specific category flag set.
+            </summary>
+            <typeparam name="T">The enum type to be tested.</typeparam>
+            <param name="value">The value to be tested.</param>
+            <param name="flag">The flag that should be tested.</param>
+            <returns>A value indicating whether the flag is set.</returns>
+        </member>
+        <member name="T:Sem.Tools.Logging.LogLevel">
+            <summary>
+            The "chattiness" level.
+            </summary>
+        </member>
+        <member name="F:Sem.Tools.Logging.LogLevel.None">
+            <summary>
+            Log never.
+            </summary>
+        </member>
+        <member name="F:Sem.Tools.Logging.LogLevel.Exception">
+            <summary>
+            When writing logs: Specifies that this entry is an exception.
+            When configuring logger: will only allow exceptions to be logged.
+            </summary>
+        </member>
+        <member name="F:Sem.Tools.Logging.LogLevel.Warning">
+            <summary>
+            When writing logs: Specifies that this entry is a warning (less important than an <see cref="F:Sem.Tools.Logging.LogLevel.Exception"/>).
+            When configuring logger: will only allow exceptions and warnings to be logged.
+            </summary>
+        </member>
+        <member name="F:Sem.Tools.Logging.LogLevel.Information">
+            <summary>
+            When writing logs: Specifies that this entry is a information (less important than an <see cref="F:Sem.Tools.Logging.LogLevel.Exception"/> or a <see cref="F:Sem.Tools.Logging.LogLevel.Warning"/>).
+            When configuring logger: will only allow information, exceptions and warnings to be logged.
+            </summary>
+        </member>
+        <member name="F:Sem.Tools.Logging.LogLevel.Trace">
+            <summary>
+            When writing logs: Specifies that this entry is a trace message (something that should be logged while debugging).
+            When configuring logger: will only allow any message to be logged.
+            </summary>
+        </member>
+        <member name="T:Sem.Tools.Logging.LogScope">
+            <summary>
+            Simple hierarchical logging scope.
+            </summary>
+        </member>
+        <member name="F:Sem.Tools.Logging.LogScope.idStack">
+            <summary>
+            Gets the structure handling the hierarchy.
+            </summary>
+        </member>
+        <member name="P:Sem.Tools.Logging.LogScope.DefaultLevel">
+            <summary>
+            Gets or sets the level of "chattiness".
+            </summary>
+        </member>
+        <member name="P:Sem.Tools.Logging.LogScope.DefaultCategory">
+            <summary>
+            Gets or sets the type of logs to be written.
+            </summary>
+        </member>
+        <member name="P:Sem.Tools.Logging.LogScope.LogMethod">
+            <summary>
+            Gets or sets the method that will write the log information.
+            </summary>
+        </member>
+        <member name="P:Sem.Tools.Logging.LogScope.IdFactory">
+            <summary>
+            Gets or sets the method generating an ID for this logger instance - only the last 4 characters will be used.
+            </summary>
+        </member>
+        <member name="P:Sem.Tools.Logging.LogScope.BasePath">
+            <summary>
+            Gets or sets a path to be removed in logs.
+            </summary>
+        </member>
+        <member name="P:Sem.Tools.Logging.LogScope.Category">
+            <summary>
+            Gets or sets the type of logs to be written.
+            </summary>
+        </member>
+        <member name="P:Sem.Tools.Logging.LogScope.Level">
+            <summary>
+            Gets or sets the level of "chattiness".
+            </summary>
+        </member>
+        <member name="P:Sem.Tools.Logging.LogScope.Id">
+            <summary>
+            Gets the hierarchical ID of the scope.
+            </summary>
+        </member>
+        <member name="M:Sem.Tools.Logging.LogScope.Create(System.String,System.Action{Sem.Tools.Logging.LogCategories,Sem.Tools.Logging.LogLevel,Sem.Tools.Logging.LogScope,System.String},System.String,System.String)">
+            <summary>
+            Create a new scope instance.
+            </summary>
+            <param name="scopeName">Name of the scope.</param>
+            <param name="logMethod">Method that renders the log entry.</param>
+            <param name="member">The member (method) that creates the instance.</param>
+            <param name="path">The path to the class file.</param>
+            <returns>A new logging scope.</returns>
+        </member>
+        <member name="M:Sem.Tools.Logging.LogScope.MethodStart(System.Object,System.String,System.String)">
+            <summary>
+            Call this to indicate a method start.
+            </summary>
+            <param name="value">A value that should be logged as part of the creation.</param>
+            <param name="member">The name of the method.</param>
+            <param name="path">The path of the source file.</param>
+            <returns>A new scope.</returns>
+        </member>
+        <member name="M:Sem.Tools.Logging.LogScope.Child(System.String,System.Object,System.String,System.String)">
+            <summary>
+            Creates a new child scope.
+            </summary>
+            <param name="childName"> The name of the scope. </param>
+            <param name="value">A value that should be logged as part of the creation.</param>
+            <param name="member">The name of the method.</param>
+            <param name="path">The path of the source file.</param>
+            <returns>A new scope.</returns>
+        </member>
+        <member name="M:Sem.Tools.Logging.LogScope.DisposeAsync">
+            <summary>
+            Async implementation of the dispose pattern.
+            </summary>
+            <returns>A task to wait for.</returns>
+        </member>
+        <member name="M:Sem.Tools.Logging.LogScope.Dispose">
+            <summary>
+            Logs the end of the scope.
+            </summary>
+        </member>
+        <member name="M:Sem.Tools.Logging.LogScope.Log(System.String,System.Object)">
+            <summary>
+            Logs a message.
+            </summary>
+            <param name="message">The message to be logged.</param>
+            <param name="value">A value that should be included into the message as addition data.</param>
+        </member>
+        <member name="M:Sem.Tools.Logging.LogScope.Log(Sem.Tools.Logging.LogCategories,Sem.Tools.Logging.LogLevel,System.String,System.Object)">
+            <summary>
+            Logs a message.
+            </summary>
+            <param name="logCategory">The category of this message (Is it technical information of business process information?).</param>
+            <param name="logLevel">The log level of this message (How important is this message?).</param>
+            <param name="message">The message to be logged.</param>
+            <param name="value">A value that should be included into the message as addition data.</param>
+        </member>
+    </members>
+</doc>

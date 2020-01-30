@@ -1,4 +1,8 @@
-﻿namespace Sem.Tools.Logging
+﻿// <copyright file="LogCategories.cs" company="Sven Erik Matzen">
+// Copyright (c) Sven Erik Matzen. All rights reserved.
+// </copyright>
+
+namespace Sem.Tools.Logging
 {
     using System;
 
@@ -6,7 +10,7 @@
     /// The logging category distinguishes between technical and business information.
     /// </summary>
     [Flags]
-    public enum LogCategory
+    public enum LogCategories
     {
         /// <summary>
         /// The context is not determined.

@@ -1,9 +1,11 @@
+// <copyright file="ClassLogScope.cs" company="Sven Erik Matzen">
+// Copyright (c) Sven Erik Matzen. All rights reserved.
+// </copyright>
+
 // ReSharper disable UnusedVariable
-
-using System.Linq;
-
 namespace Sem.Tools.Logging.Tests
 {
+    using System.Linq;
     using System.Text.RegularExpressions;
 
     using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -132,25 +134,25 @@ namespace Sem.Tools.Logging.Tests
             {
                 using var logScope = LogScope.Create("NewScope", this.LogMethod);
 
-                logScope.Category = LogCategory.Technical;
+                logScope.Category = LogCategories.Technical;
                 this.LogMessages.Clear();
-                logScope.Log(LogCategory.Technical, LogLevel.Trace, "Trace");
+                logScope.Log(LogCategories.Technical, LogLevel.Trace, "Trace");
                 Assert.AreEqual(1, this.LogMessages.Count);
-                logScope.Log(LogCategory.Business, LogLevel.Trace, "Trace");
+                logScope.Log(LogCategories.Business, LogLevel.Trace, "Trace");
                 Assert.AreEqual(1, this.LogMessages.Count);
 
-                logScope.Category = LogCategory.Business;
+                logScope.Category = LogCategories.Business;
                 this.LogMessages.Clear();
-                logScope.Log(LogCategory.Technical, LogLevel.Trace, "Trace");
+                logScope.Log(LogCategories.Technical, LogLevel.Trace, "Trace");
                 Assert.AreEqual(0, this.LogMessages.Count);
-                logScope.Log(LogCategory.Business, LogLevel.Trace, "Trace");
+                logScope.Log(LogCategories.Business, LogLevel.Trace, "Trace");
                 Assert.AreEqual(1, this.LogMessages.Count);
 
-                logScope.Category = LogCategory.Business | LogCategory.Technical;
+                logScope.Category = LogCategories.Business | LogCategories.Technical;
                 this.LogMessages.Clear();
-                logScope.Log(LogCategory.Technical, LogLevel.Trace, "Trace");
+                logScope.Log(LogCategories.Technical, LogLevel.Trace, "Trace");
                 Assert.AreEqual(1, this.LogMessages.Count);
-                logScope.Log(LogCategory.Business, LogLevel.Trace, "Trace");
+                logScope.Log(LogCategories.Business, LogLevel.Trace, "Trace");
                 Assert.AreEqual(2, this.LogMessages.Count);
             }
 
@@ -166,34 +168,34 @@ namespace Sem.Tools.Logging.Tests
                 Assert.AreEqual(0, this.LogMessages.Count);
 
                 logScope.Level = LogLevel.Trace;
-                logScope.Log(LogCategory.Technical, LogLevel.Trace, "Trace");
-                logScope.Log(LogCategory.Technical, LogLevel.Information, "Information");
-                logScope.Log(LogCategory.Technical, LogLevel.Warning, "Warning");
-                logScope.Log(LogCategory.Technical, LogLevel.Exception, "Exception");
+                logScope.Log(LogCategories.Technical, LogLevel.Trace, "Trace");
+                logScope.Log(LogCategories.Technical, LogLevel.Information, "Information");
+                logScope.Log(LogCategories.Technical, LogLevel.Warning, "Warning");
+                logScope.Log(LogCategories.Technical, LogLevel.Exception, "Exception");
                 Assert.AreEqual(4, this.LogMessages.Count);
 
                 this.LogMessages.Clear();
                 logScope.Level = LogLevel.Information;
-                logScope.Log(LogCategory.Technical, LogLevel.Trace, "Trace");
-                logScope.Log(LogCategory.Technical, LogLevel.Information, "Information");
-                logScope.Log(LogCategory.Technical, LogLevel.Warning, "Warning");
-                logScope.Log(LogCategory.Technical, LogLevel.Exception, "Exception");
+                logScope.Log(LogCategories.Technical, LogLevel.Trace, "Trace");
+                logScope.Log(LogCategories.Technical, LogLevel.Information, "Information");
+                logScope.Log(LogCategories.Technical, LogLevel.Warning, "Warning");
+                logScope.Log(LogCategories.Technical, LogLevel.Exception, "Exception");
                 Assert.AreEqual(3, this.LogMessages.Count);
 
                 this.LogMessages.Clear();
                 logScope.Level = LogLevel.Warning;
-                logScope.Log(LogCategory.Technical, LogLevel.Trace, "Trace");
-                logScope.Log(LogCategory.Technical, LogLevel.Information, "Information");
-                logScope.Log(LogCategory.Technical, LogLevel.Warning, "Warning");
-                logScope.Log(LogCategory.Technical, LogLevel.Exception, "Exception");
+                logScope.Log(LogCategories.Technical, LogLevel.Trace, "Trace");
+                logScope.Log(LogCategories.Technical, LogLevel.Information, "Information");
+                logScope.Log(LogCategories.Technical, LogLevel.Warning, "Warning");
+                logScope.Log(LogCategories.Technical, LogLevel.Exception, "Exception");
                 Assert.AreEqual(2, this.LogMessages.Count);
 
                 this.LogMessages.Clear();
                 logScope.Level = LogLevel.Exception;
-                logScope.Log(LogCategory.Technical, LogLevel.Trace, "Trace");
-                logScope.Log(LogCategory.Technical, LogLevel.Information, "Information");
-                logScope.Log(LogCategory.Technical, LogLevel.Warning, "Warning");
-                logScope.Log(LogCategory.Technical, LogLevel.Exception, "Exception");
+                logScope.Log(LogCategories.Technical, LogLevel.Trace, "Trace");
+                logScope.Log(LogCategories.Technical, LogLevel.Information, "Information");
+                logScope.Log(LogCategories.Technical, LogLevel.Warning, "Warning");
+                logScope.Log(LogCategories.Technical, LogLevel.Exception, "Exception");
                 Assert.AreEqual(1, this.LogMessages.Count);
             }
         }

@@ -1,4 +1,8 @@
-﻿namespace Sem.Data.SprocAccess.FileSystem
+﻿// <copyright file="TxtDatabase.cs" company="Sven Erik Matzen">
+// Copyright (c) Sven Erik Matzen. All rights reserved.
+// </copyright>
+
+namespace Sem.Data.SprocAccess.FileSystem
 {
     using System;
     using System.Collections.Generic;
@@ -37,16 +41,16 @@
             // produce a file name that includes the parameters
             var fileName = parameters
                 .Aggregate("params-", (s, pair) => $"{s}-{pair.Key}={pair.Value}")
-                .Replace("@", string.Empty);
+                .Replace("@", string.Empty, StringComparison.Ordinal);
 
             var targetPath = Path.Combine(this.baseFolder, FileSystemTools.SanitizeFileName(sproc), FileSystemTools.SanitizeFileName(fileName));
 
             var reader = new TxtReader(targetPath);
 
-            scope?.Log(LogCategory.Technical, LogLevel.Trace, "reader created", reader);
-            while (await reader.Read())
+            scope?.Log(LogCategories.Technical, LogLevel.Trace, "reader created", reader);
+            while (await reader.Read().ConfigureAwait(false))
             {
-                yield return await readerToObject(reader);
+                yield return await readerToObject(reader).ConfigureAwait(false);
             }
         }
 

@@ -1,0 +1,111 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Sem.Data.SprocAccess.FileSystem</name>
+    </assembly>
+    <members>
+        <member name="T:Sem.Data.SprocAccess.FileSystem.TxtDatabase">
+            <summary>
+            Simple text file implementation of <see cref="T:Sem.Data.SprocAccess.IDatabase"/>.
+            Can be used to mock database access easily.
+            Each SPROC gets its own folder and each combination of parameters its own file.
+            </summary>
+        </member>
+        <member name="F:Sem.Data.SprocAccess.FileSystem.TxtDatabase.baseFolder">
+            <summary>
+            The base folder path.
+            </summary>
+        </member>
+        <member name="M:Sem.Data.SprocAccess.FileSystem.TxtDatabase.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sem.Data.SprocAccess.FileSystem.TxtDatabase"/> class.
+            </summary>
+            <param name="baseFolder">The base folder for the data files.</param>
+        </member>
+        <member name="M:Sem.Data.SprocAccess.FileSystem.TxtDatabase.Execute``1(System.String,System.Func{Sem.Data.SprocAccess.IReader,System.Threading.Tasks.Task{``0}},Sem.Tools.Logging.LogScope,System.Collections.Generic.KeyValuePair{System.String,System.Object}[])">
+            <inheritdoc />
+        </member>
+        <member name="M:Sem.Data.SprocAccess.FileSystem.TxtDatabase.DisposeAsync">
+            <inheritdoc />
+        </member>
+        <member name="T:Sem.Data.SprocAccess.FileSystem.TxtReader">
+            <summary>
+            Reader implementation for a bunch of text files - <see cref="T:Sem.Data.SprocAccess.FileSystem.TxtDatabase"/>.
+            </summary>
+        </member>
+        <member name="F:Sem.Data.SprocAccess.FileSystem.TxtReader.fileName">
+            <summary>
+            The file name of the data file for this result.
+            </summary>
+        </member>
+        <member name="F:Sem.Data.SprocAccess.FileSystem.TxtReader.fileLines">
+            <summary>
+            The actual lines of the file.
+            TODO: would be better to read the file line by line - this is for simplicity of the class ... remember: it's a non-productive 'fun' project ;-).
+            </summary>
+        </member>
+        <member name="F:Sem.Data.SprocAccess.FileSystem.TxtReader.lineIndex">
+            <summary>
+            The "pointer" to the current row;.
+            </summary>
+        </member>
+        <member name="F:Sem.Data.SprocAccess.FileSystem.TxtReader.resultIndex">
+            <summary>
+            The index of the current result set - all data files contain a two-digit-index.
+            </summary>
+        </member>
+        <member name="M:Sem.Data.SprocAccess.FileSystem.TxtReader.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sem.Data.SprocAccess.FileSystem.TxtReader"/> class.
+            </summary>
+            <param name="fileName">The name of the file containing the data.</param>
+        </member>
+        <member name="M:Sem.Data.SprocAccess.FileSystem.TxtReader.Read">
+            <summary>
+            Increments the line pointer.
+            </summary>
+            <returns>A value indicating whether there is still data at this line.</returns>
+        </member>
+        <member name="M:Sem.Data.SprocAccess.FileSystem.TxtReader.Get``1(System.Int32)">
+            <summary>
+            Reads the value of a column by its index.
+            </summary>
+            <typeparam name="T">The type of the result.</typeparam>
+            <param name="index">The column index.</param>
+            <returns>The value of the column in the current row.</returns>
+        </member>
+        <member name="M:Sem.Data.SprocAccess.FileSystem.TxtReader.Get(System.Int32,System.Type)">
+            <summary>
+            Reads the value of a column by its index.
+            </summary>
+            <param name="index">The column index.</param>
+            <param name="type">The type of the result.</param>
+            <returns>The value of the column in the current row.</returns>
+        </member>
+        <member name="M:Sem.Data.SprocAccess.FileSystem.TxtReader.NextResult">
+            <summary>
+            Advances to the next result set.
+            </summary>
+            <returns>A task to wait for.</returns>
+        </member>
+        <member name="M:Sem.Data.SprocAccess.FileSystem.TxtReader.Close">
+            <summary>
+            Closes the reader.
+            </summary>
+            <returns>A task to wait for.</returns>
+        </member>
+        <member name="M:Sem.Data.SprocAccess.FileSystem.TxtReader.IndexByName(System.String)">
+            <summary>
+            Gets the index of a column by its name (case-insensitive).
+            When there are two columns with the same name, the first index will be returned.
+            </summary>
+            <param name="columnName">The name of the column to search.</param>
+            <returns>The index of the column.</returns>
+        </member>
+        <member name="M:Sem.Data.SprocAccess.FileSystem.TxtReader.Init">
+            <summary>
+            Reads the text file and initializes the line-pointer.
+            </summary>
+        </member>
+    </members>
+</doc>

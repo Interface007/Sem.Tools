@@ -1,4 +1,8 @@
-﻿namespace Sem.Tools.CmdLine
+﻿// <copyright file="MenuItem.cs" company="Sven Erik Matzen">
+// Copyright (c) Sven Erik Matzen. All rights reserved.
+// </copyright>
+
+namespace Sem.Tools.CmdLine
 {
     using System;
     using System.Collections.Generic;
@@ -8,6 +12,8 @@
     using System.Reflection;
     using System.Threading.Tasks;
     using System.Xml;
+
+    using Sem.Tools;
 
     /// <summary>
     /// Menu item for a command line program. An array of menu items can be displayed using the extension method
@@ -58,6 +64,7 @@
         /// <returns>A new menu item.</returns>
         public static MenuItem Print(Expression<Func<IAsyncEnumerable<string>>> action, string suffixForMenu = "")
         {
+            action.MustNotBeNull(nameof(action));
             return Print(GetDescriptionFromXml(GetMethod(action)) + suffixForMenu, action.Compile());
         }
 
@@ -69,6 +76,7 @@
         /// <returns>A new menu item.</returns>
         public static MenuItem Print(Expression<Func<Task<string>>> action, string suffixForMenu = "")
         {
+            action.MustNotBeNull(nameof(action));
             return Print(GetDescriptionFromXml(GetMethod(action)) + suffixForMenu, action.Compile());
         }
 
@@ -80,6 +88,7 @@
         /// <returns>A new menu item.</returns>
         public static MenuItem Print(Expression<Func<Task<IEnumerable<string>>>> action, string suffixForMenu = "")
         {
+            action.MustNotBeNull(nameof(action));
             return Print(GetDescriptionFromXml(GetMethod(action)) + suffixForMenu, action.Compile());
         }
 
@@ -92,7 +101,8 @@
         /// <returns>A new menu item.</returns>
         public static MenuItem Print(string displayString, Func<Task<string>> action, string suffixForMenu = "")
         {
-            return new MenuItem(displayString + suffixForMenu, async () => System.Console.WriteLine("\n" + await action.Invoke()));
+            action.MustNotBeNull(nameof(action));
+            return new MenuItem(displayString + suffixForMenu, async () => System.Console.WriteLine("\n" + await action.Invoke().ConfigureAwait(false)));
         }
 
         /// <summary>
@@ -104,6 +114,7 @@
         /// <returns>A new menu item.</returns>
         public static MenuItem Print(string displayString, Func<IAsyncEnumerable<string>> action, string suffixForMenu = "")
         {
+            action.MustNotBeNull(nameof(action));
             return new MenuItem(
                 displayString + suffixForMenu,
                 async () =>
@@ -124,6 +135,7 @@
         /// <returns>A new menu item.</returns>
         public static MenuItem Print(string displayString, Func<Task<IEnumerable<string>>> action, string suffixForMenu = "")
         {
+            action.MustNotBeNull(nameof(action));
             return new MenuItem(
                 displayString + suffixForMenu,
                 async () =>
@@ -163,6 +175,7 @@
         /// <returns>The extracted description.</returns>
         private static string GetDescriptionFromXml(MemberInfo method)
         {
+            method.MustNotBeNull(nameof(method));
             var assemblyFolder = method.DeclaringType?.Assembly.CodeBase.Replace("file:///", string.Empty, StringComparison.Ordinal) ?? ".";
             var documentationXml = Path.ChangeExtension(Path.GetFullPath(assemblyFolder), ".XML");
 
@@ -260,7 +273,7 @@
                 .Select(LookupParameter)
                 .ToArray();
 
-            var obj = methodInfo.IsStatic ? null : typeof(TClass).GetConstructor(new Type[0])?.Invoke(new object[0]);
+            var obj = methodInfo.IsStatic ? null : typeof(TClass).GetConstructor(Array.Empty<Type>())?.Invoke(Array.Empty<object>());
 
             return (TResult)methodInfo.Invoke(obj, callParams);
         }

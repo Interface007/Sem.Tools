@@ -1,7 +1,10 @@
-﻿// ReSharper disable MemberCanBePrivate.Global
+﻿// <copyright file="LogScope.cs" company="Sven Erik Matzen">
+// Copyright (c) Sven Erik Matzen. All rights reserved.
+// </copyright>
+
+// ReSharper disable MemberCanBePrivate.Global
 // ReSharper disable ExplicitCallerInfoArgument
 // ReSharper disable AutoPropertyCanBeMadeGetOnly.Global
-
 namespace Sem.Tools.Logging
 {
     using System;
@@ -15,20 +18,20 @@ namespace Sem.Tools.Logging
     /// <summary>
     /// Simple hierarchical logging scope.
     /// </summary>
-    public class LogScope : IDisposable, IAsyncDisposable
+    public sealed class LogScope : IDisposable, IAsyncDisposable
     {
         private readonly DateTime start = DateTime.UtcNow;
 
         private readonly string scopeName;
 
-        private readonly Action<LogCategory, LogLevel, LogScope, string> logMethod;
+        private readonly Action<LogCategories, LogLevel, LogScope, string> logMethod;
 
         /// <summary>
         /// Gets the structure handling the hierarchy.
         /// </summary>
         private readonly ConcurrentStack<string> idStack;
 
-        private LogScope(string scopeName, string member, string path, LogScope parent, Action<LogCategory, LogLevel, LogScope, string> logMethod)
+        private LogScope(string scopeName, string member, string path, LogScope parent, Action<LogCategories, LogLevel, LogScope, string> logMethod)
         {
             this.scopeName = scopeName;
             this.idStack = parent?.idStack ?? new ConcurrentStack<string>();
@@ -37,9 +40,9 @@ namespace Sem.Tools.Logging
             var newId = LogScope.IdFactory(this);
             this.idStack.Push($"{parent?.Id}/{newId.Substring(newId.Length - 4)}");
 
-            var replace = string.IsNullOrEmpty(LogScope.BasePath) ? path : path.Replace(LogScope.BasePath, string.Empty);
+            var replace = string.IsNullOrEmpty(LogScope.BasePath) ? path : path.Replace(LogScope.BasePath, string.Empty, StringComparison.OrdinalIgnoreCase);
             var pat = replace.Trim('\\').Trim('/');
-            this.Log(LogCategory.Technical, LogLevel.Trace, $"Starting scope {scopeName} in member {member} of {pat}.");
+            this.Log(LogCategories.Technical, LogLevel.Trace, $"Starting scope {scopeName} in member {member} of {pat}.");
         }
 
         /// <summary>
@@ -50,13 +53,13 @@ namespace Sem.Tools.Logging
         /// <summary>
         /// Gets or sets the type of logs to be written.
         /// </summary>
-        public static LogCategory DefaultCategory { get; set; } = LogCategory.Technical | LogCategory.Business;
+        public static LogCategories DefaultCategory { get; set; } = LogCategories.Technical | LogCategories.Business;
 
         /// <summary>
         /// Gets or sets the method that will write the log information.
         /// </summary>
         // ReSharper disable once UnusedAutoPropertyAccessor.Global
-        public static Action<LogCategory, LogLevel, LogScope, string> LogMethod { get; set; }
+        public static Action<LogCategories, LogLevel, LogScope, string> LogMethod { get; set; }
 
         /// <summary>
         /// Gets or sets the method generating an ID for this logger instance - only the last 4 characters will be used.
@@ -71,7 +74,7 @@ namespace Sem.Tools.Logging
         /// <summary>
         /// Gets or sets the type of logs to be written.
         /// </summary>
-        public LogCategory Category { get; set; } = DefaultCategory;
+        public LogCategories Category { get; set; } = DefaultCategory;
 
         /// <summary>
         /// Gets or sets the level of "chattiness".
@@ -91,7 +94,7 @@ namespace Sem.Tools.Logging
         /// <param name="member">The member (method) that creates the instance.</param>
         /// <param name="path">The path to the class file.</param>
         /// <returns>A new logging scope.</returns>
-        public static LogScope Create(string scopeName, Action<LogCategory, LogLevel, LogScope, string> logMethod = null, [CallerMemberName] string member = "", [CallerFilePath] string path = "")
+        public static LogScope Create(string scopeName, Action<LogCategories, LogLevel, LogScope, string> logMethod = null, [CallerMemberName] string member = "", [CallerFilePath] string path = "")
         {
             return new LogScope(scopeName, member, path, null, logMethod);
         }
@@ -126,7 +129,7 @@ namespace Sem.Tools.Logging
 
             if (value != null)
             {
-                scope.Log(LogCategory.Technical, LogLevel.Information, "scope value: ", value);
+                scope.Log(LogCategories.Technical, LogLevel.Information, "scope value: ", value);
             }
 
             return scope;
@@ -147,8 +150,9 @@ namespace Sem.Tools.Logging
         /// </summary>
         public void Dispose()
         {
+            GC.SuppressFinalize(this);
             var ms = (DateTime.UtcNow - this.start).TotalMilliseconds;
-            this.Log(LogCategory.Technical, LogLevel.Trace, "Finished scope", new { this.scopeName, ms });
+            this.Log(LogCategories.Technical, LogLevel.Trace, "Finished scope", new { this.scopeName, ms });
             this.idStack.TryPop(out _);
         }
 
@@ -159,7 +163,7 @@ namespace Sem.Tools.Logging
         /// <param name="value">A value that should be included into the message as addition data.</param>
         public void Log(string message, object value = null)
         {
-            this.Log(LogCategory.Technical, LogLevel.Information, message, value);
+            this.Log(LogCategories.Technical, LogLevel.Information, message, value);
         }
 
         /// <summary>
@@ -169,7 +173,7 @@ namespace Sem.Tools.Logging
         /// <param name="logLevel">The log level of this message (How important is this message?).</param>
         /// <param name="message">The message to be logged.</param>
         /// <param name="value">A value that should be included into the message as addition data.</param>
-        public void Log(LogCategory logCategory, LogLevel logLevel, string message, object value = null)
+        public void Log(LogCategories logCategory, LogLevel logLevel, string message, object value = null)
         {
             if ((logLevel > this.Level) || (logCategory & this.Category) == 0)
             {

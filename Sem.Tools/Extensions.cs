@@ -1,9 +1,17 @@
-﻿namespace Sem.Tools
+﻿// <copyright file="Extensions.cs" company="Sven Erik Matzen">
+// Copyright (c) Sven Erik Matzen. All rights reserved.
+// </copyright>
+
+namespace Sem.Tools
 {
+    using System;
     using System.Globalization;
     using System.Security.Cryptography;
     using System.Text;
     using System.Text.Json;
+
+    using JetBrains.Annotations;
+    using Microsoft;
 
     /// <summary>
     /// Very basic extension methods.
@@ -31,6 +39,42 @@
             }
 
             return stringBuilder.ToString();
+        }
+
+        /// <summary>
+        /// Throws an <see cref="ArgumentNullException"/> when passing NULL or an empty string to <paramref name="value" />.
+        /// </summary>
+        /// <param name="value">The value that must not be null or en empty string.</param>
+        /// <param name="nameOfValue">The name of the value (usually the name of the parameter).</param>
+        /// <returns> The original value of <paramref name="value"/>. </returns>
+        [ContractAnnotation("value: null => halt")]
+        public static string MustNotBeNullOrEmpty([NotNull][ValidatedNotNull]this string value, string nameOfValue)
+        {
+            if (string.IsNullOrEmpty(value))
+            {
+                throw new ArgumentNullException(nameOfValue);
+            }
+
+            return value;
+        }
+
+        /// <summary>
+        /// Throws an <see cref="ArgumentNullException"/> when passing NULL values to <paramref name="value" />.
+        /// </summary>
+        /// <typeparam name="T">The type of the parameter.</typeparam>
+        /// <param name="value">The value that must not be null.</param>
+        /// <param name="nameOfValue">The name of the value (usually the name of the parameter).</param>
+        /// <returns> The original value of <paramref name="value"/>. </returns>
+        [ContractAnnotation("value: null => halt")]
+        public static T MustNotBeNull<T>([NoEnumeration][JetBrains.Annotations.NotNull][ValidatedNotNull] this T value, string nameOfValue)
+            where T : class
+        {
+            if (value == null)
+            {
+                throw new ArgumentNullException(nameOfValue);
+            }
+
+            return value;
         }
 
         /// <summary>

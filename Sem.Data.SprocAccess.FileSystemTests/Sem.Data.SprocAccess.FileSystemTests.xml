@@ -1,0 +1,77 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Sem.Data.SprocAccess.FileSystemTests</name>
+    </assembly>
+    <members>
+        <member name="T:Sem.Data.SprocAccess.FileSystemTests.ClassMap">
+            <summary>
+            Tests for the class <see cref="T:Sem.Data.SprocAccess.FileSystemTests.Map"/>.
+            </summary>
+        </member>
+        <member name="T:Sem.Data.SprocAccess.FileSystemTests.ClassMap.To">
+            <summary>
+            Tests the method <see cref="M:Sem.Data.SprocAccess.FileSystemTests.Map.To``1(Sem.Data.SprocAccess.IReader)"/>.
+            </summary>
+        </member>
+        <member name="M:Sem.Data.SprocAccess.FileSystemTests.ClassMap.To.MapsSampleType">
+            <summary>
+            Tests default property name mapping to a sample class.
+            </summary>
+            <returns>A task to wait for.</returns>
+        </member>
+        <member name="T:Sem.Data.SprocAccess.FileSystemTests.ClassTxtDatabase">
+            <summary>
+            Tests for the class <see cref="T:Sem.Data.SprocAccess.FileSystem.TxtDatabase"/>.
+            </summary>
+        </member>
+        <member name="T:Sem.Data.SprocAccess.FileSystemTests.ClassTxtDatabase.Execute">
+            <summary>
+            Tests for the method <see cref="M:Sem.Data.SprocAccess.FileSystem.TxtDatabase.Execute``1(System.String,System.Func{Sem.Data.SprocAccess.IReader,System.Threading.Tasks.Task{``0}},Sem.Tools.Logging.LogScope,System.Collections.Generic.KeyValuePair{System.String,System.Object}[])"/>.
+            </summary>
+        </member>
+        <member name="M:Sem.Data.SprocAccess.FileSystemTests.ClassTxtDatabase.Execute.ReadsIntFromCorrectColumn">
+            <summary>
+            Tests whether the <see cref="T:System.Int32"/> column can be mapped correctly.
+            </summary>
+            <returns>A task to wait for.</returns>
+        </member>
+        <member name="M:Sem.Data.SprocAccess.FileSystemTests.ClassTxtDatabase.Execute.ReadsDateTimeFromCorrectColumn">
+            <summary>
+            Tests whether the <see cref="T:System.DateTime"/> column can be mapped correctly.
+            </summary>
+            <returns>A task to wait for.</returns>
+        </member>
+        <member name="T:Sem.Data.SprocAccess.FileSystemTests.Map">
+            <summary>
+            Helper class that implements a slow, bt generic mapper method.
+            </summary>
+        </member>
+        <member name="M:Sem.Data.SprocAccess.FileSystemTests.Map.To``1(Sem.Data.SprocAccess.IReader)">
+            <summary>
+            Mapper method that maps data from an <see cref="T:Sem.Data.SprocAccess.IReader"/> to a POCO object using the
+            names of the properties. The process uses a very simple reflection based approach, that
+            is not really "production ready" - use an explicit and specific implementation in production
+            to prevent the overhead of reflection.
+            </summary>
+            <typeparam name="T">The type of the target POCO objects.</typeparam>
+            <param name="reader">The reader implementation.</param>
+            <returns>The initialized object instance.</returns>
+        </member>
+        <member name="T:Sem.Data.SprocAccess.FileSystemTests.Sample">
+            <summary>
+            Sample class for mapping tests.
+            </summary>
+        </member>
+        <member name="P:Sem.Data.SprocAccess.FileSystemTests.Sample.Id">
+            <summary>
+            Gets or sets the identifier of the row.
+            </summary>
+        </member>
+        <member name="P:Sem.Data.SprocAccess.FileSystemTests.Sample.Date">
+            <summary>
+            Gets or sets the date specified in a row.
+            </summary>
+        </member>
+    </members>
+</doc>

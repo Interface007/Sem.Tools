@@ -1,3 +1,7 @@
+// <copyright file="Sample.cs" company="Sven Erik Matzen">
+// Copyright (c) Sven Erik Matzen. All rights reserved.
+// </copyright>
+
 namespace Sem.Data.SprocAccess.FileSystemTests
 {
     using System;

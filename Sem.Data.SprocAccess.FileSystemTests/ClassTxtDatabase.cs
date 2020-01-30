@@ -1,3 +1,7 @@
+// <copyright file="ClassTxtDatabase.cs" company="Sven Erik Matzen">
+// Copyright (c) Sven Erik Matzen. All rights reserved.
+// </copyright>
+
 namespace Sem.Data.SprocAccess.FileSystemTests
 {
     using System;
@@ -26,7 +30,7 @@ namespace Sem.Data.SprocAccess.FileSystemTests
             public async Task ReadsIntFromCorrectColumn()
             {
                 var target = new TxtDatabase("Data");
-                var result = target.Execute("sample", async reader => new { Id = await reader.Get<int>(0) });
+                var result = target.Execute("sample", async reader => new { Id = await reader.Get<int>(0).ConfigureAwait(false) });
                 await foreach (var item in result)
                 {
                     Assert.AreEqual(42, item.Id);
@@ -41,7 +45,7 @@ namespace Sem.Data.SprocAccess.FileSystemTests
             public async Task ReadsDateTimeFromCorrectColumn()
             {
                 var target = new TxtDatabase("Data");
-                var result = target.Execute("sample", async reader => new { Date = await reader.Get<DateTime>(1) });
+                var result = target.Execute("sample", async reader => new { Date = await reader.Get<DateTime>(1).ConfigureAwait(false) });
                 await foreach (var item in result)
                 {
                     var expected = new DateTime(2020, 12, 23, 22, 44, 33);

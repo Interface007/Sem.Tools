@@ -1,4 +1,8 @@
-﻿namespace Sem.Tools
+﻿// <copyright file="InheritanceConverter.cs" company="Sven Erik Matzen">
+// Copyright (c) Sven Erik Matzen. All rights reserved.
+// </copyright>
+
+namespace Sem.Tools
 {
     using System;
     using System.Text.Json;
@@ -47,6 +51,8 @@
         /// <param name="options">An object that specifies serialization options to use.</param>
         public override void Write(Utf8JsonWriter writer, TType value, JsonSerializerOptions options)
         {
+            writer.MustNotBeNull(nameof(writer));
+            value.MustNotBeNull(nameof(value));
             writer.WriteStartObject();
 
             writer.WritePropertyName("$type");

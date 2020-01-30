@@ -1,0 +1,125 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Sem.Tools.Logging.Tests</name>
+    </assembly>
+    <members>
+        <member name="T:Sem.Tools.Logging.Tests.ClassLogCategoryExtensions">
+            <summary>
+            Tests for the static helper class <see cref="T:Sem.Tools.Logging.LogCategoryExtensions"/>.
+            </summary>
+        </member>
+        <member name="T:Sem.Tools.Logging.Tests.ClassLogCategoryExtensions.HasFlagFast">
+            <summary>
+            Tests the method <see cref="M:Sem.Tools.Logging.LogCategoryExtensions.HasFlag``1(``0,``0)"/>.
+            </summary>
+        </member>
+        <member name="M:Sem.Tools.Logging.Tests.ClassLogCategoryExtensions.HasFlagFast.DetectsFlagSingle">
+            <summary>
+            Tests whether the method can detect a single flag being set.
+            </summary>
+        </member>
+        <member name="M:Sem.Tools.Logging.Tests.ClassLogCategoryExtensions.HasFlagFast.DetectsFlagInCombination">
+            <summary>
+            Tests whether the method can detect a single flag in a variable with multiple flags being set.
+            </summary>
+        </member>
+        <member name="M:Sem.Tools.Logging.Tests.ClassLogCategoryExtensions.HasFlagFast.DetectsFlagNotSet">
+            <summary>
+            Tests whether the method can detect a single flag not being set.
+            </summary>
+        </member>
+        <member name="T:Sem.Tools.Logging.Tests.ClassLogScope">
+            <summary>
+            Tests for the class <see cref="T:Sem.Tools.Logging.LogScope"/>.
+            </summary>
+        </member>
+        <member name="T:Sem.Tools.Logging.Tests.ClassLogScope.LogScopeConstructor">
+            <summary>
+            Tests the constructor(s) for <see cref="T:Sem.Tools.Logging.LogScope"/>.
+            </summary>
+        </member>
+        <member name="M:Sem.Tools.Logging.Tests.ClassLogScope.LogScopeConstructor.LogsScopeStart">
+            <summary>
+            Tests whether the ctor log line is formatted correctly.
+            </summary>
+        </member>
+        <member name="T:Sem.Tools.Logging.Tests.ClassLogScope.Dispose">
+            <summary>
+            Tests the method for <see cref="M:Sem.Tools.Logging.LogScope.Dispose"/>.
+            </summary>
+        </member>
+        <member name="M:Sem.Tools.Logging.Tests.ClassLogScope.Dispose.LogsScopeEnd">
+            <summary>
+            Tests whether the destructor log line is formatted correctly.
+            </summary>
+        </member>
+        <member name="M:Sem.Tools.Logging.Tests.ClassLogScope.Dispose.LogsScopeStart">
+            <summary>
+            Tests whether the indentation of logs is correct.
+            </summary>
+        </member>
+        <member name="T:Sem.Tools.Logging.Tests.ClassLogScope.Child">
+            <summary>
+            Tests the method <see cref="M:Sem.Tools.Logging.LogScope.Child(System.String,System.Object,System.String,System.String)"/>.
+            </summary>
+        </member>
+        <member name="M:Sem.Tools.Logging.Tests.ClassLogScope.Child.StartingChildScopeAddsIdToHierarchy">
+            <summary>
+            Tests whether the ctor log line is formatted correctly.
+            </summary>
+        </member>
+        <member name="T:Sem.Tools.Logging.Tests.ClassLogScope.Log">
+            <summary>
+            Tests the method <see cref="M:Sem.Tools.Logging.LogScope.Log(System.String,System.Object)"/>.
+            </summary>
+        </member>
+        <member name="M:Sem.Tools.Logging.Tests.ClassLogScope.Log.DefaultsToCorrectLevelAndCategory">
+            <summary>
+            Tests whether <see cref="M:Sem.Tools.Logging.LogScope.Log(System.String,System.Object)"/> logs using the correct category and level.
+            </summary>
+        </member>
+        <member name="M:Sem.Tools.Logging.Tests.ClassLogScope.Log.LogsOnlySpecifiedCategories">
+            <summary>
+            Tests whether <see cref="M:Sem.Tools.Logging.LogScope.Log(System.String,System.Object)"/> logs only the specified level(s).
+            </summary>
+        </member>
+        <member name="M:Sem.Tools.Logging.Tests.ClassLogScope.Log.LogsOnlyToSpecifiedLevel">
+            <summary>
+            Tests whether <see cref="M:Sem.Tools.Logging.LogScope.Log(System.String,System.Object)"/> logs only the specified level(s).
+            </summary>
+        </member>
+        <member name="T:Sem.Tools.Logging.Tests.LoggerTestBase">
+            <summary>
+            Base class for tests of the logger class.
+            </summary>
+        </member>
+        <member name="M:Sem.Tools.Logging.Tests.LoggerTestBase.#cctor">
+            <summary>
+            Initializes static members of the <see cref="T:Sem.Tools.Logging.Tests.LoggerTestBase"/> class.
+            Initializes the static values of <see cref="T:Sem.Tools.Logging.LogScope"/> to produce deterministic log entries.
+            </summary>
+        </member>
+        <member name="P:Sem.Tools.Logging.Tests.LoggerTestBase.LogMessages">
+            <summary>
+            Gets the logged messages.
+            </summary>
+        </member>
+        <member name="M:Sem.Tools.Logging.Tests.LoggerTestBase.LogMethod(Sem.Tools.Logging.LogCategories,Sem.Tools.Logging.LogLevel,Sem.Tools.Logging.LogScope,System.String)">
+            <summary>
+            A log method that adds the log information to <see cref="P:Sem.Tools.Logging.Tests.LoggerTestBase.LogMessages"/>.
+            </summary>
+            <param name="category">The category of the log entry.</param>
+            <param name="level">The log level.</param>
+            <param name="scope">The logging scope that renders the log entry.</param>
+            <param name="message">The log message.</param>
+        </member>
+        <member name="M:Sem.Tools.Logging.Tests.LoggerTestBase.BasePath(System.String)">
+            <summary>
+            Uses a compile time attribute to determine the source code path of this class.
+            </summary>
+            <param name="path">Path of this class will be set at compile time.</param>
+            <returns>The source code path of this class.</returns>
+        </member>
+    </members>
+</doc>

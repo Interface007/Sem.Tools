@@ -1,9 +1,15 @@
-﻿namespace Sem.Data.SprocAccess.FileSystem
+﻿// <copyright file="TxtReader.cs" company="Sven Erik Matzen">
+// Copyright (c) Sven Erik Matzen. All rights reserved.
+// </copyright>
+
+namespace Sem.Data.SprocAccess.FileSystem
 {
     using System;
     using System.Globalization;
     using System.IO;
     using System.Threading.Tasks;
+
+    using Sem.Tools;
 
     /// <summary>
     /// Reader implementation for a bunch of text files - <see cref="TxtDatabase"/>.
@@ -59,7 +65,7 @@
         /// <returns>The value of the column in the current row.</returns>
         public async Task<T> Get<T>(int index)
         {
-            return (T)(await this.Get(index, typeof(T)));
+            return (T)(await this.Get(index, typeof(T)).ConfigureAwait(false));
         }
 
         /// <summary>
@@ -105,9 +111,10 @@
         /// <returns>The index of the column.</returns>
         public int IndexByName(string columnName)
         {
+            columnName.MustNotBeNullOrEmpty(nameof(columnName));
             return Array.IndexOf(
-                this.fileLines[0].ToLowerInvariant().Split('\t'),
-                columnName.ToLowerInvariant());
+                this.fileLines[0].ToUpperInvariant().Split('\t'),
+                columnName.ToUpperInvariant());
         }
 
         /// <summary>

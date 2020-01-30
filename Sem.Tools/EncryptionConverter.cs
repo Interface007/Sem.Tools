@@ -1,4 +1,8 @@
-﻿namespace Sem.Tools
+﻿// <copyright file="EncryptionConverter.cs" company="Sven Erik Matzen">
+// Copyright (c) Sven Erik Matzen. All rights reserved.
+// </copyright>
+
+namespace Sem.Tools
 {
     using System;
     using System.Security.Cryptography;
@@ -28,7 +32,7 @@
         /// <param name="writer">The writer to write to.</param>
         /// <param name="value">The value to convert to JSON.</param>
         /// <param name="options">An object that specifies serialization options to use.</param>
-        public override void Write(Utf8JsonWriter writer, string value, JsonSerializerOptions options) => writer.WriteStringValue(Convert.ToBase64String(this.encrypt(value)));
+        public override void Write(Utf8JsonWriter writer, string value, JsonSerializerOptions options) => writer.MustNotBeNull(nameof(writer)).WriteStringValue(Convert.ToBase64String(this.encrypt(value)));
 
         private static byte[] EncryptWithDpapi(string value)
         {
