@@ -11,24 +11,24 @@ namespace Sem.MdDocGenerator
     {
         internal static string ToMarkDown(this XNode e, string currentNameSpace)
         {
-            var templates = new Dictionary<string, string>
+            var templates = new Dictionary<string, string[]>
             {
-                {"doc", "## {0} ##\n\n{1}\n\n"},
-                {"type", "# Type: {0}\n\n{1}\n\n---\n"},
-                {"field", "##### {0}\n\n{1}\n\n---\n"},
-                {"property", "##### {0}\n\n{1}\n\n---\n"},
-                {"method", "##### Method: {0}\n\n{1}\n\n---\n"},
-                {"event", "##### {0}\n\n{1}\n\n---\n"},
-                {"summary", "{0}\n\n"},
-                {"remarks", "\n\n>{0}\n\n"},
-                {"example", "_C# code_\n\n```c#\n{0}\n```\n\n"},
-                {"seePage", "[[{1}|{0}]]"},
-                {"seeAnchor", "[{1}]({0})"},
-                {"typeparam", "|Name | Description |\n|-----|------|\n|{0}: |{1}|\n" },
-                {"param", "|Name | Description |\n|-----|------|\n|{0}: |{1}|\n" },
-                {"exception", "[[{0}|{0}]]: {1}\n\n" },
-                {"returns", "Returns: {0}\n\n"},
-                {"none", ""}
+                { "doc      ".Trim(), new [] {"# {0} ##\n\n{1}\n\n"}},
+                { "type     ".Trim(), new [] {"## Type: {0}\n\n{1}\n\n---\n"}},
+                { "field    ".Trim(), new [] {"### {0}\n\n{1}\n\n---\n"}},
+                { "property ".Trim(), new [] {"### {0}\n\n{1}\n\n---\n"}},
+                { "method   ".Trim(), new [] {"### Method: {0}\n\n{1}\n\n---\n"}},
+                { "event    ".Trim(), new [] {"### {0}\n\n{1}\n\n---\n"}},
+                { "summary  ".Trim(), new [] {"{0}\n\n"}},
+                { "remarks  ".Trim(), new [] {"\n\n>{0}\n\n"}},
+                { "example  ".Trim(), new [] {"_C# code_\n\n```c#\n{0}\n```\n\n"}},
+                { "seePage  ".Trim(), new [] {"[[{1}|{0}]]"}},
+                { "seeAnchor".Trim(), new [] {"[{1}]({0})"}},
+                { "typeparam".Trim(), new [] {"#### Type parameters:\n|Name | Description |\n|-----|------|\n|{0}: |{1}|\n", "|{0}: |{1}|\n" }},
+                { "param    ".Trim(), new [] {"#### Parameters:\n|Name | Description |\n|-----|------|\n|{0}: |{1}|\n", "|{0}: |{1}|\n" }},
+                { "exception".Trim(), new [] {"[[{0}|{0}]]: {1}\n\n" }},
+                { "returns  ".Trim(), new [] {"Returns: {0}\n\n"}},
+                { "none     ".Trim(), new [] {""}}
             };
 
             var d = new Func<string, XElement, string[]>((att, node) => new[]
@@ -39,27 +39,27 @@ namespace Sem.MdDocGenerator
 
             var methods = new Dictionary<string, Func<XElement, IEnumerable<string>>>
             {
-                {"doc", x => new[] 
+                { "doc", x => new[]
                     {
                         x.Element("assembly")?.Element("name")?.Value,
                         x.Element("members")?.Elements("member").ToMarkDown(x.Element("assembly")?.Element("name")?.Value),
                     }
                 },
-                {"type", x=> d("name", x)},
-                {"field", x=> d("name", x)},
-                {"property", x => d("name", x)},
-                {"method", x => Method(x, currentNameSpace)},
-                {"event", x => d("name", x)},
-                {"summary", x => new[]{ x.Nodes().ToMarkDown(currentNameSpace) }},
-                {"remarks", x => new[]{x.Nodes().ToMarkDown(currentNameSpace)}},
-                {"example", x => new[]{x.Value.ToCodeBlock()}},
-                {"seePage", x => d("cref", x) },
-                {"seeAnchor", x => { var xx = d("cref", x); xx[0] = xx[0].ToLower(); return xx; }},
-                {"typeparam", x => d("name", x) },
-                {"param", x => d("name", x) },
-                {"exception", x => d("cref", x) },
-                {"returns", x => new[]{x.Nodes().ToMarkDown(currentNameSpace)}},
-                {"none", x => new string[0]}
+                { "type     ".Trim(), x => TypeInfo(x, currentNameSpace) },
+                { "field    ".Trim(), x => d("name", x) },
+                { "property ".Trim(), x => d("name", x) },
+                { "method   ".Trim(), x => Method(x, currentNameSpace) },
+                { "event    ".Trim(), x => d("name", x) },
+                { "summary  ".Trim(), x => new[] { x.Nodes().ToMarkDown(currentNameSpace) } },
+                { "remarks  ".Trim(), x => new[] { x.Nodes().ToMarkDown(currentNameSpace) } },
+                { "example  ".Trim(), x => new[] { x.Value.ToCodeBlock() }},
+                { "seePage  ".Trim(), x => d("cref", x) },
+                { "seeAnchor".Trim(), x => { var xx = d("cref", x); xx[0] = xx[0].ToLower(); return xx; }},
+                { "typeparam".Trim(), x => d("name", x) },
+                { "param    ".Trim(), x => d("name", x) },
+                { "exception".Trim(), x => d("cref", x) },
+                { "returns  ".Trim(), x => new[] { x.Nodes().ToMarkDown(currentNameSpace) } },
+                { "none     ".Trim(), x => new string[0]}
             };
 
             if (e.NodeType == XmlNodeType.Element)
@@ -92,12 +92,13 @@ namespace Sem.MdDocGenerator
                 }
 
                 var values = methods[name](el).ToArray();
+                var i = ((el.PreviousNode as XElement)?.Name.LocalName == name && templates[name].Length > 1) ? 1 : 0;
                 return values.Length switch
                 {
-                    1 => string.Format(templates[name], values[0]),
-                    2 => string.Format(templates[name], values[0], values[1]),
-                    3 => string.Format(templates[name], values[0], values[1], values[2]),
-                    4 => string.Format(templates[name], values[0], values[1], values[2], values[3]),
+                    1 => string.Format(templates[name][i], values[0]),
+                    2 => string.Format(templates[name][i], values[0], values[1]),
+                    3 => string.Format(templates[name][i], values[0], values[1], values[2]),
+                    4 => string.Format(templates[name][i], values[0], values[1], values[2], values[3]),
                     _ => " !! UNSUPPORTED: " + name + " !! ",
                 };
             }
@@ -106,6 +107,16 @@ namespace Sem.MdDocGenerator
                 return Regex.Replace(((XText)e).Value.Replace('\n', ' '), @"\s+", " ");
 
             return "";
+        }
+
+        private static IEnumerable<string> TypeInfo(XElement node, string currentNameSpace)
+        {
+            var name = node
+                .Attribute("name")?
+                .Value
+                .Substring(2);
+            var content = node.Nodes().ToMarkDown(currentNameSpace);
+            return new[] { name, content };
         }
 
         private static IEnumerable<string> Method(XElement node, string currentNameSpace)
