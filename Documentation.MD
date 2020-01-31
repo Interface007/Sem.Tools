@@ -14,14 +14,15 @@
 #### Type parameters:
 |Name | Description |
 |-----|------|
-|T: |The POCO type to map the result to.|
+|T|The POCO type to map the result to.|
 #### Parameters:
 |Name | Description |
 |-----|------|
-|sproc: |The name of the stored procedure (e.g. "sys.sp_databases" or "[sys].[sp_databases]").|
+|sproc|The name of the stored procedure (e.g. "sys.sp_databases" or "[sys].[sp_databases]").|
 |readerToObject: |A function that maps a single result into a POCO instance.|
 |logger: |Optional logger.|
 |parameters: |The named parameters for the SPROC.|
+
 Returns: A series of POCO instances.
 
 
@@ -38,6 +39,7 @@ Returns: A series of POCO instances.
 
  Advances to the next record. 
 
+
 Returns: A value indicating whether there is still data to be read.
 
 
@@ -50,11 +52,12 @@ Returns: A value indicating whether there is still data to be read.
 #### Type parameters:
 |Name | Description |
 |-----|------|
-|T: |The type of the result.|
+|T|The type of the result.|
 #### Parameters:
 |Name | Description |
 |-----|------|
-|index: |The column index.|
+|index|The column index.|
+
 Returns: The value of the column in the current row.
 
 
@@ -67,8 +70,9 @@ Returns: The value of the column in the current row.
 #### Parameters:
 |Name | Description |
 |-----|------|
-|index: |The column index.|
+|index|The column index.|
 |type: |The type of the result.|
+
 Returns: The value of the column in the current row.
 
 
@@ -78,6 +82,7 @@ Returns: The value of the column in the current row.
 
  Advances to the next result set. 
 
+
 Returns: A task to wait for.
 
 
@@ -86,6 +91,7 @@ Returns: A task to wait for.
 ### Method: IReader.Close
 
  Closes the reader. 
+
 
 Returns: A task to wait for.
 
@@ -99,7 +105,8 @@ Returns: A task to wait for.
 #### Parameters:
 |Name | Description |
 |-----|------|
-|columnName: |The name of the column to search.|
+|columnName|The name of the column to search.|
+
 Returns: The index of the column.
 
 
@@ -130,7 +137,7 @@ Returns: The index of the column.
 #### Parameters:
 |Name | Description |
 |-----|------|
-|baseFolder: |The base folder for the data files.|
+|baseFolder|The base folder for the data files.|
 
 
 ---
@@ -186,13 +193,14 @@ Returns: The index of the column.
 #### Parameters:
 |Name | Description |
 |-----|------|
-|fileName: |The name of the file containing the data.|
+|fileName|The name of the file containing the data.|
 
 
 ---
 ### Method: TxtReader.Read
 
  Increments the line pointer. 
+
 
 Returns: A value indicating whether there is still data at this line.
 
@@ -206,11 +214,12 @@ Returns: A value indicating whether there is still data at this line.
 #### Type parameters:
 |Name | Description |
 |-----|------|
-|T: |The type of the result.|
+|T|The type of the result.|
 #### Parameters:
 |Name | Description |
 |-----|------|
-|index: |The column index.|
+|index|The column index.|
+
 Returns: The value of the column in the current row.
 
 
@@ -223,8 +232,9 @@ Returns: The value of the column in the current row.
 #### Parameters:
 |Name | Description |
 |-----|------|
-|index: |The column index.|
+|index|The column index.|
 |type: |The type of the result.|
+
 Returns: The value of the column in the current row.
 
 
@@ -234,6 +244,7 @@ Returns: The value of the column in the current row.
 
  Advances to the next result set. 
 
+
 Returns: A task to wait for.
 
 
@@ -242,6 +253,7 @@ Returns: A task to wait for.
 ### Method: TxtReader.Close
 
  Closes the reader. 
+
 
 Returns: A task to wait for.
 
@@ -255,7 +267,8 @@ Returns: A task to wait for.
 #### Parameters:
 |Name | Description |
 |-----|------|
-|columnName: |The name of the column to search.|
+|columnName|The name of the column to search.|
+
 Returns: The index of the column.
 
 
@@ -290,6 +303,7 @@ Returns: The index of the column.
 
  Tests default property name mapping to a sample class. 
 
+
 Returns: A task to wait for.
 
 
@@ -313,6 +327,7 @@ Returns: A task to wait for.
 
  Tests whether the [[|T:System.Int32]] column can be mapped correctly. 
 
+
 Returns: A task to wait for.
 
 
@@ -321,6 +336,7 @@ Returns: A task to wait for.
 ### Method: ClassTxtDatabase.Execute.ReadsDateTimeFromCorrectColumn
 
  Tests whether the [[|T:System.DateTime]] column can be mapped correctly. 
+
 
 Returns: A task to wait for.
 
@@ -341,11 +357,12 @@ Returns: A task to wait for.
 #### Type parameters:
 |Name | Description |
 |-----|------|
-|T: |The type of the target POCO objects.|
+|T|The type of the target POCO objects.|
 #### Parameters:
 |Name | Description |
 |-----|------|
-|reader: |The reader implementation.|
+|reader|The reader implementation.|
+
 Returns: The initialized object instance.
 
 
@@ -404,8 +421,9 @@ Returns: The initialized object instance.
 #### Parameters:
 |Name | Description |
 |-----|------|
-|currentAction: |The current log method.|
+|currentAction|The current log method.|
 |batchSize: |The count of logs to be collected.|
+
 Returns: A new log method.
 
 
@@ -421,6 +439,7 @@ Returns: A new log method.
 ### Method: Program.Main
 
  Entry point for the integration test program. 
+
 
 Returns: A task to wait for.
 
@@ -452,7 +471,7 @@ Returns: A task to wait for.
 #### Parameters:
 |Name | Description |
 |-----|------|
-|connectionString: |The database connection string to use for this instance.|
+|connectionString|The database connection string to use for this instance.|
 
 
 ---
@@ -480,7 +499,7 @@ Returns: A task to wait for.
 #### Parameters:
 |Name | Description |
 |-----|------|
-|sqlDataReader: |The data reader to read from.|
+|sqlDataReader|The data reader to read from.|
 
 
 ---
@@ -560,12 +579,13 @@ Returns: A task to wait for.
 #### Type parameters:
 |Name | Description |
 |-----|------|
-|T: |The enum type to be tested.|
+|T|The enum type to be tested.|
 #### Parameters:
 |Name | Description |
 |-----|------|
-|value: |The value to be tested.|
+|value|The value to be tested.|
 |flag: |The flag that should be tested.|
+
 Returns: A value indicating whether the flag is set.
 
 
@@ -585,7 +605,8 @@ Returns: A value indicating whether the flag is set.
 #### Parameters:
 |Name | Description |
 |-----|------|
-|logMethod: |The original log method, this method should be added to.|
+|logMethod|The original log method, this method should be added to.|
+
 Returns: A new method that is the combination of  !! UNSUPPORTED: paramref !!  and an output to [[|T:System.Diagnostics.Debug]].
 
 
@@ -598,7 +619,8 @@ Returns: A new method that is the combination of  !! UNSUPPORTED: paramref !!  a
 #### Parameters:
 |Name | Description |
 |-----|------|
-|logMethod: |The original log method, this method should be added to.|
+|logMethod|The original log method, this method should be added to.|
+
 Returns: A new method that is the combination of  !! UNSUPPORTED: paramref !!  and an output to [[|T:System.Console]].
 
 
@@ -723,10 +745,11 @@ Returns: A new method that is the combination of  !! UNSUPPORTED: paramref !!  a
 #### Parameters:
 |Name | Description |
 |-----|------|
-|scopeName: |Name of the scope.|
+|scopeName|Name of the scope.|
 |logMethod: |Method that renders the log entry.|
 |member: |The member (method) that creates the instance.|
 |path: |The path to the class file.|
+
 Returns: A new logging scope.
 
 
@@ -739,9 +762,10 @@ Returns: A new logging scope.
 #### Parameters:
 |Name | Description |
 |-----|------|
-|value: |A value that should be logged as part of the creation.|
+|value|A value that should be logged as part of the creation.|
 |member: |The name of the method.|
 |path: |The path of the source file.|
+
 Returns: A new scope.
 
 
@@ -754,10 +778,11 @@ Returns: A new scope.
 #### Parameters:
 |Name | Description |
 |-----|------|
-|childName: | The name of the scope. |
+|childName| The name of the scope. |
 |value: |A value that should be logged as part of the creation.|
 |member: |The name of the method.|
 |path: |The path of the source file.|
+
 Returns: A new scope.
 
 
@@ -766,6 +791,7 @@ Returns: A new scope.
 ### Method: LogScope.DisposeAsync
 
  Async implementation of the dispose pattern. 
+
 
 Returns: A task to wait for.
 
@@ -786,7 +812,7 @@ Returns: A task to wait for.
 #### Parameters:
 |Name | Description |
 |-----|------|
-|message: |The message to be logged.|
+|message|The message to be logged.|
 |value: |A value that should be included into the message as addition data.|
 
 
@@ -798,7 +824,7 @@ Returns: A task to wait for.
 #### Parameters:
 |Name | Description |
 |-----|------|
-|logCategory: |The category of this message (Is it technical information of business process information?).|
+|logCategory|The category of this message (Is it technical information of business process information?).|
 |logLevel: |The log level of this message (How important is this message?).|
 |message: |The message to be logged.|
 |value: |A value that should be included into the message as addition data.|
@@ -956,7 +982,7 @@ Returns: A task to wait for.
 #### Parameters:
 |Name | Description |
 |-----|------|
-|category: |The category of the log entry.|
+|category|The category of the log entry.|
 |level: |The log level.|
 |scope: |The logging scope that renders the log entry.|
 |message: |The log message.|
@@ -970,7 +996,8 @@ Returns: A task to wait for.
 #### Parameters:
 |Name | Description |
 |-----|------|
-|path: |Path of this class will be set at compile time.|
+|path|Path of this class will be set at compile time.|
+
 Returns: The source code path of this class.
 
 
@@ -994,14 +1021,15 @@ Returns: The source code path of this class.
 #### Type parameters:
 |Name | Description |
 |-----|------|
-|T: |The POCO type to map the result to.|
+|T|The POCO type to map the result to.|
 #### Parameters:
 |Name | Description |
 |-----|------|
-|sproc: |The name of the stored procedure (e.g. "sys.sp_databases" or "[sys].[sp_databases]").|
+|sproc|The name of the stored procedure (e.g. "sys.sp_databases" or "[sys].[sp_databases]").|
 |readerToObject: |A function that maps a single result into a POCO instance.|
 |logger: |Optional logger.|
 |parameters: |The named parameters for the SPROC.|
+
 Returns: A series of POCO instances.
 
 
@@ -1018,6 +1046,7 @@ Returns: A series of POCO instances.
 
  Advances to the next record. 
 
+
 Returns: A value indicating whether there is still data to be read.
 
 
@@ -1030,11 +1059,12 @@ Returns: A value indicating whether there is still data to be read.
 #### Type parameters:
 |Name | Description |
 |-----|------|
-|T: |The type of the result.|
+|T|The type of the result.|
 #### Parameters:
 |Name | Description |
 |-----|------|
-|index: |The column index.|
+|index|The column index.|
+
 Returns: The value of the column in the current row.
 
 
@@ -1047,8 +1077,9 @@ Returns: The value of the column in the current row.
 #### Parameters:
 |Name | Description |
 |-----|------|
-|index: |The column index.|
+|index|The column index.|
 |type: |The type of the result.|
+
 Returns: The value of the column in the current row.
 
 
@@ -1058,6 +1089,7 @@ Returns: The value of the column in the current row.
 
  Advances to the next result set. 
 
+
 Returns: A task to wait for.
 
 
@@ -1066,6 +1098,7 @@ Returns: A task to wait for.
 ### Method: IReader.Close
 
  Closes the reader. 
+
 
 Returns: A task to wait for.
 
@@ -1079,7 +1112,8 @@ Returns: A task to wait for.
 #### Parameters:
 |Name | Description |
 |-----|------|
-|columnName: |The name of the column to search.|
+|columnName|The name of the column to search.|
+
 Returns: The index of the column.
 
 
@@ -1131,12 +1165,13 @@ Returns: The index of the column.
 #### Type parameters:
 |Name | Description |
 |-----|------|
-|T: |The enum type to be tested.|
+|T|The enum type to be tested.|
 #### Parameters:
 |Name | Description |
 |-----|------|
-|value: |The value to be tested.|
+|value|The value to be tested.|
 |flag: |The flag that should be tested.|
+
 Returns: A value indicating whether the flag is set.
 
 
@@ -1156,7 +1191,8 @@ Returns: A value indicating whether the flag is set.
 #### Parameters:
 |Name | Description |
 |-----|------|
-|logMethod: |The original log method, this method should be added to.|
+|logMethod|The original log method, this method should be added to.|
+
 Returns: A new method that is the combination of  !! UNSUPPORTED: paramref !!  and an output to [[|T:System.Diagnostics.Debug]].
 
 
@@ -1169,7 +1205,8 @@ Returns: A new method that is the combination of  !! UNSUPPORTED: paramref !!  a
 #### Parameters:
 |Name | Description |
 |-----|------|
-|logMethod: |The original log method, this method should be added to.|
+|logMethod|The original log method, this method should be added to.|
+
 Returns: A new method that is the combination of  !! UNSUPPORTED: paramref !!  and an output to [[|T:System.Console]].
 
 
@@ -1294,10 +1331,11 @@ Returns: A new method that is the combination of  !! UNSUPPORTED: paramref !!  a
 #### Parameters:
 |Name | Description |
 |-----|------|
-|scopeName: |Name of the scope.|
+|scopeName|Name of the scope.|
 |logMethod: |Method that renders the log entry.|
 |member: |The member (method) that creates the instance.|
 |path: |The path to the class file.|
+
 Returns: A new logging scope.
 
 
@@ -1310,9 +1348,10 @@ Returns: A new logging scope.
 #### Parameters:
 |Name | Description |
 |-----|------|
-|value: |A value that should be logged as part of the creation.|
+|value|A value that should be logged as part of the creation.|
 |member: |The name of the method.|
 |path: |The path of the source file.|
+
 Returns: A new scope.
 
 
@@ -1325,10 +1364,11 @@ Returns: A new scope.
 #### Parameters:
 |Name | Description |
 |-----|------|
-|childName: | The name of the scope. |
+|childName| The name of the scope. |
 |value: |A value that should be logged as part of the creation.|
 |member: |The name of the method.|
 |path: |The path of the source file.|
+
 Returns: A new scope.
 
 
@@ -1337,6 +1377,7 @@ Returns: A new scope.
 ### Method: LogScope.DisposeAsync
 
  Async implementation of the dispose pattern. 
+
 
 Returns: A task to wait for.
 
@@ -1357,7 +1398,7 @@ Returns: A task to wait for.
 #### Parameters:
 |Name | Description |
 |-----|------|
-|message: |The message to be logged.|
+|message|The message to be logged.|
 |value: |A value that should be included into the message as addition data.|
 
 
@@ -1369,7 +1410,7 @@ Returns: A task to wait for.
 #### Parameters:
 |Name | Description |
 |-----|------|
-|logCategory: |The category of this message (Is it technical information of business process information?).|
+|logCategory|The category of this message (Is it technical information of business process information?).|
 |logLevel: |The log level of this message (How important is this message?).|
 |message: |The message to be logged.|
 |value: |A value that should be included into the message as addition data.|
@@ -1401,7 +1442,7 @@ Returns: A task to wait for.
 #### Parameters:
 |Name | Description |
 |-----|------|
-|baseFolder: |The base folder for the data files.|
+|baseFolder|The base folder for the data files.|
 
 
 ---
@@ -1457,13 +1498,14 @@ Returns: A task to wait for.
 #### Parameters:
 |Name | Description |
 |-----|------|
-|fileName: |The name of the file containing the data.|
+|fileName|The name of the file containing the data.|
 
 
 ---
 ### Method: TxtReader.Read
 
  Increments the line pointer. 
+
 
 Returns: A value indicating whether there is still data at this line.
 
@@ -1477,11 +1519,12 @@ Returns: A value indicating whether there is still data at this line.
 #### Type parameters:
 |Name | Description |
 |-----|------|
-|T: |The type of the result.|
+|T|The type of the result.|
 #### Parameters:
 |Name | Description |
 |-----|------|
-|index: |The column index.|
+|index|The column index.|
+
 Returns: The value of the column in the current row.
 
 
@@ -1494,8 +1537,9 @@ Returns: The value of the column in the current row.
 #### Parameters:
 |Name | Description |
 |-----|------|
-|index: |The column index.|
+|index|The column index.|
 |type: |The type of the result.|
+
 Returns: The value of the column in the current row.
 
 
@@ -1505,6 +1549,7 @@ Returns: The value of the column in the current row.
 
  Advances to the next result set. 
 
+
 Returns: A task to wait for.
 
 
@@ -1513,6 +1558,7 @@ Returns: A task to wait for.
 ### Method: TxtReader.Close
 
  Closes the reader. 
+
 
 Returns: A task to wait for.
 
@@ -1526,7 +1572,8 @@ Returns: A task to wait for.
 #### Parameters:
 |Name | Description |
 |-----|------|
-|columnName: |The name of the column to search.|
+|columnName|The name of the column to search.|
+
 Returns: The index of the column.
 
 
@@ -1557,14 +1604,15 @@ Returns: The index of the column.
 #### Type parameters:
 |Name | Description |
 |-----|------|
-|T: |The POCO type to map the result to.|
+|T|The POCO type to map the result to.|
 #### Parameters:
 |Name | Description |
 |-----|------|
-|sproc: |The name of the stored procedure (e.g. "sys.sp_databases" or "[sys].[sp_databases]").|
+|sproc|The name of the stored procedure (e.g. "sys.sp_databases" or "[sys].[sp_databases]").|
 |readerToObject: |A function that maps a single result into a POCO instance.|
 |logger: |Optional logger.|
 |parameters: |The named parameters for the SPROC.|
+
 Returns: A series of POCO instances.
 
 
@@ -1581,6 +1629,7 @@ Returns: A series of POCO instances.
 
  Advances to the next record. 
 
+
 Returns: A value indicating whether there is still data to be read.
 
 
@@ -1593,11 +1642,12 @@ Returns: A value indicating whether there is still data to be read.
 #### Type parameters:
 |Name | Description |
 |-----|------|
-|T: |The type of the result.|
+|T|The type of the result.|
 #### Parameters:
 |Name | Description |
 |-----|------|
-|index: |The column index.|
+|index|The column index.|
+
 Returns: The value of the column in the current row.
 
 
@@ -1610,8 +1660,9 @@ Returns: The value of the column in the current row.
 #### Parameters:
 |Name | Description |
 |-----|------|
-|index: |The column index.|
+|index|The column index.|
 |type: |The type of the result.|
+
 Returns: The value of the column in the current row.
 
 
@@ -1621,6 +1672,7 @@ Returns: The value of the column in the current row.
 
  Advances to the next result set. 
 
+
 Returns: A task to wait for.
 
 
@@ -1629,6 +1681,7 @@ Returns: A task to wait for.
 ### Method: IReader.Close
 
  Closes the reader. 
+
 
 Returns: A task to wait for.
 
@@ -1642,7 +1695,8 @@ Returns: A task to wait for.
 #### Parameters:
 |Name | Description |
 |-----|------|
-|columnName: |The name of the column to search.|
+|columnName|The name of the column to search.|
+
 Returns: The index of the column.
 
 
@@ -1694,12 +1748,13 @@ Returns: The index of the column.
 #### Type parameters:
 |Name | Description |
 |-----|------|
-|T: |The enum type to be tested.|
+|T|The enum type to be tested.|
 #### Parameters:
 |Name | Description |
 |-----|------|
-|value: |The value to be tested.|
+|value|The value to be tested.|
 |flag: |The flag that should be tested.|
+
 Returns: A value indicating whether the flag is set.
 
 
@@ -1719,7 +1774,8 @@ Returns: A value indicating whether the flag is set.
 #### Parameters:
 |Name | Description |
 |-----|------|
-|logMethod: |The original log method, this method should be added to.|
+|logMethod|The original log method, this method should be added to.|
+
 Returns: A new method that is the combination of  !! UNSUPPORTED: paramref !!  and an output to [[|T:System.Diagnostics.Debug]].
 
 
@@ -1732,7 +1788,8 @@ Returns: A new method that is the combination of  !! UNSUPPORTED: paramref !!  a
 #### Parameters:
 |Name | Description |
 |-----|------|
-|logMethod: |The original log method, this method should be added to.|
+|logMethod|The original log method, this method should be added to.|
+
 Returns: A new method that is the combination of  !! UNSUPPORTED: paramref !!  and an output to [[|T:System.Console]].
 
 
@@ -1857,10 +1914,11 @@ Returns: A new method that is the combination of  !! UNSUPPORTED: paramref !!  a
 #### Parameters:
 |Name | Description |
 |-----|------|
-|scopeName: |Name of the scope.|
+|scopeName|Name of the scope.|
 |logMethod: |Method that renders the log entry.|
 |member: |The member (method) that creates the instance.|
 |path: |The path to the class file.|
+
 Returns: A new logging scope.
 
 
@@ -1873,9 +1931,10 @@ Returns: A new logging scope.
 #### Parameters:
 |Name | Description |
 |-----|------|
-|value: |A value that should be logged as part of the creation.|
+|value|A value that should be logged as part of the creation.|
 |member: |The name of the method.|
 |path: |The path of the source file.|
+
 Returns: A new scope.
 
 
@@ -1888,10 +1947,11 @@ Returns: A new scope.
 #### Parameters:
 |Name | Description |
 |-----|------|
-|childName: | The name of the scope. |
+|childName| The name of the scope. |
 |value: |A value that should be logged as part of the creation.|
 |member: |The name of the method.|
 |path: |The path of the source file.|
+
 Returns: A new scope.
 
 
@@ -1900,6 +1960,7 @@ Returns: A new scope.
 ### Method: LogScope.DisposeAsync
 
  Async implementation of the dispose pattern. 
+
 
 Returns: A task to wait for.
 
@@ -1920,7 +1981,7 @@ Returns: A task to wait for.
 #### Parameters:
 |Name | Description |
 |-----|------|
-|message: |The message to be logged.|
+|message|The message to be logged.|
 |value: |A value that should be included into the message as addition data.|
 
 
@@ -1932,7 +1993,7 @@ Returns: A task to wait for.
 #### Parameters:
 |Name | Description |
 |-----|------|
-|logCategory: |The category of this message (Is it technical information of business process information?).|
+|logCategory|The category of this message (Is it technical information of business process information?).|
 |logLevel: |The log level of this message (How important is this message?).|
 |message: |The message to be logged.|
 |value: |A value that should be included into the message as addition data.|
@@ -1964,7 +2025,7 @@ Returns: A task to wait for.
 #### Parameters:
 |Name | Description |
 |-----|------|
-|baseFolder: |The base folder for the data files.|
+|baseFolder|The base folder for the data files.|
 
 
 ---
@@ -2020,13 +2081,14 @@ Returns: A task to wait for.
 #### Parameters:
 |Name | Description |
 |-----|------|
-|fileName: |The name of the file containing the data.|
+|fileName|The name of the file containing the data.|
 
 
 ---
 ### Method: TxtReader.Read
 
  Increments the line pointer. 
+
 
 Returns: A value indicating whether there is still data at this line.
 
@@ -2040,11 +2102,12 @@ Returns: A value indicating whether there is still data at this line.
 #### Type parameters:
 |Name | Description |
 |-----|------|
-|T: |The type of the result.|
+|T|The type of the result.|
 #### Parameters:
 |Name | Description |
 |-----|------|
-|index: |The column index.|
+|index|The column index.|
+
 Returns: The value of the column in the current row.
 
 
@@ -2057,8 +2120,9 @@ Returns: The value of the column in the current row.
 #### Parameters:
 |Name | Description |
 |-----|------|
-|index: |The column index.|
+|index|The column index.|
 |type: |The type of the result.|
+
 Returns: The value of the column in the current row.
 
 
@@ -2068,6 +2132,7 @@ Returns: The value of the column in the current row.
 
  Advances to the next result set. 
 
+
 Returns: A task to wait for.
 
 
@@ -2076,6 +2141,7 @@ Returns: A task to wait for.
 ### Method: TxtReader.Close
 
  Closes the reader. 
+
 
 Returns: A task to wait for.
 
@@ -2089,7 +2155,8 @@ Returns: A task to wait for.
 #### Parameters:
 |Name | Description |
 |-----|------|
-|columnName: |The name of the column to search.|
+|columnName|The name of the column to search.|
+
 Returns: The index of the column.
 
 
@@ -2124,6 +2191,7 @@ Returns: The index of the column.
 
  Tests default property name mapping to a sample class. 
 
+
 Returns: A task to wait for.
 
 
@@ -2147,6 +2215,7 @@ Returns: A task to wait for.
 
  Tests whether the [[|T:System.Int32]] column can be mapped correctly. 
 
+
 Returns: A task to wait for.
 
 
@@ -2155,6 +2224,7 @@ Returns: A task to wait for.
 ### Method: ClassTxtDatabase.Execute.ReadsDateTimeFromCorrectColumn
 
  Tests whether the [[|T:System.DateTime]] column can be mapped correctly. 
+
 
 Returns: A task to wait for.
 
@@ -2175,11 +2245,12 @@ Returns: A task to wait for.
 #### Type parameters:
 |Name | Description |
 |-----|------|
-|T: |The type of the target POCO objects.|
+|T|The type of the target POCO objects.|
 #### Parameters:
 |Name | Description |
 |-----|------|
-|reader: |The reader implementation.|
+|reader|The reader implementation.|
+
 Returns: The initialized object instance.
 
 
@@ -2224,14 +2295,15 @@ Returns: The initialized object instance.
 #### Type parameters:
 |Name | Description |
 |-----|------|
-|T: |The POCO type to map the result to.|
+|T|The POCO type to map the result to.|
 #### Parameters:
 |Name | Description |
 |-----|------|
-|sproc: |The name of the stored procedure (e.g. "sys.sp_databases" or "[sys].[sp_databases]").|
+|sproc|The name of the stored procedure (e.g. "sys.sp_databases" or "[sys].[sp_databases]").|
 |readerToObject: |A function that maps a single result into a POCO instance.|
 |logger: |Optional logger.|
 |parameters: |The named parameters for the SPROC.|
+
 Returns: A series of POCO instances.
 
 
@@ -2248,6 +2320,7 @@ Returns: A series of POCO instances.
 
  Advances to the next record. 
 
+
 Returns: A value indicating whether there is still data to be read.
 
 
@@ -2260,11 +2333,12 @@ Returns: A value indicating whether there is still data to be read.
 #### Type parameters:
 |Name | Description |
 |-----|------|
-|T: |The type of the result.|
+|T|The type of the result.|
 #### Parameters:
 |Name | Description |
 |-----|------|
-|index: |The column index.|
+|index|The column index.|
+
 Returns: The value of the column in the current row.
 
 
@@ -2277,8 +2351,9 @@ Returns: The value of the column in the current row.
 #### Parameters:
 |Name | Description |
 |-----|------|
-|index: |The column index.|
+|index|The column index.|
 |type: |The type of the result.|
+
 Returns: The value of the column in the current row.
 
 
@@ -2288,6 +2363,7 @@ Returns: The value of the column in the current row.
 
  Advances to the next result set. 
 
+
 Returns: A task to wait for.
 
 
@@ -2296,6 +2372,7 @@ Returns: A task to wait for.
 ### Method: IReader.Close
 
  Closes the reader. 
+
 
 Returns: A task to wait for.
 
@@ -2309,7 +2386,8 @@ Returns: A task to wait for.
 #### Parameters:
 |Name | Description |
 |-----|------|
-|columnName: |The name of the column to search.|
+|columnName|The name of the column to search.|
+
 Returns: The index of the column.
 
 
@@ -2361,12 +2439,13 @@ Returns: The index of the column.
 #### Type parameters:
 |Name | Description |
 |-----|------|
-|T: |The enum type to be tested.|
+|T|The enum type to be tested.|
 #### Parameters:
 |Name | Description |
 |-----|------|
-|value: |The value to be tested.|
+|value|The value to be tested.|
 |flag: |The flag that should be tested.|
+
 Returns: A value indicating whether the flag is set.
 
 
@@ -2386,7 +2465,8 @@ Returns: A value indicating whether the flag is set.
 #### Parameters:
 |Name | Description |
 |-----|------|
-|logMethod: |The original log method, this method should be added to.|
+|logMethod|The original log method, this method should be added to.|
+
 Returns: A new method that is the combination of  !! UNSUPPORTED: paramref !!  and an output to [[|T:System.Diagnostics.Debug]].
 
 
@@ -2399,7 +2479,8 @@ Returns: A new method that is the combination of  !! UNSUPPORTED: paramref !!  a
 #### Parameters:
 |Name | Description |
 |-----|------|
-|logMethod: |The original log method, this method should be added to.|
+|logMethod|The original log method, this method should be added to.|
+
 Returns: A new method that is the combination of  !! UNSUPPORTED: paramref !!  and an output to [[|T:System.Console]].
 
 
@@ -2524,10 +2605,11 @@ Returns: A new method that is the combination of  !! UNSUPPORTED: paramref !!  a
 #### Parameters:
 |Name | Description |
 |-----|------|
-|scopeName: |Name of the scope.|
+|scopeName|Name of the scope.|
 |logMethod: |Method that renders the log entry.|
 |member: |The member (method) that creates the instance.|
 |path: |The path to the class file.|
+
 Returns: A new logging scope.
 
 
@@ -2540,9 +2622,10 @@ Returns: A new logging scope.
 #### Parameters:
 |Name | Description |
 |-----|------|
-|value: |A value that should be logged as part of the creation.|
+|value|A value that should be logged as part of the creation.|
 |member: |The name of the method.|
 |path: |The path of the source file.|
+
 Returns: A new scope.
 
 
@@ -2555,10 +2638,11 @@ Returns: A new scope.
 #### Parameters:
 |Name | Description |
 |-----|------|
-|childName: | The name of the scope. |
+|childName| The name of the scope. |
 |value: |A value that should be logged as part of the creation.|
 |member: |The name of the method.|
 |path: |The path of the source file.|
+
 Returns: A new scope.
 
 
@@ -2567,6 +2651,7 @@ Returns: A new scope.
 ### Method: LogScope.DisposeAsync
 
  Async implementation of the dispose pattern. 
+
 
 Returns: A task to wait for.
 
@@ -2587,7 +2672,7 @@ Returns: A task to wait for.
 #### Parameters:
 |Name | Description |
 |-----|------|
-|message: |The message to be logged.|
+|message|The message to be logged.|
 |value: |A value that should be included into the message as addition data.|
 
 
@@ -2599,7 +2684,7 @@ Returns: A task to wait for.
 #### Parameters:
 |Name | Description |
 |-----|------|
-|logCategory: |The category of this message (Is it technical information of business process information?).|
+|logCategory|The category of this message (Is it technical information of business process information?).|
 |logLevel: |The log level of this message (How important is this message?).|
 |message: |The message to be logged.|
 |value: |A value that should be included into the message as addition data.|
@@ -2638,8 +2723,9 @@ Returns: A task to wait for.
 #### Parameters:
 |Name | Description |
 |-----|------|
-|currentAction: |The current log method.|
+|currentAction|The current log method.|
 |batchSize: |The count of logs to be collected.|
+
 Returns: A new log method.
 
 
@@ -2656,6 +2742,7 @@ Returns: A new log method.
 
  Entry point for the integration test program. 
 
+
 Returns: A task to wait for.
 
 
@@ -2686,7 +2773,7 @@ Returns: A task to wait for.
 #### Parameters:
 |Name | Description |
 |-----|------|
-|connectionString: |The database connection string to use for this instance.|
+|connectionString|The database connection string to use for this instance.|
 
 
 ---
@@ -2714,7 +2801,7 @@ Returns: A task to wait for.
 #### Parameters:
 |Name | Description |
 |-----|------|
-|sqlDataReader: |The data reader to read from.|
+|sqlDataReader|The data reader to read from.|
 
 
 ---
@@ -2766,14 +2853,15 @@ Returns: A task to wait for.
 #### Type parameters:
 |Name | Description |
 |-----|------|
-|T: |The POCO type to map the result to.|
+|T|The POCO type to map the result to.|
 #### Parameters:
 |Name | Description |
 |-----|------|
-|sproc: |The name of the stored procedure (e.g. "sys.sp_databases" or "[sys].[sp_databases]").|
+|sproc|The name of the stored procedure (e.g. "sys.sp_databases" or "[sys].[sp_databases]").|
 |readerToObject: |A function that maps a single result into a POCO instance.|
 |logger: |Optional logger.|
 |parameters: |The named parameters for the SPROC.|
+
 Returns: A series of POCO instances.
 
 
@@ -2790,6 +2878,7 @@ Returns: A series of POCO instances.
 
  Advances to the next record. 
 
+
 Returns: A value indicating whether there is still data to be read.
 
 
@@ -2802,11 +2891,12 @@ Returns: A value indicating whether there is still data to be read.
 #### Type parameters:
 |Name | Description |
 |-----|------|
-|T: |The type of the result.|
+|T|The type of the result.|
 #### Parameters:
 |Name | Description |
 |-----|------|
-|index: |The column index.|
+|index|The column index.|
+
 Returns: The value of the column in the current row.
 
 
@@ -2819,8 +2909,9 @@ Returns: The value of the column in the current row.
 #### Parameters:
 |Name | Description |
 |-----|------|
-|index: |The column index.|
+|index|The column index.|
 |type: |The type of the result.|
+
 Returns: The value of the column in the current row.
 
 
@@ -2830,6 +2921,7 @@ Returns: The value of the column in the current row.
 
  Advances to the next result set. 
 
+
 Returns: A task to wait for.
 
 
@@ -2838,6 +2930,7 @@ Returns: A task to wait for.
 ### Method: IReader.Close
 
  Closes the reader. 
+
 
 Returns: A task to wait for.
 
@@ -2851,7 +2944,8 @@ Returns: A task to wait for.
 #### Parameters:
 |Name | Description |
 |-----|------|
-|columnName: |The name of the column to search.|
+|columnName|The name of the column to search.|
+
 Returns: The index of the column.
 
 
@@ -2903,12 +2997,13 @@ Returns: The index of the column.
 #### Type parameters:
 |Name | Description |
 |-----|------|
-|T: |The enum type to be tested.|
+|T|The enum type to be tested.|
 #### Parameters:
 |Name | Description |
 |-----|------|
-|value: |The value to be tested.|
+|value|The value to be tested.|
 |flag: |The flag that should be tested.|
+
 Returns: A value indicating whether the flag is set.
 
 
@@ -2928,7 +3023,8 @@ Returns: A value indicating whether the flag is set.
 #### Parameters:
 |Name | Description |
 |-----|------|
-|logMethod: |The original log method, this method should be added to.|
+|logMethod|The original log method, this method should be added to.|
+
 Returns: A new method that is the combination of  !! UNSUPPORTED: paramref !!  and an output to [[|T:System.Diagnostics.Debug]].
 
 
@@ -2941,7 +3037,8 @@ Returns: A new method that is the combination of  !! UNSUPPORTED: paramref !!  a
 #### Parameters:
 |Name | Description |
 |-----|------|
-|logMethod: |The original log method, this method should be added to.|
+|logMethod|The original log method, this method should be added to.|
+
 Returns: A new method that is the combination of  !! UNSUPPORTED: paramref !!  and an output to [[|T:System.Console]].
 
 
@@ -3066,10 +3163,11 @@ Returns: A new method that is the combination of  !! UNSUPPORTED: paramref !!  a
 #### Parameters:
 |Name | Description |
 |-----|------|
-|scopeName: |Name of the scope.|
+|scopeName|Name of the scope.|
 |logMethod: |Method that renders the log entry.|
 |member: |The member (method) that creates the instance.|
 |path: |The path to the class file.|
+
 Returns: A new logging scope.
 
 
@@ -3082,9 +3180,10 @@ Returns: A new logging scope.
 #### Parameters:
 |Name | Description |
 |-----|------|
-|value: |A value that should be logged as part of the creation.|
+|value|A value that should be logged as part of the creation.|
 |member: |The name of the method.|
 |path: |The path of the source file.|
+
 Returns: A new scope.
 
 
@@ -3097,10 +3196,11 @@ Returns: A new scope.
 #### Parameters:
 |Name | Description |
 |-----|------|
-|childName: | The name of the scope. |
+|childName| The name of the scope. |
 |value: |A value that should be logged as part of the creation.|
 |member: |The name of the method.|
 |path: |The path of the source file.|
+
 Returns: A new scope.
 
 
@@ -3109,6 +3209,7 @@ Returns: A new scope.
 ### Method: LogScope.DisposeAsync
 
  Async implementation of the dispose pattern. 
+
 
 Returns: A task to wait for.
 
@@ -3129,7 +3230,7 @@ Returns: A task to wait for.
 #### Parameters:
 |Name | Description |
 |-----|------|
-|message: |The message to be logged.|
+|message|The message to be logged.|
 |value: |A value that should be included into the message as addition data.|
 
 
@@ -3141,7 +3242,7 @@ Returns: A task to wait for.
 #### Parameters:
 |Name | Description |
 |-----|------|
-|logCategory: |The category of this message (Is it technical information of business process information?).|
+|logCategory|The category of this message (Is it technical information of business process information?).|
 |logLevel: |The log level of this message (How important is this message?).|
 |message: |The message to be logged.|
 |value: |A value that should be included into the message as addition data.|
@@ -3173,7 +3274,7 @@ Returns: A task to wait for.
 #### Parameters:
 |Name | Description |
 |-----|------|
-|connectionString: |The database connection string to use for this instance.|
+|connectionString|The database connection string to use for this instance.|
 
 
 ---
@@ -3201,7 +3302,7 @@ Returns: A task to wait for.
 #### Parameters:
 |Name | Description |
 |-----|------|
-|sqlDataReader: |The data reader to read from.|
+|sqlDataReader|The data reader to read from.|
 
 
 ---
@@ -3253,14 +3354,15 @@ Returns: A task to wait for.
 #### Type parameters:
 |Name | Description |
 |-----|------|
-|T: |The POCO type to map the result to.|
+|T|The POCO type to map the result to.|
 #### Parameters:
 |Name | Description |
 |-----|------|
-|sproc: |The name of the stored procedure (e.g. "sys.sp_databases" or "[sys].[sp_databases]").|
+|sproc|The name of the stored procedure (e.g. "sys.sp_databases" or "[sys].[sp_databases]").|
 |readerToObject: |A function that maps a single result into a POCO instance.|
 |logger: |Optional logger.|
 |parameters: |The named parameters for the SPROC.|
+
 Returns: A series of POCO instances.
 
 
@@ -3277,6 +3379,7 @@ Returns: A series of POCO instances.
 
  Advances to the next record. 
 
+
 Returns: A value indicating whether there is still data to be read.
 
 
@@ -3289,11 +3392,12 @@ Returns: A value indicating whether there is still data to be read.
 #### Type parameters:
 |Name | Description |
 |-----|------|
-|T: |The type of the result.|
+|T|The type of the result.|
 #### Parameters:
 |Name | Description |
 |-----|------|
-|index: |The column index.|
+|index|The column index.|
+
 Returns: The value of the column in the current row.
 
 
@@ -3306,8 +3410,9 @@ Returns: The value of the column in the current row.
 #### Parameters:
 |Name | Description |
 |-----|------|
-|index: |The column index.|
+|index|The column index.|
 |type: |The type of the result.|
+
 Returns: The value of the column in the current row.
 
 
@@ -3317,6 +3422,7 @@ Returns: The value of the column in the current row.
 
  Advances to the next result set. 
 
+
 Returns: A task to wait for.
 
 
@@ -3325,6 +3431,7 @@ Returns: A task to wait for.
 ### Method: IReader.Close
 
  Closes the reader. 
+
 
 Returns: A task to wait for.
 
@@ -3338,7 +3445,8 @@ Returns: A task to wait for.
 #### Parameters:
 |Name | Description |
 |-----|------|
-|columnName: |The name of the column to search.|
+|columnName|The name of the column to search.|
+
 Returns: The index of the column.
 
 
@@ -3390,12 +3498,13 @@ Returns: The index of the column.
 #### Type parameters:
 |Name | Description |
 |-----|------|
-|T: |The enum type to be tested.|
+|T|The enum type to be tested.|
 #### Parameters:
 |Name | Description |
 |-----|------|
-|value: |The value to be tested.|
+|value|The value to be tested.|
 |flag: |The flag that should be tested.|
+
 Returns: A value indicating whether the flag is set.
 
 
@@ -3415,7 +3524,8 @@ Returns: A value indicating whether the flag is set.
 #### Parameters:
 |Name | Description |
 |-----|------|
-|logMethod: |The original log method, this method should be added to.|
+|logMethod|The original log method, this method should be added to.|
+
 Returns: A new method that is the combination of  !! UNSUPPORTED: paramref !!  and an output to [[|T:System.Diagnostics.Debug]].
 
 
@@ -3428,7 +3538,8 @@ Returns: A new method that is the combination of  !! UNSUPPORTED: paramref !!  a
 #### Parameters:
 |Name | Description |
 |-----|------|
-|logMethod: |The original log method, this method should be added to.|
+|logMethod|The original log method, this method should be added to.|
+
 Returns: A new method that is the combination of  !! UNSUPPORTED: paramref !!  and an output to [[|T:System.Console]].
 
 
@@ -3553,10 +3664,11 @@ Returns: A new method that is the combination of  !! UNSUPPORTED: paramref !!  a
 #### Parameters:
 |Name | Description |
 |-----|------|
-|scopeName: |Name of the scope.|
+|scopeName|Name of the scope.|
 |logMethod: |Method that renders the log entry.|
 |member: |The member (method) that creates the instance.|
 |path: |The path to the class file.|
+
 Returns: A new logging scope.
 
 
@@ -3569,9 +3681,10 @@ Returns: A new logging scope.
 #### Parameters:
 |Name | Description |
 |-----|------|
-|value: |A value that should be logged as part of the creation.|
+|value|A value that should be logged as part of the creation.|
 |member: |The name of the method.|
 |path: |The path of the source file.|
+
 Returns: A new scope.
 
 
@@ -3584,10 +3697,11 @@ Returns: A new scope.
 #### Parameters:
 |Name | Description |
 |-----|------|
-|childName: | The name of the scope. |
+|childName| The name of the scope. |
 |value: |A value that should be logged as part of the creation.|
 |member: |The name of the method.|
 |path: |The path of the source file.|
+
 Returns: A new scope.
 
 
@@ -3596,6 +3710,7 @@ Returns: A new scope.
 ### Method: LogScope.DisposeAsync
 
  Async implementation of the dispose pattern. 
+
 
 Returns: A task to wait for.
 
@@ -3616,7 +3731,7 @@ Returns: A task to wait for.
 #### Parameters:
 |Name | Description |
 |-----|------|
-|message: |The message to be logged.|
+|message|The message to be logged.|
 |value: |A value that should be included into the message as addition data.|
 
 
@@ -3628,7 +3743,7 @@ Returns: A task to wait for.
 #### Parameters:
 |Name | Description |
 |-----|------|
-|logCategory: |The category of this message (Is it technical information of business process information?).|
+|logCategory|The category of this message (Is it technical information of business process information?).|
 |logLevel: |The log level of this message (How important is this message?).|
 |message: |The message to be logged.|
 |value: |A value that should be included into the message as addition data.|
@@ -3681,12 +3796,13 @@ Returns: A task to wait for.
 #### Type parameters:
 |Name | Description |
 |-----|------|
-|T: |The enum type to be tested.|
+|T|The enum type to be tested.|
 #### Parameters:
 |Name | Description |
 |-----|------|
-|value: |The value to be tested.|
+|value|The value to be tested.|
 |flag: |The flag that should be tested.|
+
 Returns: A value indicating whether the flag is set.
 
 
@@ -3706,7 +3822,8 @@ Returns: A value indicating whether the flag is set.
 #### Parameters:
 |Name | Description |
 |-----|------|
-|logMethod: |The original log method, this method should be added to.|
+|logMethod|The original log method, this method should be added to.|
+
 Returns: A new method that is the combination of  !! UNSUPPORTED: paramref !!  and an output to [[|T:System.Diagnostics.Debug]].
 
 
@@ -3719,7 +3836,8 @@ Returns: A new method that is the combination of  !! UNSUPPORTED: paramref !!  a
 #### Parameters:
 |Name | Description |
 |-----|------|
-|logMethod: |The original log method, this method should be added to.|
+|logMethod|The original log method, this method should be added to.|
+
 Returns: A new method that is the combination of  !! UNSUPPORTED: paramref !!  and an output to [[|T:System.Console]].
 
 
@@ -3844,10 +3962,11 @@ Returns: A new method that is the combination of  !! UNSUPPORTED: paramref !!  a
 #### Parameters:
 |Name | Description |
 |-----|------|
-|scopeName: |Name of the scope.|
+|scopeName|Name of the scope.|
 |logMethod: |Method that renders the log entry.|
 |member: |The member (method) that creates the instance.|
 |path: |The path to the class file.|
+
 Returns: A new logging scope.
 
 
@@ -3860,9 +3979,10 @@ Returns: A new logging scope.
 #### Parameters:
 |Name | Description |
 |-----|------|
-|value: |A value that should be logged as part of the creation.|
+|value|A value that should be logged as part of the creation.|
 |member: |The name of the method.|
 |path: |The path of the source file.|
+
 Returns: A new scope.
 
 
@@ -3875,10 +3995,11 @@ Returns: A new scope.
 #### Parameters:
 |Name | Description |
 |-----|------|
-|childName: | The name of the scope. |
+|childName| The name of the scope. |
 |value: |A value that should be logged as part of the creation.|
 |member: |The name of the method.|
 |path: |The path of the source file.|
+
 Returns: A new scope.
 
 
@@ -3887,6 +4008,7 @@ Returns: A new scope.
 ### Method: LogScope.DisposeAsync
 
  Async implementation of the dispose pattern. 
+
 
 Returns: A task to wait for.
 
@@ -3907,7 +4029,7 @@ Returns: A task to wait for.
 #### Parameters:
 |Name | Description |
 |-----|------|
-|message: |The message to be logged.|
+|message|The message to be logged.|
 |value: |A value that should be included into the message as addition data.|
 
 
@@ -3919,7 +4041,7 @@ Returns: A task to wait for.
 #### Parameters:
 |Name | Description |
 |-----|------|
-|logCategory: |The category of this message (Is it technical information of business process information?).|
+|logCategory|The category of this message (Is it technical information of business process information?).|
 |logLevel: |The log level of this message (How important is this message?).|
 |message: |The message to be logged.|
 |value: |A value that should be included into the message as addition data.|
@@ -4077,7 +4199,7 @@ Returns: A task to wait for.
 #### Parameters:
 |Name | Description |
 |-----|------|
-|category: |The category of the log entry.|
+|category|The category of the log entry.|
 |level: |The log level.|
 |scope: |The logging scope that renders the log entry.|
 |message: |The log message.|
@@ -4091,7 +4213,8 @@ Returns: A task to wait for.
 #### Parameters:
 |Name | Description |
 |-----|------|
-|path: |Path of this class will be set at compile time.|
+|path|Path of this class will be set at compile time.|
+
 Returns: The source code path of this class.
 
 
@@ -4143,12 +4266,13 @@ Returns: The source code path of this class.
 #### Type parameters:
 |Name | Description |
 |-----|------|
-|T: |The enum type to be tested.|
+|T|The enum type to be tested.|
 #### Parameters:
 |Name | Description |
 |-----|------|
-|value: |The value to be tested.|
+|value|The value to be tested.|
 |flag: |The flag that should be tested.|
+
 Returns: A value indicating whether the flag is set.
 
 
@@ -4168,7 +4292,8 @@ Returns: A value indicating whether the flag is set.
 #### Parameters:
 |Name | Description |
 |-----|------|
-|logMethod: |The original log method, this method should be added to.|
+|logMethod|The original log method, this method should be added to.|
+
 Returns: A new method that is the combination of  !! UNSUPPORTED: paramref !!  and an output to [[|T:System.Diagnostics.Debug]].
 
 
@@ -4181,7 +4306,8 @@ Returns: A new method that is the combination of  !! UNSUPPORTED: paramref !!  a
 #### Parameters:
 |Name | Description |
 |-----|------|
-|logMethod: |The original log method, this method should be added to.|
+|logMethod|The original log method, this method should be added to.|
+
 Returns: A new method that is the combination of  !! UNSUPPORTED: paramref !!  and an output to [[|T:System.Console]].
 
 
@@ -4306,10 +4432,11 @@ Returns: A new method that is the combination of  !! UNSUPPORTED: paramref !!  a
 #### Parameters:
 |Name | Description |
 |-----|------|
-|scopeName: |Name of the scope.|
+|scopeName|Name of the scope.|
 |logMethod: |Method that renders the log entry.|
 |member: |The member (method) that creates the instance.|
 |path: |The path to the class file.|
+
 Returns: A new logging scope.
 
 
@@ -4322,9 +4449,10 @@ Returns: A new logging scope.
 #### Parameters:
 |Name | Description |
 |-----|------|
-|value: |A value that should be logged as part of the creation.|
+|value|A value that should be logged as part of the creation.|
 |member: |The name of the method.|
 |path: |The path of the source file.|
+
 Returns: A new scope.
 
 
@@ -4337,10 +4465,11 @@ Returns: A new scope.
 #### Parameters:
 |Name | Description |
 |-----|------|
-|childName: | The name of the scope. |
+|childName| The name of the scope. |
 |value: |A value that should be logged as part of the creation.|
 |member: |The name of the method.|
 |path: |The path of the source file.|
+
 Returns: A new scope.
 
 
@@ -4349,6 +4478,7 @@ Returns: A new scope.
 ### Method: LogScope.DisposeAsync
 
  Async implementation of the dispose pattern. 
+
 
 Returns: A task to wait for.
 
@@ -4369,7 +4499,7 @@ Returns: A task to wait for.
 #### Parameters:
 |Name | Description |
 |-----|------|
-|message: |The message to be logged.|
+|message|The message to be logged.|
 |value: |A value that should be included into the message as addition data.|
 
 
@@ -4381,7 +4511,7 @@ Returns: A task to wait for.
 #### Parameters:
 |Name | Description |
 |-----|------|
-|logCategory: |The category of this message (Is it technical information of business process information?).|
+|logCategory|The category of this message (Is it technical information of business process information?).|
 |logLevel: |The log level of this message (How important is this message?).|
 |message: |The message to be logged.|
 |value: |A value that should be included into the message as addition data.|

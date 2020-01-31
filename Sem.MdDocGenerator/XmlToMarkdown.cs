@@ -24,10 +24,10 @@ namespace Sem.MdDocGenerator
                 { "example  ".Trim(), new [] {"_C# code_\n\n```c#\n{0}\n```\n\n"}},
                 { "seePage  ".Trim(), new [] {"[[{1}|{0}]]"}},
                 { "seeAnchor".Trim(), new [] {"[{1}]({0})"}},
-                { "typeparam".Trim(), new [] {"#### Type parameters:\n|Name | Description |\n|-----|------|\n|{0}: |{1}|\n", "|{0}: |{1}|\n" }},
-                { "param    ".Trim(), new [] {"#### Parameters:\n|Name | Description |\n|-----|------|\n|{0}: |{1}|\n", "|{0}: |{1}|\n" }},
+                { "typeparam".Trim(), new [] {"#### Type parameters:\n|Name | Description |\n|-----|------|\n|{0}|{1}|\n", "|{0}: |{1}|\n" }},
+                { "param    ".Trim(), new [] {"#### Parameters:\n|Name | Description |\n|-----|------|\n|{0}|{1}|\n", "|{0}: |{1}|\n" }},
                 { "exception".Trim(), new [] {"[[{0}|{0}]]: {1}\n\n" }},
-                { "returns  ".Trim(), new [] {"Returns: {0}\n\n"}},
+                { "returns  ".Trim(), new [] {"\nReturns: {0}\n\n"}},
                 { "none     ".Trim(), new [] {""}}
             };
 
