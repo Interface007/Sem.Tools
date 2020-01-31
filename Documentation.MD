@@ -7,7 +7,7 @@
 
 
 ---
-### Method: IDatabase.Execute\<T1,  T2>(string, Func\<IReader, Task\<T>>, Sem.Tools.Logging.LogScope, KeyValuePair\<string, Object>[])
+### Method: IDatabase.Execute\<T1>(string, Func\<IReader, Task\<T1>>, Sem.Tools.Logging.LogScope, KeyValuePair\<string, Object>[])
 
  Executes a "stored procedure" (aka. "SPROC") and maps the result to a series of POCOs. 
 
@@ -47,7 +47,7 @@ A value indicating whether there is still data to be read.
 
 
 ---
-### Method: IReader.Get\<T1,  T2>(System.Int32)
+### Method: IReader.Get\<T1>(System.Int32)
 
  Reads the value of a column by its index. 
 
@@ -130,13 +130,6 @@ The index of the column.
 
 
 ---
-### F:Sem.Data.SprocAccess.FileSystem.TxtDatabase.baseFolder
-
- The base folder path. 
-
-
-
----
 ### Method: TxtDatabase.#ctor(string)
 
  Initializes a new instance of the [[|T:Sem.Data.SprocAccess.FileSystem.TxtDatabase]] class. 
@@ -148,7 +141,7 @@ The index of the column.
 
 
 ---
-### Method: TxtDatabase.Execute\<T1,  T2>(string, Func\<Sem.Data.SprocAccess.IReader, Task\<T>>, Sem.Tools.Logging.LogScope, KeyValuePair\<string, Object>[])
+### Method: TxtDatabase.Execute\<T1>(string, Func\<Sem.Data.SprocAccess.IReader, Task\<T1>>, Sem.Tools.Logging.LogScope, KeyValuePair\<string, Object>[])
 
  Executes a "stored procedure" (aka. "SPROC") and maps the result to a series of POCOs. 
 
@@ -188,34 +181,6 @@ A task that represents the asynchronous dispose operation.
 
 
 ---
-### F:Sem.Data.SprocAccess.FileSystem.TxtReader.fileName
-
- The file name of the data file for this result. 
-
-
-
----
-### F:Sem.Data.SprocAccess.FileSystem.TxtReader.fileLines
-
- The actual lines of the file. TODO: would be better to read the file line by line - this is for simplicity of the class ... remember: it's a non-productive 'fun' project ;-). 
-
-
-
----
-### F:Sem.Data.SprocAccess.FileSystem.TxtReader.lineIndex
-
- The "pointer" to the current row;. 
-
-
-
----
-### F:Sem.Data.SprocAccess.FileSystem.TxtReader.resultIndex
-
- The index of the current result set - all data files contain a two-digit-index. 
-
-
-
----
 ### Method: TxtReader.#ctor(string)
 
  Initializes a new instance of the [[|T:Sem.Data.SprocAccess.FileSystem.TxtReader]] class. 
@@ -238,7 +203,7 @@ A value indicating whether there is still data at this line.
 
 
 ---
-### Method: TxtReader.Get\<T1,  T2>(System.Int32)
+### Method: TxtReader.Get\<T1>(System.Int32)
 
  Reads the value of a column by its index. 
 
@@ -328,13 +293,6 @@ The index of the column.
 
 
 ---
-### F:Sem.Data.SprocAccess.SqlServer.SqlDatabase.connectionString
-
- The connection string for the database. 
-
-
-
----
 ### Method: SqlDatabase.#ctor(string)
 
  Initializes a new instance of the [[|T:Sem.Data.SprocAccess.SqlServer.SqlDatabase]] class. 
@@ -346,7 +304,7 @@ The index of the column.
 
 
 ---
-### Method: SqlDatabase.Execute\<T1,  T2>(string, Func\<Sem.Data.SprocAccess.IReader, Task\<T>>, Sem.Tools.Logging.LogScope, KeyValuePair\<string, Object>[])
+### Method: SqlDatabase.Execute\<T1>(string, Func\<Sem.Data.SprocAccess.IReader, Task\<T1>>, Sem.Tools.Logging.LogScope, KeyValuePair\<string, Object>[])
 
  Executes a "stored procedure" (aka. "SPROC") and maps the result to a series of POCOs. 
 
@@ -408,7 +366,7 @@ A value indicating whether there is still data to be read.
 
 
 ---
-### Method: SqlReader.Get\<T1,  T2>(System.Int32)
+### Method: SqlReader.Get\<T1>(System.Int32)
 
  Reads the value of a column by its index. 
 
@@ -491,7 +449,7 @@ The index of the column.
 
 
 ---
-### Method: ActionExtension.Append\<T1,  T2>(System.Action\<T>, System.Action\<T>)
+### Method: ActionExtension.Append\<T1>(System.Action\<T1>, System.Action\<T1>)
 
  Extension to combine two logging methods into a new one. 
 
@@ -511,7 +469,7 @@ A new method combining both methods specified in the parameters.
 
 
 ---
-### Method: ActionExtension.Append\<T1,  T2,  T3>(System.Action\<\<T1>, \<T1,  T2>>, System.Action\<\<T1>, \<T1,  T2>>)
+### Method: ActionExtension.Append\<T1,  T2>(System.Action\<T1,  T2>, System.Action\<T1,  T2>)
 
  Extension to combine two logging methods into a new one. 
 
@@ -532,7 +490,7 @@ A new method combining both methods specified in the parameters.
 
 
 ---
-### Method: ActionExtension.Append\<T1,  T2,  T3,  T4>(System.Action\<\<T1>, \<T1,  T2>, \<T1,  T2,  T3>>, System.Action\<\<T1>, \<T1,  T2>, \<T1,  T2,  T3>>)
+### Method: ActionExtension.Append\<T1,  T2,  T3>(System.Action\<T1,  T2,  T3>, System.Action\<T1,  T2,  T3>)
 
  Extension to combine two logging methods into a new one. 
 
@@ -554,7 +512,7 @@ A new method combining both methods specified in the parameters.
 
 
 ---
-### Method: ActionExtension.Append\<T1,  T2,  T3,  T4,  T5>(System.Action\<\<T1>, \<T1,  T2>, \<T1,  T2,  T3>, \<T1,  T2,  T3,  T4>>, System.Action\<\<T1>, \<T1,  T2>, \<T1,  T2,  T3>, \<T1,  T2,  T3,  T4>>)
+### Method: ActionExtension.Append\<T1,  T2,  T3,  T4>(System.Action\<T1,  T2,  T3,  T4>, System.Action\<T1,  T2,  T3,  T4>)
 
  Extension to combine two logging methods into a new one. 
 
@@ -652,7 +610,7 @@ The has as HEX encoded data.
 
 
 ---
-### Method: Extensions.MustNotBeNull\<T1,  T2>(\<T1>, string)
+### Method: Extensions.MustNotBeNull\<T1>(``0, string)
 
  Throws an [[|T:System.ArgumentNullException]] when passing NULL values to  value . 
 
@@ -672,7 +630,7 @@ The has as HEX encoded data.
 
 
 ---
-### Method: Extensions.ToJson\<T1,  T2>(\<T1>)
+### Method: Extensions.ToJson\<T1>(``0)
 
  Extends all objects to have a simple JsonSerialization method. 
 
@@ -694,13 +652,6 @@ A JSON string.
 ## Type: Sem.Tools.FileSystemTools
 
  Tools for file system interaction. 
-
-
-
----
-### F:Sem.Tools.FileSystemTools.Sanitizer
-
- A Regex to replace illegal characters from file names. 
 
 
 
@@ -935,7 +886,7 @@ A new menu item.
 
 
 ---
-### Method: MenuItem.For\<T1,  T2>(Object[])
+### Method: MenuItem.For\<T1>(Object[])
 
  Creates menu entries for public methods of  !! UNSUPPORTED: typeparamref !! . 
 
@@ -984,7 +935,7 @@ The extracted description.
 
 
 ---
-### Method: MenuItem.GetMethod\<T1,  T2>(System.Linq.Expressions.Expression\<Func\<T>>)
+### Method: MenuItem.GetMethod\<T1>(System.Linq.Expressions.Expression\<Func\<T1>>)
 
  Gets the method information from a [[|T:System.Linq.Expressions.MethodCallExpression]]. 
 
@@ -1003,7 +954,7 @@ The method information from the called method.
 
 
 ---
-### Method: MenuItem.InvokeAction\<T1,  T2,  T3>(System.Reflection.MethodBase, Object[])
+### Method: MenuItem.InvokeAction\<T1,  T2>(System.Reflection.MethodBase, Object[])
 
  Invokes a method with the needed parameters. 
 
@@ -1035,27 +986,6 @@ The call result.
 
 
 ---
-### F:Sem.Tools.Logging.LogCategories.None
-
- The context is not determined. 
-
-
-
----
-### F:Sem.Tools.Logging.LogCategories.Technical
-
- The log information is pure technical. 
-
-
-
----
-### F:Sem.Tools.Logging.LogCategories.Business
-
- The log information is pure business. 
-
-
-
----
 ## Type: Sem.Tools.Logging.LogCategoryExtensions
 
  Extension class for the enum type [[|T:Sem.Tools.Logging.LogCategories]]. 
@@ -1063,7 +993,7 @@ The call result.
 
 
 ---
-### Method: LogCategoryExtensions.HasFlag\<T1,  T2>(\<T1>, \<T1>)
+### Method: LogCategoryExtensions.HasFlag\<T1>(``0, ``0)
 
  Tests whether a value has a specific category flag set. 
 
@@ -1127,51 +1057,9 @@ A new method that is the combination of  logMethod  and an output to [[|T:System
 
 
 ---
-### F:Sem.Tools.Logging.LogLevel.None
-
- Log never. 
-
-
-
----
-### F:Sem.Tools.Logging.LogLevel.Exception
-
- When writing logs: Specifies that this entry is an exception. When configuring logger: will only allow exceptions to be logged. 
-
-
-
----
-### F:Sem.Tools.Logging.LogLevel.Warning
-
- When writing logs: Specifies that this entry is a warning (less important than an [[|F:Sem.Tools.Logging.LogLevel.Exception]]). When configuring logger: will only allow exceptions and warnings to be logged. 
-
-
-
----
-### F:Sem.Tools.Logging.LogLevel.Information
-
- When writing logs: Specifies that this entry is a information (less important than an [[|F:Sem.Tools.Logging.LogLevel.Exception]] or a [[|F:Sem.Tools.Logging.LogLevel.Warning]]). When configuring logger: will only allow information, exceptions and warnings to be logged. 
-
-
-
----
-### F:Sem.Tools.Logging.LogLevel.Trace
-
- When writing logs: Specifies that this entry is a trace message (something that should be logged while debugging). When configuring logger: will only allow any message to be logged. 
-
-
-
----
 ## Type: Sem.Tools.Logging.LogScope
 
  Simple hierarchical logging scope. 
-
-
-
----
-### F:Sem.Tools.Logging.LogScope.idStack
-
- Gets the structure handling the hierarchy. 
 
 
 
@@ -1340,7 +1228,7 @@ A task to wait for.
 
 
 ---
-### Method: IDatabase.Execute\<T1,  T2>(string, Func\<IReader, Task\<T>>, Sem.Tools.Logging.LogScope, KeyValuePair\<string, Object>[])
+### Method: IDatabase.Execute\<T1>(string, Func\<IReader, Task\<T1>>, Sem.Tools.Logging.LogScope, KeyValuePair\<string, Object>[])
 
  Executes a "stored procedure" (aka. "SPROC") and maps the result to a series of POCOs. 
 
@@ -1380,7 +1268,7 @@ A value indicating whether there is still data to be read.
 
 
 ---
-### Method: IReader.Get\<T1,  T2>(System.Int32)
+### Method: IReader.Get\<T1>(System.Int32)
 
  Reads the value of a column by its index. 
 
@@ -1463,27 +1351,6 @@ The index of the column.
 
 
 ---
-### F:Sem.Tools.Logging.LogCategories.None
-
- The context is not determined. 
-
-
-
----
-### F:Sem.Tools.Logging.LogCategories.Technical
-
- The log information is pure technical. 
-
-
-
----
-### F:Sem.Tools.Logging.LogCategories.Business
-
- The log information is pure business. 
-
-
-
----
 ## Type: Sem.Tools.Logging.LogCategoryExtensions
 
  Extension class for the enum type [[|T:Sem.Tools.Logging.LogCategories]]. 
@@ -1491,7 +1358,7 @@ The index of the column.
 
 
 ---
-### Method: LogCategoryExtensions.HasFlag\<T1,  T2>(\<T1>, \<T1>)
+### Method: LogCategoryExtensions.HasFlag\<T1>(``0, ``0)
 
  Tests whether a value has a specific category flag set. 
 
@@ -1555,51 +1422,9 @@ A new method that is the combination of  logMethod  and an output to [[|T:System
 
 
 ---
-### F:Sem.Tools.Logging.LogLevel.None
-
- Log never. 
-
-
-
----
-### F:Sem.Tools.Logging.LogLevel.Exception
-
- When writing logs: Specifies that this entry is an exception. When configuring logger: will only allow exceptions to be logged. 
-
-
-
----
-### F:Sem.Tools.Logging.LogLevel.Warning
-
- When writing logs: Specifies that this entry is a warning (less important than an [[|F:Sem.Tools.Logging.LogLevel.Exception]]). When configuring logger: will only allow exceptions and warnings to be logged. 
-
-
-
----
-### F:Sem.Tools.Logging.LogLevel.Information
-
- When writing logs: Specifies that this entry is a information (less important than an [[|F:Sem.Tools.Logging.LogLevel.Exception]] or a [[|F:Sem.Tools.Logging.LogLevel.Warning]]). When configuring logger: will only allow information, exceptions and warnings to be logged. 
-
-
-
----
-### F:Sem.Tools.Logging.LogLevel.Trace
-
- When writing logs: Specifies that this entry is a trace message (something that should be logged while debugging). When configuring logger: will only allow any message to be logged. 
-
-
-
----
 ## Type: Sem.Tools.Logging.LogScope
 
  Simple hierarchical logging scope. 
-
-
-
----
-### F:Sem.Tools.Logging.LogScope.idStack
-
- Gets the structure handling the hierarchy. 
 
 
 
@@ -1768,7 +1593,7 @@ A task to wait for.
 
 
 ---
-### Method: ActionExtension.Append\<T1,  T2>(System.Action\<T>, System.Action\<T>)
+### Method: ActionExtension.Append\<T1>(System.Action\<T1>, System.Action\<T1>)
 
  Extension to combine two logging methods into a new one. 
 
@@ -1788,7 +1613,7 @@ A new method combining both methods specified in the parameters.
 
 
 ---
-### Method: ActionExtension.Append\<T1,  T2,  T3>(System.Action\<\<T1>, \<T1,  T2>>, System.Action\<\<T1>, \<T1,  T2>>)
+### Method: ActionExtension.Append\<T1,  T2>(System.Action\<T1,  T2>, System.Action\<T1,  T2>)
 
  Extension to combine two logging methods into a new one. 
 
@@ -1809,7 +1634,7 @@ A new method combining both methods specified in the parameters.
 
 
 ---
-### Method: ActionExtension.Append\<T1,  T2,  T3,  T4>(System.Action\<\<T1>, \<T1,  T2>, \<T1,  T2,  T3>>, System.Action\<\<T1>, \<T1,  T2>, \<T1,  T2,  T3>>)
+### Method: ActionExtension.Append\<T1,  T2,  T3>(System.Action\<T1,  T2,  T3>, System.Action\<T1,  T2,  T3>)
 
  Extension to combine two logging methods into a new one. 
 
@@ -1831,7 +1656,7 @@ A new method combining both methods specified in the parameters.
 
 
 ---
-### Method: ActionExtension.Append\<T1,  T2,  T3,  T4,  T5>(System.Action\<\<T1>, \<T1,  T2>, \<T1,  T2,  T3>, \<T1,  T2,  T3,  T4>>, System.Action\<\<T1>, \<T1,  T2>, \<T1,  T2,  T3>, \<T1,  T2,  T3,  T4>>)
+### Method: ActionExtension.Append\<T1,  T2,  T3,  T4>(System.Action\<T1,  T2,  T3,  T4>, System.Action\<T1,  T2,  T3,  T4>)
 
  Extension to combine two logging methods into a new one. 
 
@@ -1929,7 +1754,7 @@ The has as HEX encoded data.
 
 
 ---
-### Method: Extensions.MustNotBeNull\<T1,  T2>(\<T1>, string)
+### Method: Extensions.MustNotBeNull\<T1>(``0, string)
 
  Throws an [[|T:System.ArgumentNullException]] when passing NULL values to  value . 
 
@@ -1949,7 +1774,7 @@ The has as HEX encoded data.
 
 
 ---
-### Method: Extensions.ToJson\<T1,  T2>(\<T1>)
+### Method: Extensions.ToJson\<T1>(``0)
 
  Extends all objects to have a simple JsonSerialization method. 
 
@@ -1971,13 +1796,6 @@ A JSON string.
 ## Type: Sem.Tools.FileSystemTools
 
  Tools for file system interaction. 
-
-
-
----
-### F:Sem.Tools.FileSystemTools.Sanitizer
-
- A Regex to replace illegal characters from file names. 
 
 
 
@@ -2049,13 +1867,6 @@ Writes a specified value as JSON.
 
 
 ---
-### F:Sem.Data.SprocAccess.FileSystem.TxtDatabase.baseFolder
-
- The base folder path. 
-
-
-
----
 ### Method: TxtDatabase.#ctor(string)
 
  Initializes a new instance of the [[|T:Sem.Data.SprocAccess.FileSystem.TxtDatabase]] class. 
@@ -2067,7 +1878,7 @@ Writes a specified value as JSON.
 
 
 ---
-### Method: TxtDatabase.Execute\<T1,  T2>(string, Func\<Sem.Data.SprocAccess.IReader, Task\<T>>, Sem.Tools.Logging.LogScope, KeyValuePair\<string, Object>[])
+### Method: TxtDatabase.Execute\<T1>(string, Func\<Sem.Data.SprocAccess.IReader, Task\<T1>>, Sem.Tools.Logging.LogScope, KeyValuePair\<string, Object>[])
 
  Executes a "stored procedure" (aka. "SPROC") and maps the result to a series of POCOs. 
 
@@ -2107,34 +1918,6 @@ A task that represents the asynchronous dispose operation.
 
 
 ---
-### F:Sem.Data.SprocAccess.FileSystem.TxtReader.fileName
-
- The file name of the data file for this result. 
-
-
-
----
-### F:Sem.Data.SprocAccess.FileSystem.TxtReader.fileLines
-
- The actual lines of the file. TODO: would be better to read the file line by line - this is for simplicity of the class ... remember: it's a non-productive 'fun' project ;-). 
-
-
-
----
-### F:Sem.Data.SprocAccess.FileSystem.TxtReader.lineIndex
-
- The "pointer" to the current row;. 
-
-
-
----
-### F:Sem.Data.SprocAccess.FileSystem.TxtReader.resultIndex
-
- The index of the current result set - all data files contain a two-digit-index. 
-
-
-
----
 ### Method: TxtReader.#ctor(string)
 
  Initializes a new instance of the [[|T:Sem.Data.SprocAccess.FileSystem.TxtReader]] class. 
@@ -2157,7 +1940,7 @@ A value indicating whether there is still data at this line.
 
 
 ---
-### Method: TxtReader.Get\<T1,  T2>(System.Int32)
+### Method: TxtReader.Get\<T1>(System.Int32)
 
  Reads the value of a column by its index. 
 
@@ -2247,7 +2030,7 @@ The index of the column.
 
 
 ---
-### Method: IDatabase.Execute\<T1,  T2>(string, Func\<IReader, Task\<T>>, Sem.Tools.Logging.LogScope, KeyValuePair\<string, Object>[])
+### Method: IDatabase.Execute\<T1>(string, Func\<IReader, Task\<T1>>, Sem.Tools.Logging.LogScope, KeyValuePair\<string, Object>[])
 
  Executes a "stored procedure" (aka. "SPROC") and maps the result to a series of POCOs. 
 
@@ -2287,7 +2070,7 @@ A value indicating whether there is still data to be read.
 
 
 ---
-### Method: IReader.Get\<T1,  T2>(System.Int32)
+### Method: IReader.Get\<T1>(System.Int32)
 
  Reads the value of a column by its index. 
 
@@ -2370,27 +2153,6 @@ The index of the column.
 
 
 ---
-### F:Sem.Tools.Logging.LogCategories.None
-
- The context is not determined. 
-
-
-
----
-### F:Sem.Tools.Logging.LogCategories.Technical
-
- The log information is pure technical. 
-
-
-
----
-### F:Sem.Tools.Logging.LogCategories.Business
-
- The log information is pure business. 
-
-
-
----
 ## Type: Sem.Tools.Logging.LogCategoryExtensions
 
  Extension class for the enum type [[|T:Sem.Tools.Logging.LogCategories]]. 
@@ -2398,7 +2160,7 @@ The index of the column.
 
 
 ---
-### Method: LogCategoryExtensions.HasFlag\<T1,  T2>(\<T1>, \<T1>)
+### Method: LogCategoryExtensions.HasFlag\<T1>(``0, ``0)
 
  Tests whether a value has a specific category flag set. 
 
@@ -2462,51 +2224,9 @@ A new method that is the combination of  logMethod  and an output to [[|T:System
 
 
 ---
-### F:Sem.Tools.Logging.LogLevel.None
-
- Log never. 
-
-
-
----
-### F:Sem.Tools.Logging.LogLevel.Exception
-
- When writing logs: Specifies that this entry is an exception. When configuring logger: will only allow exceptions to be logged. 
-
-
-
----
-### F:Sem.Tools.Logging.LogLevel.Warning
-
- When writing logs: Specifies that this entry is a warning (less important than an [[|F:Sem.Tools.Logging.LogLevel.Exception]]). When configuring logger: will only allow exceptions and warnings to be logged. 
-
-
-
----
-### F:Sem.Tools.Logging.LogLevel.Information
-
- When writing logs: Specifies that this entry is a information (less important than an [[|F:Sem.Tools.Logging.LogLevel.Exception]] or a [[|F:Sem.Tools.Logging.LogLevel.Warning]]). When configuring logger: will only allow information, exceptions and warnings to be logged. 
-
-
-
----
-### F:Sem.Tools.Logging.LogLevel.Trace
-
- When writing logs: Specifies that this entry is a trace message (something that should be logged while debugging). When configuring logger: will only allow any message to be logged. 
-
-
-
----
 ## Type: Sem.Tools.Logging.LogScope
 
  Simple hierarchical logging scope. 
-
-
-
----
-### F:Sem.Tools.Logging.LogScope.idStack
-
- Gets the structure handling the hierarchy. 
 
 
 
@@ -2675,7 +2395,7 @@ A task to wait for.
 
 
 ---
-### Method: ActionExtension.Append\<T1,  T2>(System.Action\<T>, System.Action\<T>)
+### Method: ActionExtension.Append\<T1>(System.Action\<T1>, System.Action\<T1>)
 
  Extension to combine two logging methods into a new one. 
 
@@ -2695,7 +2415,7 @@ A new method combining both methods specified in the parameters.
 
 
 ---
-### Method: ActionExtension.Append\<T1,  T2,  T3>(System.Action\<\<T1>, \<T1,  T2>>, System.Action\<\<T1>, \<T1,  T2>>)
+### Method: ActionExtension.Append\<T1,  T2>(System.Action\<T1,  T2>, System.Action\<T1,  T2>)
 
  Extension to combine two logging methods into a new one. 
 
@@ -2716,7 +2436,7 @@ A new method combining both methods specified in the parameters.
 
 
 ---
-### Method: ActionExtension.Append\<T1,  T2,  T3,  T4>(System.Action\<\<T1>, \<T1,  T2>, \<T1,  T2,  T3>>, System.Action\<\<T1>, \<T1,  T2>, \<T1,  T2,  T3>>)
+### Method: ActionExtension.Append\<T1,  T2,  T3>(System.Action\<T1,  T2,  T3>, System.Action\<T1,  T2,  T3>)
 
  Extension to combine two logging methods into a new one. 
 
@@ -2738,7 +2458,7 @@ A new method combining both methods specified in the parameters.
 
 
 ---
-### Method: ActionExtension.Append\<T1,  T2,  T3,  T4,  T5>(System.Action\<\<T1>, \<T1,  T2>, \<T1,  T2,  T3>, \<T1,  T2,  T3,  T4>>, System.Action\<\<T1>, \<T1,  T2>, \<T1,  T2,  T3>, \<T1,  T2,  T3,  T4>>)
+### Method: ActionExtension.Append\<T1,  T2,  T3,  T4>(System.Action\<T1,  T2,  T3,  T4>, System.Action\<T1,  T2,  T3,  T4>)
 
  Extension to combine two logging methods into a new one. 
 
@@ -2836,7 +2556,7 @@ The has as HEX encoded data.
 
 
 ---
-### Method: Extensions.MustNotBeNull\<T1,  T2>(\<T1>, string)
+### Method: Extensions.MustNotBeNull\<T1>(``0, string)
 
  Throws an [[|T:System.ArgumentNullException]] when passing NULL values to  value . 
 
@@ -2856,7 +2576,7 @@ The has as HEX encoded data.
 
 
 ---
-### Method: Extensions.ToJson\<T1,  T2>(\<T1>)
+### Method: Extensions.ToJson\<T1>(``0)
 
  Extends all objects to have a simple JsonSerialization method. 
 
@@ -2878,13 +2598,6 @@ A JSON string.
 ## Type: Sem.Tools.FileSystemTools
 
  Tools for file system interaction. 
-
-
-
----
-### F:Sem.Tools.FileSystemTools.Sanitizer
-
- A Regex to replace illegal characters from file names. 
 
 
 
@@ -2956,13 +2669,6 @@ Writes a specified value as JSON.
 
 
 ---
-### F:Sem.Data.SprocAccess.FileSystem.TxtDatabase.baseFolder
-
- The base folder path. 
-
-
-
----
 ### Method: TxtDatabase.#ctor(string)
 
  Initializes a new instance of the [[|T:Sem.Data.SprocAccess.FileSystem.TxtDatabase]] class. 
@@ -2974,7 +2680,7 @@ Writes a specified value as JSON.
 
 
 ---
-### Method: TxtDatabase.Execute\<T1,  T2>(string, Func\<Sem.Data.SprocAccess.IReader, Task\<T>>, Sem.Tools.Logging.LogScope, KeyValuePair\<string, Object>[])
+### Method: TxtDatabase.Execute\<T1>(string, Func\<Sem.Data.SprocAccess.IReader, Task\<T1>>, Sem.Tools.Logging.LogScope, KeyValuePair\<string, Object>[])
 
  Executes a "stored procedure" (aka. "SPROC") and maps the result to a series of POCOs. 
 
@@ -3014,34 +2720,6 @@ A task that represents the asynchronous dispose operation.
 
 
 ---
-### F:Sem.Data.SprocAccess.FileSystem.TxtReader.fileName
-
- The file name of the data file for this result. 
-
-
-
----
-### F:Sem.Data.SprocAccess.FileSystem.TxtReader.fileLines
-
- The actual lines of the file. TODO: would be better to read the file line by line - this is for simplicity of the class ... remember: it's a non-productive 'fun' project ;-). 
-
-
-
----
-### F:Sem.Data.SprocAccess.FileSystem.TxtReader.lineIndex
-
- The "pointer" to the current row;. 
-
-
-
----
-### F:Sem.Data.SprocAccess.FileSystem.TxtReader.resultIndex
-
- The index of the current result set - all data files contain a two-digit-index. 
-
-
-
----
 ### Method: TxtReader.#ctor(string)
 
  Initializes a new instance of the [[|T:Sem.Data.SprocAccess.FileSystem.TxtReader]] class. 
@@ -3064,7 +2742,7 @@ A value indicating whether there is still data at this line.
 
 
 ---
-### Method: TxtReader.Get\<T1,  T2>(System.Int32)
+### Method: TxtReader.Get\<T1>(System.Int32)
 
  Reads the value of a column by its index. 
 
@@ -3154,7 +2832,7 @@ The index of the column.
 
 
 ---
-### Method: IDatabase.Execute\<T1,  T2>(string, Func\<IReader, Task\<T>>, Sem.Tools.Logging.LogScope, KeyValuePair\<string, Object>[])
+### Method: IDatabase.Execute\<T1>(string, Func\<IReader, Task\<T1>>, Sem.Tools.Logging.LogScope, KeyValuePair\<string, Object>[])
 
  Executes a "stored procedure" (aka. "SPROC") and maps the result to a series of POCOs. 
 
@@ -3194,7 +2872,7 @@ A value indicating whether there is still data to be read.
 
 
 ---
-### Method: IReader.Get\<T1,  T2>(System.Int32)
+### Method: IReader.Get\<T1>(System.Int32)
 
  Reads the value of a column by its index. 
 
@@ -3277,27 +2955,6 @@ The index of the column.
 
 
 ---
-### F:Sem.Tools.Logging.LogCategories.None
-
- The context is not determined. 
-
-
-
----
-### F:Sem.Tools.Logging.LogCategories.Technical
-
- The log information is pure technical. 
-
-
-
----
-### F:Sem.Tools.Logging.LogCategories.Business
-
- The log information is pure business. 
-
-
-
----
 ## Type: Sem.Tools.Logging.LogCategoryExtensions
 
  Extension class for the enum type [[|T:Sem.Tools.Logging.LogCategories]]. 
@@ -3305,7 +2962,7 @@ The index of the column.
 
 
 ---
-### Method: LogCategoryExtensions.HasFlag\<T1,  T2>(\<T1>, \<T1>)
+### Method: LogCategoryExtensions.HasFlag\<T1>(``0, ``0)
 
  Tests whether a value has a specific category flag set. 
 
@@ -3369,51 +3026,9 @@ A new method that is the combination of  logMethod  and an output to [[|T:System
 
 
 ---
-### F:Sem.Tools.Logging.LogLevel.None
-
- Log never. 
-
-
-
----
-### F:Sem.Tools.Logging.LogLevel.Exception
-
- When writing logs: Specifies that this entry is an exception. When configuring logger: will only allow exceptions to be logged. 
-
-
-
----
-### F:Sem.Tools.Logging.LogLevel.Warning
-
- When writing logs: Specifies that this entry is a warning (less important than an [[|F:Sem.Tools.Logging.LogLevel.Exception]]). When configuring logger: will only allow exceptions and warnings to be logged. 
-
-
-
----
-### F:Sem.Tools.Logging.LogLevel.Information
-
- When writing logs: Specifies that this entry is a information (less important than an [[|F:Sem.Tools.Logging.LogLevel.Exception]] or a [[|F:Sem.Tools.Logging.LogLevel.Warning]]). When configuring logger: will only allow information, exceptions and warnings to be logged. 
-
-
-
----
-### F:Sem.Tools.Logging.LogLevel.Trace
-
- When writing logs: Specifies that this entry is a trace message (something that should be logged while debugging). When configuring logger: will only allow any message to be logged. 
-
-
-
----
 ## Type: Sem.Tools.Logging.LogScope
 
  Simple hierarchical logging scope. 
-
-
-
----
-### F:Sem.Tools.Logging.LogScope.idStack
-
- Gets the structure handling the hierarchy. 
 
 
 
@@ -3582,7 +3197,7 @@ A task to wait for.
 
 
 ---
-### Method: ActionExtension.Append\<T1,  T2>(System.Action\<T>, System.Action\<T>)
+### Method: ActionExtension.Append\<T1>(System.Action\<T1>, System.Action\<T1>)
 
  Extension to combine two logging methods into a new one. 
 
@@ -3602,7 +3217,7 @@ A new method combining both methods specified in the parameters.
 
 
 ---
-### Method: ActionExtension.Append\<T1,  T2,  T3>(System.Action\<\<T1>, \<T1,  T2>>, System.Action\<\<T1>, \<T1,  T2>>)
+### Method: ActionExtension.Append\<T1,  T2>(System.Action\<T1,  T2>, System.Action\<T1,  T2>)
 
  Extension to combine two logging methods into a new one. 
 
@@ -3623,7 +3238,7 @@ A new method combining both methods specified in the parameters.
 
 
 ---
-### Method: ActionExtension.Append\<T1,  T2,  T3,  T4>(System.Action\<\<T1>, \<T1,  T2>, \<T1,  T2,  T3>>, System.Action\<\<T1>, \<T1,  T2>, \<T1,  T2,  T3>>)
+### Method: ActionExtension.Append\<T1,  T2,  T3>(System.Action\<T1,  T2,  T3>, System.Action\<T1,  T2,  T3>)
 
  Extension to combine two logging methods into a new one. 
 
@@ -3645,7 +3260,7 @@ A new method combining both methods specified in the parameters.
 
 
 ---
-### Method: ActionExtension.Append\<T1,  T2,  T3,  T4,  T5>(System.Action\<\<T1>, \<T1,  T2>, \<T1,  T2,  T3>, \<T1,  T2,  T3,  T4>>, System.Action\<\<T1>, \<T1,  T2>, \<T1,  T2,  T3>, \<T1,  T2,  T3,  T4>>)
+### Method: ActionExtension.Append\<T1,  T2,  T3,  T4>(System.Action\<T1,  T2,  T3,  T4>, System.Action\<T1,  T2,  T3,  T4>)
 
  Extension to combine two logging methods into a new one. 
 
@@ -3743,7 +3358,7 @@ The has as HEX encoded data.
 
 
 ---
-### Method: Extensions.MustNotBeNull\<T1,  T2>(\<T1>, string)
+### Method: Extensions.MustNotBeNull\<T1>(``0, string)
 
  Throws an [[|T:System.ArgumentNullException]] when passing NULL values to  value . 
 
@@ -3763,7 +3378,7 @@ The has as HEX encoded data.
 
 
 ---
-### Method: Extensions.ToJson\<T1,  T2>(\<T1>)
+### Method: Extensions.ToJson\<T1>(``0)
 
  Extends all objects to have a simple JsonSerialization method. 
 
@@ -3785,13 +3400,6 @@ A JSON string.
 ## Type: Sem.Tools.FileSystemTools
 
  Tools for file system interaction. 
-
-
-
----
-### F:Sem.Tools.FileSystemTools.Sanitizer
-
- A Regex to replace illegal characters from file names. 
 
 
 
@@ -3863,13 +3471,6 @@ Writes a specified value as JSON.
 
 
 ---
-### F:Sem.Data.SprocAccess.SqlServer.SqlDatabase.connectionString
-
- The connection string for the database. 
-
-
-
----
 ### Method: SqlDatabase.#ctor(string)
 
  Initializes a new instance of the [[|T:Sem.Data.SprocAccess.SqlServer.SqlDatabase]] class. 
@@ -3881,7 +3482,7 @@ Writes a specified value as JSON.
 
 
 ---
-### Method: SqlDatabase.Execute\<T1,  T2>(string, Func\<Sem.Data.SprocAccess.IReader, Task\<T>>, Sem.Tools.Logging.LogScope, KeyValuePair\<string, Object>[])
+### Method: SqlDatabase.Execute\<T1>(string, Func\<Sem.Data.SprocAccess.IReader, Task\<T1>>, Sem.Tools.Logging.LogScope, KeyValuePair\<string, Object>[])
 
  Executes a "stored procedure" (aka. "SPROC") and maps the result to a series of POCOs. 
 
@@ -3943,7 +3544,7 @@ A value indicating whether there is still data to be read.
 
 
 ---
-### Method: SqlReader.Get\<T1,  T2>(System.Int32)
+### Method: SqlReader.Get\<T1>(System.Int32)
 
  Reads the value of a column by its index. 
 
@@ -4026,7 +3627,7 @@ The index of the column.
 
 
 ---
-### Method: IDatabase.Execute\<T1,  T2>(string, Func\<IReader, Task\<T>>, Sem.Tools.Logging.LogScope, KeyValuePair\<string, Object>[])
+### Method: IDatabase.Execute\<T1>(string, Func\<IReader, Task\<T1>>, Sem.Tools.Logging.LogScope, KeyValuePair\<string, Object>[])
 
  Executes a "stored procedure" (aka. "SPROC") and maps the result to a series of POCOs. 
 
@@ -4066,7 +3667,7 @@ A value indicating whether there is still data to be read.
 
 
 ---
-### Method: IReader.Get\<T1,  T2>(System.Int32)
+### Method: IReader.Get\<T1>(System.Int32)
 
  Reads the value of a column by its index. 
 
@@ -4149,27 +3750,6 @@ The index of the column.
 
 
 ---
-### F:Sem.Tools.Logging.LogCategories.None
-
- The context is not determined. 
-
-
-
----
-### F:Sem.Tools.Logging.LogCategories.Technical
-
- The log information is pure technical. 
-
-
-
----
-### F:Sem.Tools.Logging.LogCategories.Business
-
- The log information is pure business. 
-
-
-
----
 ## Type: Sem.Tools.Logging.LogCategoryExtensions
 
  Extension class for the enum type [[|T:Sem.Tools.Logging.LogCategories]]. 
@@ -4177,7 +3757,7 @@ The index of the column.
 
 
 ---
-### Method: LogCategoryExtensions.HasFlag\<T1,  T2>(\<T1>, \<T1>)
+### Method: LogCategoryExtensions.HasFlag\<T1>(``0, ``0)
 
  Tests whether a value has a specific category flag set. 
 
@@ -4241,51 +3821,9 @@ A new method that is the combination of  logMethod  and an output to [[|T:System
 
 
 ---
-### F:Sem.Tools.Logging.LogLevel.None
-
- Log never. 
-
-
-
----
-### F:Sem.Tools.Logging.LogLevel.Exception
-
- When writing logs: Specifies that this entry is an exception. When configuring logger: will only allow exceptions to be logged. 
-
-
-
----
-### F:Sem.Tools.Logging.LogLevel.Warning
-
- When writing logs: Specifies that this entry is a warning (less important than an [[|F:Sem.Tools.Logging.LogLevel.Exception]]). When configuring logger: will only allow exceptions and warnings to be logged. 
-
-
-
----
-### F:Sem.Tools.Logging.LogLevel.Information
-
- When writing logs: Specifies that this entry is a information (less important than an [[|F:Sem.Tools.Logging.LogLevel.Exception]] or a [[|F:Sem.Tools.Logging.LogLevel.Warning]]). When configuring logger: will only allow information, exceptions and warnings to be logged. 
-
-
-
----
-### F:Sem.Tools.Logging.LogLevel.Trace
-
- When writing logs: Specifies that this entry is a trace message (something that should be logged while debugging). When configuring logger: will only allow any message to be logged. 
-
-
-
----
 ## Type: Sem.Tools.Logging.LogScope
 
  Simple hierarchical logging scope. 
-
-
-
----
-### F:Sem.Tools.Logging.LogScope.idStack
-
- Gets the structure handling the hierarchy. 
 
 
 
@@ -4454,7 +3992,7 @@ A task to wait for.
 
 
 ---
-### Method: ActionExtension.Append\<T1,  T2>(System.Action\<T>, System.Action\<T>)
+### Method: ActionExtension.Append\<T1>(System.Action\<T1>, System.Action\<T1>)
 
  Extension to combine two logging methods into a new one. 
 
@@ -4474,7 +4012,7 @@ A new method combining both methods specified in the parameters.
 
 
 ---
-### Method: ActionExtension.Append\<T1,  T2,  T3>(System.Action\<\<T1>, \<T1,  T2>>, System.Action\<\<T1>, \<T1,  T2>>)
+### Method: ActionExtension.Append\<T1,  T2>(System.Action\<T1,  T2>, System.Action\<T1,  T2>)
 
  Extension to combine two logging methods into a new one. 
 
@@ -4495,7 +4033,7 @@ A new method combining both methods specified in the parameters.
 
 
 ---
-### Method: ActionExtension.Append\<T1,  T2,  T3,  T4>(System.Action\<\<T1>, \<T1,  T2>, \<T1,  T2,  T3>>, System.Action\<\<T1>, \<T1,  T2>, \<T1,  T2,  T3>>)
+### Method: ActionExtension.Append\<T1,  T2,  T3>(System.Action\<T1,  T2,  T3>, System.Action\<T1,  T2,  T3>)
 
  Extension to combine two logging methods into a new one. 
 
@@ -4517,7 +4055,7 @@ A new method combining both methods specified in the parameters.
 
 
 ---
-### Method: ActionExtension.Append\<T1,  T2,  T3,  T4,  T5>(System.Action\<\<T1>, \<T1,  T2>, \<T1,  T2,  T3>, \<T1,  T2,  T3,  T4>>, System.Action\<\<T1>, \<T1,  T2>, \<T1,  T2,  T3>, \<T1,  T2,  T3,  T4>>)
+### Method: ActionExtension.Append\<T1,  T2,  T3,  T4>(System.Action\<T1,  T2,  T3,  T4>, System.Action\<T1,  T2,  T3,  T4>)
 
  Extension to combine two logging methods into a new one. 
 
@@ -4615,7 +4153,7 @@ The has as HEX encoded data.
 
 
 ---
-### Method: Extensions.MustNotBeNull\<T1,  T2>(\<T1>, string)
+### Method: Extensions.MustNotBeNull\<T1>(``0, string)
 
  Throws an [[|T:System.ArgumentNullException]] when passing NULL values to  value . 
 
@@ -4635,7 +4173,7 @@ The has as HEX encoded data.
 
 
 ---
-### Method: Extensions.ToJson\<T1,  T2>(\<T1>)
+### Method: Extensions.ToJson\<T1>(``0)
 
  Extends all objects to have a simple JsonSerialization method. 
 
@@ -4657,13 +4195,6 @@ A JSON string.
 ## Type: Sem.Tools.FileSystemTools
 
  Tools for file system interaction. 
-
-
-
----
-### F:Sem.Tools.FileSystemTools.Sanitizer
-
- A Regex to replace illegal characters from file names. 
 
 
 
@@ -4735,13 +4266,6 @@ Writes a specified value as JSON.
 
 
 ---
-### F:Sem.Data.SprocAccess.SqlServer.SqlDatabase.connectionString
-
- The connection string for the database. 
-
-
-
----
 ### Method: SqlDatabase.#ctor(string)
 
  Initializes a new instance of the [[|T:Sem.Data.SprocAccess.SqlServer.SqlDatabase]] class. 
@@ -4753,7 +4277,7 @@ Writes a specified value as JSON.
 
 
 ---
-### Method: SqlDatabase.Execute\<T1,  T2>(string, Func\<Sem.Data.SprocAccess.IReader, Task\<T>>, Sem.Tools.Logging.LogScope, KeyValuePair\<string, Object>[])
+### Method: SqlDatabase.Execute\<T1>(string, Func\<Sem.Data.SprocAccess.IReader, Task\<T1>>, Sem.Tools.Logging.LogScope, KeyValuePair\<string, Object>[])
 
  Executes a "stored procedure" (aka. "SPROC") and maps the result to a series of POCOs. 
 
@@ -4815,7 +4339,7 @@ A value indicating whether there is still data to be read.
 
 
 ---
-### Method: SqlReader.Get\<T1,  T2>(System.Int32)
+### Method: SqlReader.Get\<T1>(System.Int32)
 
  Reads the value of a column by its index. 
 
@@ -4898,7 +4422,7 @@ The index of the column.
 
 
 ---
-### Method: IDatabase.Execute\<T1,  T2>(string, Func\<IReader, Task\<T>>, Sem.Tools.Logging.LogScope, KeyValuePair\<string, Object>[])
+### Method: IDatabase.Execute\<T1>(string, Func\<IReader, Task\<T1>>, Sem.Tools.Logging.LogScope, KeyValuePair\<string, Object>[])
 
  Executes a "stored procedure" (aka. "SPROC") and maps the result to a series of POCOs. 
 
@@ -4938,7 +4462,7 @@ A value indicating whether there is still data to be read.
 
 
 ---
-### Method: IReader.Get\<T1,  T2>(System.Int32)
+### Method: IReader.Get\<T1>(System.Int32)
 
  Reads the value of a column by its index. 
 
@@ -5021,27 +4545,6 @@ The index of the column.
 
 
 ---
-### F:Sem.Tools.Logging.LogCategories.None
-
- The context is not determined. 
-
-
-
----
-### F:Sem.Tools.Logging.LogCategories.Technical
-
- The log information is pure technical. 
-
-
-
----
-### F:Sem.Tools.Logging.LogCategories.Business
-
- The log information is pure business. 
-
-
-
----
 ## Type: Sem.Tools.Logging.LogCategoryExtensions
 
  Extension class for the enum type [[|T:Sem.Tools.Logging.LogCategories]]. 
@@ -5049,7 +4552,7 @@ The index of the column.
 
 
 ---
-### Method: LogCategoryExtensions.HasFlag\<T1,  T2>(\<T1>, \<T1>)
+### Method: LogCategoryExtensions.HasFlag\<T1>(``0, ``0)
 
  Tests whether a value has a specific category flag set. 
 
@@ -5113,51 +4616,9 @@ A new method that is the combination of  logMethod  and an output to [[|T:System
 
 
 ---
-### F:Sem.Tools.Logging.LogLevel.None
-
- Log never. 
-
-
-
----
-### F:Sem.Tools.Logging.LogLevel.Exception
-
- When writing logs: Specifies that this entry is an exception. When configuring logger: will only allow exceptions to be logged. 
-
-
-
----
-### F:Sem.Tools.Logging.LogLevel.Warning
-
- When writing logs: Specifies that this entry is a warning (less important than an [[|F:Sem.Tools.Logging.LogLevel.Exception]]). When configuring logger: will only allow exceptions and warnings to be logged. 
-
-
-
----
-### F:Sem.Tools.Logging.LogLevel.Information
-
- When writing logs: Specifies that this entry is a information (less important than an [[|F:Sem.Tools.Logging.LogLevel.Exception]] or a [[|F:Sem.Tools.Logging.LogLevel.Warning]]). When configuring logger: will only allow information, exceptions and warnings to be logged. 
-
-
-
----
-### F:Sem.Tools.Logging.LogLevel.Trace
-
- When writing logs: Specifies that this entry is a trace message (something that should be logged while debugging). When configuring logger: will only allow any message to be logged. 
-
-
-
----
 ## Type: Sem.Tools.Logging.LogScope
 
  Simple hierarchical logging scope. 
-
-
-
----
-### F:Sem.Tools.Logging.LogScope.idStack
-
- Gets the structure handling the hierarchy. 
 
 
 
@@ -5326,7 +4787,7 @@ A task to wait for.
 
 
 ---
-### Method: ActionExtension.Append\<T1,  T2>(System.Action\<T>, System.Action\<T>)
+### Method: ActionExtension.Append\<T1>(System.Action\<T1>, System.Action\<T1>)
 
  Extension to combine two logging methods into a new one. 
 
@@ -5346,7 +4807,7 @@ A new method combining both methods specified in the parameters.
 
 
 ---
-### Method: ActionExtension.Append\<T1,  T2,  T3>(System.Action\<\<T1>, \<T1,  T2>>, System.Action\<\<T1>, \<T1,  T2>>)
+### Method: ActionExtension.Append\<T1,  T2>(System.Action\<T1,  T2>, System.Action\<T1,  T2>)
 
  Extension to combine two logging methods into a new one. 
 
@@ -5367,7 +4828,7 @@ A new method combining both methods specified in the parameters.
 
 
 ---
-### Method: ActionExtension.Append\<T1,  T2,  T3,  T4>(System.Action\<\<T1>, \<T1,  T2>, \<T1,  T2,  T3>>, System.Action\<\<T1>, \<T1,  T2>, \<T1,  T2,  T3>>)
+### Method: ActionExtension.Append\<T1,  T2,  T3>(System.Action\<T1,  T2,  T3>, System.Action\<T1,  T2,  T3>)
 
  Extension to combine two logging methods into a new one. 
 
@@ -5389,7 +4850,7 @@ A new method combining both methods specified in the parameters.
 
 
 ---
-### Method: ActionExtension.Append\<T1,  T2,  T3,  T4,  T5>(System.Action\<\<T1>, \<T1,  T2>, \<T1,  T2,  T3>, \<T1,  T2,  T3,  T4>>, System.Action\<\<T1>, \<T1,  T2>, \<T1,  T2,  T3>, \<T1,  T2,  T3,  T4>>)
+### Method: ActionExtension.Append\<T1,  T2,  T3,  T4>(System.Action\<T1,  T2,  T3,  T4>, System.Action\<T1,  T2,  T3,  T4>)
 
  Extension to combine two logging methods into a new one. 
 
@@ -5487,7 +4948,7 @@ The has as HEX encoded data.
 
 
 ---
-### Method: Extensions.MustNotBeNull\<T1,  T2>(\<T1>, string)
+### Method: Extensions.MustNotBeNull\<T1>(``0, string)
 
  Throws an [[|T:System.ArgumentNullException]] when passing NULL values to  value . 
 
@@ -5507,7 +4968,7 @@ The has as HEX encoded data.
 
 
 ---
-### Method: Extensions.ToJson\<T1,  T2>(\<T1>)
+### Method: Extensions.ToJson\<T1>(``0)
 
  Extends all objects to have a simple JsonSerialization method. 
 
@@ -5529,13 +4990,6 @@ A JSON string.
 ## Type: Sem.Tools.FileSystemTools
 
  Tools for file system interaction. 
-
-
-
----
-### F:Sem.Tools.FileSystemTools.Sanitizer
-
- A Regex to replace illegal characters from file names. 
 
 
 
@@ -5607,7 +5061,7 @@ Writes a specified value as JSON.
 
 
 ---
-### Method: ActionExtension.Append\<T1,  T2>(System.Action\<T>, System.Action\<T>)
+### Method: ActionExtension.Append\<T1>(System.Action\<T1>, System.Action\<T1>)
 
  Extension to combine two logging methods into a new one. 
 
@@ -5627,7 +5081,7 @@ A new method combining both methods specified in the parameters.
 
 
 ---
-### Method: ActionExtension.Append\<T1,  T2,  T3>(System.Action\<\<T1>, \<T1,  T2>>, System.Action\<\<T1>, \<T1,  T2>>)
+### Method: ActionExtension.Append\<T1,  T2>(System.Action\<T1,  T2>, System.Action\<T1,  T2>)
 
  Extension to combine two logging methods into a new one. 
 
@@ -5648,7 +5102,7 @@ A new method combining both methods specified in the parameters.
 
 
 ---
-### Method: ActionExtension.Append\<T1,  T2,  T3,  T4>(System.Action\<\<T1>, \<T1,  T2>, \<T1,  T2,  T3>>, System.Action\<\<T1>, \<T1,  T2>, \<T1,  T2,  T3>>)
+### Method: ActionExtension.Append\<T1,  T2,  T3>(System.Action\<T1,  T2,  T3>, System.Action\<T1,  T2,  T3>)
 
  Extension to combine two logging methods into a new one. 
 
@@ -5670,7 +5124,7 @@ A new method combining both methods specified in the parameters.
 
 
 ---
-### Method: ActionExtension.Append\<T1,  T2,  T3,  T4,  T5>(System.Action\<\<T1>, \<T1,  T2>, \<T1,  T2,  T3>, \<T1,  T2,  T3,  T4>>, System.Action\<\<T1>, \<T1,  T2>, \<T1,  T2,  T3>, \<T1,  T2,  T3,  T4>>)
+### Method: ActionExtension.Append\<T1,  T2,  T3,  T4>(System.Action\<T1,  T2,  T3,  T4>, System.Action\<T1,  T2,  T3,  T4>)
 
  Extension to combine two logging methods into a new one. 
 
@@ -5768,7 +5222,7 @@ The has as HEX encoded data.
 
 
 ---
-### Method: Extensions.MustNotBeNull\<T1,  T2>(\<T1>, string)
+### Method: Extensions.MustNotBeNull\<T1>(``0, string)
 
  Throws an [[|T:System.ArgumentNullException]] when passing NULL values to  value . 
 
@@ -5788,7 +5242,7 @@ The has as HEX encoded data.
 
 
 ---
-### Method: Extensions.ToJson\<T1,  T2>(\<T1>)
+### Method: Extensions.ToJson\<T1>(``0)
 
  Extends all objects to have a simple JsonSerialization method. 
 
@@ -5810,13 +5264,6 @@ A JSON string.
 ## Type: Sem.Tools.FileSystemTools
 
  Tools for file system interaction. 
-
-
-
----
-### F:Sem.Tools.FileSystemTools.Sanitizer
-
- A Regex to replace illegal characters from file names. 
 
 
 
@@ -6051,7 +5498,7 @@ A new menu item.
 
 
 ---
-### Method: MenuItem.For\<T1,  T2>(Object[])
+### Method: MenuItem.For\<T1>(Object[])
 
  Creates menu entries for public methods of  !! UNSUPPORTED: typeparamref !! . 
 
@@ -6100,7 +5547,7 @@ The extracted description.
 
 
 ---
-### Method: MenuItem.GetMethod\<T1,  T2>(System.Linq.Expressions.Expression\<Func\<T>>)
+### Method: MenuItem.GetMethod\<T1>(System.Linq.Expressions.Expression\<Func\<T1>>)
 
  Gets the method information from a [[|T:System.Linq.Expressions.MethodCallExpression]]. 
 
@@ -6119,7 +5566,7 @@ The method information from the called method.
 
 
 ---
-### Method: MenuItem.InvokeAction\<T1,  T2,  T3>(System.Reflection.MethodBase, Object[])
+### Method: MenuItem.InvokeAction\<T1,  T2>(System.Reflection.MethodBase, Object[])
 
  Invokes a method with the needed parameters. 
 
@@ -6151,7 +5598,7 @@ The call result.
 
 
 ---
-### Method: ActionExtension.Append\<T1,  T2>(System.Action\<T>, System.Action\<T>)
+### Method: ActionExtension.Append\<T1>(System.Action\<T1>, System.Action\<T1>)
 
  Extension to combine two logging methods into a new one. 
 
@@ -6171,7 +5618,7 @@ A new method combining both methods specified in the parameters.
 
 
 ---
-### Method: ActionExtension.Append\<T1,  T2,  T3>(System.Action\<\<T1>, \<T1,  T2>>, System.Action\<\<T1>, \<T1,  T2>>)
+### Method: ActionExtension.Append\<T1,  T2>(System.Action\<T1,  T2>, System.Action\<T1,  T2>)
 
  Extension to combine two logging methods into a new one. 
 
@@ -6192,7 +5639,7 @@ A new method combining both methods specified in the parameters.
 
 
 ---
-### Method: ActionExtension.Append\<T1,  T2,  T3,  T4>(System.Action\<\<T1>, \<T1,  T2>, \<T1,  T2,  T3>>, System.Action\<\<T1>, \<T1,  T2>, \<T1,  T2,  T3>>)
+### Method: ActionExtension.Append\<T1,  T2,  T3>(System.Action\<T1,  T2,  T3>, System.Action\<T1,  T2,  T3>)
 
  Extension to combine two logging methods into a new one. 
 
@@ -6214,7 +5661,7 @@ A new method combining both methods specified in the parameters.
 
 
 ---
-### Method: ActionExtension.Append\<T1,  T2,  T3,  T4,  T5>(System.Action\<\<T1>, \<T1,  T2>, \<T1,  T2,  T3>, \<T1,  T2,  T3,  T4>>, System.Action\<\<T1>, \<T1,  T2>, \<T1,  T2,  T3>, \<T1,  T2,  T3,  T4>>)
+### Method: ActionExtension.Append\<T1,  T2,  T3,  T4>(System.Action\<T1,  T2,  T3,  T4>, System.Action\<T1,  T2,  T3,  T4>)
 
  Extension to combine two logging methods into a new one. 
 
@@ -6312,7 +5759,7 @@ The has as HEX encoded data.
 
 
 ---
-### Method: Extensions.MustNotBeNull\<T1,  T2>(\<T1>, string)
+### Method: Extensions.MustNotBeNull\<T1>(``0, string)
 
  Throws an [[|T:System.ArgumentNullException]] when passing NULL values to  value . 
 
@@ -6332,7 +5779,7 @@ The has as HEX encoded data.
 
 
 ---
-### Method: Extensions.ToJson\<T1,  T2>(\<T1>)
+### Method: Extensions.ToJson\<T1>(``0)
 
  Extends all objects to have a simple JsonSerialization method. 
 
@@ -6354,13 +5801,6 @@ A JSON string.
 ## Type: Sem.Tools.FileSystemTools
 
  Tools for file system interaction. 
-
-
-
----
-### F:Sem.Tools.FileSystemTools.Sanitizer
-
- A Regex to replace illegal characters from file names. 
 
 
 
@@ -6432,27 +5872,6 @@ Writes a specified value as JSON.
 
 
 ---
-### F:Sem.Tools.Logging.LogCategories.None
-
- The context is not determined. 
-
-
-
----
-### F:Sem.Tools.Logging.LogCategories.Technical
-
- The log information is pure technical. 
-
-
-
----
-### F:Sem.Tools.Logging.LogCategories.Business
-
- The log information is pure business. 
-
-
-
----
 ## Type: Sem.Tools.Logging.LogCategoryExtensions
 
  Extension class for the enum type [[|T:Sem.Tools.Logging.LogCategories]]. 
@@ -6460,7 +5879,7 @@ Writes a specified value as JSON.
 
 
 ---
-### Method: LogCategoryExtensions.HasFlag\<T1,  T2>(\<T1>, \<T1>)
+### Method: LogCategoryExtensions.HasFlag\<T1>(``0, ``0)
 
  Tests whether a value has a specific category flag set. 
 
@@ -6524,51 +5943,9 @@ A new method that is the combination of  logMethod  and an output to [[|T:System
 
 
 ---
-### F:Sem.Tools.Logging.LogLevel.None
-
- Log never. 
-
-
-
----
-### F:Sem.Tools.Logging.LogLevel.Exception
-
- When writing logs: Specifies that this entry is an exception. When configuring logger: will only allow exceptions to be logged. 
-
-
-
----
-### F:Sem.Tools.Logging.LogLevel.Warning
-
- When writing logs: Specifies that this entry is a warning (less important than an [[|F:Sem.Tools.Logging.LogLevel.Exception]]). When configuring logger: will only allow exceptions and warnings to be logged. 
-
-
-
----
-### F:Sem.Tools.Logging.LogLevel.Information
-
- When writing logs: Specifies that this entry is a information (less important than an [[|F:Sem.Tools.Logging.LogLevel.Exception]] or a [[|F:Sem.Tools.Logging.LogLevel.Warning]]). When configuring logger: will only allow information, exceptions and warnings to be logged. 
-
-
-
----
-### F:Sem.Tools.Logging.LogLevel.Trace
-
- When writing logs: Specifies that this entry is a trace message (something that should be logged while debugging). When configuring logger: will only allow any message to be logged. 
-
-
-
----
 ## Type: Sem.Tools.Logging.LogScope
 
  Simple hierarchical logging scope. 
-
-
-
----
-### F:Sem.Tools.Logging.LogScope.idStack
-
- Gets the structure handling the hierarchy. 
 
 
 
@@ -6737,7 +6114,7 @@ A task to wait for.
 
 
 ---
-### Method: ActionExtension.Append\<T1,  T2>(System.Action\<T>, System.Action\<T>)
+### Method: ActionExtension.Append\<T1>(System.Action\<T1>, System.Action\<T1>)
 
  Extension to combine two logging methods into a new one. 
 
@@ -6757,7 +6134,7 @@ A new method combining both methods specified in the parameters.
 
 
 ---
-### Method: ActionExtension.Append\<T1,  T2,  T3>(System.Action\<\<T1>, \<T1,  T2>>, System.Action\<\<T1>, \<T1,  T2>>)
+### Method: ActionExtension.Append\<T1,  T2>(System.Action\<T1,  T2>, System.Action\<T1,  T2>)
 
  Extension to combine two logging methods into a new one. 
 
@@ -6778,7 +6155,7 @@ A new method combining both methods specified in the parameters.
 
 
 ---
-### Method: ActionExtension.Append\<T1,  T2,  T3,  T4>(System.Action\<\<T1>, \<T1,  T2>, \<T1,  T2,  T3>>, System.Action\<\<T1>, \<T1,  T2>, \<T1,  T2,  T3>>)
+### Method: ActionExtension.Append\<T1,  T2,  T3>(System.Action\<T1,  T2,  T3>, System.Action\<T1,  T2,  T3>)
 
  Extension to combine two logging methods into a new one. 
 
@@ -6800,7 +6177,7 @@ A new method combining both methods specified in the parameters.
 
 
 ---
-### Method: ActionExtension.Append\<T1,  T2,  T3,  T4,  T5>(System.Action\<\<T1>, \<T1,  T2>, \<T1,  T2,  T3>, \<T1,  T2,  T3,  T4>>, System.Action\<\<T1>, \<T1,  T2>, \<T1,  T2,  T3>, \<T1,  T2,  T3,  T4>>)
+### Method: ActionExtension.Append\<T1,  T2,  T3,  T4>(System.Action\<T1,  T2,  T3,  T4>, System.Action\<T1,  T2,  T3,  T4>)
 
  Extension to combine two logging methods into a new one. 
 
@@ -6898,7 +6275,7 @@ The has as HEX encoded data.
 
 
 ---
-### Method: Extensions.MustNotBeNull\<T1,  T2>(\<T1>, string)
+### Method: Extensions.MustNotBeNull\<T1>(``0, string)
 
  Throws an [[|T:System.ArgumentNullException]] when passing NULL values to  value . 
 
@@ -6918,7 +6295,7 @@ The has as HEX encoded data.
 
 
 ---
-### Method: Extensions.ToJson\<T1,  T2>(\<T1>)
+### Method: Extensions.ToJson\<T1>(``0)
 
  Extends all objects to have a simple JsonSerialization method. 
 
@@ -6940,13 +6317,6 @@ A JSON string.
 ## Type: Sem.Tools.FileSystemTools
 
  Tools for file system interaction. 
-
-
-
----
-### F:Sem.Tools.FileSystemTools.Sanitizer
-
- A Regex to replace illegal characters from file names. 
 
 
 
@@ -7018,27 +6388,6 @@ Writes a specified value as JSON.
 
 
 ---
-### F:Sem.Tools.Logging.LogCategories.None
-
- The context is not determined. 
-
-
-
----
-### F:Sem.Tools.Logging.LogCategories.Technical
-
- The log information is pure technical. 
-
-
-
----
-### F:Sem.Tools.Logging.LogCategories.Business
-
- The log information is pure business. 
-
-
-
----
 ## Type: Sem.Tools.Logging.LogCategoryExtensions
 
  Extension class for the enum type [[|T:Sem.Tools.Logging.LogCategories]]. 
@@ -7046,7 +6395,7 @@ Writes a specified value as JSON.
 
 
 ---
-### Method: LogCategoryExtensions.HasFlag\<T1,  T2>(\<T1>, \<T1>)
+### Method: LogCategoryExtensions.HasFlag\<T1>(``0, ``0)
 
  Tests whether a value has a specific category flag set. 
 
@@ -7110,51 +6459,9 @@ A new method that is the combination of  logMethod  and an output to [[|T:System
 
 
 ---
-### F:Sem.Tools.Logging.LogLevel.None
-
- Log never. 
-
-
-
----
-### F:Sem.Tools.Logging.LogLevel.Exception
-
- When writing logs: Specifies that this entry is an exception. When configuring logger: will only allow exceptions to be logged. 
-
-
-
----
-### F:Sem.Tools.Logging.LogLevel.Warning
-
- When writing logs: Specifies that this entry is a warning (less important than an [[|F:Sem.Tools.Logging.LogLevel.Exception]]). When configuring logger: will only allow exceptions and warnings to be logged. 
-
-
-
----
-### F:Sem.Tools.Logging.LogLevel.Information
-
- When writing logs: Specifies that this entry is a information (less important than an [[|F:Sem.Tools.Logging.LogLevel.Exception]] or a [[|F:Sem.Tools.Logging.LogLevel.Warning]]). When configuring logger: will only allow information, exceptions and warnings to be logged. 
-
-
-
----
-### F:Sem.Tools.Logging.LogLevel.Trace
-
- When writing logs: Specifies that this entry is a trace message (something that should be logged while debugging). When configuring logger: will only allow any message to be logged. 
-
-
-
----
 ## Type: Sem.Tools.Logging.LogScope
 
  Simple hierarchical logging scope. 
-
-
-
----
-### F:Sem.Tools.Logging.LogScope.idStack
-
- Gets the structure handling the hierarchy. 
 
 
 
@@ -7323,7 +6630,7 @@ A task to wait for.
 
 
 ---
-### Method: ActionExtension.Append\<T1,  T2>(System.Action\<T>, System.Action\<T>)
+### Method: ActionExtension.Append\<T1>(System.Action\<T1>, System.Action\<T1>)
 
  Extension to combine two logging methods into a new one. 
 
@@ -7343,7 +6650,7 @@ A new method combining both methods specified in the parameters.
 
 
 ---
-### Method: ActionExtension.Append\<T1,  T2,  T3>(System.Action\<\<T1>, \<T1,  T2>>, System.Action\<\<T1>, \<T1,  T2>>)
+### Method: ActionExtension.Append\<T1,  T2>(System.Action\<T1,  T2>, System.Action\<T1,  T2>)
 
  Extension to combine two logging methods into a new one. 
 
@@ -7364,7 +6671,7 @@ A new method combining both methods specified in the parameters.
 
 
 ---
-### Method: ActionExtension.Append\<T1,  T2,  T3,  T4>(System.Action\<\<T1>, \<T1,  T2>, \<T1,  T2,  T3>>, System.Action\<\<T1>, \<T1,  T2>, \<T1,  T2,  T3>>)
+### Method: ActionExtension.Append\<T1,  T2,  T3>(System.Action\<T1,  T2,  T3>, System.Action\<T1,  T2,  T3>)
 
  Extension to combine two logging methods into a new one. 
 
@@ -7386,7 +6693,7 @@ A new method combining both methods specified in the parameters.
 
 
 ---
-### Method: ActionExtension.Append\<T1,  T2,  T3,  T4,  T5>(System.Action\<\<T1>, \<T1,  T2>, \<T1,  T2,  T3>, \<T1,  T2,  T3,  T4>>, System.Action\<\<T1>, \<T1,  T2>, \<T1,  T2,  T3>, \<T1,  T2,  T3,  T4>>)
+### Method: ActionExtension.Append\<T1,  T2,  T3,  T4>(System.Action\<T1,  T2,  T3,  T4>, System.Action\<T1,  T2,  T3,  T4>)
 
  Extension to combine two logging methods into a new one. 
 
@@ -7484,7 +6791,7 @@ The has as HEX encoded data.
 
 
 ---
-### Method: Extensions.MustNotBeNull\<T1,  T2>(\<T1>, string)
+### Method: Extensions.MustNotBeNull\<T1>(``0, string)
 
  Throws an [[|T:System.ArgumentNullException]] when passing NULL values to  value . 
 
@@ -7504,7 +6811,7 @@ The has as HEX encoded data.
 
 
 ---
-### Method: Extensions.ToJson\<T1,  T2>(\<T1>)
+### Method: Extensions.ToJson\<T1>(``0)
 
  Extends all objects to have a simple JsonSerialization method. 
 
@@ -7526,13 +6833,6 @@ A JSON string.
 ## Type: Sem.Tools.FileSystemTools
 
  Tools for file system interaction. 
-
-
-
----
-### F:Sem.Tools.FileSystemTools.Sanitizer
-
- A Regex to replace illegal characters from file names. 
 
 
 
@@ -7604,7 +6904,7 @@ Writes a specified value as JSON.
 
 
 ---
-### Method: ActionExtension.Append\<T1,  T2>(System.Action\<T>, System.Action\<T>)
+### Method: ActionExtension.Append\<T1>(System.Action\<T1>, System.Action\<T1>)
 
  Extension to combine two logging methods into a new one. 
 
@@ -7624,7 +6924,7 @@ A new method combining both methods specified in the parameters.
 
 
 ---
-### Method: ActionExtension.Append\<T1,  T2,  T3>(System.Action\<\<T1>, \<T1,  T2>>, System.Action\<\<T1>, \<T1,  T2>>)
+### Method: ActionExtension.Append\<T1,  T2>(System.Action\<T1,  T2>, System.Action\<T1,  T2>)
 
  Extension to combine two logging methods into a new one. 
 
@@ -7645,7 +6945,7 @@ A new method combining both methods specified in the parameters.
 
 
 ---
-### Method: ActionExtension.Append\<T1,  T2,  T3,  T4>(System.Action\<\<T1>, \<T1,  T2>, \<T1,  T2,  T3>>, System.Action\<\<T1>, \<T1,  T2>, \<T1,  T2,  T3>>)
+### Method: ActionExtension.Append\<T1,  T2,  T3>(System.Action\<T1,  T2,  T3>, System.Action\<T1,  T2,  T3>)
 
  Extension to combine two logging methods into a new one. 
 
@@ -7667,7 +6967,7 @@ A new method combining both methods specified in the parameters.
 
 
 ---
-### Method: ActionExtension.Append\<T1,  T2,  T3,  T4,  T5>(System.Action\<\<T1>, \<T1,  T2>, \<T1,  T2,  T3>, \<T1,  T2,  T3,  T4>>, System.Action\<\<T1>, \<T1,  T2>, \<T1,  T2,  T3>, \<T1,  T2,  T3,  T4>>)
+### Method: ActionExtension.Append\<T1,  T2,  T3,  T4>(System.Action\<T1,  T2,  T3,  T4>, System.Action\<T1,  T2,  T3,  T4>)
 
  Extension to combine two logging methods into a new one. 
 
@@ -7765,7 +7065,7 @@ The has as HEX encoded data.
 
 
 ---
-### Method: Extensions.MustNotBeNull\<T1,  T2>(\<T1>, string)
+### Method: Extensions.MustNotBeNull\<T1>(``0, string)
 
  Throws an [[|T:System.ArgumentNullException]] when passing NULL values to  value . 
 
@@ -7785,7 +7085,7 @@ The has as HEX encoded data.
 
 
 ---
-### Method: Extensions.ToJson\<T1,  T2>(\<T1>)
+### Method: Extensions.ToJson\<T1>(``0)
 
  Extends all objects to have a simple JsonSerialization method. 
 
@@ -7807,13 +7107,6 @@ A JSON string.
 ## Type: Sem.Tools.FileSystemTools
 
  Tools for file system interaction. 
-
-
-
----
-### F:Sem.Tools.FileSystemTools.Sanitizer
-
- A Regex to replace illegal characters from file names. 
 
 
 
