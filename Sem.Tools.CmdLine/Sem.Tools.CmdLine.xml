@@ -1,0 +1,148 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Sem.Tools.CmdLine</name>
+    </assembly>
+    <members>
+        <member name="T:Sem.Tools.CmdLine.Menu">
+            <summary>
+            Extension methods to handle command line menu definitions.
+            </summary>
+        </member>
+        <member name="M:Sem.Tools.CmdLine.Menu.Show(Sem.Tools.CmdLine.MenuItem[])">
+            <summary>
+            Show the menu items and wait for selection of user.
+            </summary>
+            <param name="items">The items to display.</param>
+            <returns>A task to wait for.</returns>
+        </member>
+        <member name="T:Sem.Tools.CmdLine.MenuItem">
+            <summary>
+            Menu item for a command line program. An array of menu items can be displayed using the extension method
+            <see cref="M:Sem.Tools.CmdLine.Menu.Show(Sem.Tools.CmdLine.MenuItem[])"/>.
+            </summary>
+            <example>
+            <code>
+            await new[]
+            {
+                MenuItem.For&lt;AzureToLocalFolderBackupActions&gt;(),
+                MenuItem.For&lt;EmailToLocalFolderBackupActions&gt;(),
+                MenuItem.For&lt;EmailToAzureBackupActions&gt;(),
+                MenuItem.For&lt;FolderToFolderBackupActions&gt;(),
+                MenuItem.For&lt;FolderToAzureBackupActions&gt;(),
+                MenuItem.For&lt;IntegrationTests&gt;(),
+            }.Show();
+            </code>
+            </example>
+        </member>
+        <member name="M:Sem.Tools.CmdLine.MenuItem.#ctor(System.String,System.Func{System.Threading.Tasks.Task},System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Sem.Tools.CmdLine.MenuItem"/> class.
+            </summary>
+            <param name="displayString">The "label" that should be shown on the screen to describe the functionality.</param>
+            <param name="action">The action to perform when the user selects this menu item.</param>
+            <param name="suffixForMenu">A suffix for the display string.</param>
+        </member>
+        <member name="P:Sem.Tools.CmdLine.MenuItem.DisplayString">
+            <summary>
+            Gets the "label" that should be shown on the screen to describe the functionality.
+            </summary>
+        </member>
+        <member name="P:Sem.Tools.CmdLine.MenuItem.Action">
+            <summary>
+            Gets the action to perform when the user selects this menu item.
+            </summary>
+        </member>
+        <member name="M:Sem.Tools.CmdLine.MenuItem.Print(System.Linq.Expressions.Expression{System.Func{System.Collections.Generic.IAsyncEnumerable{System.String}}},System.String)">
+            <summary>
+            Creates a <see cref="T:Sem.Tools.CmdLine.MenuItem"/> from an expression - is meant to be used with a <see cref="T:System.Linq.Expressions.MethodCallExpression"/>.
+            </summary>
+            <param name="action">The expression to create a menu item for.</param>
+            <param name="suffixForMenu">A suffix for the description of the method (the description will be extracted from the documentation XML file).</param>
+            <returns>A new menu item.</returns>
+        </member>
+        <member name="M:Sem.Tools.CmdLine.MenuItem.Print(System.Linq.Expressions.Expression{System.Func{System.Threading.Tasks.Task{System.String}}},System.String)">
+            <summary>
+            Creates a <see cref="T:Sem.Tools.CmdLine.MenuItem"/> from an expression - is meant to be used with a <see cref="T:System.Linq.Expressions.MethodCallExpression"/>.
+            </summary>
+            <param name="action">The expression to create a menu item for.</param>
+            <param name="suffixForMenu">A suffix for the description of the method (the description will be extracted from the documentation XML file).</param>
+            <returns>A new menu item.</returns>
+        </member>
+        <member name="M:Sem.Tools.CmdLine.MenuItem.Print(System.Linq.Expressions.Expression{System.Func{System.Threading.Tasks.Task{System.Collections.Generic.IEnumerable{System.String}}}},System.String)">
+            <summary>
+            Creates a <see cref="T:Sem.Tools.CmdLine.MenuItem"/> from an expression - is meant to be used with a <see cref="T:System.Linq.Expressions.MethodCallExpression"/>.
+            </summary>
+            <param name="action">The expression to create a menu item for.</param>
+            <param name="suffixForMenu">A suffix for the description of the method (the description will be extracted from the documentation XML file).</param>
+            <returns>A new menu item.</returns>
+        </member>
+        <member name="M:Sem.Tools.CmdLine.MenuItem.Print(System.String,System.Func{System.Threading.Tasks.Task{System.String}},System.String)">
+            <summary>
+            Creates a <see cref="T:Sem.Tools.CmdLine.MenuItem"/> from an expression - is meant to be used with a <see cref="T:System.Linq.Expressions.MethodCallExpression"/>.
+            </summary>
+            <param name="displayString">The explicit "label" to be used for the menu entry.</param>
+            <param name="action">The expression to create a menu item for.</param>
+            <param name="suffixForMenu">A suffix for the description of the method (the description will be extracted from the documentation XML file).</param>
+            <returns>A new menu item.</returns>
+        </member>
+        <member name="M:Sem.Tools.CmdLine.MenuItem.Print(System.String,System.Func{System.Collections.Generic.IAsyncEnumerable{System.String}},System.String)">
+            <summary>
+            Creates a <see cref="T:Sem.Tools.CmdLine.MenuItem"/> from an expression - is meant to be used with a <see cref="T:System.Linq.Expressions.MethodCallExpression"/>.
+            </summary>
+            <param name="displayString">The explicit "label" to be used for the menu entry.</param>
+            <param name="action">The expression to create a menu item for.</param>
+            <param name="suffixForMenu">A suffix for the description of the method (the description will be extracted from the documentation XML file).</param>
+            <returns>A new menu item.</returns>
+        </member>
+        <member name="M:Sem.Tools.CmdLine.MenuItem.Print(System.String,System.Func{System.Threading.Tasks.Task{System.Collections.Generic.IEnumerable{System.String}}},System.String)">
+            <summary>
+            Creates a <see cref="T:Sem.Tools.CmdLine.MenuItem"/> from an expression - is meant to be used with a <see cref="T:System.Linq.Expressions.MethodCallExpression"/>.
+            </summary>
+            <param name="displayString">The explicit "label" to be used for the menu entry.</param>
+            <param name="action">The expression to create a menu item for.</param>
+            <param name="suffixForMenu">A suffix for the description of the method (the description will be extracted from the documentation XML file).</param>
+            <returns>A new menu item.</returns>
+        </member>
+        <member name="M:Sem.Tools.CmdLine.MenuItem.For``1(System.Object[])">
+            <summary>
+            Creates menu entries for public methods of <typeparamref name="T"/>.
+            </summary>
+            <typeparam name="T">The type to create entries for.</typeparam>
+            <param name="parameters">Parameter values for the methods.</param>
+            <returns>A menu entry with sub menu items.</returns>
+        </member>
+        <member name="M:Sem.Tools.CmdLine.MenuItem.GetDescriptionFromXml(System.Reflection.MemberInfo)">
+            <summary>
+            Extracts the description from the XML documentation of a method (the XML file mst be generated while building the assembly).
+            </summary>
+            <param name="method">The method to get the description for.</param>
+            <returns>The extracted description.</returns>
+        </member>
+        <member name="M:Sem.Tools.CmdLine.MenuItem.GetDescriptionFromXml(System.Type)">
+            <summary>
+            Extracts the description from the XML documentation of a class (the XML file mst be generated while building the assembly).
+            </summary>
+            <param name="type">The class type to get the description for.</param>
+            <returns>The extracted description.</returns>
+        </member>
+        <member name="M:Sem.Tools.CmdLine.MenuItem.GetMethod``1(System.Linq.Expressions.Expression{System.Func{``0}})">
+            <summary>
+            Gets the method information from a <see cref="T:System.Linq.Expressions.MethodCallExpression"/>.
+            </summary>
+            <typeparam name="T">The return type of the method.</typeparam>
+            <param name="action">The expression calling a method.</param>
+            <returns>The method information from the called method.</returns>
+        </member>
+        <member name="M:Sem.Tools.CmdLine.MenuItem.InvokeAction``2(System.Reflection.MethodBase,System.Object[])">
+            <summary>
+            Invokes a method with the needed parameters.
+            </summary>
+            <typeparam name="TResult">The result type of the method.</typeparam>
+            <typeparam name="TClass">The class type that contains the method.</typeparam>
+            <param name="methodInfo">The method information.</param>
+            <param name="parameters">The potential parameters for the method call.</param>
+            <returns>The call result.</returns>
+        </member>
+    </members>
+</doc>

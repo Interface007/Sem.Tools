@@ -23,10 +23,19 @@
             <param name="baseFolder">The base folder for the data files.</param>
         </member>
         <member name="M:Sem.Data.SprocAccess.FileSystem.TxtDatabase.Execute``1(System.String,System.Func{Sem.Data.SprocAccess.IReader,System.Threading.Tasks.Task{``0}},Sem.Tools.Logging.LogScope,System.Collections.Generic.KeyValuePair{System.String,System.Object}[])">
-            <inheritdoc />
+            <summary>
+            Executes a "stored procedure" (aka. "SPROC") and maps the result to a series of POCOs.
+            </summary>
+            <typeparam name="T">The POCO type to map the result to.</typeparam>
+            <param name="sproc">The name of the stored procedure (e.g. "sys.sp_databases" or "[sys].[sp_databases]").</param>
+            <param name="readerToObject">A function that maps a single result into a POCO instance.</param>
+            <param name="logger">Optional logger.</param>
+            <param name="parameters">The named parameters for the SPROC.</param>
+            <returns>A series of POCO instances.</returns>
         </member>
         <member name="M:Sem.Data.SprocAccess.FileSystem.TxtDatabase.DisposeAsync">
-            <inheritdoc />
+            <summary>Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources asynchronously.</summary>
+            <returns>A task that represents the asynchronous dispose operation.</returns>
         </member>
         <member name="T:Sem.Data.SprocAccess.FileSystem.TxtReader">
             <summary>

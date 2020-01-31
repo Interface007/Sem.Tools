@@ -27,7 +27,8 @@ namespace Sem.MdDocGenerator
                 { "typeparam".Trim(), new [] {"#### Type parameters:\n|Name | Description |\n|-----|------|\n|{0}|{1}|\n", "|{0}: |{1}|\n" }},
                 { "param    ".Trim(), new [] {"#### Parameters:\n|Name | Description |\n|-----|------|\n|{0}|{1}|\n", "|{0}: |{1}|\n" }},
                 { "exception".Trim(), new [] {"[[{0}|{0}]]: {1}\n\n" }},
-                { "returns  ".Trim(), new [] {"\nReturns: {0}\n\n"}},
+                { "returns  ".Trim(), new [] {"\n#### Returns:\n{0}\n\n"}},
+                { "paramref ".Trim(), new [] {" {0} "}},
                 { "none     ".Trim(), new [] {""}}
             };
 
@@ -59,7 +60,8 @@ namespace Sem.MdDocGenerator
                 { "param    ".Trim(), x => d("name", x) },
                 { "exception".Trim(), x => d("cref", x) },
                 { "returns  ".Trim(), x => new[] { x.Nodes().ToMarkDown(currentNameSpace) } },
-                { "none     ".Trim(), x => new string[0]}
+                { "paramref ".Trim(), x => d("name", x)},
+                { "none     ".Trim(), x => new string[0]},
             };
 
             if (e.NodeType == XmlNodeType.Element)
