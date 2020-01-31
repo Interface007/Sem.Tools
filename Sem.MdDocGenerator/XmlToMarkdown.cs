@@ -24,16 +24,19 @@ namespace Sem.MdDocGenerator
                 {"example", "_C# code_\n\n```c#\n{0}\n```\n\n"},
                 {"seePage", "[[{1}|{0}]]"},
                 {"seeAnchor", "[{1}]({0})"},
+                {"typeparam", "|Name | Description |\n|-----|------|\n|{0}: |{1}|\n" },
                 {"param", "|Name | Description |\n|-----|------|\n|{0}: |{1}|\n" },
                 {"exception", "[[{0}|{0}]]: {1}\n\n" },
                 {"returns", "Returns: {0}\n\n"},
                 {"none", ""}
             };
+
             var d = new Func<string, XElement, string[]>((att, node) => new[]
             {
                 node.Attribute(att)?.Value,
                 node.Nodes().ToMarkDown()
             });
+
             var methods = new Dictionary<string, Func<XElement, IEnumerable<string>>>
             {
                 {"doc", x=> new[]{
