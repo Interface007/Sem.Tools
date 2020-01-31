@@ -17,7 +17,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sem.Data.SprocAccess.SqlSer
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sem.Data.SprocAccess.IntegrationTests", "Sem.Data.SprocAccess.IntegrationTests\Sem.Data.SprocAccess.IntegrationTests.csproj", "{FC940922-E744-4D78-A683-A1D6EF78C148}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sem.Data.SprocAccess.FileSystem", "Sem.Data.SprocAccess.FileSystem\Sem.Data.SprocAccess.FileSystem.csproj", "{C4AE45D3-88D8-440F-BA7F-9141E219F55D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sem.Data.SprocAccess.FileSystem", "Sem.Data.SprocAccess.FileSystem\Sem.Data.SprocAccess.FileSystem.csproj", "{C4AE45D3-88D8-440F-BA7F-9141E219F55D}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "30 Data Access", "30 Data Access", "{3D333F70-DAA6-4586-BF4F-9330BB52DFE9}"
 EndProject
@@ -25,7 +25,17 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "20 Logging", "20 Logging", 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "10 Tools", "10 Tools", "{CA13352C-39A6-44F0-B276-C9C6D11A6EB8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sem.Data.SprocAccess.FileSystemTests", "Sem.Data.SprocAccess.FileSystemTests\Sem.Data.SprocAccess.FileSystemTests.csproj", "{C00E3448-388F-4FBE-B9CE-43100D47CA54}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sem.Data.SprocAccess.FileSystemTests", "Sem.Data.SprocAccess.FileSystemTests\Sem.Data.SprocAccess.FileSystemTests.csproj", "{C00E3448-388F-4FBE-B9CE-43100D47CA54}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sem.Tools.Tests", "Sem.Tools.Tests\Sem.Tools.Tests.csproj", "{C5984BC4-5CFF-492E-B038-AABDB05A1131}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "00 Solution Items", "00 Solution Items", "{9EB11DEE-AE0D-4641-A965-67A701AC1E7D}"
+	ProjectSection(SolutionItems) = preProject
+		azure-pipelines.yml = azure-pipelines.yml
+		README.md = README.md
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sem.MdDocGenerator", "Sem.MdDocGenerator\Sem.MdDocGenerator.csproj", "{33581FB6-74C5-42EA-B406-A2D8E54EA710}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -69,6 +79,14 @@ Global
 		{C00E3448-388F-4FBE-B9CE-43100D47CA54}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C00E3448-388F-4FBE-B9CE-43100D47CA54}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C00E3448-388F-4FBE-B9CE-43100D47CA54}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C5984BC4-5CFF-492E-B038-AABDB05A1131}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C5984BC4-5CFF-492E-B038-AABDB05A1131}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C5984BC4-5CFF-492E-B038-AABDB05A1131}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C5984BC4-5CFF-492E-B038-AABDB05A1131}.Release|Any CPU.Build.0 = Release|Any CPU
+		{33581FB6-74C5-42EA-B406-A2D8E54EA710}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{33581FB6-74C5-42EA-B406-A2D8E54EA710}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{33581FB6-74C5-42EA-B406-A2D8E54EA710}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{33581FB6-74C5-42EA-B406-A2D8E54EA710}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -83,6 +101,7 @@ Global
 		{FC940922-E744-4D78-A683-A1D6EF78C148} = {3D333F70-DAA6-4586-BF4F-9330BB52DFE9}
 		{C4AE45D3-88D8-440F-BA7F-9141E219F55D} = {3D333F70-DAA6-4586-BF4F-9330BB52DFE9}
 		{C00E3448-388F-4FBE-B9CE-43100D47CA54} = {3D333F70-DAA6-4586-BF4F-9330BB52DFE9}
+		{C5984BC4-5CFF-492E-B038-AABDB05A1131} = {CA13352C-39A6-44F0-B276-C9C6D11A6EB8}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {75721008-2AE9-4CA2-BDA7-7351B84C8BD0}

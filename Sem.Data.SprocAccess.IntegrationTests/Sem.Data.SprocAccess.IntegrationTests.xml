@@ -4,6 +4,30 @@
         <name>Sem.Data.SprocAccess.IntegrationTests</name>
     </assembly>
     <members>
+        <member name="T:Sem.Data.SprocAccess.IntegrationTests.BatchLogExtension">
+            <summary>
+            Logging batched items - this is only implemented to test the flexibility of the logging, not to be used in production.
+            The way it is currently implemented does not provide any benefit to the logging process.
+            </summary>
+        </member>
+        <member name="F:Sem.Data.SprocAccess.IntegrationTests.BatchLogExtension.Queue">
+            <summary>
+            Queue to collect logging items.
+            </summary>
+        </member>
+        <member name="F:Sem.Data.SprocAccess.IntegrationTests.BatchLogExtension.QueueLock">
+            <summary>
+            Lock to be able to pull a consistent set of items from the queue without other threads to interfere.
+            </summary>
+        </member>
+        <member name="M:Sem.Data.SprocAccess.IntegrationTests.BatchLogExtension.Batch(System.Action{Sem.Tools.Logging.LogCategories,Sem.Tools.Logging.LogLevel,Sem.Tools.Logging.LogScope,System.String},System.Int32)">
+            <summary>
+            Simply batches the log execution - this has NO real benefit ... for testing purpose only.
+            </summary>
+            <param name="currentAction">The current log method.</param>
+            <param name="batchSize">The count of logs to be collected.</param>
+            <returns>A new log method.</returns>
+        </member>
         <member name="T:Sem.Data.SprocAccess.IntegrationTests.Program">
             <summary>
             Simple executable that will read the database named of a local SQL server instance

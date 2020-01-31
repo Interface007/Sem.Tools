@@ -5,7 +5,6 @@
 // ReSharper disable MemberCanBePrivate.Global
 // ReSharper disable ExplicitCallerInfoArgument
 // ReSharper disable AutoPropertyCanBeMadeGetOnly.Global
-
 namespace Sem.Tools.Logging
 {
     using System;
@@ -151,7 +150,6 @@ namespace Sem.Tools.Logging
         /// </summary>
         public void Dispose()
         {
-            GC.SuppressFinalize(this);
             var ms = (DateTime.UtcNow - this.start).TotalMilliseconds;
             this.Log(LogCategories.Technical, LogLevel.Trace, "Finished scope", new { this.scopeName, ms });
             this.idStack.TryPop(out _);

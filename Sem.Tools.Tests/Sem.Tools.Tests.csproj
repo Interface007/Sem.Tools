@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
@@ -6,14 +6,10 @@
     <Version>1.0.7</Version>
     <Authors>Sven Erik Matzen</Authors>
     <Product>Sem.Tools</Product>
-    <Description>Simple scoped logging.</Description>
+    <Description>Tests for the assembly Sem.Tools.</Description>
     <Copyright>Sven Erik Matzen</Copyright>
 
     <IsPackable>false</IsPackable>
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <DocumentationFile>C:\Users\matzensv\source\GitHub\Sem.Tools\Sem.Tools.Logging.Tests\Sem.Tools.Logging.Tests.xml</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
@@ -44,7 +40,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Sem.Tools.Logging\Sem.Tools.Logging.csproj" />
+    <ProjectReference Include="..\Sem.Tools\Sem.Tools.csproj" />
   </ItemGroup>
 
 </Project>

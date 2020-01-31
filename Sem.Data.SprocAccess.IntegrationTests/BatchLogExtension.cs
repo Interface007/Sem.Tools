@@ -11,7 +11,7 @@ namespace Sem.Data.SprocAccess.IntegrationTests
 
     /// <summary>
     /// Logging batched items - this is only implemented to test the flexibility of the logging, not to be used in production.
-    /// The way it is currently implemented does not provide any benefit to the logging process!
+    /// The way it is currently implemented does not provide any benefit to the logging process.
     /// </summary>
     public static class BatchLogExtension
     {
@@ -40,12 +40,14 @@ namespace Sem.Data.SprocAccess.IntegrationTests
 
             return (logCategories, logLevel, logScope, message) =>
             {
+                // ReSharper disable InconsistentlySynchronizedField
                 Queue.Enqueue(new Tuple<LogCategories, LogLevel, LogScope, string>(logCategories, logLevel, logScope, message));
                 if (Queue.Count < batchSize)
                 {
                     return;
                 }
 
+                // ReSharper restore InconsistentlySynchronizedField
                 var items = new List<Tuple<LogCategories, LogLevel, LogScope, string>>();
                 lock (QueueLock)
                 {
