@@ -7,7 +7,7 @@
 
 
 ---
-### Method: IDatabase.Execute\<T>(string, Func\<IReader, Task\<T>>, Sem.Tools.Logging.LogScope, KeyValuePair\<string, Object>[])
+### Method: IDatabase.Execute\<T1>(string, Func\<IReader, Task\<T>>, Sem.Tools.Logging.LogScope, KeyValuePair\<string, Object>[])
 
  Executes a "stored procedure" (aka. "SPROC") and maps the result to a series of POCOs. 
 
@@ -47,7 +47,7 @@ A value indicating whether there is still data to be read.
 
 
 ---
-### Method: IReader.Get\<T>(System.Int32)
+### Method: IReader.Get\<T1>(System.Int32)
 
  Reads the value of a column by its index. 
 
@@ -148,7 +148,7 @@ The index of the column.
 
 
 ---
-### Method: TxtDatabase.Execute\<T>(string, Func\<Sem.Data.SprocAccess.IReader, Task\<T>>, Sem.Tools.Logging.LogScope, KeyValuePair\<string, Object>[])
+### Method: TxtDatabase.Execute\<T1>(string, Func\<Sem.Data.SprocAccess.IReader, Task\<T>>, Sem.Tools.Logging.LogScope, KeyValuePair\<string, Object>[])
 
  Executes a "stored procedure" (aka. "SPROC") and maps the result to a series of POCOs. 
 
@@ -238,7 +238,7 @@ A value indicating whether there is still data at this line.
 
 
 ---
-### Method: TxtReader.Get\<T>(System.Int32)
+### Method: TxtReader.Get\<T1>(System.Int32)
 
  Reads the value of a column by its index. 
 
@@ -346,7 +346,7 @@ The index of the column.
 
 
 ---
-### Method: SqlDatabase.Execute\<T>(string, Func\<Sem.Data.SprocAccess.IReader, Task\<T>>, Sem.Tools.Logging.LogScope, KeyValuePair\<string, Object>[])
+### Method: SqlDatabase.Execute\<T1>(string, Func\<Sem.Data.SprocAccess.IReader, Task\<T>>, Sem.Tools.Logging.LogScope, KeyValuePair\<string, Object>[])
 
  Executes a "stored procedure" (aka. "SPROC") and maps the result to a series of POCOs. 
 
@@ -408,7 +408,7 @@ A value indicating whether there is still data to be read.
 
 
 ---
-### Method: SqlReader.Get\<T>(System.Int32)
+### Method: SqlReader.Get\<T1>(System.Int32)
 
  Reads the value of a column by its index. 
 
@@ -491,7 +491,7 @@ The index of the column.
 
 
 ---
-### Method: ActionExtension.Append\<T>(System.Action\<T>, System.Action\<T>)
+### Method: ActionExtension.Append\<T1>(System.Action\<T>, System.Action\<T>)
 
  Extension to combine two logging methods into a new one. 
 
@@ -511,7 +511,7 @@ A new method combining both methods specified in the parameters.
 
 
 ---
-### Method: ActionExtension.Append``2(System.Action\<``0, \<T>>, System.Action\<``0, \<T>>)
+### Method: ActionExtension.Append\<T1,  T2>(System.Action\<``0, \<T1>>, System.Action\<``0, \<T1>>)
 
  Extension to combine two logging methods into a new one. 
 
@@ -532,7 +532,7 @@ A new method combining both methods specified in the parameters.
 
 
 ---
-### Method: ActionExtension.Append``3(System.Action\<``0, \<T>, ``2>, System.Action\<``0, \<T>, ``2>)
+### Method: ActionExtension.Append\<T1,  T2,  T3>(System.Action\<``0, \<T1>, \<T1,  T2>>, System.Action\<``0, \<T1>, \<T1,  T2>>)
 
  Extension to combine two logging methods into a new one. 
 
@@ -554,7 +554,7 @@ A new method combining both methods specified in the parameters.
 
 
 ---
-### Method: ActionExtension.Append``4(System.Action\<``0, \<T>, ``2, ``3>, System.Action\<``0, \<T>, ``2, ``3>)
+### Method: ActionExtension.Append\<T1,  T2,  T3,  T4>(System.Action\<``0, \<T1>, \<T1,  T2>, \<T1,  T2,  T3>>, System.Action\<``0, \<T1>, \<T1,  T2>, \<T1,  T2,  T3>>)
 
  Extension to combine two logging methods into a new one. 
 
@@ -652,7 +652,7 @@ The has as HEX encoded data.
 
 
 ---
-### Method: Extensions.MustNotBeNull\<T>(``0, string)
+### Method: Extensions.MustNotBeNull\<T1>(``0, string)
 
  Throws an [[|T:System.ArgumentNullException]] when passing NULL values to  value . 
 
@@ -672,7 +672,7 @@ The has as HEX encoded data.
 
 
 ---
-### Method: Extensions.ToJson\<T>(``0)
+### Method: Extensions.ToJson\<T1>(``0)
 
  Extends all objects to have a simple JsonSerialization method. 
 
@@ -935,7 +935,7 @@ A new menu item.
 
 
 ---
-### Method: MenuItem.For\<T>(Object[])
+### Method: MenuItem.For\<T1>(Object[])
 
  Creates menu entries for public methods of  !! UNSUPPORTED: typeparamref !! . 
 
@@ -984,7 +984,7 @@ The extracted description.
 
 
 ---
-### Method: MenuItem.GetMethod\<T>(System.Linq.Expressions.Expression\<Func\<T>>)
+### Method: MenuItem.GetMethod\<T1>(System.Linq.Expressions.Expression\<Func\<T>>)
 
  Gets the method information from a [[|T:System.Linq.Expressions.MethodCallExpression]]. 
 
@@ -1003,7 +1003,7 @@ The method information from the called method.
 
 
 ---
-### Method: MenuItem.InvokeAction``2(System.Reflection.MethodBase, Object[])
+### Method: MenuItem.InvokeAction\<T1,  T2>(System.Reflection.MethodBase, Object[])
 
  Invokes a method with the needed parameters. 
 
@@ -1063,7 +1063,7 @@ The call result.
 
 
 ---
-### Method: LogCategoryExtensions.HasFlag\<T>(``0, ``0)
+### Method: LogCategoryExtensions.HasFlag\<T1>(``0, ``0)
 
  Tests whether a value has a specific category flag set. 
 
@@ -1340,7 +1340,7 @@ A task to wait for.
 
 
 ---
-### Method: IDatabase.Execute\<T>(string, Func\<IReader, Task\<T>>, Sem.Tools.Logging.LogScope, KeyValuePair\<string, Object>[])
+### Method: IDatabase.Execute\<T1>(string, Func\<IReader, Task\<T>>, Sem.Tools.Logging.LogScope, KeyValuePair\<string, Object>[])
 
  Executes a "stored procedure" (aka. "SPROC") and maps the result to a series of POCOs. 
 
@@ -1380,7 +1380,7 @@ A value indicating whether there is still data to be read.
 
 
 ---
-### Method: IReader.Get\<T>(System.Int32)
+### Method: IReader.Get\<T1>(System.Int32)
 
  Reads the value of a column by its index. 
 
@@ -1491,7 +1491,7 @@ The index of the column.
 
 
 ---
-### Method: LogCategoryExtensions.HasFlag\<T>(``0, ``0)
+### Method: LogCategoryExtensions.HasFlag\<T1>(``0, ``0)
 
  Tests whether a value has a specific category flag set. 
 
@@ -1768,7 +1768,7 @@ A task to wait for.
 
 
 ---
-### Method: ActionExtension.Append\<T>(System.Action\<T>, System.Action\<T>)
+### Method: ActionExtension.Append\<T1>(System.Action\<T>, System.Action\<T>)
 
  Extension to combine two logging methods into a new one. 
 
@@ -1788,7 +1788,7 @@ A new method combining both methods specified in the parameters.
 
 
 ---
-### Method: ActionExtension.Append``2(System.Action\<``0, \<T>>, System.Action\<``0, \<T>>)
+### Method: ActionExtension.Append\<T1,  T2>(System.Action\<``0, \<T1>>, System.Action\<``0, \<T1>>)
 
  Extension to combine two logging methods into a new one. 
 
@@ -1809,7 +1809,7 @@ A new method combining both methods specified in the parameters.
 
 
 ---
-### Method: ActionExtension.Append``3(System.Action\<``0, \<T>, ``2>, System.Action\<``0, \<T>, ``2>)
+### Method: ActionExtension.Append\<T1,  T2,  T3>(System.Action\<``0, \<T1>, \<T1,  T2>>, System.Action\<``0, \<T1>, \<T1,  T2>>)
 
  Extension to combine two logging methods into a new one. 
 
@@ -1831,7 +1831,7 @@ A new method combining both methods specified in the parameters.
 
 
 ---
-### Method: ActionExtension.Append``4(System.Action\<``0, \<T>, ``2, ``3>, System.Action\<``0, \<T>, ``2, ``3>)
+### Method: ActionExtension.Append\<T1,  T2,  T3,  T4>(System.Action\<``0, \<T1>, \<T1,  T2>, \<T1,  T2,  T3>>, System.Action\<``0, \<T1>, \<T1,  T2>, \<T1,  T2,  T3>>)
 
  Extension to combine two logging methods into a new one. 
 
@@ -1929,7 +1929,7 @@ The has as HEX encoded data.
 
 
 ---
-### Method: Extensions.MustNotBeNull\<T>(``0, string)
+### Method: Extensions.MustNotBeNull\<T1>(``0, string)
 
  Throws an [[|T:System.ArgumentNullException]] when passing NULL values to  value . 
 
@@ -1949,7 +1949,7 @@ The has as HEX encoded data.
 
 
 ---
-### Method: Extensions.ToJson\<T>(``0)
+### Method: Extensions.ToJson\<T1>(``0)
 
  Extends all objects to have a simple JsonSerialization method. 
 
@@ -2067,7 +2067,7 @@ Writes a specified value as JSON.
 
 
 ---
-### Method: TxtDatabase.Execute\<T>(string, Func\<Sem.Data.SprocAccess.IReader, Task\<T>>, Sem.Tools.Logging.LogScope, KeyValuePair\<string, Object>[])
+### Method: TxtDatabase.Execute\<T1>(string, Func\<Sem.Data.SprocAccess.IReader, Task\<T>>, Sem.Tools.Logging.LogScope, KeyValuePair\<string, Object>[])
 
  Executes a "stored procedure" (aka. "SPROC") and maps the result to a series of POCOs. 
 
@@ -2157,7 +2157,7 @@ A value indicating whether there is still data at this line.
 
 
 ---
-### Method: TxtReader.Get\<T>(System.Int32)
+### Method: TxtReader.Get\<T1>(System.Int32)
 
  Reads the value of a column by its index. 
 
@@ -2247,7 +2247,7 @@ The index of the column.
 
 
 ---
-### Method: IDatabase.Execute\<T>(string, Func\<IReader, Task\<T>>, Sem.Tools.Logging.LogScope, KeyValuePair\<string, Object>[])
+### Method: IDatabase.Execute\<T1>(string, Func\<IReader, Task\<T>>, Sem.Tools.Logging.LogScope, KeyValuePair\<string, Object>[])
 
  Executes a "stored procedure" (aka. "SPROC") and maps the result to a series of POCOs. 
 
@@ -2287,7 +2287,7 @@ A value indicating whether there is still data to be read.
 
 
 ---
-### Method: IReader.Get\<T>(System.Int32)
+### Method: IReader.Get\<T1>(System.Int32)
 
  Reads the value of a column by its index. 
 
@@ -2398,7 +2398,7 @@ The index of the column.
 
 
 ---
-### Method: LogCategoryExtensions.HasFlag\<T>(``0, ``0)
+### Method: LogCategoryExtensions.HasFlag\<T1>(``0, ``0)
 
  Tests whether a value has a specific category flag set. 
 
@@ -2675,7 +2675,7 @@ A task to wait for.
 
 
 ---
-### Method: ActionExtension.Append\<T>(System.Action\<T>, System.Action\<T>)
+### Method: ActionExtension.Append\<T1>(System.Action\<T>, System.Action\<T>)
 
  Extension to combine two logging methods into a new one. 
 
@@ -2695,7 +2695,7 @@ A new method combining both methods specified in the parameters.
 
 
 ---
-### Method: ActionExtension.Append``2(System.Action\<``0, \<T>>, System.Action\<``0, \<T>>)
+### Method: ActionExtension.Append\<T1,  T2>(System.Action\<``0, \<T1>>, System.Action\<``0, \<T1>>)
 
  Extension to combine two logging methods into a new one. 
 
@@ -2716,7 +2716,7 @@ A new method combining both methods specified in the parameters.
 
 
 ---
-### Method: ActionExtension.Append``3(System.Action\<``0, \<T>, ``2>, System.Action\<``0, \<T>, ``2>)
+### Method: ActionExtension.Append\<T1,  T2,  T3>(System.Action\<``0, \<T1>, \<T1,  T2>>, System.Action\<``0, \<T1>, \<T1,  T2>>)
 
  Extension to combine two logging methods into a new one. 
 
@@ -2738,7 +2738,7 @@ A new method combining both methods specified in the parameters.
 
 
 ---
-### Method: ActionExtension.Append``4(System.Action\<``0, \<T>, ``2, ``3>, System.Action\<``0, \<T>, ``2, ``3>)
+### Method: ActionExtension.Append\<T1,  T2,  T3,  T4>(System.Action\<``0, \<T1>, \<T1,  T2>, \<T1,  T2,  T3>>, System.Action\<``0, \<T1>, \<T1,  T2>, \<T1,  T2,  T3>>)
 
  Extension to combine two logging methods into a new one. 
 
@@ -2836,7 +2836,7 @@ The has as HEX encoded data.
 
 
 ---
-### Method: Extensions.MustNotBeNull\<T>(``0, string)
+### Method: Extensions.MustNotBeNull\<T1>(``0, string)
 
  Throws an [[|T:System.ArgumentNullException]] when passing NULL values to  value . 
 
@@ -2856,7 +2856,7 @@ The has as HEX encoded data.
 
 
 ---
-### Method: Extensions.ToJson\<T>(``0)
+### Method: Extensions.ToJson\<T1>(``0)
 
  Extends all objects to have a simple JsonSerialization method. 
 
@@ -2974,7 +2974,7 @@ Writes a specified value as JSON.
 
 
 ---
-### Method: TxtDatabase.Execute\<T>(string, Func\<Sem.Data.SprocAccess.IReader, Task\<T>>, Sem.Tools.Logging.LogScope, KeyValuePair\<string, Object>[])
+### Method: TxtDatabase.Execute\<T1>(string, Func\<Sem.Data.SprocAccess.IReader, Task\<T>>, Sem.Tools.Logging.LogScope, KeyValuePair\<string, Object>[])
 
  Executes a "stored procedure" (aka. "SPROC") and maps the result to a series of POCOs. 
 
@@ -3064,7 +3064,7 @@ A value indicating whether there is still data at this line.
 
 
 ---
-### Method: TxtReader.Get\<T>(System.Int32)
+### Method: TxtReader.Get\<T1>(System.Int32)
 
  Reads the value of a column by its index. 
 
@@ -3154,7 +3154,7 @@ The index of the column.
 
 
 ---
-### Method: IDatabase.Execute\<T>(string, Func\<IReader, Task\<T>>, Sem.Tools.Logging.LogScope, KeyValuePair\<string, Object>[])
+### Method: IDatabase.Execute\<T1>(string, Func\<IReader, Task\<T>>, Sem.Tools.Logging.LogScope, KeyValuePair\<string, Object>[])
 
  Executes a "stored procedure" (aka. "SPROC") and maps the result to a series of POCOs. 
 
@@ -3194,7 +3194,7 @@ A value indicating whether there is still data to be read.
 
 
 ---
-### Method: IReader.Get\<T>(System.Int32)
+### Method: IReader.Get\<T1>(System.Int32)
 
  Reads the value of a column by its index. 
 
@@ -3305,7 +3305,7 @@ The index of the column.
 
 
 ---
-### Method: LogCategoryExtensions.HasFlag\<T>(``0, ``0)
+### Method: LogCategoryExtensions.HasFlag\<T1>(``0, ``0)
 
  Tests whether a value has a specific category flag set. 
 
@@ -3582,7 +3582,7 @@ A task to wait for.
 
 
 ---
-### Method: ActionExtension.Append\<T>(System.Action\<T>, System.Action\<T>)
+### Method: ActionExtension.Append\<T1>(System.Action\<T>, System.Action\<T>)
 
  Extension to combine two logging methods into a new one. 
 
@@ -3602,7 +3602,7 @@ A new method combining both methods specified in the parameters.
 
 
 ---
-### Method: ActionExtension.Append``2(System.Action\<``0, \<T>>, System.Action\<``0, \<T>>)
+### Method: ActionExtension.Append\<T1,  T2>(System.Action\<``0, \<T1>>, System.Action\<``0, \<T1>>)
 
  Extension to combine two logging methods into a new one. 
 
@@ -3623,7 +3623,7 @@ A new method combining both methods specified in the parameters.
 
 
 ---
-### Method: ActionExtension.Append``3(System.Action\<``0, \<T>, ``2>, System.Action\<``0, \<T>, ``2>)
+### Method: ActionExtension.Append\<T1,  T2,  T3>(System.Action\<``0, \<T1>, \<T1,  T2>>, System.Action\<``0, \<T1>, \<T1,  T2>>)
 
  Extension to combine two logging methods into a new one. 
 
@@ -3645,7 +3645,7 @@ A new method combining both methods specified in the parameters.
 
 
 ---
-### Method: ActionExtension.Append``4(System.Action\<``0, \<T>, ``2, ``3>, System.Action\<``0, \<T>, ``2, ``3>)
+### Method: ActionExtension.Append\<T1,  T2,  T3,  T4>(System.Action\<``0, \<T1>, \<T1,  T2>, \<T1,  T2,  T3>>, System.Action\<``0, \<T1>, \<T1,  T2>, \<T1,  T2,  T3>>)
 
  Extension to combine two logging methods into a new one. 
 
@@ -3743,7 +3743,7 @@ The has as HEX encoded data.
 
 
 ---
-### Method: Extensions.MustNotBeNull\<T>(``0, string)
+### Method: Extensions.MustNotBeNull\<T1>(``0, string)
 
  Throws an [[|T:System.ArgumentNullException]] when passing NULL values to  value . 
 
@@ -3763,7 +3763,7 @@ The has as HEX encoded data.
 
 
 ---
-### Method: Extensions.ToJson\<T>(``0)
+### Method: Extensions.ToJson\<T1>(``0)
 
  Extends all objects to have a simple JsonSerialization method. 
 
@@ -3881,7 +3881,7 @@ Writes a specified value as JSON.
 
 
 ---
-### Method: SqlDatabase.Execute\<T>(string, Func\<Sem.Data.SprocAccess.IReader, Task\<T>>, Sem.Tools.Logging.LogScope, KeyValuePair\<string, Object>[])
+### Method: SqlDatabase.Execute\<T1>(string, Func\<Sem.Data.SprocAccess.IReader, Task\<T>>, Sem.Tools.Logging.LogScope, KeyValuePair\<string, Object>[])
 
  Executes a "stored procedure" (aka. "SPROC") and maps the result to a series of POCOs. 
 
@@ -3943,7 +3943,7 @@ A value indicating whether there is still data to be read.
 
 
 ---
-### Method: SqlReader.Get\<T>(System.Int32)
+### Method: SqlReader.Get\<T1>(System.Int32)
 
  Reads the value of a column by its index. 
 
@@ -4026,7 +4026,7 @@ The index of the column.
 
 
 ---
-### Method: IDatabase.Execute\<T>(string, Func\<IReader, Task\<T>>, Sem.Tools.Logging.LogScope, KeyValuePair\<string, Object>[])
+### Method: IDatabase.Execute\<T1>(string, Func\<IReader, Task\<T>>, Sem.Tools.Logging.LogScope, KeyValuePair\<string, Object>[])
 
  Executes a "stored procedure" (aka. "SPROC") and maps the result to a series of POCOs. 
 
@@ -4066,7 +4066,7 @@ A value indicating whether there is still data to be read.
 
 
 ---
-### Method: IReader.Get\<T>(System.Int32)
+### Method: IReader.Get\<T1>(System.Int32)
 
  Reads the value of a column by its index. 
 
@@ -4177,7 +4177,7 @@ The index of the column.
 
 
 ---
-### Method: LogCategoryExtensions.HasFlag\<T>(``0, ``0)
+### Method: LogCategoryExtensions.HasFlag\<T1>(``0, ``0)
 
  Tests whether a value has a specific category flag set. 
 
@@ -4454,7 +4454,7 @@ A task to wait for.
 
 
 ---
-### Method: ActionExtension.Append\<T>(System.Action\<T>, System.Action\<T>)
+### Method: ActionExtension.Append\<T1>(System.Action\<T>, System.Action\<T>)
 
  Extension to combine two logging methods into a new one. 
 
@@ -4474,7 +4474,7 @@ A new method combining both methods specified in the parameters.
 
 
 ---
-### Method: ActionExtension.Append``2(System.Action\<``0, \<T>>, System.Action\<``0, \<T>>)
+### Method: ActionExtension.Append\<T1,  T2>(System.Action\<``0, \<T1>>, System.Action\<``0, \<T1>>)
 
  Extension to combine two logging methods into a new one. 
 
@@ -4495,7 +4495,7 @@ A new method combining both methods specified in the parameters.
 
 
 ---
-### Method: ActionExtension.Append``3(System.Action\<``0, \<T>, ``2>, System.Action\<``0, \<T>, ``2>)
+### Method: ActionExtension.Append\<T1,  T2,  T3>(System.Action\<``0, \<T1>, \<T1,  T2>>, System.Action\<``0, \<T1>, \<T1,  T2>>)
 
  Extension to combine two logging methods into a new one. 
 
@@ -4517,7 +4517,7 @@ A new method combining both methods specified in the parameters.
 
 
 ---
-### Method: ActionExtension.Append``4(System.Action\<``0, \<T>, ``2, ``3>, System.Action\<``0, \<T>, ``2, ``3>)
+### Method: ActionExtension.Append\<T1,  T2,  T3,  T4>(System.Action\<``0, \<T1>, \<T1,  T2>, \<T1,  T2,  T3>>, System.Action\<``0, \<T1>, \<T1,  T2>, \<T1,  T2,  T3>>)
 
  Extension to combine two logging methods into a new one. 
 
@@ -4615,7 +4615,7 @@ The has as HEX encoded data.
 
 
 ---
-### Method: Extensions.MustNotBeNull\<T>(``0, string)
+### Method: Extensions.MustNotBeNull\<T1>(``0, string)
 
  Throws an [[|T:System.ArgumentNullException]] when passing NULL values to  value . 
 
@@ -4635,7 +4635,7 @@ The has as HEX encoded data.
 
 
 ---
-### Method: Extensions.ToJson\<T>(``0)
+### Method: Extensions.ToJson\<T1>(``0)
 
  Extends all objects to have a simple JsonSerialization method. 
 
@@ -4753,7 +4753,7 @@ Writes a specified value as JSON.
 
 
 ---
-### Method: SqlDatabase.Execute\<T>(string, Func\<Sem.Data.SprocAccess.IReader, Task\<T>>, Sem.Tools.Logging.LogScope, KeyValuePair\<string, Object>[])
+### Method: SqlDatabase.Execute\<T1>(string, Func\<Sem.Data.SprocAccess.IReader, Task\<T>>, Sem.Tools.Logging.LogScope, KeyValuePair\<string, Object>[])
 
  Executes a "stored procedure" (aka. "SPROC") and maps the result to a series of POCOs. 
 
@@ -4815,7 +4815,7 @@ A value indicating whether there is still data to be read.
 
 
 ---
-### Method: SqlReader.Get\<T>(System.Int32)
+### Method: SqlReader.Get\<T1>(System.Int32)
 
  Reads the value of a column by its index. 
 
@@ -4898,7 +4898,7 @@ The index of the column.
 
 
 ---
-### Method: IDatabase.Execute\<T>(string, Func\<IReader, Task\<T>>, Sem.Tools.Logging.LogScope, KeyValuePair\<string, Object>[])
+### Method: IDatabase.Execute\<T1>(string, Func\<IReader, Task\<T>>, Sem.Tools.Logging.LogScope, KeyValuePair\<string, Object>[])
 
  Executes a "stored procedure" (aka. "SPROC") and maps the result to a series of POCOs. 
 
@@ -4938,7 +4938,7 @@ A value indicating whether there is still data to be read.
 
 
 ---
-### Method: IReader.Get\<T>(System.Int32)
+### Method: IReader.Get\<T1>(System.Int32)
 
  Reads the value of a column by its index. 
 
@@ -5049,7 +5049,7 @@ The index of the column.
 
 
 ---
-### Method: LogCategoryExtensions.HasFlag\<T>(``0, ``0)
+### Method: LogCategoryExtensions.HasFlag\<T1>(``0, ``0)
 
  Tests whether a value has a specific category flag set. 
 
@@ -5326,7 +5326,7 @@ A task to wait for.
 
 
 ---
-### Method: ActionExtension.Append\<T>(System.Action\<T>, System.Action\<T>)
+### Method: ActionExtension.Append\<T1>(System.Action\<T>, System.Action\<T>)
 
  Extension to combine two logging methods into a new one. 
 
@@ -5346,7 +5346,7 @@ A new method combining both methods specified in the parameters.
 
 
 ---
-### Method: ActionExtension.Append``2(System.Action\<``0, \<T>>, System.Action\<``0, \<T>>)
+### Method: ActionExtension.Append\<T1,  T2>(System.Action\<``0, \<T1>>, System.Action\<``0, \<T1>>)
 
  Extension to combine two logging methods into a new one. 
 
@@ -5367,7 +5367,7 @@ A new method combining both methods specified in the parameters.
 
 
 ---
-### Method: ActionExtension.Append``3(System.Action\<``0, \<T>, ``2>, System.Action\<``0, \<T>, ``2>)
+### Method: ActionExtension.Append\<T1,  T2,  T3>(System.Action\<``0, \<T1>, \<T1,  T2>>, System.Action\<``0, \<T1>, \<T1,  T2>>)
 
  Extension to combine two logging methods into a new one. 
 
@@ -5389,7 +5389,7 @@ A new method combining both methods specified in the parameters.
 
 
 ---
-### Method: ActionExtension.Append``4(System.Action\<``0, \<T>, ``2, ``3>, System.Action\<``0, \<T>, ``2, ``3>)
+### Method: ActionExtension.Append\<T1,  T2,  T3,  T4>(System.Action\<``0, \<T1>, \<T1,  T2>, \<T1,  T2,  T3>>, System.Action\<``0, \<T1>, \<T1,  T2>, \<T1,  T2,  T3>>)
 
  Extension to combine two logging methods into a new one. 
 
@@ -5487,7 +5487,7 @@ The has as HEX encoded data.
 
 
 ---
-### Method: Extensions.MustNotBeNull\<T>(``0, string)
+### Method: Extensions.MustNotBeNull\<T1>(``0, string)
 
  Throws an [[|T:System.ArgumentNullException]] when passing NULL values to  value . 
 
@@ -5507,7 +5507,7 @@ The has as HEX encoded data.
 
 
 ---
-### Method: Extensions.ToJson\<T>(``0)
+### Method: Extensions.ToJson\<T1>(``0)
 
  Extends all objects to have a simple JsonSerialization method. 
 
@@ -5607,7 +5607,7 @@ Writes a specified value as JSON.
 
 
 ---
-### Method: ActionExtension.Append\<T>(System.Action\<T>, System.Action\<T>)
+### Method: ActionExtension.Append\<T1>(System.Action\<T>, System.Action\<T>)
 
  Extension to combine two logging methods into a new one. 
 
@@ -5627,7 +5627,7 @@ A new method combining both methods specified in the parameters.
 
 
 ---
-### Method: ActionExtension.Append``2(System.Action\<``0, \<T>>, System.Action\<``0, \<T>>)
+### Method: ActionExtension.Append\<T1,  T2>(System.Action\<``0, \<T1>>, System.Action\<``0, \<T1>>)
 
  Extension to combine two logging methods into a new one. 
 
@@ -5648,7 +5648,7 @@ A new method combining both methods specified in the parameters.
 
 
 ---
-### Method: ActionExtension.Append``3(System.Action\<``0, \<T>, ``2>, System.Action\<``0, \<T>, ``2>)
+### Method: ActionExtension.Append\<T1,  T2,  T3>(System.Action\<``0, \<T1>, \<T1,  T2>>, System.Action\<``0, \<T1>, \<T1,  T2>>)
 
  Extension to combine two logging methods into a new one. 
 
@@ -5670,7 +5670,7 @@ A new method combining both methods specified in the parameters.
 
 
 ---
-### Method: ActionExtension.Append``4(System.Action\<``0, \<T>, ``2, ``3>, System.Action\<``0, \<T>, ``2, ``3>)
+### Method: ActionExtension.Append\<T1,  T2,  T3,  T4>(System.Action\<``0, \<T1>, \<T1,  T2>, \<T1,  T2,  T3>>, System.Action\<``0, \<T1>, \<T1,  T2>, \<T1,  T2,  T3>>)
 
  Extension to combine two logging methods into a new one. 
 
@@ -5768,7 +5768,7 @@ The has as HEX encoded data.
 
 
 ---
-### Method: Extensions.MustNotBeNull\<T>(``0, string)
+### Method: Extensions.MustNotBeNull\<T1>(``0, string)
 
  Throws an [[|T:System.ArgumentNullException]] when passing NULL values to  value . 
 
@@ -5788,7 +5788,7 @@ The has as HEX encoded data.
 
 
 ---
-### Method: Extensions.ToJson\<T>(``0)
+### Method: Extensions.ToJson\<T1>(``0)
 
  Extends all objects to have a simple JsonSerialization method. 
 
@@ -6051,7 +6051,7 @@ A new menu item.
 
 
 ---
-### Method: MenuItem.For\<T>(Object[])
+### Method: MenuItem.For\<T1>(Object[])
 
  Creates menu entries for public methods of  !! UNSUPPORTED: typeparamref !! . 
 
@@ -6100,7 +6100,7 @@ The extracted description.
 
 
 ---
-### Method: MenuItem.GetMethod\<T>(System.Linq.Expressions.Expression\<Func\<T>>)
+### Method: MenuItem.GetMethod\<T1>(System.Linq.Expressions.Expression\<Func\<T>>)
 
  Gets the method information from a [[|T:System.Linq.Expressions.MethodCallExpression]]. 
 
@@ -6119,7 +6119,7 @@ The method information from the called method.
 
 
 ---
-### Method: MenuItem.InvokeAction``2(System.Reflection.MethodBase, Object[])
+### Method: MenuItem.InvokeAction\<T1,  T2>(System.Reflection.MethodBase, Object[])
 
  Invokes a method with the needed parameters. 
 
@@ -6151,7 +6151,7 @@ The call result.
 
 
 ---
-### Method: ActionExtension.Append\<T>(System.Action\<T>, System.Action\<T>)
+### Method: ActionExtension.Append\<T1>(System.Action\<T>, System.Action\<T>)
 
  Extension to combine two logging methods into a new one. 
 
@@ -6171,7 +6171,7 @@ A new method combining both methods specified in the parameters.
 
 
 ---
-### Method: ActionExtension.Append``2(System.Action\<``0, \<T>>, System.Action\<``0, \<T>>)
+### Method: ActionExtension.Append\<T1,  T2>(System.Action\<``0, \<T1>>, System.Action\<``0, \<T1>>)
 
  Extension to combine two logging methods into a new one. 
 
@@ -6192,7 +6192,7 @@ A new method combining both methods specified in the parameters.
 
 
 ---
-### Method: ActionExtension.Append``3(System.Action\<``0, \<T>, ``2>, System.Action\<``0, \<T>, ``2>)
+### Method: ActionExtension.Append\<T1,  T2,  T3>(System.Action\<``0, \<T1>, \<T1,  T2>>, System.Action\<``0, \<T1>, \<T1,  T2>>)
 
  Extension to combine two logging methods into a new one. 
 
@@ -6214,7 +6214,7 @@ A new method combining both methods specified in the parameters.
 
 
 ---
-### Method: ActionExtension.Append``4(System.Action\<``0, \<T>, ``2, ``3>, System.Action\<``0, \<T>, ``2, ``3>)
+### Method: ActionExtension.Append\<T1,  T2,  T3,  T4>(System.Action\<``0, \<T1>, \<T1,  T2>, \<T1,  T2,  T3>>, System.Action\<``0, \<T1>, \<T1,  T2>, \<T1,  T2,  T3>>)
 
  Extension to combine two logging methods into a new one. 
 
@@ -6312,7 +6312,7 @@ The has as HEX encoded data.
 
 
 ---
-### Method: Extensions.MustNotBeNull\<T>(``0, string)
+### Method: Extensions.MustNotBeNull\<T1>(``0, string)
 
  Throws an [[|T:System.ArgumentNullException]] when passing NULL values to  value . 
 
@@ -6332,7 +6332,7 @@ The has as HEX encoded data.
 
 
 ---
-### Method: Extensions.ToJson\<T>(``0)
+### Method: Extensions.ToJson\<T1>(``0)
 
  Extends all objects to have a simple JsonSerialization method. 
 
@@ -6460,7 +6460,7 @@ Writes a specified value as JSON.
 
 
 ---
-### Method: LogCategoryExtensions.HasFlag\<T>(``0, ``0)
+### Method: LogCategoryExtensions.HasFlag\<T1>(``0, ``0)
 
  Tests whether a value has a specific category flag set. 
 
@@ -6737,7 +6737,7 @@ A task to wait for.
 
 
 ---
-### Method: ActionExtension.Append\<T>(System.Action\<T>, System.Action\<T>)
+### Method: ActionExtension.Append\<T1>(System.Action\<T>, System.Action\<T>)
 
  Extension to combine two logging methods into a new one. 
 
@@ -6757,7 +6757,7 @@ A new method combining both methods specified in the parameters.
 
 
 ---
-### Method: ActionExtension.Append``2(System.Action\<``0, \<T>>, System.Action\<``0, \<T>>)
+### Method: ActionExtension.Append\<T1,  T2>(System.Action\<``0, \<T1>>, System.Action\<``0, \<T1>>)
 
  Extension to combine two logging methods into a new one. 
 
@@ -6778,7 +6778,7 @@ A new method combining both methods specified in the parameters.
 
 
 ---
-### Method: ActionExtension.Append``3(System.Action\<``0, \<T>, ``2>, System.Action\<``0, \<T>, ``2>)
+### Method: ActionExtension.Append\<T1,  T2,  T3>(System.Action\<``0, \<T1>, \<T1,  T2>>, System.Action\<``0, \<T1>, \<T1,  T2>>)
 
  Extension to combine two logging methods into a new one. 
 
@@ -6800,7 +6800,7 @@ A new method combining both methods specified in the parameters.
 
 
 ---
-### Method: ActionExtension.Append``4(System.Action\<``0, \<T>, ``2, ``3>, System.Action\<``0, \<T>, ``2, ``3>)
+### Method: ActionExtension.Append\<T1,  T2,  T3,  T4>(System.Action\<``0, \<T1>, \<T1,  T2>, \<T1,  T2,  T3>>, System.Action\<``0, \<T1>, \<T1,  T2>, \<T1,  T2,  T3>>)
 
  Extension to combine two logging methods into a new one. 
 
@@ -6898,7 +6898,7 @@ The has as HEX encoded data.
 
 
 ---
-### Method: Extensions.MustNotBeNull\<T>(``0, string)
+### Method: Extensions.MustNotBeNull\<T1>(``0, string)
 
  Throws an [[|T:System.ArgumentNullException]] when passing NULL values to  value . 
 
@@ -6918,7 +6918,7 @@ The has as HEX encoded data.
 
 
 ---
-### Method: Extensions.ToJson\<T>(``0)
+### Method: Extensions.ToJson\<T1>(``0)
 
  Extends all objects to have a simple JsonSerialization method. 
 
@@ -7046,7 +7046,7 @@ Writes a specified value as JSON.
 
 
 ---
-### Method: LogCategoryExtensions.HasFlag\<T>(``0, ``0)
+### Method: LogCategoryExtensions.HasFlag\<T1>(``0, ``0)
 
  Tests whether a value has a specific category flag set. 
 
@@ -7323,7 +7323,7 @@ A task to wait for.
 
 
 ---
-### Method: ActionExtension.Append\<T>(System.Action\<T>, System.Action\<T>)
+### Method: ActionExtension.Append\<T1>(System.Action\<T>, System.Action\<T>)
 
  Extension to combine two logging methods into a new one. 
 
@@ -7343,7 +7343,7 @@ A new method combining both methods specified in the parameters.
 
 
 ---
-### Method: ActionExtension.Append``2(System.Action\<``0, \<T>>, System.Action\<``0, \<T>>)
+### Method: ActionExtension.Append\<T1,  T2>(System.Action\<``0, \<T1>>, System.Action\<``0, \<T1>>)
 
  Extension to combine two logging methods into a new one. 
 
@@ -7364,7 +7364,7 @@ A new method combining both methods specified in the parameters.
 
 
 ---
-### Method: ActionExtension.Append``3(System.Action\<``0, \<T>, ``2>, System.Action\<``0, \<T>, ``2>)
+### Method: ActionExtension.Append\<T1,  T2,  T3>(System.Action\<``0, \<T1>, \<T1,  T2>>, System.Action\<``0, \<T1>, \<T1,  T2>>)
 
  Extension to combine two logging methods into a new one. 
 
@@ -7386,7 +7386,7 @@ A new method combining both methods specified in the parameters.
 
 
 ---
-### Method: ActionExtension.Append``4(System.Action\<``0, \<T>, ``2, ``3>, System.Action\<``0, \<T>, ``2, ``3>)
+### Method: ActionExtension.Append\<T1,  T2,  T3,  T4>(System.Action\<``0, \<T1>, \<T1,  T2>, \<T1,  T2,  T3>>, System.Action\<``0, \<T1>, \<T1,  T2>, \<T1,  T2,  T3>>)
 
  Extension to combine two logging methods into a new one. 
 
@@ -7484,7 +7484,7 @@ The has as HEX encoded data.
 
 
 ---
-### Method: Extensions.MustNotBeNull\<T>(``0, string)
+### Method: Extensions.MustNotBeNull\<T1>(``0, string)
 
  Throws an [[|T:System.ArgumentNullException]] when passing NULL values to  value . 
 
@@ -7504,7 +7504,7 @@ The has as HEX encoded data.
 
 
 ---
-### Method: Extensions.ToJson\<T>(``0)
+### Method: Extensions.ToJson\<T1>(``0)
 
  Extends all objects to have a simple JsonSerialization method. 
 
@@ -7604,7 +7604,7 @@ Writes a specified value as JSON.
 
 
 ---
-### Method: ActionExtension.Append\<T>(System.Action\<T>, System.Action\<T>)
+### Method: ActionExtension.Append\<T1>(System.Action\<T>, System.Action\<T>)
 
  Extension to combine two logging methods into a new one. 
 
@@ -7624,7 +7624,7 @@ A new method combining both methods specified in the parameters.
 
 
 ---
-### Method: ActionExtension.Append``2(System.Action\<``0, \<T>>, System.Action\<``0, \<T>>)
+### Method: ActionExtension.Append\<T1,  T2>(System.Action\<``0, \<T1>>, System.Action\<``0, \<T1>>)
 
  Extension to combine two logging methods into a new one. 
 
@@ -7645,7 +7645,7 @@ A new method combining both methods specified in the parameters.
 
 
 ---
-### Method: ActionExtension.Append``3(System.Action\<``0, \<T>, ``2>, System.Action\<``0, \<T>, ``2>)
+### Method: ActionExtension.Append\<T1,  T2,  T3>(System.Action\<``0, \<T1>, \<T1,  T2>>, System.Action\<``0, \<T1>, \<T1,  T2>>)
 
  Extension to combine two logging methods into a new one. 
 
@@ -7667,7 +7667,7 @@ A new method combining both methods specified in the parameters.
 
 
 ---
-### Method: ActionExtension.Append``4(System.Action\<``0, \<T>, ``2, ``3>, System.Action\<``0, \<T>, ``2, ``3>)
+### Method: ActionExtension.Append\<T1,  T2,  T3,  T4>(System.Action\<``0, \<T1>, \<T1,  T2>, \<T1,  T2,  T3>>, System.Action\<``0, \<T1>, \<T1,  T2>, \<T1,  T2,  T3>>)
 
  Extension to combine two logging methods into a new one. 
 
@@ -7765,7 +7765,7 @@ The has as HEX encoded data.
 
 
 ---
-### Method: Extensions.MustNotBeNull\<T>(``0, string)
+### Method: Extensions.MustNotBeNull\<T1>(``0, string)
 
  Throws an [[|T:System.ArgumentNullException]] when passing NULL values to  value . 
 
@@ -7785,7 +7785,7 @@ The has as HEX encoded data.
 
 
 ---
-### Method: Extensions.ToJson\<T>(``0)
+### Method: Extensions.ToJson\<T1>(``0)
 
  Extends all objects to have a simple JsonSerialization method. 
 
