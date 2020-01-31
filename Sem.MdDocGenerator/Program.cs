@@ -19,7 +19,7 @@ namespace Sem.MdDocGenerator
             {
                 var xml = File.ReadAllText(file);
                 var doc = XDocument.Parse(xml);
-                var md = doc.Root.ToMarkDown();
+                var md = doc.Root.ToMarkDown(string.Empty);
                 File.AppendAllText(target, md);
             }
         }

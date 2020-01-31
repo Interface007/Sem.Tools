@@ -1,13 +1,13 @@
 ## Sem.Data.SprocAccess ##
 
-# T:Sem.Data.SprocAccess.IDatabase
+# Type: T:Sem.Data.SprocAccess.IDatabase
 
  Very simple and small interface to interact with databases. 
 
 
 
 ---
-##### M:Sem.Data.SprocAccess.IDatabase.Execute``1(System.String,System.Func{Sem.Data.SprocAccess.IReader,System.Threading.Tasks.Task{``0}},Sem.Tools.Logging.LogScope,System.Collections.Generic.KeyValuePair{System.String,System.Object}[])
+##### Method: IDatabase.Execute\<T>(string, Func\<IReader, Task\<T>>, Sem.Tools.Logging.LogScope, KeyValuePair\<string, Object>[])
 
  Executes a "stored procedure" (aka. "SPROC") and maps the result to a series of POCOs. 
 
@@ -31,14 +31,14 @@ Returns: A series of POCO instances.
 
 
 ---
-# T:Sem.Data.SprocAccess.IReader
+# Type: T:Sem.Data.SprocAccess.IReader
 
  Simple data reader interface with only the needed methods to provide an interface that can easily be implemented. 
 
 
 
 ---
-##### M:Sem.Data.SprocAccess.IReader.Read
+##### Method: IReader.Read
 
  Advances to the next record. 
 
@@ -47,7 +47,7 @@ Returns: A value indicating whether there is still data to be read.
 
 
 ---
-##### M:Sem.Data.SprocAccess.IReader.Get``1(System.Int32)
+##### Method: IReader.Get\<T>(System.Int32)
 
  Reads the value of a column by its index. 
 
@@ -62,7 +62,7 @@ Returns: The value of the column in the current row.
 
 
 ---
-##### M:Sem.Data.SprocAccess.IReader.Get(System.Int32,System.Type)
+##### Method: IReader.Get(System.Int32, System.Type)
 
  Reads the value of a column by its index. 
 
@@ -77,7 +77,7 @@ Returns: The value of the column in the current row.
 
 
 ---
-##### M:Sem.Data.SprocAccess.IReader.NextResult
+##### Method: IReader.NextResult
 
  Advances to the next result set. 
 
@@ -86,7 +86,7 @@ Returns: A task to wait for.
 
 
 ---
-##### M:Sem.Data.SprocAccess.IReader.Close
+##### Method: IReader.Close
 
  Closes the reader. 
 
@@ -95,7 +95,7 @@ Returns: A task to wait for.
 
 
 ---
-##### M:Sem.Data.SprocAccess.IReader.IndexByName(System.String)
+##### Method: IReader.IndexByName(string)
 
  Gets the index of a column by its name (case-insensitive). When there are two columns with the same name, the first index will be returned. 
 
@@ -111,7 +111,7 @@ Returns: The index of the column.
 
 ## Sem.Data.SprocAccess.FileSystem ##
 
-# T:Sem.Data.SprocAccess.FileSystem.TxtDatabase
+# Type: T:Sem.Data.SprocAccess.FileSystem.TxtDatabase
 
  Simple text file implementation of [[|T:Sem.Data.SprocAccess.IDatabase]]. Can be used to mock database access easily. Each SPROC gets its own folder and each combination of parameters its own file. 
 
@@ -125,7 +125,7 @@ Returns: The index of the column.
 
 
 ---
-##### M:Sem.Data.SprocAccess.FileSystem.TxtDatabase.#ctor(System.String)
+##### Method: TxtDatabase.#ctor(string)
 
  Initializes a new instance of the [[|T:Sem.Data.SprocAccess.FileSystem.TxtDatabase]] class. 
 
@@ -135,17 +135,17 @@ Returns: The index of the column.
 
 
 ---
-##### M:Sem.Data.SprocAccess.FileSystem.TxtDatabase.Execute``1(System.String,System.Func{Sem.Data.SprocAccess.IReader,System.Threading.Tasks.Task{``0}},Sem.Tools.Logging.LogScope,System.Collections.Generic.KeyValuePair{System.String,System.Object}[])
+##### Method: TxtDatabase.Execute\<T>(string, Func\<Sem.Data.SprocAccess.IReader, Task\<T>>, Sem.Tools.Logging.LogScope, KeyValuePair\<string, Object>[])
 
  !! UNSUPPORTED: inheritdoc !! 
 
 ---
-##### M:Sem.Data.SprocAccess.FileSystem.TxtDatabase.DisposeAsync
+##### Method: TxtDatabase.DisposeAsync
 
  !! UNSUPPORTED: inheritdoc !! 
 
 ---
-# T:Sem.Data.SprocAccess.FileSystem.TxtReader
+# Type: T:Sem.Data.SprocAccess.FileSystem.TxtReader
 
  Reader implementation for a bunch of text files - [[|T:Sem.Data.SprocAccess.FileSystem.TxtDatabase]]. 
 
@@ -180,7 +180,7 @@ Returns: The index of the column.
 
 
 ---
-##### M:Sem.Data.SprocAccess.FileSystem.TxtReader.#ctor(System.String)
+##### Method: TxtReader.#ctor(string)
 
  Initializes a new instance of the [[|T:Sem.Data.SprocAccess.FileSystem.TxtReader]] class. 
 
@@ -190,7 +190,7 @@ Returns: The index of the column.
 
 
 ---
-##### M:Sem.Data.SprocAccess.FileSystem.TxtReader.Read
+##### Method: TxtReader.Read
 
  Increments the line pointer. 
 
@@ -199,7 +199,7 @@ Returns: A value indicating whether there is still data at this line.
 
 
 ---
-##### M:Sem.Data.SprocAccess.FileSystem.TxtReader.Get``1(System.Int32)
+##### Method: TxtReader.Get\<T>(System.Int32)
 
  Reads the value of a column by its index. 
 
@@ -214,7 +214,7 @@ Returns: The value of the column in the current row.
 
 
 ---
-##### M:Sem.Data.SprocAccess.FileSystem.TxtReader.Get(System.Int32,System.Type)
+##### Method: TxtReader.Get(System.Int32, System.Type)
 
  Reads the value of a column by its index. 
 
@@ -229,7 +229,7 @@ Returns: The value of the column in the current row.
 
 
 ---
-##### M:Sem.Data.SprocAccess.FileSystem.TxtReader.NextResult
+##### Method: TxtReader.NextResult
 
  Advances to the next result set. 
 
@@ -238,7 +238,7 @@ Returns: A task to wait for.
 
 
 ---
-##### M:Sem.Data.SprocAccess.FileSystem.TxtReader.Close
+##### Method: TxtReader.Close
 
  Closes the reader. 
 
@@ -247,7 +247,7 @@ Returns: A task to wait for.
 
 
 ---
-##### M:Sem.Data.SprocAccess.FileSystem.TxtReader.IndexByName(System.String)
+##### Method: TxtReader.IndexByName(string)
 
  Gets the index of a column by its name (case-insensitive). When there are two columns with the same name, the first index will be returned. 
 
@@ -259,7 +259,7 @@ Returns: The index of the column.
 
 
 ---
-##### M:Sem.Data.SprocAccess.FileSystem.TxtReader.Init
+##### Method: TxtReader.Init
 
  Reads the text file and initializes the line-pointer. 
 
@@ -270,21 +270,21 @@ Returns: The index of the column.
 
 ## Sem.Data.SprocAccess.FileSystemTests ##
 
-# T:Sem.Data.SprocAccess.FileSystemTests.ClassMap
+# Type: T:Sem.Data.SprocAccess.FileSystemTests.ClassMap
 
  Tests for the class [[|T:Sem.Data.SprocAccess.FileSystemTests.Map]]. 
 
 
 
 ---
-# T:Sem.Data.SprocAccess.FileSystemTests.ClassMap.To
+# Type: T:Sem.Data.SprocAccess.FileSystemTests.ClassMap.To
 
  Tests the method [[|M:Sem.Data.SprocAccess.FileSystemTests.Map.To``1(Sem.Data.SprocAccess.IReader)]]. 
 
 
 
 ---
-##### M:Sem.Data.SprocAccess.FileSystemTests.ClassMap.To.MapsSampleType
+##### Method: ClassMap.To.MapsSampleType
 
  Tests default property name mapping to a sample class. 
 
@@ -293,21 +293,21 @@ Returns: A task to wait for.
 
 
 ---
-# T:Sem.Data.SprocAccess.FileSystemTests.ClassTxtDatabase
+# Type: T:Sem.Data.SprocAccess.FileSystemTests.ClassTxtDatabase
 
  Tests for the class [[|T:Sem.Data.SprocAccess.FileSystem.TxtDatabase]]. 
 
 
 
 ---
-# T:Sem.Data.SprocAccess.FileSystemTests.ClassTxtDatabase.Execute
+# Type: T:Sem.Data.SprocAccess.FileSystemTests.ClassTxtDatabase.Execute
 
  Tests for the method [[|M:Sem.Data.SprocAccess.FileSystem.TxtDatabase.Execute``1(System.String,System.Func{Sem.Data.SprocAccess.IReader,System.Threading.Tasks.Task{``0}},Sem.Tools.Logging.LogScope,System.Collections.Generic.KeyValuePair{System.String,System.Object}[])]]. 
 
 
 
 ---
-##### M:Sem.Data.SprocAccess.FileSystemTests.ClassTxtDatabase.Execute.ReadsIntFromCorrectColumn
+##### Method: ClassTxtDatabase.Execute.ReadsIntFromCorrectColumn
 
  Tests whether the [[|T:System.Int32]] column can be mapped correctly. 
 
@@ -316,7 +316,7 @@ Returns: A task to wait for.
 
 
 ---
-##### M:Sem.Data.SprocAccess.FileSystemTests.ClassTxtDatabase.Execute.ReadsDateTimeFromCorrectColumn
+##### Method: ClassTxtDatabase.Execute.ReadsDateTimeFromCorrectColumn
 
  Tests whether the [[|T:System.DateTime]] column can be mapped correctly. 
 
@@ -325,14 +325,14 @@ Returns: A task to wait for.
 
 
 ---
-# T:Sem.Data.SprocAccess.FileSystemTests.Map
+# Type: T:Sem.Data.SprocAccess.FileSystemTests.Map
 
  Helper class that implements a slow, bt generic mapper method. 
 
 
 
 ---
-##### M:Sem.Data.SprocAccess.FileSystemTests.Map.To``1(Sem.Data.SprocAccess.IReader)
+##### Method: Map.To\<T>(Sem.Data.SprocAccess.IReader)
 
  Mapper method that maps data from an [[|T:Sem.Data.SprocAccess.IReader]] to a POCO object using the names of the properties. The process uses a very simple reflection based approach, that is not really "production ready" - use an explicit and specific implementation in production to prevent the overhead of reflection. 
 
@@ -347,7 +347,7 @@ Returns: The initialized object instance.
 
 
 ---
-# T:Sem.Data.SprocAccess.FileSystemTests.Sample
+# Type: T:Sem.Data.SprocAccess.FileSystemTests.Sample
 
  Sample class for mapping tests. 
 
@@ -372,7 +372,7 @@ Returns: The initialized object instance.
 
 ## Sem.Data.SprocAccess.IntegrationTests ##
 
-# T:Sem.Data.SprocAccess.IntegrationTests.BatchLogExtension
+# Type: T:Sem.Data.SprocAccess.IntegrationTests.BatchLogExtension
 
  Logging batched items - this is only implemented to test the flexibility of the logging, not to be used in production. The way it is currently implemented does not provide any benefit to the logging process. 
 
@@ -393,7 +393,7 @@ Returns: The initialized object instance.
 
 
 ---
-##### M:Sem.Data.SprocAccess.IntegrationTests.BatchLogExtension.Batch(System.Action{Sem.Tools.Logging.LogCategories,Sem.Tools.Logging.LogLevel,Sem.Tools.Logging.LogScope,System.String},System.Int32)
+##### Method: BatchLogExtension.Batch(System.Action\<Sem.Tools.Logging.LogCategories, Sem.Tools.Logging.LogLevel, Sem.Tools.Logging.LogScope, string>, System.Int32)
 
  Simply batches the log execution - this has NO real benefit ... for testing purpose only. 
 
@@ -408,14 +408,14 @@ Returns: A new log method.
 
 
 ---
-# T:Sem.Data.SprocAccess.IntegrationTests.Program
+# Type: T:Sem.Data.SprocAccess.IntegrationTests.Program
 
  Simple executable that will read the database named of a local SQL server instance using a trusted connection (current user must be able to execute SPROC [sys].[sp_databases]). 
 
 
 
 ---
-##### M:Sem.Data.SprocAccess.IntegrationTests.Program.Main
+##### Method: Program.Main
 
  Entry point for the integration test program. 
 
@@ -428,7 +428,7 @@ Returns: A task to wait for.
 
 ## Sem.Data.SprocAccess.SqlServer ##
 
-# T:Sem.Data.SprocAccess.SqlServer.SqlDatabase
+# Type: T:Sem.Data.SprocAccess.SqlServer.SqlDatabase
 
  An implementation of [[|T:Sem.Data.SprocAccess.IDatabase]] using SQL server as a backend. 
 
@@ -442,7 +442,7 @@ Returns: A task to wait for.
 
 
 ---
-##### M:Sem.Data.SprocAccess.SqlServer.SqlDatabase.#ctor(System.String)
+##### Method: SqlDatabase.#ctor(string)
 
  Initializes a new instance of the [[|T:Sem.Data.SprocAccess.SqlServer.SqlDatabase]] class. 
 
@@ -452,24 +452,24 @@ Returns: A task to wait for.
 
 
 ---
-##### M:Sem.Data.SprocAccess.SqlServer.SqlDatabase.Execute``1(System.String,System.Func{Sem.Data.SprocAccess.IReader,System.Threading.Tasks.Task{``0}},Sem.Tools.Logging.LogScope,System.Collections.Generic.KeyValuePair{System.String,System.Object}[])
+##### Method: SqlDatabase.Execute\<T>(string, Func\<Sem.Data.SprocAccess.IReader, Task\<T>>, Sem.Tools.Logging.LogScope, KeyValuePair\<string, Object>[])
 
  !! UNSUPPORTED: inheritdoc !! 
 
 ---
-##### M:Sem.Data.SprocAccess.SqlServer.SqlDatabase.DisposeAsync
+##### Method: SqlDatabase.DisposeAsync
 
  !! UNSUPPORTED: inheritdoc !! 
 
 ---
-# T:Sem.Data.SprocAccess.SqlServer.SqlReader
+# Type: T:Sem.Data.SprocAccess.SqlServer.SqlReader
 
  SQL serer implementation of the reader interface [[|T:Sem.Data.SprocAccess.IReader]]. 
 
 
 
 ---
-##### M:Sem.Data.SprocAccess.SqlServer.SqlReader.#ctor(System.Data.SqlClient.SqlDataReader)
+##### Method: SqlReader.#ctor(System.Data.SqlClient.SqlDataReader)
 
  Initializes a new instance of the [[|T:Sem.Data.SprocAccess.SqlServer.SqlReader]] class. 
 
@@ -479,32 +479,32 @@ Returns: A task to wait for.
 
 
 ---
-##### M:Sem.Data.SprocAccess.SqlServer.SqlReader.Read
+##### Method: SqlReader.Read
 
  !! UNSUPPORTED: inheritdoc !! 
 
 ---
-##### M:Sem.Data.SprocAccess.SqlServer.SqlReader.Get``1(System.Int32)
+##### Method: SqlReader.Get\<T>(System.Int32)
 
  !! UNSUPPORTED: inheritdoc !! 
 
 ---
-##### M:Sem.Data.SprocAccess.SqlServer.SqlReader.Get(System.Int32,System.Type)
+##### Method: SqlReader.Get(System.Int32, System.Type)
 
  !! UNSUPPORTED: inheritdoc !! 
 
 ---
-##### M:Sem.Data.SprocAccess.SqlServer.SqlReader.NextResult
+##### Method: SqlReader.NextResult
 
  !! UNSUPPORTED: inheritdoc !! 
 
 ---
-##### M:Sem.Data.SprocAccess.SqlServer.SqlReader.Close
+##### Method: SqlReader.Close
 
  !! UNSUPPORTED: inheritdoc !! 
 
 ---
-##### M:Sem.Data.SprocAccess.SqlServer.SqlReader.IndexByName(System.String)
+##### Method: SqlReader.IndexByName(string)
 
  !! UNSUPPORTED: inheritdoc !! 
 
@@ -513,7 +513,7 @@ Returns: A task to wait for.
 
 ## Sem.Tools.Logging ##
 
-# T:Sem.Tools.Logging.LogCategories
+# Type: T:Sem.Tools.Logging.LogCategories
 
  The logging category distinguishes between technical and business information. 
 
@@ -541,14 +541,14 @@ Returns: A task to wait for.
 
 
 ---
-# T:Sem.Tools.Logging.LogCategoryExtensions
+# Type: T:Sem.Tools.Logging.LogCategoryExtensions
 
  Extension class for the enum type [[|T:Sem.Tools.Logging.LogCategories]]. 
 
 
 
 ---
-##### M:Sem.Tools.Logging.LogCategoryExtensions.HasFlag``1(``0,``0)
+##### Method: LogCategoryExtensions.HasFlag\<T>(``0, ``0)
 
  Tests whether a value has a specific category flag set. 
 
@@ -566,14 +566,14 @@ Returns: A value indicating whether the flag is set.
 
 
 ---
-# T:Sem.Tools.Logging.LogExtension
+# Type: T:Sem.Tools.Logging.LogExtension
 
  Extension class providing some standard logging methods. 
 
 
 
 ---
-##### M:Sem.Tools.Logging.LogExtension.AddDebug(System.Action{Sem.Tools.Logging.LogCategories,Sem.Tools.Logging.LogLevel,Sem.Tools.Logging.LogScope,System.String})
+##### Method: LogExtension.AddDebug(System.Action\<LogCategories, LogLevel, LogScope, string>)
 
  Simple output using [[|M:System.Diagnostics.Debug.WriteLine(System.Object)]]. 
 
@@ -585,7 +585,7 @@ Returns: A new method that is the combination of  !! UNSUPPORTED: paramref !!  a
 
 
 ---
-##### M:Sem.Tools.Logging.LogExtension.AddConsole(System.Action{Sem.Tools.Logging.LogCategories,Sem.Tools.Logging.LogLevel,Sem.Tools.Logging.LogScope,System.String})
+##### Method: LogExtension.AddConsole(System.Action\<LogCategories, LogLevel, LogScope, string>)
 
  Simple output using [[|M:System.Console.WriteLine(System.Object)]]. 
 
@@ -597,7 +597,7 @@ Returns: A new method that is the combination of  !! UNSUPPORTED: paramref !!  a
 
 
 ---
-# T:Sem.Tools.Logging.LogLevel
+# Type: T:Sem.Tools.Logging.LogLevel
 
  The "chattiness" level. 
 
@@ -639,7 +639,7 @@ Returns: A new method that is the combination of  !! UNSUPPORTED: paramref !!  a
 
 
 ---
-# T:Sem.Tools.Logging.LogScope
+# Type: T:Sem.Tools.Logging.LogScope
 
  Simple hierarchical logging scope. 
 
@@ -709,7 +709,7 @@ Returns: A new method that is the combination of  !! UNSUPPORTED: paramref !!  a
 
 
 ---
-##### M:Sem.Tools.Logging.LogScope.Create(System.String,System.Action{Sem.Tools.Logging.LogCategories,Sem.Tools.Logging.LogLevel,Sem.Tools.Logging.LogScope,System.String},System.String,System.String)
+##### Method: LogScope.Create(string, System.Action\<LogCategories, LogLevel, LogScope, string>, string, string)
 
  Create a new scope instance. 
 
@@ -730,7 +730,7 @@ Returns: A new logging scope.
 
 
 ---
-##### M:Sem.Tools.Logging.LogScope.MethodStart(System.Object,System.String,System.String)
+##### Method: LogScope.MethodStart(Object, string, string)
 
  Call this to indicate a method start. 
 
@@ -748,7 +748,7 @@ Returns: A new scope.
 
 
 ---
-##### M:Sem.Tools.Logging.LogScope.Child(System.String,System.Object,System.String,System.String)
+##### Method: LogScope.Child(string, Object, string, string)
 
  Creates a new child scope. 
 
@@ -769,7 +769,7 @@ Returns: A new scope.
 
 
 ---
-##### M:Sem.Tools.Logging.LogScope.DisposeAsync
+##### Method: LogScope.DisposeAsync
 
  Async implementation of the dispose pattern. 
 
@@ -778,14 +778,14 @@ Returns: A task to wait for.
 
 
 ---
-##### M:Sem.Tools.Logging.LogScope.Dispose
+##### Method: LogScope.Dispose
 
  Logs the end of the scope. 
 
 
 
 ---
-##### M:Sem.Tools.Logging.LogScope.Log(System.String,System.Object)
+##### Method: LogScope.Log(string, Object)
 
  Logs a message. 
 
@@ -798,7 +798,7 @@ Returns: A task to wait for.
 
 
 ---
-##### M:Sem.Tools.Logging.LogScope.Log(Sem.Tools.Logging.LogCategories,Sem.Tools.Logging.LogLevel,System.String,System.Object)
+##### Method: LogScope.Log(LogCategories, LogLevel, string, Object)
 
  Logs a message. 
 
@@ -821,133 +821,133 @@ Returns: A task to wait for.
 
 ## Sem.Tools.Logging.Tests ##
 
-# T:Sem.Tools.Logging.Tests.ClassLogCategoryExtensions
+# Type: T:Sem.Tools.Logging.Tests.ClassLogCategoryExtensions
 
  Tests for the static helper class [[|T:Sem.Tools.Logging.LogCategoryExtensions]]. 
 
 
 
 ---
-# T:Sem.Tools.Logging.Tests.ClassLogCategoryExtensions.HasFlagFast
+# Type: T:Sem.Tools.Logging.Tests.ClassLogCategoryExtensions.HasFlagFast
 
  Tests the method [[|M:Sem.Tools.Logging.LogCategoryExtensions.HasFlag``1(``0,``0)]]. 
 
 
 
 ---
-##### M:Sem.Tools.Logging.Tests.ClassLogCategoryExtensions.HasFlagFast.DetectsFlagSingle
+##### Method: ClassLogCategoryExtensions.HasFlagFast.DetectsFlagSingle
 
  Tests whether the method can detect a single flag being set. 
 
 
 
 ---
-##### M:Sem.Tools.Logging.Tests.ClassLogCategoryExtensions.HasFlagFast.DetectsFlagInCombination
+##### Method: ClassLogCategoryExtensions.HasFlagFast.DetectsFlagInCombination
 
  Tests whether the method can detect a single flag in a variable with multiple flags being set. 
 
 
 
 ---
-##### M:Sem.Tools.Logging.Tests.ClassLogCategoryExtensions.HasFlagFast.DetectsFlagNotSet
+##### Method: ClassLogCategoryExtensions.HasFlagFast.DetectsFlagNotSet
 
  Tests whether the method can detect a single flag not being set. 
 
 
 
 ---
-# T:Sem.Tools.Logging.Tests.ClassLogScope
+# Type: T:Sem.Tools.Logging.Tests.ClassLogScope
 
  Tests for the class [[|T:Sem.Tools.Logging.LogScope]]. 
 
 
 
 ---
-# T:Sem.Tools.Logging.Tests.ClassLogScope.LogScopeConstructor
+# Type: T:Sem.Tools.Logging.Tests.ClassLogScope.LogScopeConstructor
 
  Tests the constructor(s) for [[|T:Sem.Tools.Logging.LogScope]]. 
 
 
 
 ---
-##### M:Sem.Tools.Logging.Tests.ClassLogScope.LogScopeConstructor.LogsScopeStart
+##### Method: ClassLogScope.LogScopeConstructor.LogsScopeStart
 
  Tests whether the ctor log line is formatted correctly. 
 
 
 
 ---
-# T:Sem.Tools.Logging.Tests.ClassLogScope.Dispose
+# Type: T:Sem.Tools.Logging.Tests.ClassLogScope.Dispose
 
  Tests the method for [[|M:Sem.Tools.Logging.LogScope.Dispose]]. 
 
 
 
 ---
-##### M:Sem.Tools.Logging.Tests.ClassLogScope.Dispose.LogsScopeEnd
+##### Method: ClassLogScope.Dispose.LogsScopeEnd
 
  Tests whether the destructor log line is formatted correctly. 
 
 
 
 ---
-##### M:Sem.Tools.Logging.Tests.ClassLogScope.Dispose.LogsScopeStart
+##### Method: ClassLogScope.Dispose.LogsScopeStart
 
  Tests whether the indentation of logs is correct. 
 
 
 
 ---
-# T:Sem.Tools.Logging.Tests.ClassLogScope.Child
+# Type: T:Sem.Tools.Logging.Tests.ClassLogScope.Child
 
  Tests the method [[|M:Sem.Tools.Logging.LogScope.Child(System.String,System.Object,System.String,System.String)]]. 
 
 
 
 ---
-##### M:Sem.Tools.Logging.Tests.ClassLogScope.Child.StartingChildScopeAddsIdToHierarchy
+##### Method: ClassLogScope.Child.StartingChildScopeAddsIdToHierarchy
 
  Tests whether the ctor log line is formatted correctly. 
 
 
 
 ---
-# T:Sem.Tools.Logging.Tests.ClassLogScope.Log
+# Type: T:Sem.Tools.Logging.Tests.ClassLogScope.Log
 
  Tests the method [[|M:Sem.Tools.Logging.LogScope.Log(System.String,System.Object)]]. 
 
 
 
 ---
-##### M:Sem.Tools.Logging.Tests.ClassLogScope.Log.DefaultsToCorrectLevelAndCategory
+##### Method: ClassLogScope.Log.DefaultsToCorrectLevelAndCategory
 
  Tests whether [[|M:Sem.Tools.Logging.LogScope.Log(System.String,System.Object)]] logs using the correct category and level. 
 
 
 
 ---
-##### M:Sem.Tools.Logging.Tests.ClassLogScope.Log.LogsOnlySpecifiedCategories
+##### Method: ClassLogScope.Log.LogsOnlySpecifiedCategories
 
  Tests whether [[|M:Sem.Tools.Logging.LogScope.Log(System.String,System.Object)]] logs only the specified level(s). 
 
 
 
 ---
-##### M:Sem.Tools.Logging.Tests.ClassLogScope.Log.LogsOnlyToSpecifiedLevel
+##### Method: ClassLogScope.Log.LogsOnlyToSpecifiedLevel
 
  Tests whether [[|M:Sem.Tools.Logging.LogScope.Log(System.String,System.Object)]] logs only the specified level(s). 
 
 
 
 ---
-# T:Sem.Tools.Logging.Tests.LoggerTestBase
+# Type: T:Sem.Tools.Logging.Tests.LoggerTestBase
 
  Base class for tests of the logger class. 
 
 
 
 ---
-##### M:Sem.Tools.Logging.Tests.LoggerTestBase.#cctor
+##### Method: LoggerTestBase.#cctor
 
  Initializes static members of the [[|T:Sem.Tools.Logging.Tests.LoggerTestBase]] class. Initializes the static values of [[|T:Sem.Tools.Logging.LogScope]] to produce deterministic log entries. 
 
@@ -961,7 +961,7 @@ Returns: A task to wait for.
 
 
 ---
-##### M:Sem.Tools.Logging.Tests.LoggerTestBase.LogMethod(Sem.Tools.Logging.LogCategories,Sem.Tools.Logging.LogLevel,Sem.Tools.Logging.LogScope,System.String)
+##### Method: LoggerTestBase.LogMethod(Sem.Tools.Logging.LogCategories, Sem.Tools.Logging.LogLevel, Sem.Tools.Logging.LogScope, string)
 
  A log method that adds the log information to [[|P:Sem.Tools.Logging.Tests.LoggerTestBase.LogMessages]]. 
 
@@ -980,7 +980,7 @@ Returns: A task to wait for.
 
 
 ---
-##### M:Sem.Tools.Logging.Tests.LoggerTestBase.BasePath(System.String)
+##### Method: LoggerTestBase.BasePath(string)
 
  Uses a compile time attribute to determine the source code path of this class. 
 
@@ -996,14 +996,14 @@ Returns: The source code path of this class.
 
 ## Sem.Data.SprocAccess ##
 
-# T:Sem.Data.SprocAccess.IDatabase
+# Type: T:Sem.Data.SprocAccess.IDatabase
 
  Very simple and small interface to interact with databases. 
 
 
 
 ---
-##### M:Sem.Data.SprocAccess.IDatabase.Execute``1(System.String,System.Func{Sem.Data.SprocAccess.IReader,System.Threading.Tasks.Task{``0}},Sem.Tools.Logging.LogScope,System.Collections.Generic.KeyValuePair{System.String,System.Object}[])
+##### Method: IDatabase.Execute\<T>(string, Func\<IReader, Task\<T>>, Sem.Tools.Logging.LogScope, KeyValuePair\<string, Object>[])
 
  Executes a "stored procedure" (aka. "SPROC") and maps the result to a series of POCOs. 
 
@@ -1027,14 +1027,14 @@ Returns: A series of POCO instances.
 
 
 ---
-# T:Sem.Data.SprocAccess.IReader
+# Type: T:Sem.Data.SprocAccess.IReader
 
  Simple data reader interface with only the needed methods to provide an interface that can easily be implemented. 
 
 
 
 ---
-##### M:Sem.Data.SprocAccess.IReader.Read
+##### Method: IReader.Read
 
  Advances to the next record. 
 
@@ -1043,7 +1043,7 @@ Returns: A value indicating whether there is still data to be read.
 
 
 ---
-##### M:Sem.Data.SprocAccess.IReader.Get``1(System.Int32)
+##### Method: IReader.Get\<T>(System.Int32)
 
  Reads the value of a column by its index. 
 
@@ -1058,7 +1058,7 @@ Returns: The value of the column in the current row.
 
 
 ---
-##### M:Sem.Data.SprocAccess.IReader.Get(System.Int32,System.Type)
+##### Method: IReader.Get(System.Int32, System.Type)
 
  Reads the value of a column by its index. 
 
@@ -1073,7 +1073,7 @@ Returns: The value of the column in the current row.
 
 
 ---
-##### M:Sem.Data.SprocAccess.IReader.NextResult
+##### Method: IReader.NextResult
 
  Advances to the next result set. 
 
@@ -1082,7 +1082,7 @@ Returns: A task to wait for.
 
 
 ---
-##### M:Sem.Data.SprocAccess.IReader.Close
+##### Method: IReader.Close
 
  Closes the reader. 
 
@@ -1091,7 +1091,7 @@ Returns: A task to wait for.
 
 
 ---
-##### M:Sem.Data.SprocAccess.IReader.IndexByName(System.String)
+##### Method: IReader.IndexByName(string)
 
  Gets the index of a column by its name (case-insensitive). When there are two columns with the same name, the first index will be returned. 
 
@@ -1107,7 +1107,7 @@ Returns: The index of the column.
 
 ## Sem.Tools.Logging ##
 
-# T:Sem.Tools.Logging.LogCategories
+# Type: T:Sem.Tools.Logging.LogCategories
 
  The logging category distinguishes between technical and business information. 
 
@@ -1135,14 +1135,14 @@ Returns: The index of the column.
 
 
 ---
-# T:Sem.Tools.Logging.LogCategoryExtensions
+# Type: T:Sem.Tools.Logging.LogCategoryExtensions
 
  Extension class for the enum type [[|T:Sem.Tools.Logging.LogCategories]]. 
 
 
 
 ---
-##### M:Sem.Tools.Logging.LogCategoryExtensions.HasFlag``1(``0,``0)
+##### Method: LogCategoryExtensions.HasFlag\<T>(``0, ``0)
 
  Tests whether a value has a specific category flag set. 
 
@@ -1160,14 +1160,14 @@ Returns: A value indicating whether the flag is set.
 
 
 ---
-# T:Sem.Tools.Logging.LogExtension
+# Type: T:Sem.Tools.Logging.LogExtension
 
  Extension class providing some standard logging methods. 
 
 
 
 ---
-##### M:Sem.Tools.Logging.LogExtension.AddDebug(System.Action{Sem.Tools.Logging.LogCategories,Sem.Tools.Logging.LogLevel,Sem.Tools.Logging.LogScope,System.String})
+##### Method: LogExtension.AddDebug(System.Action\<LogCategories, LogLevel, LogScope, string>)
 
  Simple output using [[|M:System.Diagnostics.Debug.WriteLine(System.Object)]]. 
 
@@ -1179,7 +1179,7 @@ Returns: A new method that is the combination of  !! UNSUPPORTED: paramref !!  a
 
 
 ---
-##### M:Sem.Tools.Logging.LogExtension.AddConsole(System.Action{Sem.Tools.Logging.LogCategories,Sem.Tools.Logging.LogLevel,Sem.Tools.Logging.LogScope,System.String})
+##### Method: LogExtension.AddConsole(System.Action\<LogCategories, LogLevel, LogScope, string>)
 
  Simple output using [[|M:System.Console.WriteLine(System.Object)]]. 
 
@@ -1191,7 +1191,7 @@ Returns: A new method that is the combination of  !! UNSUPPORTED: paramref !!  a
 
 
 ---
-# T:Sem.Tools.Logging.LogLevel
+# Type: T:Sem.Tools.Logging.LogLevel
 
  The "chattiness" level. 
 
@@ -1233,7 +1233,7 @@ Returns: A new method that is the combination of  !! UNSUPPORTED: paramref !!  a
 
 
 ---
-# T:Sem.Tools.Logging.LogScope
+# Type: T:Sem.Tools.Logging.LogScope
 
  Simple hierarchical logging scope. 
 
@@ -1303,7 +1303,7 @@ Returns: A new method that is the combination of  !! UNSUPPORTED: paramref !!  a
 
 
 ---
-##### M:Sem.Tools.Logging.LogScope.Create(System.String,System.Action{Sem.Tools.Logging.LogCategories,Sem.Tools.Logging.LogLevel,Sem.Tools.Logging.LogScope,System.String},System.String,System.String)
+##### Method: LogScope.Create(string, System.Action\<LogCategories, LogLevel, LogScope, string>, string, string)
 
  Create a new scope instance. 
 
@@ -1324,7 +1324,7 @@ Returns: A new logging scope.
 
 
 ---
-##### M:Sem.Tools.Logging.LogScope.MethodStart(System.Object,System.String,System.String)
+##### Method: LogScope.MethodStart(Object, string, string)
 
  Call this to indicate a method start. 
 
@@ -1342,7 +1342,7 @@ Returns: A new scope.
 
 
 ---
-##### M:Sem.Tools.Logging.LogScope.Child(System.String,System.Object,System.String,System.String)
+##### Method: LogScope.Child(string, Object, string, string)
 
  Creates a new child scope. 
 
@@ -1363,7 +1363,7 @@ Returns: A new scope.
 
 
 ---
-##### M:Sem.Tools.Logging.LogScope.DisposeAsync
+##### Method: LogScope.DisposeAsync
 
  Async implementation of the dispose pattern. 
 
@@ -1372,14 +1372,14 @@ Returns: A task to wait for.
 
 
 ---
-##### M:Sem.Tools.Logging.LogScope.Dispose
+##### Method: LogScope.Dispose
 
  Logs the end of the scope. 
 
 
 
 ---
-##### M:Sem.Tools.Logging.LogScope.Log(System.String,System.Object)
+##### Method: LogScope.Log(string, Object)
 
  Logs a message. 
 
@@ -1392,7 +1392,7 @@ Returns: A task to wait for.
 
 
 ---
-##### M:Sem.Tools.Logging.LogScope.Log(Sem.Tools.Logging.LogCategories,Sem.Tools.Logging.LogLevel,System.String,System.Object)
+##### Method: LogScope.Log(LogCategories, LogLevel, string, Object)
 
  Logs a message. 
 
@@ -1415,7 +1415,7 @@ Returns: A task to wait for.
 
 ## Sem.Data.SprocAccess.FileSystem ##
 
-# T:Sem.Data.SprocAccess.FileSystem.TxtDatabase
+# Type: T:Sem.Data.SprocAccess.FileSystem.TxtDatabase
 
  Simple text file implementation of [[|T:Sem.Data.SprocAccess.IDatabase]]. Can be used to mock database access easily. Each SPROC gets its own folder and each combination of parameters its own file. 
 
@@ -1429,7 +1429,7 @@ Returns: A task to wait for.
 
 
 ---
-##### M:Sem.Data.SprocAccess.FileSystem.TxtDatabase.#ctor(System.String)
+##### Method: TxtDatabase.#ctor(string)
 
  Initializes a new instance of the [[|T:Sem.Data.SprocAccess.FileSystem.TxtDatabase]] class. 
 
@@ -1439,17 +1439,17 @@ Returns: A task to wait for.
 
 
 ---
-##### M:Sem.Data.SprocAccess.FileSystem.TxtDatabase.Execute``1(System.String,System.Func{Sem.Data.SprocAccess.IReader,System.Threading.Tasks.Task{``0}},Sem.Tools.Logging.LogScope,System.Collections.Generic.KeyValuePair{System.String,System.Object}[])
+##### Method: TxtDatabase.Execute\<T>(string, Func\<Sem.Data.SprocAccess.IReader, Task\<T>>, Sem.Tools.Logging.LogScope, KeyValuePair\<string, Object>[])
 
  !! UNSUPPORTED: inheritdoc !! 
 
 ---
-##### M:Sem.Data.SprocAccess.FileSystem.TxtDatabase.DisposeAsync
+##### Method: TxtDatabase.DisposeAsync
 
  !! UNSUPPORTED: inheritdoc !! 
 
 ---
-# T:Sem.Data.SprocAccess.FileSystem.TxtReader
+# Type: T:Sem.Data.SprocAccess.FileSystem.TxtReader
 
  Reader implementation for a bunch of text files - [[|T:Sem.Data.SprocAccess.FileSystem.TxtDatabase]]. 
 
@@ -1484,7 +1484,7 @@ Returns: A task to wait for.
 
 
 ---
-##### M:Sem.Data.SprocAccess.FileSystem.TxtReader.#ctor(System.String)
+##### Method: TxtReader.#ctor(string)
 
  Initializes a new instance of the [[|T:Sem.Data.SprocAccess.FileSystem.TxtReader]] class. 
 
@@ -1494,7 +1494,7 @@ Returns: A task to wait for.
 
 
 ---
-##### M:Sem.Data.SprocAccess.FileSystem.TxtReader.Read
+##### Method: TxtReader.Read
 
  Increments the line pointer. 
 
@@ -1503,7 +1503,7 @@ Returns: A value indicating whether there is still data at this line.
 
 
 ---
-##### M:Sem.Data.SprocAccess.FileSystem.TxtReader.Get``1(System.Int32)
+##### Method: TxtReader.Get\<T>(System.Int32)
 
  Reads the value of a column by its index. 
 
@@ -1518,7 +1518,7 @@ Returns: The value of the column in the current row.
 
 
 ---
-##### M:Sem.Data.SprocAccess.FileSystem.TxtReader.Get(System.Int32,System.Type)
+##### Method: TxtReader.Get(System.Int32, System.Type)
 
  Reads the value of a column by its index. 
 
@@ -1533,7 +1533,7 @@ Returns: The value of the column in the current row.
 
 
 ---
-##### M:Sem.Data.SprocAccess.FileSystem.TxtReader.NextResult
+##### Method: TxtReader.NextResult
 
  Advances to the next result set. 
 
@@ -1542,7 +1542,7 @@ Returns: A task to wait for.
 
 
 ---
-##### M:Sem.Data.SprocAccess.FileSystem.TxtReader.Close
+##### Method: TxtReader.Close
 
  Closes the reader. 
 
@@ -1551,7 +1551,7 @@ Returns: A task to wait for.
 
 
 ---
-##### M:Sem.Data.SprocAccess.FileSystem.TxtReader.IndexByName(System.String)
+##### Method: TxtReader.IndexByName(string)
 
  Gets the index of a column by its name (case-insensitive). When there are two columns with the same name, the first index will be returned. 
 
@@ -1563,7 +1563,7 @@ Returns: The index of the column.
 
 
 ---
-##### M:Sem.Data.SprocAccess.FileSystem.TxtReader.Init
+##### Method: TxtReader.Init
 
  Reads the text file and initializes the line-pointer. 
 
@@ -1574,14 +1574,14 @@ Returns: The index of the column.
 
 ## Sem.Data.SprocAccess ##
 
-# T:Sem.Data.SprocAccess.IDatabase
+# Type: T:Sem.Data.SprocAccess.IDatabase
 
  Very simple and small interface to interact with databases. 
 
 
 
 ---
-##### M:Sem.Data.SprocAccess.IDatabase.Execute``1(System.String,System.Func{Sem.Data.SprocAccess.IReader,System.Threading.Tasks.Task{``0}},Sem.Tools.Logging.LogScope,System.Collections.Generic.KeyValuePair{System.String,System.Object}[])
+##### Method: IDatabase.Execute\<T>(string, Func\<IReader, Task\<T>>, Sem.Tools.Logging.LogScope, KeyValuePair\<string, Object>[])
 
  Executes a "stored procedure" (aka. "SPROC") and maps the result to a series of POCOs. 
 
@@ -1605,14 +1605,14 @@ Returns: A series of POCO instances.
 
 
 ---
-# T:Sem.Data.SprocAccess.IReader
+# Type: T:Sem.Data.SprocAccess.IReader
 
  Simple data reader interface with only the needed methods to provide an interface that can easily be implemented. 
 
 
 
 ---
-##### M:Sem.Data.SprocAccess.IReader.Read
+##### Method: IReader.Read
 
  Advances to the next record. 
 
@@ -1621,7 +1621,7 @@ Returns: A value indicating whether there is still data to be read.
 
 
 ---
-##### M:Sem.Data.SprocAccess.IReader.Get``1(System.Int32)
+##### Method: IReader.Get\<T>(System.Int32)
 
  Reads the value of a column by its index. 
 
@@ -1636,7 +1636,7 @@ Returns: The value of the column in the current row.
 
 
 ---
-##### M:Sem.Data.SprocAccess.IReader.Get(System.Int32,System.Type)
+##### Method: IReader.Get(System.Int32, System.Type)
 
  Reads the value of a column by its index. 
 
@@ -1651,7 +1651,7 @@ Returns: The value of the column in the current row.
 
 
 ---
-##### M:Sem.Data.SprocAccess.IReader.NextResult
+##### Method: IReader.NextResult
 
  Advances to the next result set. 
 
@@ -1660,7 +1660,7 @@ Returns: A task to wait for.
 
 
 ---
-##### M:Sem.Data.SprocAccess.IReader.Close
+##### Method: IReader.Close
 
  Closes the reader. 
 
@@ -1669,7 +1669,7 @@ Returns: A task to wait for.
 
 
 ---
-##### M:Sem.Data.SprocAccess.IReader.IndexByName(System.String)
+##### Method: IReader.IndexByName(string)
 
  Gets the index of a column by its name (case-insensitive). When there are two columns with the same name, the first index will be returned. 
 
@@ -1685,7 +1685,7 @@ Returns: The index of the column.
 
 ## Sem.Tools.Logging ##
 
-# T:Sem.Tools.Logging.LogCategories
+# Type: T:Sem.Tools.Logging.LogCategories
 
  The logging category distinguishes between technical and business information. 
 
@@ -1713,14 +1713,14 @@ Returns: The index of the column.
 
 
 ---
-# T:Sem.Tools.Logging.LogCategoryExtensions
+# Type: T:Sem.Tools.Logging.LogCategoryExtensions
 
  Extension class for the enum type [[|T:Sem.Tools.Logging.LogCategories]]. 
 
 
 
 ---
-##### M:Sem.Tools.Logging.LogCategoryExtensions.HasFlag``1(``0,``0)
+##### Method: LogCategoryExtensions.HasFlag\<T>(``0, ``0)
 
  Tests whether a value has a specific category flag set. 
 
@@ -1738,14 +1738,14 @@ Returns: A value indicating whether the flag is set.
 
 
 ---
-# T:Sem.Tools.Logging.LogExtension
+# Type: T:Sem.Tools.Logging.LogExtension
 
  Extension class providing some standard logging methods. 
 
 
 
 ---
-##### M:Sem.Tools.Logging.LogExtension.AddDebug(System.Action{Sem.Tools.Logging.LogCategories,Sem.Tools.Logging.LogLevel,Sem.Tools.Logging.LogScope,System.String})
+##### Method: LogExtension.AddDebug(System.Action\<LogCategories, LogLevel, LogScope, string>)
 
  Simple output using [[|M:System.Diagnostics.Debug.WriteLine(System.Object)]]. 
 
@@ -1757,7 +1757,7 @@ Returns: A new method that is the combination of  !! UNSUPPORTED: paramref !!  a
 
 
 ---
-##### M:Sem.Tools.Logging.LogExtension.AddConsole(System.Action{Sem.Tools.Logging.LogCategories,Sem.Tools.Logging.LogLevel,Sem.Tools.Logging.LogScope,System.String})
+##### Method: LogExtension.AddConsole(System.Action\<LogCategories, LogLevel, LogScope, string>)
 
  Simple output using [[|M:System.Console.WriteLine(System.Object)]]. 
 
@@ -1769,7 +1769,7 @@ Returns: A new method that is the combination of  !! UNSUPPORTED: paramref !!  a
 
 
 ---
-# T:Sem.Tools.Logging.LogLevel
+# Type: T:Sem.Tools.Logging.LogLevel
 
  The "chattiness" level. 
 
@@ -1811,7 +1811,7 @@ Returns: A new method that is the combination of  !! UNSUPPORTED: paramref !!  a
 
 
 ---
-# T:Sem.Tools.Logging.LogScope
+# Type: T:Sem.Tools.Logging.LogScope
 
  Simple hierarchical logging scope. 
 
@@ -1881,7 +1881,7 @@ Returns: A new method that is the combination of  !! UNSUPPORTED: paramref !!  a
 
 
 ---
-##### M:Sem.Tools.Logging.LogScope.Create(System.String,System.Action{Sem.Tools.Logging.LogCategories,Sem.Tools.Logging.LogLevel,Sem.Tools.Logging.LogScope,System.String},System.String,System.String)
+##### Method: LogScope.Create(string, System.Action\<LogCategories, LogLevel, LogScope, string>, string, string)
 
  Create a new scope instance. 
 
@@ -1902,7 +1902,7 @@ Returns: A new logging scope.
 
 
 ---
-##### M:Sem.Tools.Logging.LogScope.MethodStart(System.Object,System.String,System.String)
+##### Method: LogScope.MethodStart(Object, string, string)
 
  Call this to indicate a method start. 
 
@@ -1920,7 +1920,7 @@ Returns: A new scope.
 
 
 ---
-##### M:Sem.Tools.Logging.LogScope.Child(System.String,System.Object,System.String,System.String)
+##### Method: LogScope.Child(string, Object, string, string)
 
  Creates a new child scope. 
 
@@ -1941,7 +1941,7 @@ Returns: A new scope.
 
 
 ---
-##### M:Sem.Tools.Logging.LogScope.DisposeAsync
+##### Method: LogScope.DisposeAsync
 
  Async implementation of the dispose pattern. 
 
@@ -1950,14 +1950,14 @@ Returns: A task to wait for.
 
 
 ---
-##### M:Sem.Tools.Logging.LogScope.Dispose
+##### Method: LogScope.Dispose
 
  Logs the end of the scope. 
 
 
 
 ---
-##### M:Sem.Tools.Logging.LogScope.Log(System.String,System.Object)
+##### Method: LogScope.Log(string, Object)
 
  Logs a message. 
 
@@ -1970,7 +1970,7 @@ Returns: A task to wait for.
 
 
 ---
-##### M:Sem.Tools.Logging.LogScope.Log(Sem.Tools.Logging.LogCategories,Sem.Tools.Logging.LogLevel,System.String,System.Object)
+##### Method: LogScope.Log(LogCategories, LogLevel, string, Object)
 
  Logs a message. 
 
@@ -1993,7 +1993,7 @@ Returns: A task to wait for.
 
 ## Sem.Data.SprocAccess.FileSystem ##
 
-# T:Sem.Data.SprocAccess.FileSystem.TxtDatabase
+# Type: T:Sem.Data.SprocAccess.FileSystem.TxtDatabase
 
  Simple text file implementation of [[|T:Sem.Data.SprocAccess.IDatabase]]. Can be used to mock database access easily. Each SPROC gets its own folder and each combination of parameters its own file. 
 
@@ -2007,7 +2007,7 @@ Returns: A task to wait for.
 
 
 ---
-##### M:Sem.Data.SprocAccess.FileSystem.TxtDatabase.#ctor(System.String)
+##### Method: TxtDatabase.#ctor(string)
 
  Initializes a new instance of the [[|T:Sem.Data.SprocAccess.FileSystem.TxtDatabase]] class. 
 
@@ -2017,17 +2017,17 @@ Returns: A task to wait for.
 
 
 ---
-##### M:Sem.Data.SprocAccess.FileSystem.TxtDatabase.Execute``1(System.String,System.Func{Sem.Data.SprocAccess.IReader,System.Threading.Tasks.Task{``0}},Sem.Tools.Logging.LogScope,System.Collections.Generic.KeyValuePair{System.String,System.Object}[])
+##### Method: TxtDatabase.Execute\<T>(string, Func\<Sem.Data.SprocAccess.IReader, Task\<T>>, Sem.Tools.Logging.LogScope, KeyValuePair\<string, Object>[])
 
  !! UNSUPPORTED: inheritdoc !! 
 
 ---
-##### M:Sem.Data.SprocAccess.FileSystem.TxtDatabase.DisposeAsync
+##### Method: TxtDatabase.DisposeAsync
 
  !! UNSUPPORTED: inheritdoc !! 
 
 ---
-# T:Sem.Data.SprocAccess.FileSystem.TxtReader
+# Type: T:Sem.Data.SprocAccess.FileSystem.TxtReader
 
  Reader implementation for a bunch of text files - [[|T:Sem.Data.SprocAccess.FileSystem.TxtDatabase]]. 
 
@@ -2062,7 +2062,7 @@ Returns: A task to wait for.
 
 
 ---
-##### M:Sem.Data.SprocAccess.FileSystem.TxtReader.#ctor(System.String)
+##### Method: TxtReader.#ctor(string)
 
  Initializes a new instance of the [[|T:Sem.Data.SprocAccess.FileSystem.TxtReader]] class. 
 
@@ -2072,7 +2072,7 @@ Returns: A task to wait for.
 
 
 ---
-##### M:Sem.Data.SprocAccess.FileSystem.TxtReader.Read
+##### Method: TxtReader.Read
 
  Increments the line pointer. 
 
@@ -2081,7 +2081,7 @@ Returns: A value indicating whether there is still data at this line.
 
 
 ---
-##### M:Sem.Data.SprocAccess.FileSystem.TxtReader.Get``1(System.Int32)
+##### Method: TxtReader.Get\<T>(System.Int32)
 
  Reads the value of a column by its index. 
 
@@ -2096,7 +2096,7 @@ Returns: The value of the column in the current row.
 
 
 ---
-##### M:Sem.Data.SprocAccess.FileSystem.TxtReader.Get(System.Int32,System.Type)
+##### Method: TxtReader.Get(System.Int32, System.Type)
 
  Reads the value of a column by its index. 
 
@@ -2111,7 +2111,7 @@ Returns: The value of the column in the current row.
 
 
 ---
-##### M:Sem.Data.SprocAccess.FileSystem.TxtReader.NextResult
+##### Method: TxtReader.NextResult
 
  Advances to the next result set. 
 
@@ -2120,7 +2120,7 @@ Returns: A task to wait for.
 
 
 ---
-##### M:Sem.Data.SprocAccess.FileSystem.TxtReader.Close
+##### Method: TxtReader.Close
 
  Closes the reader. 
 
@@ -2129,7 +2129,7 @@ Returns: A task to wait for.
 
 
 ---
-##### M:Sem.Data.SprocAccess.FileSystem.TxtReader.IndexByName(System.String)
+##### Method: TxtReader.IndexByName(string)
 
  Gets the index of a column by its name (case-insensitive). When there are two columns with the same name, the first index will be returned. 
 
@@ -2141,7 +2141,7 @@ Returns: The index of the column.
 
 
 ---
-##### M:Sem.Data.SprocAccess.FileSystem.TxtReader.Init
+##### Method: TxtReader.Init
 
  Reads the text file and initializes the line-pointer. 
 
@@ -2152,21 +2152,21 @@ Returns: The index of the column.
 
 ## Sem.Data.SprocAccess.FileSystemTests ##
 
-# T:Sem.Data.SprocAccess.FileSystemTests.ClassMap
+# Type: T:Sem.Data.SprocAccess.FileSystemTests.ClassMap
 
  Tests for the class [[|T:Sem.Data.SprocAccess.FileSystemTests.Map]]. 
 
 
 
 ---
-# T:Sem.Data.SprocAccess.FileSystemTests.ClassMap.To
+# Type: T:Sem.Data.SprocAccess.FileSystemTests.ClassMap.To
 
  Tests the method [[|M:Sem.Data.SprocAccess.FileSystemTests.Map.To``1(Sem.Data.SprocAccess.IReader)]]. 
 
 
 
 ---
-##### M:Sem.Data.SprocAccess.FileSystemTests.ClassMap.To.MapsSampleType
+##### Method: ClassMap.To.MapsSampleType
 
  Tests default property name mapping to a sample class. 
 
@@ -2175,21 +2175,21 @@ Returns: A task to wait for.
 
 
 ---
-# T:Sem.Data.SprocAccess.FileSystemTests.ClassTxtDatabase
+# Type: T:Sem.Data.SprocAccess.FileSystemTests.ClassTxtDatabase
 
  Tests for the class [[|T:Sem.Data.SprocAccess.FileSystem.TxtDatabase]]. 
 
 
 
 ---
-# T:Sem.Data.SprocAccess.FileSystemTests.ClassTxtDatabase.Execute
+# Type: T:Sem.Data.SprocAccess.FileSystemTests.ClassTxtDatabase.Execute
 
  Tests for the method [[|M:Sem.Data.SprocAccess.FileSystem.TxtDatabase.Execute``1(System.String,System.Func{Sem.Data.SprocAccess.IReader,System.Threading.Tasks.Task{``0}},Sem.Tools.Logging.LogScope,System.Collections.Generic.KeyValuePair{System.String,System.Object}[])]]. 
 
 
 
 ---
-##### M:Sem.Data.SprocAccess.FileSystemTests.ClassTxtDatabase.Execute.ReadsIntFromCorrectColumn
+##### Method: ClassTxtDatabase.Execute.ReadsIntFromCorrectColumn
 
  Tests whether the [[|T:System.Int32]] column can be mapped correctly. 
 
@@ -2198,7 +2198,7 @@ Returns: A task to wait for.
 
 
 ---
-##### M:Sem.Data.SprocAccess.FileSystemTests.ClassTxtDatabase.Execute.ReadsDateTimeFromCorrectColumn
+##### Method: ClassTxtDatabase.Execute.ReadsDateTimeFromCorrectColumn
 
  Tests whether the [[|T:System.DateTime]] column can be mapped correctly. 
 
@@ -2207,14 +2207,14 @@ Returns: A task to wait for.
 
 
 ---
-# T:Sem.Data.SprocAccess.FileSystemTests.Map
+# Type: T:Sem.Data.SprocAccess.FileSystemTests.Map
 
  Helper class that implements a slow, bt generic mapper method. 
 
 
 
 ---
-##### M:Sem.Data.SprocAccess.FileSystemTests.Map.To``1(Sem.Data.SprocAccess.IReader)
+##### Method: Map.To\<T>(Sem.Data.SprocAccess.IReader)
 
  Mapper method that maps data from an [[|T:Sem.Data.SprocAccess.IReader]] to a POCO object using the names of the properties. The process uses a very simple reflection based approach, that is not really "production ready" - use an explicit and specific implementation in production to prevent the overhead of reflection. 
 
@@ -2229,7 +2229,7 @@ Returns: The initialized object instance.
 
 
 ---
-# T:Sem.Data.SprocAccess.FileSystemTests.Sample
+# Type: T:Sem.Data.SprocAccess.FileSystemTests.Sample
 
  Sample class for mapping tests. 
 
@@ -2254,14 +2254,14 @@ Returns: The initialized object instance.
 
 ## Sem.Data.SprocAccess ##
 
-# T:Sem.Data.SprocAccess.IDatabase
+# Type: T:Sem.Data.SprocAccess.IDatabase
 
  Very simple and small interface to interact with databases. 
 
 
 
 ---
-##### M:Sem.Data.SprocAccess.IDatabase.Execute``1(System.String,System.Func{Sem.Data.SprocAccess.IReader,System.Threading.Tasks.Task{``0}},Sem.Tools.Logging.LogScope,System.Collections.Generic.KeyValuePair{System.String,System.Object}[])
+##### Method: IDatabase.Execute\<T>(string, Func\<IReader, Task\<T>>, Sem.Tools.Logging.LogScope, KeyValuePair\<string, Object>[])
 
  Executes a "stored procedure" (aka. "SPROC") and maps the result to a series of POCOs. 
 
@@ -2285,14 +2285,14 @@ Returns: A series of POCO instances.
 
 
 ---
-# T:Sem.Data.SprocAccess.IReader
+# Type: T:Sem.Data.SprocAccess.IReader
 
  Simple data reader interface with only the needed methods to provide an interface that can easily be implemented. 
 
 
 
 ---
-##### M:Sem.Data.SprocAccess.IReader.Read
+##### Method: IReader.Read
 
  Advances to the next record. 
 
@@ -2301,7 +2301,7 @@ Returns: A value indicating whether there is still data to be read.
 
 
 ---
-##### M:Sem.Data.SprocAccess.IReader.Get``1(System.Int32)
+##### Method: IReader.Get\<T>(System.Int32)
 
  Reads the value of a column by its index. 
 
@@ -2316,7 +2316,7 @@ Returns: The value of the column in the current row.
 
 
 ---
-##### M:Sem.Data.SprocAccess.IReader.Get(System.Int32,System.Type)
+##### Method: IReader.Get(System.Int32, System.Type)
 
  Reads the value of a column by its index. 
 
@@ -2331,7 +2331,7 @@ Returns: The value of the column in the current row.
 
 
 ---
-##### M:Sem.Data.SprocAccess.IReader.NextResult
+##### Method: IReader.NextResult
 
  Advances to the next result set. 
 
@@ -2340,7 +2340,7 @@ Returns: A task to wait for.
 
 
 ---
-##### M:Sem.Data.SprocAccess.IReader.Close
+##### Method: IReader.Close
 
  Closes the reader. 
 
@@ -2349,7 +2349,7 @@ Returns: A task to wait for.
 
 
 ---
-##### M:Sem.Data.SprocAccess.IReader.IndexByName(System.String)
+##### Method: IReader.IndexByName(string)
 
  Gets the index of a column by its name (case-insensitive). When there are two columns with the same name, the first index will be returned. 
 
@@ -2365,7 +2365,7 @@ Returns: The index of the column.
 
 ## Sem.Tools.Logging ##
 
-# T:Sem.Tools.Logging.LogCategories
+# Type: T:Sem.Tools.Logging.LogCategories
 
  The logging category distinguishes between technical and business information. 
 
@@ -2393,14 +2393,14 @@ Returns: The index of the column.
 
 
 ---
-# T:Sem.Tools.Logging.LogCategoryExtensions
+# Type: T:Sem.Tools.Logging.LogCategoryExtensions
 
  Extension class for the enum type [[|T:Sem.Tools.Logging.LogCategories]]. 
 
 
 
 ---
-##### M:Sem.Tools.Logging.LogCategoryExtensions.HasFlag``1(``0,``0)
+##### Method: LogCategoryExtensions.HasFlag\<T>(``0, ``0)
 
  Tests whether a value has a specific category flag set. 
 
@@ -2418,14 +2418,14 @@ Returns: A value indicating whether the flag is set.
 
 
 ---
-# T:Sem.Tools.Logging.LogExtension
+# Type: T:Sem.Tools.Logging.LogExtension
 
  Extension class providing some standard logging methods. 
 
 
 
 ---
-##### M:Sem.Tools.Logging.LogExtension.AddDebug(System.Action{Sem.Tools.Logging.LogCategories,Sem.Tools.Logging.LogLevel,Sem.Tools.Logging.LogScope,System.String})
+##### Method: LogExtension.AddDebug(System.Action\<LogCategories, LogLevel, LogScope, string>)
 
  Simple output using [[|M:System.Diagnostics.Debug.WriteLine(System.Object)]]. 
 
@@ -2437,7 +2437,7 @@ Returns: A new method that is the combination of  !! UNSUPPORTED: paramref !!  a
 
 
 ---
-##### M:Sem.Tools.Logging.LogExtension.AddConsole(System.Action{Sem.Tools.Logging.LogCategories,Sem.Tools.Logging.LogLevel,Sem.Tools.Logging.LogScope,System.String})
+##### Method: LogExtension.AddConsole(System.Action\<LogCategories, LogLevel, LogScope, string>)
 
  Simple output using [[|M:System.Console.WriteLine(System.Object)]]. 
 
@@ -2449,7 +2449,7 @@ Returns: A new method that is the combination of  !! UNSUPPORTED: paramref !!  a
 
 
 ---
-# T:Sem.Tools.Logging.LogLevel
+# Type: T:Sem.Tools.Logging.LogLevel
 
  The "chattiness" level. 
 
@@ -2491,7 +2491,7 @@ Returns: A new method that is the combination of  !! UNSUPPORTED: paramref !!  a
 
 
 ---
-# T:Sem.Tools.Logging.LogScope
+# Type: T:Sem.Tools.Logging.LogScope
 
  Simple hierarchical logging scope. 
 
@@ -2561,7 +2561,7 @@ Returns: A new method that is the combination of  !! UNSUPPORTED: paramref !!  a
 
 
 ---
-##### M:Sem.Tools.Logging.LogScope.Create(System.String,System.Action{Sem.Tools.Logging.LogCategories,Sem.Tools.Logging.LogLevel,Sem.Tools.Logging.LogScope,System.String},System.String,System.String)
+##### Method: LogScope.Create(string, System.Action\<LogCategories, LogLevel, LogScope, string>, string, string)
 
  Create a new scope instance. 
 
@@ -2582,7 +2582,7 @@ Returns: A new logging scope.
 
 
 ---
-##### M:Sem.Tools.Logging.LogScope.MethodStart(System.Object,System.String,System.String)
+##### Method: LogScope.MethodStart(Object, string, string)
 
  Call this to indicate a method start. 
 
@@ -2600,7 +2600,7 @@ Returns: A new scope.
 
 
 ---
-##### M:Sem.Tools.Logging.LogScope.Child(System.String,System.Object,System.String,System.String)
+##### Method: LogScope.Child(string, Object, string, string)
 
  Creates a new child scope. 
 
@@ -2621,7 +2621,7 @@ Returns: A new scope.
 
 
 ---
-##### M:Sem.Tools.Logging.LogScope.DisposeAsync
+##### Method: LogScope.DisposeAsync
 
  Async implementation of the dispose pattern. 
 
@@ -2630,14 +2630,14 @@ Returns: A task to wait for.
 
 
 ---
-##### M:Sem.Tools.Logging.LogScope.Dispose
+##### Method: LogScope.Dispose
 
  Logs the end of the scope. 
 
 
 
 ---
-##### M:Sem.Tools.Logging.LogScope.Log(System.String,System.Object)
+##### Method: LogScope.Log(string, Object)
 
  Logs a message. 
 
@@ -2650,7 +2650,7 @@ Returns: A task to wait for.
 
 
 ---
-##### M:Sem.Tools.Logging.LogScope.Log(Sem.Tools.Logging.LogCategories,Sem.Tools.Logging.LogLevel,System.String,System.Object)
+##### Method: LogScope.Log(LogCategories, LogLevel, string, Object)
 
  Logs a message. 
 
@@ -2673,7 +2673,7 @@ Returns: A task to wait for.
 
 ## Sem.Data.SprocAccess.IntegrationTests ##
 
-# T:Sem.Data.SprocAccess.IntegrationTests.BatchLogExtension
+# Type: T:Sem.Data.SprocAccess.IntegrationTests.BatchLogExtension
 
  Logging batched items - this is only implemented to test the flexibility of the logging, not to be used in production. The way it is currently implemented does not provide any benefit to the logging process. 
 
@@ -2694,7 +2694,7 @@ Returns: A task to wait for.
 
 
 ---
-##### M:Sem.Data.SprocAccess.IntegrationTests.BatchLogExtension.Batch(System.Action{Sem.Tools.Logging.LogCategories,Sem.Tools.Logging.LogLevel,Sem.Tools.Logging.LogScope,System.String},System.Int32)
+##### Method: BatchLogExtension.Batch(System.Action\<Sem.Tools.Logging.LogCategories, Sem.Tools.Logging.LogLevel, Sem.Tools.Logging.LogScope, string>, System.Int32)
 
  Simply batches the log execution - this has NO real benefit ... for testing purpose only. 
 
@@ -2709,14 +2709,14 @@ Returns: A new log method.
 
 
 ---
-# T:Sem.Data.SprocAccess.IntegrationTests.Program
+# Type: T:Sem.Data.SprocAccess.IntegrationTests.Program
 
  Simple executable that will read the database named of a local SQL server instance using a trusted connection (current user must be able to execute SPROC [sys].[sp_databases]). 
 
 
 
 ---
-##### M:Sem.Data.SprocAccess.IntegrationTests.Program.Main
+##### Method: Program.Main
 
  Entry point for the integration test program. 
 
@@ -2729,7 +2729,7 @@ Returns: A task to wait for.
 
 ## Sem.Data.SprocAccess.SqlServer ##
 
-# T:Sem.Data.SprocAccess.SqlServer.SqlDatabase
+# Type: T:Sem.Data.SprocAccess.SqlServer.SqlDatabase
 
  An implementation of [[|T:Sem.Data.SprocAccess.IDatabase]] using SQL server as a backend. 
 
@@ -2743,7 +2743,7 @@ Returns: A task to wait for.
 
 
 ---
-##### M:Sem.Data.SprocAccess.SqlServer.SqlDatabase.#ctor(System.String)
+##### Method: SqlDatabase.#ctor(string)
 
  Initializes a new instance of the [[|T:Sem.Data.SprocAccess.SqlServer.SqlDatabase]] class. 
 
@@ -2753,24 +2753,24 @@ Returns: A task to wait for.
 
 
 ---
-##### M:Sem.Data.SprocAccess.SqlServer.SqlDatabase.Execute``1(System.String,System.Func{Sem.Data.SprocAccess.IReader,System.Threading.Tasks.Task{``0}},Sem.Tools.Logging.LogScope,System.Collections.Generic.KeyValuePair{System.String,System.Object}[])
+##### Method: SqlDatabase.Execute\<T>(string, Func\<Sem.Data.SprocAccess.IReader, Task\<T>>, Sem.Tools.Logging.LogScope, KeyValuePair\<string, Object>[])
 
  !! UNSUPPORTED: inheritdoc !! 
 
 ---
-##### M:Sem.Data.SprocAccess.SqlServer.SqlDatabase.DisposeAsync
+##### Method: SqlDatabase.DisposeAsync
 
  !! UNSUPPORTED: inheritdoc !! 
 
 ---
-# T:Sem.Data.SprocAccess.SqlServer.SqlReader
+# Type: T:Sem.Data.SprocAccess.SqlServer.SqlReader
 
  SQL serer implementation of the reader interface [[|T:Sem.Data.SprocAccess.IReader]]. 
 
 
 
 ---
-##### M:Sem.Data.SprocAccess.SqlServer.SqlReader.#ctor(System.Data.SqlClient.SqlDataReader)
+##### Method: SqlReader.#ctor(System.Data.SqlClient.SqlDataReader)
 
  Initializes a new instance of the [[|T:Sem.Data.SprocAccess.SqlServer.SqlReader]] class. 
 
@@ -2780,32 +2780,32 @@ Returns: A task to wait for.
 
 
 ---
-##### M:Sem.Data.SprocAccess.SqlServer.SqlReader.Read
+##### Method: SqlReader.Read
 
  !! UNSUPPORTED: inheritdoc !! 
 
 ---
-##### M:Sem.Data.SprocAccess.SqlServer.SqlReader.Get``1(System.Int32)
+##### Method: SqlReader.Get\<T>(System.Int32)
 
  !! UNSUPPORTED: inheritdoc !! 
 
 ---
-##### M:Sem.Data.SprocAccess.SqlServer.SqlReader.Get(System.Int32,System.Type)
+##### Method: SqlReader.Get(System.Int32, System.Type)
 
  !! UNSUPPORTED: inheritdoc !! 
 
 ---
-##### M:Sem.Data.SprocAccess.SqlServer.SqlReader.NextResult
+##### Method: SqlReader.NextResult
 
  !! UNSUPPORTED: inheritdoc !! 
 
 ---
-##### M:Sem.Data.SprocAccess.SqlServer.SqlReader.Close
+##### Method: SqlReader.Close
 
  !! UNSUPPORTED: inheritdoc !! 
 
 ---
-##### M:Sem.Data.SprocAccess.SqlServer.SqlReader.IndexByName(System.String)
+##### Method: SqlReader.IndexByName(string)
 
  !! UNSUPPORTED: inheritdoc !! 
 
@@ -2814,14 +2814,14 @@ Returns: A task to wait for.
 
 ## Sem.Data.SprocAccess ##
 
-# T:Sem.Data.SprocAccess.IDatabase
+# Type: T:Sem.Data.SprocAccess.IDatabase
 
  Very simple and small interface to interact with databases. 
 
 
 
 ---
-##### M:Sem.Data.SprocAccess.IDatabase.Execute``1(System.String,System.Func{Sem.Data.SprocAccess.IReader,System.Threading.Tasks.Task{``0}},Sem.Tools.Logging.LogScope,System.Collections.Generic.KeyValuePair{System.String,System.Object}[])
+##### Method: IDatabase.Execute\<T>(string, Func\<IReader, Task\<T>>, Sem.Tools.Logging.LogScope, KeyValuePair\<string, Object>[])
 
  Executes a "stored procedure" (aka. "SPROC") and maps the result to a series of POCOs. 
 
@@ -2845,14 +2845,14 @@ Returns: A series of POCO instances.
 
 
 ---
-# T:Sem.Data.SprocAccess.IReader
+# Type: T:Sem.Data.SprocAccess.IReader
 
  Simple data reader interface with only the needed methods to provide an interface that can easily be implemented. 
 
 
 
 ---
-##### M:Sem.Data.SprocAccess.IReader.Read
+##### Method: IReader.Read
 
  Advances to the next record. 
 
@@ -2861,7 +2861,7 @@ Returns: A value indicating whether there is still data to be read.
 
 
 ---
-##### M:Sem.Data.SprocAccess.IReader.Get``1(System.Int32)
+##### Method: IReader.Get\<T>(System.Int32)
 
  Reads the value of a column by its index. 
 
@@ -2876,7 +2876,7 @@ Returns: The value of the column in the current row.
 
 
 ---
-##### M:Sem.Data.SprocAccess.IReader.Get(System.Int32,System.Type)
+##### Method: IReader.Get(System.Int32, System.Type)
 
  Reads the value of a column by its index. 
 
@@ -2891,7 +2891,7 @@ Returns: The value of the column in the current row.
 
 
 ---
-##### M:Sem.Data.SprocAccess.IReader.NextResult
+##### Method: IReader.NextResult
 
  Advances to the next result set. 
 
@@ -2900,7 +2900,7 @@ Returns: A task to wait for.
 
 
 ---
-##### M:Sem.Data.SprocAccess.IReader.Close
+##### Method: IReader.Close
 
  Closes the reader. 
 
@@ -2909,7 +2909,7 @@ Returns: A task to wait for.
 
 
 ---
-##### M:Sem.Data.SprocAccess.IReader.IndexByName(System.String)
+##### Method: IReader.IndexByName(string)
 
  Gets the index of a column by its name (case-insensitive). When there are two columns with the same name, the first index will be returned. 
 
@@ -2925,7 +2925,7 @@ Returns: The index of the column.
 
 ## Sem.Tools.Logging ##
 
-# T:Sem.Tools.Logging.LogCategories
+# Type: T:Sem.Tools.Logging.LogCategories
 
  The logging category distinguishes between technical and business information. 
 
@@ -2953,14 +2953,14 @@ Returns: The index of the column.
 
 
 ---
-# T:Sem.Tools.Logging.LogCategoryExtensions
+# Type: T:Sem.Tools.Logging.LogCategoryExtensions
 
  Extension class for the enum type [[|T:Sem.Tools.Logging.LogCategories]]. 
 
 
 
 ---
-##### M:Sem.Tools.Logging.LogCategoryExtensions.HasFlag``1(``0,``0)
+##### Method: LogCategoryExtensions.HasFlag\<T>(``0, ``0)
 
  Tests whether a value has a specific category flag set. 
 
@@ -2978,14 +2978,14 @@ Returns: A value indicating whether the flag is set.
 
 
 ---
-# T:Sem.Tools.Logging.LogExtension
+# Type: T:Sem.Tools.Logging.LogExtension
 
  Extension class providing some standard logging methods. 
 
 
 
 ---
-##### M:Sem.Tools.Logging.LogExtension.AddDebug(System.Action{Sem.Tools.Logging.LogCategories,Sem.Tools.Logging.LogLevel,Sem.Tools.Logging.LogScope,System.String})
+##### Method: LogExtension.AddDebug(System.Action\<LogCategories, LogLevel, LogScope, string>)
 
  Simple output using [[|M:System.Diagnostics.Debug.WriteLine(System.Object)]]. 
 
@@ -2997,7 +2997,7 @@ Returns: A new method that is the combination of  !! UNSUPPORTED: paramref !!  a
 
 
 ---
-##### M:Sem.Tools.Logging.LogExtension.AddConsole(System.Action{Sem.Tools.Logging.LogCategories,Sem.Tools.Logging.LogLevel,Sem.Tools.Logging.LogScope,System.String})
+##### Method: LogExtension.AddConsole(System.Action\<LogCategories, LogLevel, LogScope, string>)
 
  Simple output using [[|M:System.Console.WriteLine(System.Object)]]. 
 
@@ -3009,7 +3009,7 @@ Returns: A new method that is the combination of  !! UNSUPPORTED: paramref !!  a
 
 
 ---
-# T:Sem.Tools.Logging.LogLevel
+# Type: T:Sem.Tools.Logging.LogLevel
 
  The "chattiness" level. 
 
@@ -3051,7 +3051,7 @@ Returns: A new method that is the combination of  !! UNSUPPORTED: paramref !!  a
 
 
 ---
-# T:Sem.Tools.Logging.LogScope
+# Type: T:Sem.Tools.Logging.LogScope
 
  Simple hierarchical logging scope. 
 
@@ -3121,7 +3121,7 @@ Returns: A new method that is the combination of  !! UNSUPPORTED: paramref !!  a
 
 
 ---
-##### M:Sem.Tools.Logging.LogScope.Create(System.String,System.Action{Sem.Tools.Logging.LogCategories,Sem.Tools.Logging.LogLevel,Sem.Tools.Logging.LogScope,System.String},System.String,System.String)
+##### Method: LogScope.Create(string, System.Action\<LogCategories, LogLevel, LogScope, string>, string, string)
 
  Create a new scope instance. 
 
@@ -3142,7 +3142,7 @@ Returns: A new logging scope.
 
 
 ---
-##### M:Sem.Tools.Logging.LogScope.MethodStart(System.Object,System.String,System.String)
+##### Method: LogScope.MethodStart(Object, string, string)
 
  Call this to indicate a method start. 
 
@@ -3160,7 +3160,7 @@ Returns: A new scope.
 
 
 ---
-##### M:Sem.Tools.Logging.LogScope.Child(System.String,System.Object,System.String,System.String)
+##### Method: LogScope.Child(string, Object, string, string)
 
  Creates a new child scope. 
 
@@ -3181,7 +3181,7 @@ Returns: A new scope.
 
 
 ---
-##### M:Sem.Tools.Logging.LogScope.DisposeAsync
+##### Method: LogScope.DisposeAsync
 
  Async implementation of the dispose pattern. 
 
@@ -3190,14 +3190,14 @@ Returns: A task to wait for.
 
 
 ---
-##### M:Sem.Tools.Logging.LogScope.Dispose
+##### Method: LogScope.Dispose
 
  Logs the end of the scope. 
 
 
 
 ---
-##### M:Sem.Tools.Logging.LogScope.Log(System.String,System.Object)
+##### Method: LogScope.Log(string, Object)
 
  Logs a message. 
 
@@ -3210,7 +3210,7 @@ Returns: A task to wait for.
 
 
 ---
-##### M:Sem.Tools.Logging.LogScope.Log(Sem.Tools.Logging.LogCategories,Sem.Tools.Logging.LogLevel,System.String,System.Object)
+##### Method: LogScope.Log(LogCategories, LogLevel, string, Object)
 
  Logs a message. 
 
@@ -3233,7 +3233,7 @@ Returns: A task to wait for.
 
 ## Sem.Data.SprocAccess.SqlServer ##
 
-# T:Sem.Data.SprocAccess.SqlServer.SqlDatabase
+# Type: T:Sem.Data.SprocAccess.SqlServer.SqlDatabase
 
  An implementation of [[|T:Sem.Data.SprocAccess.IDatabase]] using SQL server as a backend. 
 
@@ -3247,7 +3247,7 @@ Returns: A task to wait for.
 
 
 ---
-##### M:Sem.Data.SprocAccess.SqlServer.SqlDatabase.#ctor(System.String)
+##### Method: SqlDatabase.#ctor(string)
 
  Initializes a new instance of the [[|T:Sem.Data.SprocAccess.SqlServer.SqlDatabase]] class. 
 
@@ -3257,24 +3257,24 @@ Returns: A task to wait for.
 
 
 ---
-##### M:Sem.Data.SprocAccess.SqlServer.SqlDatabase.Execute``1(System.String,System.Func{Sem.Data.SprocAccess.IReader,System.Threading.Tasks.Task{``0}},Sem.Tools.Logging.LogScope,System.Collections.Generic.KeyValuePair{System.String,System.Object}[])
+##### Method: SqlDatabase.Execute\<T>(string, Func\<Sem.Data.SprocAccess.IReader, Task\<T>>, Sem.Tools.Logging.LogScope, KeyValuePair\<string, Object>[])
 
  !! UNSUPPORTED: inheritdoc !! 
 
 ---
-##### M:Sem.Data.SprocAccess.SqlServer.SqlDatabase.DisposeAsync
+##### Method: SqlDatabase.DisposeAsync
 
  !! UNSUPPORTED: inheritdoc !! 
 
 ---
-# T:Sem.Data.SprocAccess.SqlServer.SqlReader
+# Type: T:Sem.Data.SprocAccess.SqlServer.SqlReader
 
  SQL serer implementation of the reader interface [[|T:Sem.Data.SprocAccess.IReader]]. 
 
 
 
 ---
-##### M:Sem.Data.SprocAccess.SqlServer.SqlReader.#ctor(System.Data.SqlClient.SqlDataReader)
+##### Method: SqlReader.#ctor(System.Data.SqlClient.SqlDataReader)
 
  Initializes a new instance of the [[|T:Sem.Data.SprocAccess.SqlServer.SqlReader]] class. 
 
@@ -3284,32 +3284,32 @@ Returns: A task to wait for.
 
 
 ---
-##### M:Sem.Data.SprocAccess.SqlServer.SqlReader.Read
+##### Method: SqlReader.Read
 
  !! UNSUPPORTED: inheritdoc !! 
 
 ---
-##### M:Sem.Data.SprocAccess.SqlServer.SqlReader.Get``1(System.Int32)
+##### Method: SqlReader.Get\<T>(System.Int32)
 
  !! UNSUPPORTED: inheritdoc !! 
 
 ---
-##### M:Sem.Data.SprocAccess.SqlServer.SqlReader.Get(System.Int32,System.Type)
+##### Method: SqlReader.Get(System.Int32, System.Type)
 
  !! UNSUPPORTED: inheritdoc !! 
 
 ---
-##### M:Sem.Data.SprocAccess.SqlServer.SqlReader.NextResult
+##### Method: SqlReader.NextResult
 
  !! UNSUPPORTED: inheritdoc !! 
 
 ---
-##### M:Sem.Data.SprocAccess.SqlServer.SqlReader.Close
+##### Method: SqlReader.Close
 
  !! UNSUPPORTED: inheritdoc !! 
 
 ---
-##### M:Sem.Data.SprocAccess.SqlServer.SqlReader.IndexByName(System.String)
+##### Method: SqlReader.IndexByName(string)
 
  !! UNSUPPORTED: inheritdoc !! 
 
@@ -3318,14 +3318,14 @@ Returns: A task to wait for.
 
 ## Sem.Data.SprocAccess ##
 
-# T:Sem.Data.SprocAccess.IDatabase
+# Type: T:Sem.Data.SprocAccess.IDatabase
 
  Very simple and small interface to interact with databases. 
 
 
 
 ---
-##### M:Sem.Data.SprocAccess.IDatabase.Execute``1(System.String,System.Func{Sem.Data.SprocAccess.IReader,System.Threading.Tasks.Task{``0}},Sem.Tools.Logging.LogScope,System.Collections.Generic.KeyValuePair{System.String,System.Object}[])
+##### Method: IDatabase.Execute\<T>(string, Func\<IReader, Task\<T>>, Sem.Tools.Logging.LogScope, KeyValuePair\<string, Object>[])
 
  Executes a "stored procedure" (aka. "SPROC") and maps the result to a series of POCOs. 
 
@@ -3349,14 +3349,14 @@ Returns: A series of POCO instances.
 
 
 ---
-# T:Sem.Data.SprocAccess.IReader
+# Type: T:Sem.Data.SprocAccess.IReader
 
  Simple data reader interface with only the needed methods to provide an interface that can easily be implemented. 
 
 
 
 ---
-##### M:Sem.Data.SprocAccess.IReader.Read
+##### Method: IReader.Read
 
  Advances to the next record. 
 
@@ -3365,7 +3365,7 @@ Returns: A value indicating whether there is still data to be read.
 
 
 ---
-##### M:Sem.Data.SprocAccess.IReader.Get``1(System.Int32)
+##### Method: IReader.Get\<T>(System.Int32)
 
  Reads the value of a column by its index. 
 
@@ -3380,7 +3380,7 @@ Returns: The value of the column in the current row.
 
 
 ---
-##### M:Sem.Data.SprocAccess.IReader.Get(System.Int32,System.Type)
+##### Method: IReader.Get(System.Int32, System.Type)
 
  Reads the value of a column by its index. 
 
@@ -3395,7 +3395,7 @@ Returns: The value of the column in the current row.
 
 
 ---
-##### M:Sem.Data.SprocAccess.IReader.NextResult
+##### Method: IReader.NextResult
 
  Advances to the next result set. 
 
@@ -3404,7 +3404,7 @@ Returns: A task to wait for.
 
 
 ---
-##### M:Sem.Data.SprocAccess.IReader.Close
+##### Method: IReader.Close
 
  Closes the reader. 
 
@@ -3413,7 +3413,7 @@ Returns: A task to wait for.
 
 
 ---
-##### M:Sem.Data.SprocAccess.IReader.IndexByName(System.String)
+##### Method: IReader.IndexByName(string)
 
  Gets the index of a column by its name (case-insensitive). When there are two columns with the same name, the first index will be returned. 
 
@@ -3429,7 +3429,7 @@ Returns: The index of the column.
 
 ## Sem.Tools.Logging ##
 
-# T:Sem.Tools.Logging.LogCategories
+# Type: T:Sem.Tools.Logging.LogCategories
 
  The logging category distinguishes between technical and business information. 
 
@@ -3457,14 +3457,14 @@ Returns: The index of the column.
 
 
 ---
-# T:Sem.Tools.Logging.LogCategoryExtensions
+# Type: T:Sem.Tools.Logging.LogCategoryExtensions
 
  Extension class for the enum type [[|T:Sem.Tools.Logging.LogCategories]]. 
 
 
 
 ---
-##### M:Sem.Tools.Logging.LogCategoryExtensions.HasFlag``1(``0,``0)
+##### Method: LogCategoryExtensions.HasFlag\<T>(``0, ``0)
 
  Tests whether a value has a specific category flag set. 
 
@@ -3482,14 +3482,14 @@ Returns: A value indicating whether the flag is set.
 
 
 ---
-# T:Sem.Tools.Logging.LogExtension
+# Type: T:Sem.Tools.Logging.LogExtension
 
  Extension class providing some standard logging methods. 
 
 
 
 ---
-##### M:Sem.Tools.Logging.LogExtension.AddDebug(System.Action{Sem.Tools.Logging.LogCategories,Sem.Tools.Logging.LogLevel,Sem.Tools.Logging.LogScope,System.String})
+##### Method: LogExtension.AddDebug(System.Action\<LogCategories, LogLevel, LogScope, string>)
 
  Simple output using [[|M:System.Diagnostics.Debug.WriteLine(System.Object)]]. 
 
@@ -3501,7 +3501,7 @@ Returns: A new method that is the combination of  !! UNSUPPORTED: paramref !!  a
 
 
 ---
-##### M:Sem.Tools.Logging.LogExtension.AddConsole(System.Action{Sem.Tools.Logging.LogCategories,Sem.Tools.Logging.LogLevel,Sem.Tools.Logging.LogScope,System.String})
+##### Method: LogExtension.AddConsole(System.Action\<LogCategories, LogLevel, LogScope, string>)
 
  Simple output using [[|M:System.Console.WriteLine(System.Object)]]. 
 
@@ -3513,7 +3513,7 @@ Returns: A new method that is the combination of  !! UNSUPPORTED: paramref !!  a
 
 
 ---
-# T:Sem.Tools.Logging.LogLevel
+# Type: T:Sem.Tools.Logging.LogLevel
 
  The "chattiness" level. 
 
@@ -3555,7 +3555,7 @@ Returns: A new method that is the combination of  !! UNSUPPORTED: paramref !!  a
 
 
 ---
-# T:Sem.Tools.Logging.LogScope
+# Type: T:Sem.Tools.Logging.LogScope
 
  Simple hierarchical logging scope. 
 
@@ -3625,7 +3625,7 @@ Returns: A new method that is the combination of  !! UNSUPPORTED: paramref !!  a
 
 
 ---
-##### M:Sem.Tools.Logging.LogScope.Create(System.String,System.Action{Sem.Tools.Logging.LogCategories,Sem.Tools.Logging.LogLevel,Sem.Tools.Logging.LogScope,System.String},System.String,System.String)
+##### Method: LogScope.Create(string, System.Action\<LogCategories, LogLevel, LogScope, string>, string, string)
 
  Create a new scope instance. 
 
@@ -3646,7 +3646,7 @@ Returns: A new logging scope.
 
 
 ---
-##### M:Sem.Tools.Logging.LogScope.MethodStart(System.Object,System.String,System.String)
+##### Method: LogScope.MethodStart(Object, string, string)
 
  Call this to indicate a method start. 
 
@@ -3664,7 +3664,7 @@ Returns: A new scope.
 
 
 ---
-##### M:Sem.Tools.Logging.LogScope.Child(System.String,System.Object,System.String,System.String)
+##### Method: LogScope.Child(string, Object, string, string)
 
  Creates a new child scope. 
 
@@ -3685,7 +3685,7 @@ Returns: A new scope.
 
 
 ---
-##### M:Sem.Tools.Logging.LogScope.DisposeAsync
+##### Method: LogScope.DisposeAsync
 
  Async implementation of the dispose pattern. 
 
@@ -3694,14 +3694,14 @@ Returns: A task to wait for.
 
 
 ---
-##### M:Sem.Tools.Logging.LogScope.Dispose
+##### Method: LogScope.Dispose
 
  Logs the end of the scope. 
 
 
 
 ---
-##### M:Sem.Tools.Logging.LogScope.Log(System.String,System.Object)
+##### Method: LogScope.Log(string, Object)
 
  Logs a message. 
 
@@ -3714,7 +3714,7 @@ Returns: A task to wait for.
 
 
 ---
-##### M:Sem.Tools.Logging.LogScope.Log(Sem.Tools.Logging.LogCategories,Sem.Tools.Logging.LogLevel,System.String,System.Object)
+##### Method: LogScope.Log(LogCategories, LogLevel, string, Object)
 
  Logs a message. 
 
@@ -3737,7 +3737,7 @@ Returns: A task to wait for.
 
 ## Sem.Tools.Logging ##
 
-# T:Sem.Tools.Logging.LogCategories
+# Type: T:Sem.Tools.Logging.LogCategories
 
  The logging category distinguishes between technical and business information. 
 
@@ -3765,14 +3765,14 @@ Returns: A task to wait for.
 
 
 ---
-# T:Sem.Tools.Logging.LogCategoryExtensions
+# Type: T:Sem.Tools.Logging.LogCategoryExtensions
 
  Extension class for the enum type [[|T:Sem.Tools.Logging.LogCategories]]. 
 
 
 
 ---
-##### M:Sem.Tools.Logging.LogCategoryExtensions.HasFlag``1(``0,``0)
+##### Method: LogCategoryExtensions.HasFlag\<T>(``0, ``0)
 
  Tests whether a value has a specific category flag set. 
 
@@ -3790,14 +3790,14 @@ Returns: A value indicating whether the flag is set.
 
 
 ---
-# T:Sem.Tools.Logging.LogExtension
+# Type: T:Sem.Tools.Logging.LogExtension
 
  Extension class providing some standard logging methods. 
 
 
 
 ---
-##### M:Sem.Tools.Logging.LogExtension.AddDebug(System.Action{Sem.Tools.Logging.LogCategories,Sem.Tools.Logging.LogLevel,Sem.Tools.Logging.LogScope,System.String})
+##### Method: LogExtension.AddDebug(System.Action\<LogCategories, LogLevel, LogScope, string>)
 
  Simple output using [[|M:System.Diagnostics.Debug.WriteLine(System.Object)]]. 
 
@@ -3809,7 +3809,7 @@ Returns: A new method that is the combination of  !! UNSUPPORTED: paramref !!  a
 
 
 ---
-##### M:Sem.Tools.Logging.LogExtension.AddConsole(System.Action{Sem.Tools.Logging.LogCategories,Sem.Tools.Logging.LogLevel,Sem.Tools.Logging.LogScope,System.String})
+##### Method: LogExtension.AddConsole(System.Action\<LogCategories, LogLevel, LogScope, string>)
 
  Simple output using [[|M:System.Console.WriteLine(System.Object)]]. 
 
@@ -3821,7 +3821,7 @@ Returns: A new method that is the combination of  !! UNSUPPORTED: paramref !!  a
 
 
 ---
-# T:Sem.Tools.Logging.LogLevel
+# Type: T:Sem.Tools.Logging.LogLevel
 
  The "chattiness" level. 
 
@@ -3863,7 +3863,7 @@ Returns: A new method that is the combination of  !! UNSUPPORTED: paramref !!  a
 
 
 ---
-# T:Sem.Tools.Logging.LogScope
+# Type: T:Sem.Tools.Logging.LogScope
 
  Simple hierarchical logging scope. 
 
@@ -3933,7 +3933,7 @@ Returns: A new method that is the combination of  !! UNSUPPORTED: paramref !!  a
 
 
 ---
-##### M:Sem.Tools.Logging.LogScope.Create(System.String,System.Action{Sem.Tools.Logging.LogCategories,Sem.Tools.Logging.LogLevel,Sem.Tools.Logging.LogScope,System.String},System.String,System.String)
+##### Method: LogScope.Create(string, System.Action\<LogCategories, LogLevel, LogScope, string>, string, string)
 
  Create a new scope instance. 
 
@@ -3954,7 +3954,7 @@ Returns: A new logging scope.
 
 
 ---
-##### M:Sem.Tools.Logging.LogScope.MethodStart(System.Object,System.String,System.String)
+##### Method: LogScope.MethodStart(Object, string, string)
 
  Call this to indicate a method start. 
 
@@ -3972,7 +3972,7 @@ Returns: A new scope.
 
 
 ---
-##### M:Sem.Tools.Logging.LogScope.Child(System.String,System.Object,System.String,System.String)
+##### Method: LogScope.Child(string, Object, string, string)
 
  Creates a new child scope. 
 
@@ -3993,7 +3993,7 @@ Returns: A new scope.
 
 
 ---
-##### M:Sem.Tools.Logging.LogScope.DisposeAsync
+##### Method: LogScope.DisposeAsync
 
  Async implementation of the dispose pattern. 
 
@@ -4002,14 +4002,14 @@ Returns: A task to wait for.
 
 
 ---
-##### M:Sem.Tools.Logging.LogScope.Dispose
+##### Method: LogScope.Dispose
 
  Logs the end of the scope. 
 
 
 
 ---
-##### M:Sem.Tools.Logging.LogScope.Log(System.String,System.Object)
+##### Method: LogScope.Log(string, Object)
 
  Logs a message. 
 
@@ -4022,7 +4022,7 @@ Returns: A task to wait for.
 
 
 ---
-##### M:Sem.Tools.Logging.LogScope.Log(Sem.Tools.Logging.LogCategories,Sem.Tools.Logging.LogLevel,System.String,System.Object)
+##### Method: LogScope.Log(LogCategories, LogLevel, string, Object)
 
  Logs a message. 
 
@@ -4045,133 +4045,133 @@ Returns: A task to wait for.
 
 ## Sem.Tools.Logging.Tests ##
 
-# T:Sem.Tools.Logging.Tests.ClassLogCategoryExtensions
+# Type: T:Sem.Tools.Logging.Tests.ClassLogCategoryExtensions
 
  Tests for the static helper class [[|T:Sem.Tools.Logging.LogCategoryExtensions]]. 
 
 
 
 ---
-# T:Sem.Tools.Logging.Tests.ClassLogCategoryExtensions.HasFlagFast
+# Type: T:Sem.Tools.Logging.Tests.ClassLogCategoryExtensions.HasFlagFast
 
  Tests the method [[|M:Sem.Tools.Logging.LogCategoryExtensions.HasFlag``1(``0,``0)]]. 
 
 
 
 ---
-##### M:Sem.Tools.Logging.Tests.ClassLogCategoryExtensions.HasFlagFast.DetectsFlagSingle
+##### Method: ClassLogCategoryExtensions.HasFlagFast.DetectsFlagSingle
 
  Tests whether the method can detect a single flag being set. 
 
 
 
 ---
-##### M:Sem.Tools.Logging.Tests.ClassLogCategoryExtensions.HasFlagFast.DetectsFlagInCombination
+##### Method: ClassLogCategoryExtensions.HasFlagFast.DetectsFlagInCombination
 
  Tests whether the method can detect a single flag in a variable with multiple flags being set. 
 
 
 
 ---
-##### M:Sem.Tools.Logging.Tests.ClassLogCategoryExtensions.HasFlagFast.DetectsFlagNotSet
+##### Method: ClassLogCategoryExtensions.HasFlagFast.DetectsFlagNotSet
 
  Tests whether the method can detect a single flag not being set. 
 
 
 
 ---
-# T:Sem.Tools.Logging.Tests.ClassLogScope
+# Type: T:Sem.Tools.Logging.Tests.ClassLogScope
 
  Tests for the class [[|T:Sem.Tools.Logging.LogScope]]. 
 
 
 
 ---
-# T:Sem.Tools.Logging.Tests.ClassLogScope.LogScopeConstructor
+# Type: T:Sem.Tools.Logging.Tests.ClassLogScope.LogScopeConstructor
 
  Tests the constructor(s) for [[|T:Sem.Tools.Logging.LogScope]]. 
 
 
 
 ---
-##### M:Sem.Tools.Logging.Tests.ClassLogScope.LogScopeConstructor.LogsScopeStart
+##### Method: ClassLogScope.LogScopeConstructor.LogsScopeStart
 
  Tests whether the ctor log line is formatted correctly. 
 
 
 
 ---
-# T:Sem.Tools.Logging.Tests.ClassLogScope.Dispose
+# Type: T:Sem.Tools.Logging.Tests.ClassLogScope.Dispose
 
  Tests the method for [[|M:Sem.Tools.Logging.LogScope.Dispose]]. 
 
 
 
 ---
-##### M:Sem.Tools.Logging.Tests.ClassLogScope.Dispose.LogsScopeEnd
+##### Method: ClassLogScope.Dispose.LogsScopeEnd
 
  Tests whether the destructor log line is formatted correctly. 
 
 
 
 ---
-##### M:Sem.Tools.Logging.Tests.ClassLogScope.Dispose.LogsScopeStart
+##### Method: ClassLogScope.Dispose.LogsScopeStart
 
  Tests whether the indentation of logs is correct. 
 
 
 
 ---
-# T:Sem.Tools.Logging.Tests.ClassLogScope.Child
+# Type: T:Sem.Tools.Logging.Tests.ClassLogScope.Child
 
  Tests the method [[|M:Sem.Tools.Logging.LogScope.Child(System.String,System.Object,System.String,System.String)]]. 
 
 
 
 ---
-##### M:Sem.Tools.Logging.Tests.ClassLogScope.Child.StartingChildScopeAddsIdToHierarchy
+##### Method: ClassLogScope.Child.StartingChildScopeAddsIdToHierarchy
 
  Tests whether the ctor log line is formatted correctly. 
 
 
 
 ---
-# T:Sem.Tools.Logging.Tests.ClassLogScope.Log
+# Type: T:Sem.Tools.Logging.Tests.ClassLogScope.Log
 
  Tests the method [[|M:Sem.Tools.Logging.LogScope.Log(System.String,System.Object)]]. 
 
 
 
 ---
-##### M:Sem.Tools.Logging.Tests.ClassLogScope.Log.DefaultsToCorrectLevelAndCategory
+##### Method: ClassLogScope.Log.DefaultsToCorrectLevelAndCategory
 
  Tests whether [[|M:Sem.Tools.Logging.LogScope.Log(System.String,System.Object)]] logs using the correct category and level. 
 
 
 
 ---
-##### M:Sem.Tools.Logging.Tests.ClassLogScope.Log.LogsOnlySpecifiedCategories
+##### Method: ClassLogScope.Log.LogsOnlySpecifiedCategories
 
  Tests whether [[|M:Sem.Tools.Logging.LogScope.Log(System.String,System.Object)]] logs only the specified level(s). 
 
 
 
 ---
-##### M:Sem.Tools.Logging.Tests.ClassLogScope.Log.LogsOnlyToSpecifiedLevel
+##### Method: ClassLogScope.Log.LogsOnlyToSpecifiedLevel
 
  Tests whether [[|M:Sem.Tools.Logging.LogScope.Log(System.String,System.Object)]] logs only the specified level(s). 
 
 
 
 ---
-# T:Sem.Tools.Logging.Tests.LoggerTestBase
+# Type: T:Sem.Tools.Logging.Tests.LoggerTestBase
 
  Base class for tests of the logger class. 
 
 
 
 ---
-##### M:Sem.Tools.Logging.Tests.LoggerTestBase.#cctor
+##### Method: LoggerTestBase.#cctor
 
  Initializes static members of the [[|T:Sem.Tools.Logging.Tests.LoggerTestBase]] class. Initializes the static values of [[|T:Sem.Tools.Logging.LogScope]] to produce deterministic log entries. 
 
@@ -4185,7 +4185,7 @@ Returns: A task to wait for.
 
 
 ---
-##### M:Sem.Tools.Logging.Tests.LoggerTestBase.LogMethod(Sem.Tools.Logging.LogCategories,Sem.Tools.Logging.LogLevel,Sem.Tools.Logging.LogScope,System.String)
+##### Method: LoggerTestBase.LogMethod(Sem.Tools.Logging.LogCategories, Sem.Tools.Logging.LogLevel, Sem.Tools.Logging.LogScope, string)
 
  A log method that adds the log information to [[|P:Sem.Tools.Logging.Tests.LoggerTestBase.LogMessages]]. 
 
@@ -4204,7 +4204,7 @@ Returns: A task to wait for.
 
 
 ---
-##### M:Sem.Tools.Logging.Tests.LoggerTestBase.BasePath(System.String)
+##### Method: LoggerTestBase.BasePath(string)
 
  Uses a compile time attribute to determine the source code path of this class. 
 
@@ -4220,7 +4220,7 @@ Returns: The source code path of this class.
 
 ## Sem.Tools.Logging ##
 
-# T:Sem.Tools.Logging.LogCategories
+# Type: T:Sem.Tools.Logging.LogCategories
 
  The logging category distinguishes between technical and business information. 
 
@@ -4248,14 +4248,14 @@ Returns: The source code path of this class.
 
 
 ---
-# T:Sem.Tools.Logging.LogCategoryExtensions
+# Type: T:Sem.Tools.Logging.LogCategoryExtensions
 
  Extension class for the enum type [[|T:Sem.Tools.Logging.LogCategories]]. 
 
 
 
 ---
-##### M:Sem.Tools.Logging.LogCategoryExtensions.HasFlag``1(``0,``0)
+##### Method: LogCategoryExtensions.HasFlag\<T>(``0, ``0)
 
  Tests whether a value has a specific category flag set. 
 
@@ -4273,14 +4273,14 @@ Returns: A value indicating whether the flag is set.
 
 
 ---
-# T:Sem.Tools.Logging.LogExtension
+# Type: T:Sem.Tools.Logging.LogExtension
 
  Extension class providing some standard logging methods. 
 
 
 
 ---
-##### M:Sem.Tools.Logging.LogExtension.AddDebug(System.Action{Sem.Tools.Logging.LogCategories,Sem.Tools.Logging.LogLevel,Sem.Tools.Logging.LogScope,System.String})
+##### Method: LogExtension.AddDebug(System.Action\<LogCategories, LogLevel, LogScope, string>)
 
  Simple output using [[|M:System.Diagnostics.Debug.WriteLine(System.Object)]]. 
 
@@ -4292,7 +4292,7 @@ Returns: A new method that is the combination of  !! UNSUPPORTED: paramref !!  a
 
 
 ---
-##### M:Sem.Tools.Logging.LogExtension.AddConsole(System.Action{Sem.Tools.Logging.LogCategories,Sem.Tools.Logging.LogLevel,Sem.Tools.Logging.LogScope,System.String})
+##### Method: LogExtension.AddConsole(System.Action\<LogCategories, LogLevel, LogScope, string>)
 
  Simple output using [[|M:System.Console.WriteLine(System.Object)]]. 
 
@@ -4304,7 +4304,7 @@ Returns: A new method that is the combination of  !! UNSUPPORTED: paramref !!  a
 
 
 ---
-# T:Sem.Tools.Logging.LogLevel
+# Type: T:Sem.Tools.Logging.LogLevel
 
  The "chattiness" level. 
 
@@ -4346,7 +4346,7 @@ Returns: A new method that is the combination of  !! UNSUPPORTED: paramref !!  a
 
 
 ---
-# T:Sem.Tools.Logging.LogScope
+# Type: T:Sem.Tools.Logging.LogScope
 
  Simple hierarchical logging scope. 
 
@@ -4416,7 +4416,7 @@ Returns: A new method that is the combination of  !! UNSUPPORTED: paramref !!  a
 
 
 ---
-##### M:Sem.Tools.Logging.LogScope.Create(System.String,System.Action{Sem.Tools.Logging.LogCategories,Sem.Tools.Logging.LogLevel,Sem.Tools.Logging.LogScope,System.String},System.String,System.String)
+##### Method: LogScope.Create(string, System.Action\<LogCategories, LogLevel, LogScope, string>, string, string)
 
  Create a new scope instance. 
 
@@ -4437,7 +4437,7 @@ Returns: A new logging scope.
 
 
 ---
-##### M:Sem.Tools.Logging.LogScope.MethodStart(System.Object,System.String,System.String)
+##### Method: LogScope.MethodStart(Object, string, string)
 
  Call this to indicate a method start. 
 
@@ -4455,7 +4455,7 @@ Returns: A new scope.
 
 
 ---
-##### M:Sem.Tools.Logging.LogScope.Child(System.String,System.Object,System.String,System.String)
+##### Method: LogScope.Child(string, Object, string, string)
 
  Creates a new child scope. 
 
@@ -4476,7 +4476,7 @@ Returns: A new scope.
 
 
 ---
-##### M:Sem.Tools.Logging.LogScope.DisposeAsync
+##### Method: LogScope.DisposeAsync
 
  Async implementation of the dispose pattern. 
 
@@ -4485,14 +4485,14 @@ Returns: A task to wait for.
 
 
 ---
-##### M:Sem.Tools.Logging.LogScope.Dispose
+##### Method: LogScope.Dispose
 
  Logs the end of the scope. 
 
 
 
 ---
-##### M:Sem.Tools.Logging.LogScope.Log(System.String,System.Object)
+##### Method: LogScope.Log(string, Object)
 
  Logs a message. 
 
@@ -4505,7 +4505,7 @@ Returns: A task to wait for.
 
 
 ---
-##### M:Sem.Tools.Logging.LogScope.Log(Sem.Tools.Logging.LogCategories,Sem.Tools.Logging.LogLevel,System.String,System.Object)
+##### Method: LogScope.Log(LogCategories, LogLevel, string, Object)
 
  Logs a message. 
 

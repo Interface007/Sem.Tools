@@ -9,15 +9,15 @@ namespace Sem.MdDocGenerator
 {
     public static class XmlToMarkdown
     {
-        internal static string ToMarkDown(this XNode e)
+        internal static string ToMarkDown(this XNode e, string currentNameSpace)
         {
             var templates = new Dictionary<string, string>
             {
                 {"doc", "## {0} ##\n\n{1}\n\n"},
-                {"type", "# {0}\n\n{1}\n\n---\n"},
+                {"type", "# Type: {0}\n\n{1}\n\n---\n"},
                 {"field", "##### {0}\n\n{1}\n\n---\n"},
                 {"property", "##### {0}\n\n{1}\n\n---\n"},
-                {"method", "##### {0}\n\n{1}\n\n---\n"},
+                {"method", "##### Method: {0}\n\n{1}\n\n---\n"},
                 {"event", "##### {0}\n\n{1}\n\n---\n"},
                 {"summary", "{0}\n\n"},
                 {"remarks", "\n\n>{0}\n\n"},
@@ -34,29 +34,31 @@ namespace Sem.MdDocGenerator
             var d = new Func<string, XElement, string[]>((att, node) => new[]
             {
                 node.Attribute(att)?.Value,
-                node.Nodes().ToMarkDown()
+                node.Nodes().ToMarkDown(currentNameSpace)
             });
 
             var methods = new Dictionary<string, Func<XElement, IEnumerable<string>>>
             {
-                {"doc", x=> new[]{
-                    x.Element("assembly")?.Element("name")?.Value,
-                    x.Element("members")?.Elements("member").ToMarkDown()
-                }},
-                {"type", x=>d("name", x)},
+                {"doc", x => new[] 
+                    {
+                        x.Element("assembly")?.Element("name")?.Value,
+                        x.Element("members")?.Elements("member").ToMarkDown(x.Element("assembly")?.Element("name")?.Value),
+                    }
+                },
+                {"type", x=> d("name", x)},
                 {"field", x=> d("name", x)},
-                {"property", x=> d("name", x)},
-                {"method",x=>d("name", x)},
-                {"event", x=>d("name", x)},
-                {"summary", x=> new[]{ x.Nodes().ToMarkDown() }},
-                {"remarks", x => new[]{x.Nodes().ToMarkDown()}},
+                {"property", x => d("name", x)},
+                {"method", x => Method(x, currentNameSpace)},
+                {"event", x => d("name", x)},
+                {"summary", x => new[]{ x.Nodes().ToMarkDown(currentNameSpace) }},
+                {"remarks", x => new[]{x.Nodes().ToMarkDown(currentNameSpace)}},
                 {"example", x => new[]{x.Value.ToCodeBlock()}},
-                {"seePage", x=> d("cref", x) },
-                {"seeAnchor", x=> { var xx = d("cref", x); xx[0] = xx[0].ToLower(); return xx; }},
+                {"seePage", x => d("cref", x) },
+                {"seeAnchor", x => { var xx = d("cref", x); xx[0] = xx[0].ToLower(); return xx; }},
                 {"typeparam", x => d("name", x) },
                 {"param", x => d("name", x) },
                 {"exception", x => d("cref", x) },
-                {"returns", x => new[]{x.Nodes().ToMarkDown()}},
+                {"returns", x => new[]{x.Nodes().ToMarkDown(currentNameSpace)}},
                 {"none", x => new string[0]}
             };
 
@@ -106,9 +108,35 @@ namespace Sem.MdDocGenerator
             return "";
         }
 
-        internal static string ToMarkDown(this IEnumerable<XNode> es)
+        private static IEnumerable<string> Method(XElement node, string currentNameSpace)
         {
-            return es.Aggregate("", (current, x) => current + x.ToMarkDown());
+            var content = node.Nodes().ToMarkDown(currentNameSpace);
+            var name = node
+                .Attribute("name")?
+                .Value
+                .Substring(2)
+                .Replace("System.String", "string")
+                .Replace("System.Func", "Func")
+                .Replace("System.Threading.Tasks.Task", "Task")
+                .Replace("System.Collections.Generic.KeyValuePair", "KeyValuePair")
+                .Replace("System.Object", "Object")
+                .Replace("{``0}", "\\<T>")
+                .Replace("{", "\\<")
+                .Replace("}", ">")
+                .Replace("``1", "\\<T>")
+                .Replace(",", ", ");
+
+            if (!string.IsNullOrEmpty(currentNameSpace))
+            {
+                name = name?.Replace(currentNameSpace + ".", string.Empty);
+            }
+
+            return new[] { name, content };
+        }
+
+        internal static string ToMarkDown(this IEnumerable<XNode> es, string currentNameSpace)
+        {
+            return es.Aggregate("", (current, x) => current + x.ToMarkDown(currentNameSpace));
         }
 
         static string ToCodeBlock(this string s)
