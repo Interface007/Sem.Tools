@@ -60,6 +60,24 @@ steps:
     command: pack
     packagesToPack: 'Sem.Tools.Logging/Sem.Tools.Logging.csproj'
 
+- task: DotNetCoreCLI@2
+  displayName: 'dotnet pack Sem.Data.SprocAccess'
+  inputs:
+    command: pack
+    packagesToPack: 'Sem.Data.SprocAccess/Sem.Data.SprocAccess.csproj'
+
+- task: DotNetCoreCLI@2
+  displayName: 'dotnet pack Sem.Data.SprocAccess.FileSystem'
+  inputs:
+    command: pack
+    packagesToPack: 'Sem.Data.SprocAccess/Sem.Data.SprocAccess.FileSystem.csproj'
+
+- task: DotNetCoreCLI@2
+  displayName: 'dotnet pack Sem.Data.SprocAccess.SqlServer'
+  inputs:
+    command: pack
+    packagesToPack: 'Sem.Data.SprocAccess/Sem.Data.SprocAccess.SqlServer.csproj'
+
 - script: dotnet nuget push $(Build.ArtifactStagingDirectory)/**/*.nupkg --source https://api.nuget.org/v3/index.json --api-key $(NUGET_API_KEY) --skip-duplicate --no-symbols true
   displayName: 'Uploads nuGet packages'
 

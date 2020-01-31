@@ -6,7 +6,9 @@
     <Version>1.0.7</Version>
     <Authors>Sven Erik Matzen</Authors>
     <Product>Sem.Data</Product>
-    <Description>Very simple ORM for accessing named result sets / SPROCs - see Sem.Data.SprocAccess.SqlServer or Sem.Data.SprocAccess.FileSystem.</Description>
+    <Description>Very simple ORM for accessing named result sets / SPROCs - see Sem.Data.SprocAccess.SqlServer 
+      or Sem.Data.SprocAccess.FileSystem. The interface IDatabase implements a single method that executes a 
+      SPROC and returns an IAsyncEnumerable by mapping each row into a plain old C# object (POCO).</Description>
     <Copyright>Sven Erik Matzen</Copyright>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageProjectUrl>https://dev.azure.com/matzen/Sven</PackageProjectUrl>

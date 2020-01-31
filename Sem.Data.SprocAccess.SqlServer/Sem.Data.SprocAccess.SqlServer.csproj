@@ -6,7 +6,7 @@
     <Version>1.0.7</Version>
     <Authors>Sven Erik Matzen</Authors>
     <Product>Sem.Data</Product>
-    <Description>Very simple ORM for SPROCs.</Description>
+    <Description>Implementation of IDatabase.Execute using SQL server SPROCs.</Description>
     <Copyright>Sven Erik Matzen</Copyright>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageProjectUrl>https://dev.azure.com/matzen/Sven</PackageProjectUrl>

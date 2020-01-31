@@ -6,7 +6,8 @@
     <Version>1.0.7</Version>
     <Authors>Sven Erik Matzen</Authors>
     <Product>Sem.Data</Product>
-    <Description>Data-access using static text-files.</Description>
+    <Description>Implementation of IDatabase.Execute using static text-files. This implementation can be used to easily 
+      mock database access. Each SPROC gets its own folder and each combination of parameters its own file.</Description>
     <Copyright>Sven Erik Matzen</Copyright>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageProjectUrl>https://dev.azure.com/matzen/Sven</PackageProjectUrl>
