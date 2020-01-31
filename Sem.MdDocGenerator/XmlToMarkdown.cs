@@ -53,6 +53,7 @@ namespace Sem.MdDocGenerator
                 {"example", x => new[]{x.Value.ToCodeBlock()}},
                 {"seePage", x=> d("cref", x) },
                 {"seeAnchor", x=> { var xx = d("cref", x); xx[0] = xx[0].ToLower(); return xx; }},
+                {"typeparam", x => d("name", x) },
                 {"param", x => d("name", x) },
                 {"exception", x => d("cref", x) },
                 {"returns", x => new[]{x.Nodes().ToMarkDown()}},

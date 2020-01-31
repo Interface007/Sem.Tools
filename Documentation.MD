@@ -11,7 +11,10 @@
 
  Executes a "stored procedure" (aka. "SPROC") and maps the result to a series of POCOs. 
 
- !! UNSUPPORTED: typeparam !! |Name | Description |
+|Name | Description |
+|-----|------|
+|T: |The POCO type to map the result to.|
+|Name | Description |
 |-----|------|
 |sproc: |The name of the stored procedure (e.g. "sys.sp_databases" or "[sys].[sp_databases]").|
 |Name | Description |
@@ -48,7 +51,10 @@ Returns: A value indicating whether there is still data to be read.
 
  Reads the value of a column by its index. 
 
- !! UNSUPPORTED: typeparam !! |Name | Description |
+|Name | Description |
+|-----|------|
+|T: |The type of the result.|
+|Name | Description |
 |-----|------|
 |index: |The column index.|
 Returns: The value of the column in the current row.
@@ -197,7 +203,10 @@ Returns: A value indicating whether there is still data at this line.
 
  Reads the value of a column by its index. 
 
- !! UNSUPPORTED: typeparam !! |Name | Description |
+|Name | Description |
+|-----|------|
+|T: |The type of the result.|
+|Name | Description |
 |-----|------|
 |index: |The column index.|
 Returns: The value of the column in the current row.
@@ -327,7 +336,10 @@ Returns: A task to wait for.
 
  Mapper method that maps data from an [[|T:Sem.Data.SprocAccess.IReader]] to a POCO object using the names of the properties. The process uses a very simple reflection based approach, that is not really "production ready" - use an explicit and specific implementation in production to prevent the overhead of reflection. 
 
- !! UNSUPPORTED: typeparam !! |Name | Description |
+|Name | Description |
+|-----|------|
+|T: |The type of the target POCO objects.|
+|Name | Description |
 |-----|------|
 |reader: |The reader implementation.|
 Returns: The initialized object instance.
@@ -540,7 +552,10 @@ Returns: A task to wait for.
 
  Tests whether a value has a specific category flag set. 
 
- !! UNSUPPORTED: typeparam !! |Name | Description |
+|Name | Description |
+|-----|------|
+|T: |The enum type to be tested.|
+|Name | Description |
 |-----|------|
 |value: |The value to be tested.|
 |Name | Description |
@@ -992,7 +1007,10 @@ Returns: The source code path of this class.
 
  Executes a "stored procedure" (aka. "SPROC") and maps the result to a series of POCOs. 
 
- !! UNSUPPORTED: typeparam !! |Name | Description |
+|Name | Description |
+|-----|------|
+|T: |The POCO type to map the result to.|
+|Name | Description |
 |-----|------|
 |sproc: |The name of the stored procedure (e.g. "sys.sp_databases" or "[sys].[sp_databases]").|
 |Name | Description |
@@ -1029,7 +1047,10 @@ Returns: A value indicating whether there is still data to be read.
 
  Reads the value of a column by its index. 
 
- !! UNSUPPORTED: typeparam !! |Name | Description |
+|Name | Description |
+|-----|------|
+|T: |The type of the result.|
+|Name | Description |
 |-----|------|
 |index: |The column index.|
 Returns: The value of the column in the current row.
@@ -1125,7 +1146,10 @@ Returns: The index of the column.
 
  Tests whether a value has a specific category flag set. 
 
- !! UNSUPPORTED: typeparam !! |Name | Description |
+|Name | Description |
+|-----|------|
+|T: |The enum type to be tested.|
+|Name | Description |
 |-----|------|
 |value: |The value to be tested.|
 |Name | Description |
@@ -1483,7 +1507,10 @@ Returns: A value indicating whether there is still data at this line.
 
  Reads the value of a column by its index. 
 
- !! UNSUPPORTED: typeparam !! |Name | Description |
+|Name | Description |
+|-----|------|
+|T: |The type of the result.|
+|Name | Description |
 |-----|------|
 |index: |The column index.|
 Returns: The value of the column in the current row.
@@ -1558,7 +1585,10 @@ Returns: The index of the column.
 
  Executes a "stored procedure" (aka. "SPROC") and maps the result to a series of POCOs. 
 
- !! UNSUPPORTED: typeparam !! |Name | Description |
+|Name | Description |
+|-----|------|
+|T: |The POCO type to map the result to.|
+|Name | Description |
 |-----|------|
 |sproc: |The name of the stored procedure (e.g. "sys.sp_databases" or "[sys].[sp_databases]").|
 |Name | Description |
@@ -1595,7 +1625,10 @@ Returns: A value indicating whether there is still data to be read.
 
  Reads the value of a column by its index. 
 
- !! UNSUPPORTED: typeparam !! |Name | Description |
+|Name | Description |
+|-----|------|
+|T: |The type of the result.|
+|Name | Description |
 |-----|------|
 |index: |The column index.|
 Returns: The value of the column in the current row.
@@ -1691,7 +1724,10 @@ Returns: The index of the column.
 
  Tests whether a value has a specific category flag set. 
 
- !! UNSUPPORTED: typeparam !! |Name | Description |
+|Name | Description |
+|-----|------|
+|T: |The enum type to be tested.|
+|Name | Description |
 |-----|------|
 |value: |The value to be tested.|
 |Name | Description |
@@ -2049,7 +2085,10 @@ Returns: A value indicating whether there is still data at this line.
 
  Reads the value of a column by its index. 
 
- !! UNSUPPORTED: typeparam !! |Name | Description |
+|Name | Description |
+|-----|------|
+|T: |The type of the result.|
+|Name | Description |
 |-----|------|
 |index: |The column index.|
 Returns: The value of the column in the current row.
@@ -2179,7 +2218,10 @@ Returns: A task to wait for.
 
  Mapper method that maps data from an [[|T:Sem.Data.SprocAccess.IReader]] to a POCO object using the names of the properties. The process uses a very simple reflection based approach, that is not really "production ready" - use an explicit and specific implementation in production to prevent the overhead of reflection. 
 
- !! UNSUPPORTED: typeparam !! |Name | Description |
+|Name | Description |
+|-----|------|
+|T: |The type of the target POCO objects.|
+|Name | Description |
 |-----|------|
 |reader: |The reader implementation.|
 Returns: The initialized object instance.
@@ -2223,7 +2265,10 @@ Returns: The initialized object instance.
 
  Executes a "stored procedure" (aka. "SPROC") and maps the result to a series of POCOs. 
 
- !! UNSUPPORTED: typeparam !! |Name | Description |
+|Name | Description |
+|-----|------|
+|T: |The POCO type to map the result to.|
+|Name | Description |
 |-----|------|
 |sproc: |The name of the stored procedure (e.g. "sys.sp_databases" or "[sys].[sp_databases]").|
 |Name | Description |
@@ -2260,7 +2305,10 @@ Returns: A value indicating whether there is still data to be read.
 
  Reads the value of a column by its index. 
 
- !! UNSUPPORTED: typeparam !! |Name | Description |
+|Name | Description |
+|-----|------|
+|T: |The type of the result.|
+|Name | Description |
 |-----|------|
 |index: |The column index.|
 Returns: The value of the column in the current row.
@@ -2356,7 +2404,10 @@ Returns: The index of the column.
 
  Tests whether a value has a specific category flag set. 
 
- !! UNSUPPORTED: typeparam !! |Name | Description |
+|Name | Description |
+|-----|------|
+|T: |The enum type to be tested.|
+|Name | Description |
 |-----|------|
 |value: |The value to be tested.|
 |Name | Description |
@@ -2774,7 +2825,10 @@ Returns: A task to wait for.
 
  Executes a "stored procedure" (aka. "SPROC") and maps the result to a series of POCOs. 
 
- !! UNSUPPORTED: typeparam !! |Name | Description |
+|Name | Description |
+|-----|------|
+|T: |The POCO type to map the result to.|
+|Name | Description |
 |-----|------|
 |sproc: |The name of the stored procedure (e.g. "sys.sp_databases" or "[sys].[sp_databases]").|
 |Name | Description |
@@ -2811,7 +2865,10 @@ Returns: A value indicating whether there is still data to be read.
 
  Reads the value of a column by its index. 
 
- !! UNSUPPORTED: typeparam !! |Name | Description |
+|Name | Description |
+|-----|------|
+|T: |The type of the result.|
+|Name | Description |
 |-----|------|
 |index: |The column index.|
 Returns: The value of the column in the current row.
@@ -2907,7 +2964,10 @@ Returns: The index of the column.
 
  Tests whether a value has a specific category flag set. 
 
- !! UNSUPPORTED: typeparam !! |Name | Description |
+|Name | Description |
+|-----|------|
+|T: |The enum type to be tested.|
+|Name | Description |
 |-----|------|
 |value: |The value to be tested.|
 |Name | Description |
@@ -3269,7 +3329,10 @@ Returns: A task to wait for.
 
  Executes a "stored procedure" (aka. "SPROC") and maps the result to a series of POCOs. 
 
- !! UNSUPPORTED: typeparam !! |Name | Description |
+|Name | Description |
+|-----|------|
+|T: |The POCO type to map the result to.|
+|Name | Description |
 |-----|------|
 |sproc: |The name of the stored procedure (e.g. "sys.sp_databases" or "[sys].[sp_databases]").|
 |Name | Description |
@@ -3306,7 +3369,10 @@ Returns: A value indicating whether there is still data to be read.
 
  Reads the value of a column by its index. 
 
- !! UNSUPPORTED: typeparam !! |Name | Description |
+|Name | Description |
+|-----|------|
+|T: |The type of the result.|
+|Name | Description |
 |-----|------|
 |index: |The column index.|
 Returns: The value of the column in the current row.
@@ -3402,7 +3468,10 @@ Returns: The index of the column.
 
  Tests whether a value has a specific category flag set. 
 
- !! UNSUPPORTED: typeparam !! |Name | Description |
+|Name | Description |
+|-----|------|
+|T: |The enum type to be tested.|
+|Name | Description |
 |-----|------|
 |value: |The value to be tested.|
 |Name | Description |
@@ -3707,7 +3776,10 @@ Returns: A task to wait for.
 
  Tests whether a value has a specific category flag set. 
 
- !! UNSUPPORTED: typeparam !! |Name | Description |
+|Name | Description |
+|-----|------|
+|T: |The enum type to be tested.|
+|Name | Description |
 |-----|------|
 |value: |The value to be tested.|
 |Name | Description |
@@ -4187,7 +4259,10 @@ Returns: The source code path of this class.
 
  Tests whether a value has a specific category flag set. 
 
- !! UNSUPPORTED: typeparam !! |Name | Description |
+|Name | Description |
+|-----|------|
+|T: |The enum type to be tested.|
+|Name | Description |
 |-----|------|
 |value: |The value to be tested.|
 |Name | Description |
