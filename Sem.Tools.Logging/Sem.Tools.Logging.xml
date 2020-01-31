@@ -38,6 +38,33 @@
             <param name="flag">The flag that should be tested.</param>
             <returns>A value indicating whether the flag is set.</returns>
         </member>
+        <member name="T:Sem.Tools.Logging.LogExtension">
+            <summary>
+            Extension class providing some standard logging methods.
+            </summary>
+        </member>
+        <member name="M:Sem.Tools.Logging.LogExtension.AddDebug(System.Action{Sem.Tools.Logging.LogCategories,Sem.Tools.Logging.LogLevel,Sem.Tools.Logging.LogScope,System.String})">
+            <summary>
+            Simple output using <see cref="M:System.Diagnostics.Debug.WriteLine(System.Object)"/>.
+            </summary>
+            <param name="logMethod">The original log method, this method should be added to.</param>
+            <returns>A new method that is the combination of <paramref name="logMethod"/> and an output to <see cref="T:System.Diagnostics.Debug"/></returns>
+        </member>
+        <member name="M:Sem.Tools.Logging.LogExtension.AddConsole(System.Action{Sem.Tools.Logging.LogCategories,Sem.Tools.Logging.LogLevel,Sem.Tools.Logging.LogScope,System.String})">
+            <summary>
+            Simple output using <see cref="M:System.Console.WriteLine(System.Object)"/>.
+            </summary>
+            <param name="logMethod">The original log method, this method should be added to.</param>
+            <returns>A new method that is the combination of <paramref name="logMethod"/> and an output to <see cref="T:System.Console"/></returns>
+        </member>
+        <member name="M:Sem.Tools.Logging.LogExtension.Add(System.Action{Sem.Tools.Logging.LogCategories,Sem.Tools.Logging.LogLevel,Sem.Tools.Logging.LogScope,System.String},System.Action{Sem.Tools.Logging.LogCategories,Sem.Tools.Logging.LogLevel,Sem.Tools.Logging.LogScope,System.String})">
+            <summary>
+            Extension to combine two logging methods into a new one.
+            </summary>
+            <param name="currentAction">The logging method that should be executed first</param>
+            <param name="actionToAdd">The logging method to be executed after <paramref name="currentAction"/>.</param>
+            <returns>A new method combining both methods specified in the parameters.</returns>
+        </member>
         <member name="T:Sem.Tools.Logging.LogLevel">
             <summary>
             The "chattiness" level.

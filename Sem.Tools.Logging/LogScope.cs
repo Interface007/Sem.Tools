@@ -5,6 +5,7 @@
 // ReSharper disable MemberCanBePrivate.Global
 // ReSharper disable ExplicitCallerInfoArgument
 // ReSharper disable AutoPropertyCanBeMadeGetOnly.Global
+
 namespace Sem.Tools.Logging
 {
     using System;

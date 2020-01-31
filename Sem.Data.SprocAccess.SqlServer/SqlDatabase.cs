@@ -17,6 +17,9 @@ namespace Sem.Data.SprocAccess.SqlServer
     /// </summary>
     public class SqlDatabase : IDatabase
     {
+        /// <summary>
+        /// The connection string for the database.
+        /// </summary>
         private readonly string connectionString;
 
         /// <summary>
@@ -28,12 +31,12 @@ namespace Sem.Data.SprocAccess.SqlServer
         /// <inheritdoc />
         public async IAsyncEnumerable<T> Execute<T>(string sproc, Func<IReader, Task<T>> readerToObject, LogScope logger = null, params KeyValuePair<string, object>[] parameters)
         {
+            await using var scope = logger?.MethodStart(new { sproc, parameters });
             if (sproc.MustNotBeNullOrEmpty(nameof(sproc)).Contains('\'', StringComparison.Ordinal))
             {
                 throw new ArgumentOutOfRangeException(nameof(sproc), "Must not contain the character >'<");
             }
 
-            await using var scope = logger?.MethodStart(new { sproc, parameters });
             await using var con = new SqlConnection(this.connectionString);
             await using var cmd = new SqlCommand(sproc, con)
             {
@@ -45,18 +48,13 @@ namespace Sem.Data.SprocAccess.SqlServer
                 cmd.Parameters.AddWithValue(key, value);
             }
 
-            await using (var unused = scope?.Child("opening connection"))
+            await using var unused = scope?.Child("executing reader");
+            await con.OpenAsync().ConfigureAwait(false);
+            await using var dataReader = await cmd.ExecuteReaderAsync().ConfigureAwait(false);
+            var reader = new SqlReader(dataReader);
+            while (await reader.Read().ConfigureAwait(false))
             {
-                await con.OpenAsync().ConfigureAwait(false);
-            }
-
-            await using (var unused = scope?.Child("executing reader"))
-            {
-                var reader = new SqlReader(await cmd.ExecuteReaderAsync().ConfigureAwait(false));
-                while (await reader.Read().ConfigureAwait(false))
-                {
-                    yield return await readerToObject(reader).ConfigureAwait(false);
-                }
+                yield return await readerToObject(reader).ConfigureAwait(false);
             }
         }
 

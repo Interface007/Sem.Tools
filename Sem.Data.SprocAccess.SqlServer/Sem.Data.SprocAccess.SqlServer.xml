@@ -9,6 +9,11 @@
             An implementation of <see cref="T:Sem.Data.SprocAccess.IDatabase"/> using SQL server as a backend.
             </summary>
         </member>
+        <member name="F:Sem.Data.SprocAccess.SqlServer.SqlDatabase.connectionString">
+            <summary>
+            The connection string for the database.
+            </summary>
+        </member>
         <member name="M:Sem.Data.SprocAccess.SqlServer.SqlDatabase.#ctor(System.String)">
             <summary>
             Initializes a new instance of the <see cref="T:Sem.Data.SprocAccess.SqlServer.SqlDatabase"/> class.
