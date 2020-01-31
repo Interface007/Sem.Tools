@@ -136,11 +136,11 @@ namespace Sem.MdDocGenerator
                 .Replace("{``0}", "\\<T>")
                 .Replace("{", "\\<")
                 .Replace("}", ">")
-                .Replace("``1", "\\<T1>")
-                .Replace("``2", "\\<T1, T2>")
-                .Replace("``3", "\\<T1, T2, T3>")
-                .Replace("``4", "\\<T1, T2, T3, T4>")
-                .Replace("``5", "\\<T1, T2, T3, T4, T5>")
+                .Replace("``0", "\\<T1>")
+                .Replace("``1", "\\<T1, T2>")
+                .Replace("``2", "\\<T1, T2, T3>")
+                .Replace("``3", "\\<T1, T2, T3, T4>")
+                .Replace("``4", "\\<T1, T2, T3, T4, T5>")
                 .Replace("``1", "\\<T>")
                 .Replace(",", ", ");
 
