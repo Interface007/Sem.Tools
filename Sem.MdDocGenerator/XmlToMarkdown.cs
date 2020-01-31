@@ -129,10 +129,9 @@ namespace Sem.MdDocGenerator
                 .Attribute("name")?
                 .Value
                 .Substring(2)
-                .Replace("System.String", "string")
-                .Replace("System.Func", "Func")
+                .Replace("System.", string.Empty)
                 .Replace("System.Threading.Tasks.Task", "Task")
-                .Replace("System.Collections.Generic.KeyValuePair", "KeyValuePair")
+                .Replace("System.Collections.Generic.", string.Empty)
                 .Replace("System.Object", "Object")
                 .Replace("{``0,``1,``2,``3,``4}", "\\<T1, T2, T3, T4, T5>")
                 .Replace("{``0,``1,``2,``3}", "\\<T1, T2, T3, T4>")

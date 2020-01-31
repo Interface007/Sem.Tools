@@ -7,7 +7,7 @@
 
 
 ---
-### Method: IDatabase.Execute\<T1>(string, Func\<IReader, Task\<T1>>, Sem.Tools.Logging.LogScope, KeyValuePair\<string, Object>[])
+### Method: IDatabase.Execute\<T1>(String, Func\<IReader, Threading.Tasks.Task\<T1>>, Sem.Tools.Logging.LogScope, Collections.Generic.KeyValuePair\<String, Object>[])
 
  Executes a "stored procedure" (aka. "SPROC") and maps the result to a series of POCOs. 
 
@@ -47,7 +47,7 @@ A value indicating whether there is still data to be read.
 
 
 ---
-### Method: IReader.Get\<T1>(System.Int32)
+### Method: IReader.Get\<T1>(Int32)
 
  Reads the value of a column by its index. 
 
@@ -66,7 +66,7 @@ The value of the column in the current row.
 
 
 ---
-### Method: IReader.Get(System.Int32, System.Type)
+### Method: IReader.Get(Int32, Type)
 
  Reads the value of a column by its index. 
 
@@ -104,7 +104,7 @@ A task to wait for.
 
 
 ---
-### Method: IReader.IndexByName(string)
+### Method: IReader.IndexByName(String)
 
  Gets the index of a column by its name (case-insensitive). When there are two columns with the same name, the first index will be returned. 
 
@@ -130,7 +130,7 @@ The index of the column.
 
 
 ---
-### Method: TxtDatabase.#ctor(string)
+### Method: Sem.Data.SprocAccess.FileTxtDatabase.#ctor(String)
 
  Initializes a new instance of the [[|T:Sem.Data.SprocAccess.FileSystem.TxtDatabase]] class. 
 
@@ -141,7 +141,7 @@ The index of the column.
 
 
 ---
-### Method: TxtDatabase.Execute\<T1>(string, Func\<Sem.Data.SprocAccess.IReader, Task\<T1>>, Sem.Tools.Logging.LogScope, KeyValuePair\<string, Object>[])
+### Method: Sem.Data.SprocAccess.FileTxtDatabase.Execute\<T1>(String, Func\<Sem.Data.SprocAccess.IReader, Threading.Tasks.Task\<T1>>, Sem.Tools.Logging.LogScope, Collections.Generic.KeyValuePair\<String, Object>[])
 
  Executes a "stored procedure" (aka. "SPROC") and maps the result to a series of POCOs. 
 
@@ -163,7 +163,7 @@ A series of POCO instances.
 
 
 ---
-### Method: TxtDatabase.DisposeAsync
+### Method: Sem.Data.SprocAccess.FileTxtDatabase.DisposeAsync
 
 Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources asynchronously.
 
@@ -181,7 +181,7 @@ A task that represents the asynchronous dispose operation.
 
 
 ---
-### Method: TxtReader.#ctor(string)
+### Method: Sem.Data.SprocAccess.FileTxtReader.#ctor(String)
 
  Initializes a new instance of the [[|T:Sem.Data.SprocAccess.FileSystem.TxtReader]] class. 
 
@@ -192,7 +192,7 @@ A task that represents the asynchronous dispose operation.
 
 
 ---
-### Method: TxtReader.Read
+### Method: Sem.Data.SprocAccess.FileTxtReader.Read
 
  Increments the line pointer. 
 
@@ -203,7 +203,7 @@ A value indicating whether there is still data at this line.
 
 
 ---
-### Method: TxtReader.Get\<T1>(System.Int32)
+### Method: Sem.Data.SprocAccess.FileTxtReader.Get\<T1>(Int32)
 
  Reads the value of a column by its index. 
 
@@ -222,7 +222,7 @@ The value of the column in the current row.
 
 
 ---
-### Method: TxtReader.Get(System.Int32, System.Type)
+### Method: Sem.Data.SprocAccess.FileTxtReader.Get(Int32, Type)
 
  Reads the value of a column by its index. 
 
@@ -238,7 +238,7 @@ The value of the column in the current row.
 
 
 ---
-### Method: TxtReader.NextResult
+### Method: Sem.Data.SprocAccess.FileTxtReader.NextResult
 
  Advances to the next result set. 
 
@@ -249,7 +249,7 @@ A task to wait for.
 
 
 ---
-### Method: TxtReader.Close
+### Method: Sem.Data.SprocAccess.FileTxtReader.Close
 
  Closes the reader. 
 
@@ -260,7 +260,7 @@ A task to wait for.
 
 
 ---
-### Method: TxtReader.IndexByName(string)
+### Method: Sem.Data.SprocAccess.FileTxtReader.IndexByName(String)
 
  Gets the index of a column by its name (case-insensitive). When there are two columns with the same name, the first index will be returned. 
 
@@ -275,7 +275,7 @@ The index of the column.
 
 
 ---
-### Method: TxtReader.Init
+### Method: Sem.Data.SprocAccess.FileTxtReader.Init
 
  Reads the text file and initializes the line-pointer. 
 
@@ -293,7 +293,7 @@ The index of the column.
 
 
 ---
-### Method: SqlDatabase.#ctor(string)
+### Method: SqlDatabase.#ctor(String)
 
  Initializes a new instance of the [[|T:Sem.Data.SprocAccess.SqlServer.SqlDatabase]] class. 
 
@@ -304,7 +304,7 @@ The index of the column.
 
 
 ---
-### Method: SqlDatabase.Execute\<T1>(string, Func\<Sem.Data.SprocAccess.IReader, Task\<T1>>, Sem.Tools.Logging.LogScope, KeyValuePair\<string, Object>[])
+### Method: SqlDatabase.Execute\<T1>(String, Func\<Sem.Data.SprocAccess.IReader, Threading.Tasks.Task\<T1>>, Sem.Tools.Logging.LogScope, Collections.Generic.KeyValuePair\<String, Object>[])
 
  Executes a "stored procedure" (aka. "SPROC") and maps the result to a series of POCOs. 
 
@@ -344,7 +344,7 @@ A task that represents the asynchronous dispose operation.
 
 
 ---
-### Method: SqlReader.#ctor(System.Data.SqlClient.SqlDataReader)
+### Method: SqlReader.#ctor(Data.SqlClient.SqlDataReader)
 
  Initializes a new instance of the [[|T:Sem.Data.SprocAccess.SqlServer.SqlReader]] class. 
 
@@ -366,7 +366,7 @@ A value indicating whether there is still data to be read.
 
 
 ---
-### Method: SqlReader.Get\<T1>(System.Int32)
+### Method: SqlReader.Get\<T1>(Int32)
 
  Reads the value of a column by its index. 
 
@@ -385,7 +385,7 @@ The value of the column in the current row.
 
 
 ---
-### Method: SqlReader.Get(System.Int32, System.Type)
+### Method: SqlReader.Get(Int32, Type)
 
  Reads the value of a column by its index. 
 
@@ -423,7 +423,7 @@ A task to wait for.
 
 
 ---
-### Method: SqlReader.IndexByName(string)
+### Method: SqlReader.IndexByName(String)
 
  Gets the index of a column by its name (case-insensitive). When there are two columns with the same name, the first index will be returned. 
 
@@ -449,7 +449,7 @@ The index of the column.
 
 
 ---
-### Method: ActionExtension.Append\<T1>(System.Action\<T1>, System.Action\<T1>)
+### Method: ActionExtension.Append\<T1>(Action\<T1>, Action\<T1>)
 
  Extension to combine two logging methods into a new one. 
 
@@ -469,7 +469,7 @@ A new method combining both methods specified in the parameters.
 
 
 ---
-### Method: ActionExtension.Append\<T1,  T2>(System.Action\<T1,  T2>, System.Action\<T1,  T2>)
+### Method: ActionExtension.Append\<T1,  T2>(Action\<T1,  T2>, Action\<T1,  T2>)
 
  Extension to combine two logging methods into a new one. 
 
@@ -490,7 +490,7 @@ A new method combining both methods specified in the parameters.
 
 
 ---
-### Method: ActionExtension.Append\<T1,  T2,  T3>(System.Action\<T1,  T2,  T3>, System.Action\<T1,  T2,  T3>)
+### Method: ActionExtension.Append\<T1,  T2,  T3>(Action\<T1,  T2,  T3>, Action\<T1,  T2,  T3>)
 
  Extension to combine two logging methods into a new one. 
 
@@ -512,7 +512,7 @@ A new method combining both methods specified in the parameters.
 
 
 ---
-### Method: ActionExtension.Append\<T1,  T2,  T3,  T4>(System.Action\<T1,  T2,  T3,  T4>, System.Action\<T1,  T2,  T3,  T4>)
+### Method: ActionExtension.Append\<T1,  T2,  T3,  T4>(Action\<T1,  T2,  T3,  T4>, Action\<T1,  T2,  T3,  T4>)
 
  Extension to combine two logging methods into a new one. 
 
@@ -542,7 +542,7 @@ A new method combining both methods specified in the parameters.
 
 
 ---
-### Method: EncryptionConverter.Read(System.Text.Json.Utf8JsonReader@, System.Type, System.Text.Json.JsonSerializerOptions)
+### Method: EncryptionConverter.Read(Text.Json.Utf8JsonReader@, Type, Text.Json.JsonSerializerOptions)
 
 Reads and converts the JSON to type string.
 
@@ -559,7 +559,7 @@ The converted value.
 
 
 ---
-### Method: EncryptionConverter.Write(System.Text.Json.Utf8JsonWriter, string, System.Text.Json.JsonSerializerOptions)
+### Method: EncryptionConverter.Write(Text.Json.Utf8JsonWriter, String, Text.Json.JsonSerializerOptions)
 
 Writes a specified value as JSON.
 
@@ -579,7 +579,7 @@ Writes a specified value as JSON.
 
 
 ---
-### Method: Extensions.Hash(string)
+### Method: Extensions.Hash(String)
 
  Calculates a simple SHA256 hash from a string. 
 
@@ -594,7 +594,7 @@ The has as HEX encoded data.
 
 
 ---
-### Method: Extensions.MustNotBeNullOrEmpty(string, string)
+### Method: Extensions.MustNotBeNullOrEmpty(String, String)
 
  Throws an [[|T:System.ArgumentNullException]] when passing NULL or an empty string to  value . 
 
@@ -610,7 +610,7 @@ The has as HEX encoded data.
 
 
 ---
-### Method: Extensions.MustNotBeNull\<T1>(``0, string)
+### Method: Extensions.MustNotBeNull\<T1>(``0, String)
 
  Throws an [[|T:System.ArgumentNullException]] when passing NULL values to  value . 
 
@@ -656,7 +656,7 @@ A JSON string.
 
 
 ---
-### Method: FileSystemTools.SanitizeFileName(string)
+### Method: FileSystemTools.SanitizeFileName(String)
 
  Removes illegal characters from file names. 
 
@@ -682,7 +682,7 @@ The file name without illegal characters.
 
 
 ---
-### Method: InheritanceConverter`1.Read(System.Text.Json.Utf8JsonReader@, System.Type, System.Text.Json.JsonSerializerOptions)
+### Method: InheritanceConverter`1.Read(Text.Json.Utf8JsonReader@, Type, Text.Json.JsonSerializerOptions)
 
 Reads and converts the JSON to type  !! UNSUPPORTED: typeparamref !! .
 
@@ -699,7 +699,7 @@ The converted value.
 
 
 ---
-### Method: InheritanceConverter`1.Write(System.Text.Json.Utf8JsonWriter, `0, System.Text.Json.JsonSerializerOptions)
+### Method: InheritanceConverter`1.Write(Text.Json.Utf8JsonWriter, `0, Text.Json.JsonSerializerOptions)
 
 Writes a specified value as JSON.
 
@@ -760,7 +760,7 @@ _C# code_
 
 
 ---
-### Method: MenuItem.#ctor(string, Func\<Task>, string)
+### Method: MenuItem.#ctor(String, Func\<Threading.Tasks.Task>, String)
 
  Initializes a new instance of the [[|T:Sem.Tools.CmdLine.MenuItem]] class. 
 
@@ -787,7 +787,7 @@ _C# code_
 
 
 ---
-### Method: MenuItem.Print(System.Linq.Expressions.Expression\<Func\<System.Collections.Generic.IAsyncEnumerable\<string>>>, string)
+### Method: MenuItem.Print(Linq.Expressions.Expression\<Func\<Collections.Generic.IAsyncEnumerable\<String>>>, String)
 
  Creates a [[|T:Sem.Tools.CmdLine.MenuItem]] from an expression - is meant to be used with a [[|T:System.Linq.Expressions.MethodCallExpression]]. 
 
@@ -803,7 +803,7 @@ A new menu item.
 
 
 ---
-### Method: MenuItem.Print(System.Linq.Expressions.Expression\<Func\<Task\<string>>>, string)
+### Method: MenuItem.Print(Linq.Expressions.Expression\<Func\<Threading.Tasks.Task\<String>>>, String)
 
  Creates a [[|T:Sem.Tools.CmdLine.MenuItem]] from an expression - is meant to be used with a [[|T:System.Linq.Expressions.MethodCallExpression]]. 
 
@@ -819,7 +819,7 @@ A new menu item.
 
 
 ---
-### Method: MenuItem.Print(System.Linq.Expressions.Expression\<Func\<Task\<System.Collections.Generic.IEnumerable\<string>>>>, string)
+### Method: MenuItem.Print(Linq.Expressions.Expression\<Func\<Threading.Tasks.Task\<Collections.Generic.IEnumerable\<String>>>>, String)
 
  Creates a [[|T:Sem.Tools.CmdLine.MenuItem]] from an expression - is meant to be used with a [[|T:System.Linq.Expressions.MethodCallExpression]]. 
 
@@ -835,7 +835,7 @@ A new menu item.
 
 
 ---
-### Method: MenuItem.Print(string, Func\<Task\<string>>, string)
+### Method: MenuItem.Print(String, Func\<Threading.Tasks.Task\<String>>, String)
 
  Creates a [[|T:Sem.Tools.CmdLine.MenuItem]] from an expression - is meant to be used with a [[|T:System.Linq.Expressions.MethodCallExpression]]. 
 
@@ -852,7 +852,7 @@ A new menu item.
 
 
 ---
-### Method: MenuItem.Print(string, Func\<System.Collections.Generic.IAsyncEnumerable\<string>>, string)
+### Method: MenuItem.Print(String, Func\<Collections.Generic.IAsyncEnumerable\<String>>, String)
 
  Creates a [[|T:Sem.Tools.CmdLine.MenuItem]] from an expression - is meant to be used with a [[|T:System.Linq.Expressions.MethodCallExpression]]. 
 
@@ -869,7 +869,7 @@ A new menu item.
 
 
 ---
-### Method: MenuItem.Print(string, Func\<Task\<System.Collections.Generic.IEnumerable\<string>>>, string)
+### Method: MenuItem.Print(String, Func\<Threading.Tasks.Task\<Collections.Generic.IEnumerable\<String>>>, String)
 
  Creates a [[|T:Sem.Tools.CmdLine.MenuItem]] from an expression - is meant to be used with a [[|T:System.Linq.Expressions.MethodCallExpression]]. 
 
@@ -905,7 +905,7 @@ A menu entry with sub menu items.
 
 
 ---
-### Method: MenuItem.GetDescriptionFromXml(System.Reflection.MemberInfo)
+### Method: MenuItem.GetDescriptionFromXml(Reflection.MemberInfo)
 
  Extracts the description from the XML documentation of a method (the XML file mst be generated while building the assembly). 
 
@@ -920,7 +920,7 @@ The extracted description.
 
 
 ---
-### Method: MenuItem.GetDescriptionFromXml(System.Type)
+### Method: MenuItem.GetDescriptionFromXml(Type)
 
  Extracts the description from the XML documentation of a class (the XML file mst be generated while building the assembly). 
 
@@ -935,7 +935,7 @@ The extracted description.
 
 
 ---
-### Method: MenuItem.GetMethod\<T1>(System.Linq.Expressions.Expression\<Func\<T1>>)
+### Method: MenuItem.GetMethod\<T1>(Linq.Expressions.Expression\<Func\<T1>>)
 
  Gets the method information from a [[|T:System.Linq.Expressions.MethodCallExpression]]. 
 
@@ -954,7 +954,7 @@ The method information from the called method.
 
 
 ---
-### Method: MenuItem.InvokeAction\<T1,  T2>(System.Reflection.MethodBase, Object[])
+### Method: MenuItem.InvokeAction\<T1,  T2>(Reflection.MethodBase, Object[])
 
  Invokes a method with the needed parameters. 
 
@@ -1020,7 +1020,7 @@ A value indicating whether the flag is set.
 
 
 ---
-### Method: LogExtension.AddDebug(System.Action\<LogCategories, LogLevel, LogScope, string>)
+### Method: LogExtension.AddDebug(Action\<LogCategories, LogLevel, LogScope, String>)
 
  Simple output using [[|M:System.Diagnostics.Debug.WriteLine(System.Object)]]. 
 
@@ -1035,7 +1035,7 @@ A new method that is the combination of  logMethod  and an output to [[|T:System
 
 
 ---
-### Method: LogExtension.AddConsole(System.Action\<LogCategories, LogLevel, LogScope, string>)
+### Method: LogExtension.AddConsole(Action\<LogCategories, LogLevel, LogScope, String>)
 
  Simple output using [[|M:System.Console.WriteLine(System.Object)]]. 
 
@@ -1120,7 +1120,7 @@ A new method that is the combination of  logMethod  and an output to [[|T:System
 
 
 ---
-### Method: LogScope.Create(string, System.Action\<LogCategories, LogLevel, LogScope, string>, string, string)
+### Method: LogScope.Create(String, Action\<LogCategories, LogLevel, LogScope, String>, String, String)
 
  Create a new scope instance. 
 
@@ -1138,7 +1138,7 @@ A new logging scope.
 
 
 ---
-### Method: LogScope.MethodStart(Object, string, string)
+### Method: LogScope.MethodStart(Object, String, String)
 
  Call this to indicate a method start. 
 
@@ -1155,7 +1155,7 @@ A new scope.
 
 
 ---
-### Method: LogScope.Child(string, Object, string, string)
+### Method: LogScope.Child(String, Object, String, String)
 
  Creates a new child scope. 
 
@@ -1191,7 +1191,7 @@ A task to wait for.
 
 
 ---
-### Method: LogScope.Log(string, Object)
+### Method: LogScope.Log(String, Object)
 
  Logs a message. 
 
@@ -1203,7 +1203,7 @@ A task to wait for.
 
 
 ---
-### Method: LogScope.Log(LogCategories, LogLevel, string, Object)
+### Method: LogScope.Log(LogCategories, LogLevel, String, Object)
 
  Logs a message. 
 
@@ -1228,7 +1228,7 @@ A task to wait for.
 
 
 ---
-### Method: IDatabase.Execute\<T1>(string, Func\<IReader, Task\<T1>>, Sem.Tools.Logging.LogScope, KeyValuePair\<string, Object>[])
+### Method: IDatabase.Execute\<T1>(String, Func\<IReader, Threading.Tasks.Task\<T1>>, Sem.Tools.Logging.LogScope, Collections.Generic.KeyValuePair\<String, Object>[])
 
  Executes a "stored procedure" (aka. "SPROC") and maps the result to a series of POCOs. 
 
@@ -1268,7 +1268,7 @@ A value indicating whether there is still data to be read.
 
 
 ---
-### Method: IReader.Get\<T1>(System.Int32)
+### Method: IReader.Get\<T1>(Int32)
 
  Reads the value of a column by its index. 
 
@@ -1287,7 +1287,7 @@ The value of the column in the current row.
 
 
 ---
-### Method: IReader.Get(System.Int32, System.Type)
+### Method: IReader.Get(Int32, Type)
 
  Reads the value of a column by its index. 
 
@@ -1325,7 +1325,7 @@ A task to wait for.
 
 
 ---
-### Method: IReader.IndexByName(string)
+### Method: IReader.IndexByName(String)
 
  Gets the index of a column by its name (case-insensitive). When there are two columns with the same name, the first index will be returned. 
 
@@ -1385,7 +1385,7 @@ A value indicating whether the flag is set.
 
 
 ---
-### Method: LogExtension.AddDebug(System.Action\<LogCategories, LogLevel, LogScope, string>)
+### Method: LogExtension.AddDebug(Action\<LogCategories, LogLevel, LogScope, String>)
 
  Simple output using [[|M:System.Diagnostics.Debug.WriteLine(System.Object)]]. 
 
@@ -1400,7 +1400,7 @@ A new method that is the combination of  logMethod  and an output to [[|T:System
 
 
 ---
-### Method: LogExtension.AddConsole(System.Action\<LogCategories, LogLevel, LogScope, string>)
+### Method: LogExtension.AddConsole(Action\<LogCategories, LogLevel, LogScope, String>)
 
  Simple output using [[|M:System.Console.WriteLine(System.Object)]]. 
 
@@ -1485,7 +1485,7 @@ A new method that is the combination of  logMethod  and an output to [[|T:System
 
 
 ---
-### Method: LogScope.Create(string, System.Action\<LogCategories, LogLevel, LogScope, string>, string, string)
+### Method: LogScope.Create(String, Action\<LogCategories, LogLevel, LogScope, String>, String, String)
 
  Create a new scope instance. 
 
@@ -1503,7 +1503,7 @@ A new logging scope.
 
 
 ---
-### Method: LogScope.MethodStart(Object, string, string)
+### Method: LogScope.MethodStart(Object, String, String)
 
  Call this to indicate a method start. 
 
@@ -1520,7 +1520,7 @@ A new scope.
 
 
 ---
-### Method: LogScope.Child(string, Object, string, string)
+### Method: LogScope.Child(String, Object, String, String)
 
  Creates a new child scope. 
 
@@ -1556,7 +1556,7 @@ A task to wait for.
 
 
 ---
-### Method: LogScope.Log(string, Object)
+### Method: LogScope.Log(String, Object)
 
  Logs a message. 
 
@@ -1568,7 +1568,7 @@ A task to wait for.
 
 
 ---
-### Method: LogScope.Log(LogCategories, LogLevel, string, Object)
+### Method: LogScope.Log(LogCategories, LogLevel, String, Object)
 
  Logs a message. 
 
@@ -1593,7 +1593,7 @@ A task to wait for.
 
 
 ---
-### Method: ActionExtension.Append\<T1>(System.Action\<T1>, System.Action\<T1>)
+### Method: ActionExtension.Append\<T1>(Action\<T1>, Action\<T1>)
 
  Extension to combine two logging methods into a new one. 
 
@@ -1613,7 +1613,7 @@ A new method combining both methods specified in the parameters.
 
 
 ---
-### Method: ActionExtension.Append\<T1,  T2>(System.Action\<T1,  T2>, System.Action\<T1,  T2>)
+### Method: ActionExtension.Append\<T1,  T2>(Action\<T1,  T2>, Action\<T1,  T2>)
 
  Extension to combine two logging methods into a new one. 
 
@@ -1634,7 +1634,7 @@ A new method combining both methods specified in the parameters.
 
 
 ---
-### Method: ActionExtension.Append\<T1,  T2,  T3>(System.Action\<T1,  T2,  T3>, System.Action\<T1,  T2,  T3>)
+### Method: ActionExtension.Append\<T1,  T2,  T3>(Action\<T1,  T2,  T3>, Action\<T1,  T2,  T3>)
 
  Extension to combine two logging methods into a new one. 
 
@@ -1656,7 +1656,7 @@ A new method combining both methods specified in the parameters.
 
 
 ---
-### Method: ActionExtension.Append\<T1,  T2,  T3,  T4>(System.Action\<T1,  T2,  T3,  T4>, System.Action\<T1,  T2,  T3,  T4>)
+### Method: ActionExtension.Append\<T1,  T2,  T3,  T4>(Action\<T1,  T2,  T3,  T4>, Action\<T1,  T2,  T3,  T4>)
 
  Extension to combine two logging methods into a new one. 
 
@@ -1686,7 +1686,7 @@ A new method combining both methods specified in the parameters.
 
 
 ---
-### Method: EncryptionConverter.Read(System.Text.Json.Utf8JsonReader@, System.Type, System.Text.Json.JsonSerializerOptions)
+### Method: EncryptionConverter.Read(Text.Json.Utf8JsonReader@, Type, Text.Json.JsonSerializerOptions)
 
 Reads and converts the JSON to type string.
 
@@ -1703,7 +1703,7 @@ The converted value.
 
 
 ---
-### Method: EncryptionConverter.Write(System.Text.Json.Utf8JsonWriter, string, System.Text.Json.JsonSerializerOptions)
+### Method: EncryptionConverter.Write(Text.Json.Utf8JsonWriter, String, Text.Json.JsonSerializerOptions)
 
 Writes a specified value as JSON.
 
@@ -1723,7 +1723,7 @@ Writes a specified value as JSON.
 
 
 ---
-### Method: Extensions.Hash(string)
+### Method: Extensions.Hash(String)
 
  Calculates a simple SHA256 hash from a string. 
 
@@ -1738,7 +1738,7 @@ The has as HEX encoded data.
 
 
 ---
-### Method: Extensions.MustNotBeNullOrEmpty(string, string)
+### Method: Extensions.MustNotBeNullOrEmpty(String, String)
 
  Throws an [[|T:System.ArgumentNullException]] when passing NULL or an empty string to  value . 
 
@@ -1754,7 +1754,7 @@ The has as HEX encoded data.
 
 
 ---
-### Method: Extensions.MustNotBeNull\<T1>(``0, string)
+### Method: Extensions.MustNotBeNull\<T1>(``0, String)
 
  Throws an [[|T:System.ArgumentNullException]] when passing NULL values to  value . 
 
@@ -1800,7 +1800,7 @@ A JSON string.
 
 
 ---
-### Method: FileSystemTools.SanitizeFileName(string)
+### Method: FileSystemTools.SanitizeFileName(String)
 
  Removes illegal characters from file names. 
 
@@ -1826,7 +1826,7 @@ The file name without illegal characters.
 
 
 ---
-### Method: InheritanceConverter`1.Read(System.Text.Json.Utf8JsonReader@, System.Type, System.Text.Json.JsonSerializerOptions)
+### Method: InheritanceConverter`1.Read(Text.Json.Utf8JsonReader@, Type, Text.Json.JsonSerializerOptions)
 
 Reads and converts the JSON to type  !! UNSUPPORTED: typeparamref !! .
 
@@ -1843,7 +1843,7 @@ The converted value.
 
 
 ---
-### Method: InheritanceConverter`1.Write(System.Text.Json.Utf8JsonWriter, `0, System.Text.Json.JsonSerializerOptions)
+### Method: InheritanceConverter`1.Write(Text.Json.Utf8JsonWriter, `0, Text.Json.JsonSerializerOptions)
 
 Writes a specified value as JSON.
 
@@ -1867,7 +1867,7 @@ Writes a specified value as JSON.
 
 
 ---
-### Method: TxtDatabase.#ctor(string)
+### Method: Sem.Data.SprocAccess.FileTxtDatabase.#ctor(String)
 
  Initializes a new instance of the [[|T:Sem.Data.SprocAccess.FileSystem.TxtDatabase]] class. 
 
@@ -1878,7 +1878,7 @@ Writes a specified value as JSON.
 
 
 ---
-### Method: TxtDatabase.Execute\<T1>(string, Func\<Sem.Data.SprocAccess.IReader, Task\<T1>>, Sem.Tools.Logging.LogScope, KeyValuePair\<string, Object>[])
+### Method: Sem.Data.SprocAccess.FileTxtDatabase.Execute\<T1>(String, Func\<Sem.Data.SprocAccess.IReader, Threading.Tasks.Task\<T1>>, Sem.Tools.Logging.LogScope, Collections.Generic.KeyValuePair\<String, Object>[])
 
  Executes a "stored procedure" (aka. "SPROC") and maps the result to a series of POCOs. 
 
@@ -1900,7 +1900,7 @@ A series of POCO instances.
 
 
 ---
-### Method: TxtDatabase.DisposeAsync
+### Method: Sem.Data.SprocAccess.FileTxtDatabase.DisposeAsync
 
 Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources asynchronously.
 
@@ -1918,7 +1918,7 @@ A task that represents the asynchronous dispose operation.
 
 
 ---
-### Method: TxtReader.#ctor(string)
+### Method: Sem.Data.SprocAccess.FileTxtReader.#ctor(String)
 
  Initializes a new instance of the [[|T:Sem.Data.SprocAccess.FileSystem.TxtReader]] class. 
 
@@ -1929,7 +1929,7 @@ A task that represents the asynchronous dispose operation.
 
 
 ---
-### Method: TxtReader.Read
+### Method: Sem.Data.SprocAccess.FileTxtReader.Read
 
  Increments the line pointer. 
 
@@ -1940,7 +1940,7 @@ A value indicating whether there is still data at this line.
 
 
 ---
-### Method: TxtReader.Get\<T1>(System.Int32)
+### Method: Sem.Data.SprocAccess.FileTxtReader.Get\<T1>(Int32)
 
  Reads the value of a column by its index. 
 
@@ -1959,7 +1959,7 @@ The value of the column in the current row.
 
 
 ---
-### Method: TxtReader.Get(System.Int32, System.Type)
+### Method: Sem.Data.SprocAccess.FileTxtReader.Get(Int32, Type)
 
  Reads the value of a column by its index. 
 
@@ -1975,7 +1975,7 @@ The value of the column in the current row.
 
 
 ---
-### Method: TxtReader.NextResult
+### Method: Sem.Data.SprocAccess.FileTxtReader.NextResult
 
  Advances to the next result set. 
 
@@ -1986,7 +1986,7 @@ A task to wait for.
 
 
 ---
-### Method: TxtReader.Close
+### Method: Sem.Data.SprocAccess.FileTxtReader.Close
 
  Closes the reader. 
 
@@ -1997,7 +1997,7 @@ A task to wait for.
 
 
 ---
-### Method: TxtReader.IndexByName(string)
+### Method: Sem.Data.SprocAccess.FileTxtReader.IndexByName(String)
 
  Gets the index of a column by its name (case-insensitive). When there are two columns with the same name, the first index will be returned. 
 
@@ -2012,7 +2012,7 @@ The index of the column.
 
 
 ---
-### Method: TxtReader.Init
+### Method: Sem.Data.SprocAccess.FileTxtReader.Init
 
  Reads the text file and initializes the line-pointer. 
 
@@ -2030,7 +2030,7 @@ The index of the column.
 
 
 ---
-### Method: IDatabase.Execute\<T1>(string, Func\<IReader, Task\<T1>>, Sem.Tools.Logging.LogScope, KeyValuePair\<string, Object>[])
+### Method: IDatabase.Execute\<T1>(String, Func\<IReader, Threading.Tasks.Task\<T1>>, Sem.Tools.Logging.LogScope, Collections.Generic.KeyValuePair\<String, Object>[])
 
  Executes a "stored procedure" (aka. "SPROC") and maps the result to a series of POCOs. 
 
@@ -2070,7 +2070,7 @@ A value indicating whether there is still data to be read.
 
 
 ---
-### Method: IReader.Get\<T1>(System.Int32)
+### Method: IReader.Get\<T1>(Int32)
 
  Reads the value of a column by its index. 
 
@@ -2089,7 +2089,7 @@ The value of the column in the current row.
 
 
 ---
-### Method: IReader.Get(System.Int32, System.Type)
+### Method: IReader.Get(Int32, Type)
 
  Reads the value of a column by its index. 
 
@@ -2127,7 +2127,7 @@ A task to wait for.
 
 
 ---
-### Method: IReader.IndexByName(string)
+### Method: IReader.IndexByName(String)
 
  Gets the index of a column by its name (case-insensitive). When there are two columns with the same name, the first index will be returned. 
 
@@ -2187,7 +2187,7 @@ A value indicating whether the flag is set.
 
 
 ---
-### Method: LogExtension.AddDebug(System.Action\<LogCategories, LogLevel, LogScope, string>)
+### Method: LogExtension.AddDebug(Action\<LogCategories, LogLevel, LogScope, String>)
 
  Simple output using [[|M:System.Diagnostics.Debug.WriteLine(System.Object)]]. 
 
@@ -2202,7 +2202,7 @@ A new method that is the combination of  logMethod  and an output to [[|T:System
 
 
 ---
-### Method: LogExtension.AddConsole(System.Action\<LogCategories, LogLevel, LogScope, string>)
+### Method: LogExtension.AddConsole(Action\<LogCategories, LogLevel, LogScope, String>)
 
  Simple output using [[|M:System.Console.WriteLine(System.Object)]]. 
 
@@ -2287,7 +2287,7 @@ A new method that is the combination of  logMethod  and an output to [[|T:System
 
 
 ---
-### Method: LogScope.Create(string, System.Action\<LogCategories, LogLevel, LogScope, string>, string, string)
+### Method: LogScope.Create(String, Action\<LogCategories, LogLevel, LogScope, String>, String, String)
 
  Create a new scope instance. 
 
@@ -2305,7 +2305,7 @@ A new logging scope.
 
 
 ---
-### Method: LogScope.MethodStart(Object, string, string)
+### Method: LogScope.MethodStart(Object, String, String)
 
  Call this to indicate a method start. 
 
@@ -2322,7 +2322,7 @@ A new scope.
 
 
 ---
-### Method: LogScope.Child(string, Object, string, string)
+### Method: LogScope.Child(String, Object, String, String)
 
  Creates a new child scope. 
 
@@ -2358,7 +2358,7 @@ A task to wait for.
 
 
 ---
-### Method: LogScope.Log(string, Object)
+### Method: LogScope.Log(String, Object)
 
  Logs a message. 
 
@@ -2370,7 +2370,7 @@ A task to wait for.
 
 
 ---
-### Method: LogScope.Log(LogCategories, LogLevel, string, Object)
+### Method: LogScope.Log(LogCategories, LogLevel, String, Object)
 
  Logs a message. 
 
@@ -2395,7 +2395,7 @@ A task to wait for.
 
 
 ---
-### Method: ActionExtension.Append\<T1>(System.Action\<T1>, System.Action\<T1>)
+### Method: ActionExtension.Append\<T1>(Action\<T1>, Action\<T1>)
 
  Extension to combine two logging methods into a new one. 
 
@@ -2415,7 +2415,7 @@ A new method combining both methods specified in the parameters.
 
 
 ---
-### Method: ActionExtension.Append\<T1,  T2>(System.Action\<T1,  T2>, System.Action\<T1,  T2>)
+### Method: ActionExtension.Append\<T1,  T2>(Action\<T1,  T2>, Action\<T1,  T2>)
 
  Extension to combine two logging methods into a new one. 
 
@@ -2436,7 +2436,7 @@ A new method combining both methods specified in the parameters.
 
 
 ---
-### Method: ActionExtension.Append\<T1,  T2,  T3>(System.Action\<T1,  T2,  T3>, System.Action\<T1,  T2,  T3>)
+### Method: ActionExtension.Append\<T1,  T2,  T3>(Action\<T1,  T2,  T3>, Action\<T1,  T2,  T3>)
 
  Extension to combine two logging methods into a new one. 
 
@@ -2458,7 +2458,7 @@ A new method combining both methods specified in the parameters.
 
 
 ---
-### Method: ActionExtension.Append\<T1,  T2,  T3,  T4>(System.Action\<T1,  T2,  T3,  T4>, System.Action\<T1,  T2,  T3,  T4>)
+### Method: ActionExtension.Append\<T1,  T2,  T3,  T4>(Action\<T1,  T2,  T3,  T4>, Action\<T1,  T2,  T3,  T4>)
 
  Extension to combine two logging methods into a new one. 
 
@@ -2488,7 +2488,7 @@ A new method combining both methods specified in the parameters.
 
 
 ---
-### Method: EncryptionConverter.Read(System.Text.Json.Utf8JsonReader@, System.Type, System.Text.Json.JsonSerializerOptions)
+### Method: EncryptionConverter.Read(Text.Json.Utf8JsonReader@, Type, Text.Json.JsonSerializerOptions)
 
 Reads and converts the JSON to type string.
 
@@ -2505,7 +2505,7 @@ The converted value.
 
 
 ---
-### Method: EncryptionConverter.Write(System.Text.Json.Utf8JsonWriter, string, System.Text.Json.JsonSerializerOptions)
+### Method: EncryptionConverter.Write(Text.Json.Utf8JsonWriter, String, Text.Json.JsonSerializerOptions)
 
 Writes a specified value as JSON.
 
@@ -2525,7 +2525,7 @@ Writes a specified value as JSON.
 
 
 ---
-### Method: Extensions.Hash(string)
+### Method: Extensions.Hash(String)
 
  Calculates a simple SHA256 hash from a string. 
 
@@ -2540,7 +2540,7 @@ The has as HEX encoded data.
 
 
 ---
-### Method: Extensions.MustNotBeNullOrEmpty(string, string)
+### Method: Extensions.MustNotBeNullOrEmpty(String, String)
 
  Throws an [[|T:System.ArgumentNullException]] when passing NULL or an empty string to  value . 
 
@@ -2556,7 +2556,7 @@ The has as HEX encoded data.
 
 
 ---
-### Method: Extensions.MustNotBeNull\<T1>(``0, string)
+### Method: Extensions.MustNotBeNull\<T1>(``0, String)
 
  Throws an [[|T:System.ArgumentNullException]] when passing NULL values to  value . 
 
@@ -2602,7 +2602,7 @@ A JSON string.
 
 
 ---
-### Method: FileSystemTools.SanitizeFileName(string)
+### Method: FileSystemTools.SanitizeFileName(String)
 
  Removes illegal characters from file names. 
 
@@ -2628,7 +2628,7 @@ The file name without illegal characters.
 
 
 ---
-### Method: InheritanceConverter`1.Read(System.Text.Json.Utf8JsonReader@, System.Type, System.Text.Json.JsonSerializerOptions)
+### Method: InheritanceConverter`1.Read(Text.Json.Utf8JsonReader@, Type, Text.Json.JsonSerializerOptions)
 
 Reads and converts the JSON to type  !! UNSUPPORTED: typeparamref !! .
 
@@ -2645,7 +2645,7 @@ The converted value.
 
 
 ---
-### Method: InheritanceConverter`1.Write(System.Text.Json.Utf8JsonWriter, `0, System.Text.Json.JsonSerializerOptions)
+### Method: InheritanceConverter`1.Write(Text.Json.Utf8JsonWriter, `0, Text.Json.JsonSerializerOptions)
 
 Writes a specified value as JSON.
 
@@ -2669,7 +2669,7 @@ Writes a specified value as JSON.
 
 
 ---
-### Method: TxtDatabase.#ctor(string)
+### Method: Sem.Data.SprocAccess.FileTxtDatabase.#ctor(String)
 
  Initializes a new instance of the [[|T:Sem.Data.SprocAccess.FileSystem.TxtDatabase]] class. 
 
@@ -2680,7 +2680,7 @@ Writes a specified value as JSON.
 
 
 ---
-### Method: TxtDatabase.Execute\<T1>(string, Func\<Sem.Data.SprocAccess.IReader, Task\<T1>>, Sem.Tools.Logging.LogScope, KeyValuePair\<string, Object>[])
+### Method: Sem.Data.SprocAccess.FileTxtDatabase.Execute\<T1>(String, Func\<Sem.Data.SprocAccess.IReader, Threading.Tasks.Task\<T1>>, Sem.Tools.Logging.LogScope, Collections.Generic.KeyValuePair\<String, Object>[])
 
  Executes a "stored procedure" (aka. "SPROC") and maps the result to a series of POCOs. 
 
@@ -2702,7 +2702,7 @@ A series of POCO instances.
 
 
 ---
-### Method: TxtDatabase.DisposeAsync
+### Method: Sem.Data.SprocAccess.FileTxtDatabase.DisposeAsync
 
 Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources asynchronously.
 
@@ -2720,7 +2720,7 @@ A task that represents the asynchronous dispose operation.
 
 
 ---
-### Method: TxtReader.#ctor(string)
+### Method: Sem.Data.SprocAccess.FileTxtReader.#ctor(String)
 
  Initializes a new instance of the [[|T:Sem.Data.SprocAccess.FileSystem.TxtReader]] class. 
 
@@ -2731,7 +2731,7 @@ A task that represents the asynchronous dispose operation.
 
 
 ---
-### Method: TxtReader.Read
+### Method: Sem.Data.SprocAccess.FileTxtReader.Read
 
  Increments the line pointer. 
 
@@ -2742,7 +2742,7 @@ A value indicating whether there is still data at this line.
 
 
 ---
-### Method: TxtReader.Get\<T1>(System.Int32)
+### Method: Sem.Data.SprocAccess.FileTxtReader.Get\<T1>(Int32)
 
  Reads the value of a column by its index. 
 
@@ -2761,7 +2761,7 @@ The value of the column in the current row.
 
 
 ---
-### Method: TxtReader.Get(System.Int32, System.Type)
+### Method: Sem.Data.SprocAccess.FileTxtReader.Get(Int32, Type)
 
  Reads the value of a column by its index. 
 
@@ -2777,7 +2777,7 @@ The value of the column in the current row.
 
 
 ---
-### Method: TxtReader.NextResult
+### Method: Sem.Data.SprocAccess.FileTxtReader.NextResult
 
  Advances to the next result set. 
 
@@ -2788,7 +2788,7 @@ A task to wait for.
 
 
 ---
-### Method: TxtReader.Close
+### Method: Sem.Data.SprocAccess.FileTxtReader.Close
 
  Closes the reader. 
 
@@ -2799,7 +2799,7 @@ A task to wait for.
 
 
 ---
-### Method: TxtReader.IndexByName(string)
+### Method: Sem.Data.SprocAccess.FileTxtReader.IndexByName(String)
 
  Gets the index of a column by its name (case-insensitive). When there are two columns with the same name, the first index will be returned. 
 
@@ -2814,7 +2814,7 @@ The index of the column.
 
 
 ---
-### Method: TxtReader.Init
+### Method: Sem.Data.SprocAccess.FileTxtReader.Init
 
  Reads the text file and initializes the line-pointer. 
 
@@ -2832,7 +2832,7 @@ The index of the column.
 
 
 ---
-### Method: IDatabase.Execute\<T1>(string, Func\<IReader, Task\<T1>>, Sem.Tools.Logging.LogScope, KeyValuePair\<string, Object>[])
+### Method: IDatabase.Execute\<T1>(String, Func\<IReader, Threading.Tasks.Task\<T1>>, Sem.Tools.Logging.LogScope, Collections.Generic.KeyValuePair\<String, Object>[])
 
  Executes a "stored procedure" (aka. "SPROC") and maps the result to a series of POCOs. 
 
@@ -2872,7 +2872,7 @@ A value indicating whether there is still data to be read.
 
 
 ---
-### Method: IReader.Get\<T1>(System.Int32)
+### Method: IReader.Get\<T1>(Int32)
 
  Reads the value of a column by its index. 
 
@@ -2891,7 +2891,7 @@ The value of the column in the current row.
 
 
 ---
-### Method: IReader.Get(System.Int32, System.Type)
+### Method: IReader.Get(Int32, Type)
 
  Reads the value of a column by its index. 
 
@@ -2929,7 +2929,7 @@ A task to wait for.
 
 
 ---
-### Method: IReader.IndexByName(string)
+### Method: IReader.IndexByName(String)
 
  Gets the index of a column by its name (case-insensitive). When there are two columns with the same name, the first index will be returned. 
 
@@ -2989,7 +2989,7 @@ A value indicating whether the flag is set.
 
 
 ---
-### Method: LogExtension.AddDebug(System.Action\<LogCategories, LogLevel, LogScope, string>)
+### Method: LogExtension.AddDebug(Action\<LogCategories, LogLevel, LogScope, String>)
 
  Simple output using [[|M:System.Diagnostics.Debug.WriteLine(System.Object)]]. 
 
@@ -3004,7 +3004,7 @@ A new method that is the combination of  logMethod  and an output to [[|T:System
 
 
 ---
-### Method: LogExtension.AddConsole(System.Action\<LogCategories, LogLevel, LogScope, string>)
+### Method: LogExtension.AddConsole(Action\<LogCategories, LogLevel, LogScope, String>)
 
  Simple output using [[|M:System.Console.WriteLine(System.Object)]]. 
 
@@ -3089,7 +3089,7 @@ A new method that is the combination of  logMethod  and an output to [[|T:System
 
 
 ---
-### Method: LogScope.Create(string, System.Action\<LogCategories, LogLevel, LogScope, string>, string, string)
+### Method: LogScope.Create(String, Action\<LogCategories, LogLevel, LogScope, String>, String, String)
 
  Create a new scope instance. 
 
@@ -3107,7 +3107,7 @@ A new logging scope.
 
 
 ---
-### Method: LogScope.MethodStart(Object, string, string)
+### Method: LogScope.MethodStart(Object, String, String)
 
  Call this to indicate a method start. 
 
@@ -3124,7 +3124,7 @@ A new scope.
 
 
 ---
-### Method: LogScope.Child(string, Object, string, string)
+### Method: LogScope.Child(String, Object, String, String)
 
  Creates a new child scope. 
 
@@ -3160,7 +3160,7 @@ A task to wait for.
 
 
 ---
-### Method: LogScope.Log(string, Object)
+### Method: LogScope.Log(String, Object)
 
  Logs a message. 
 
@@ -3172,7 +3172,7 @@ A task to wait for.
 
 
 ---
-### Method: LogScope.Log(LogCategories, LogLevel, string, Object)
+### Method: LogScope.Log(LogCategories, LogLevel, String, Object)
 
  Logs a message. 
 
@@ -3197,7 +3197,7 @@ A task to wait for.
 
 
 ---
-### Method: ActionExtension.Append\<T1>(System.Action\<T1>, System.Action\<T1>)
+### Method: ActionExtension.Append\<T1>(Action\<T1>, Action\<T1>)
 
  Extension to combine two logging methods into a new one. 
 
@@ -3217,7 +3217,7 @@ A new method combining both methods specified in the parameters.
 
 
 ---
-### Method: ActionExtension.Append\<T1,  T2>(System.Action\<T1,  T2>, System.Action\<T1,  T2>)
+### Method: ActionExtension.Append\<T1,  T2>(Action\<T1,  T2>, Action\<T1,  T2>)
 
  Extension to combine two logging methods into a new one. 
 
@@ -3238,7 +3238,7 @@ A new method combining both methods specified in the parameters.
 
 
 ---
-### Method: ActionExtension.Append\<T1,  T2,  T3>(System.Action\<T1,  T2,  T3>, System.Action\<T1,  T2,  T3>)
+### Method: ActionExtension.Append\<T1,  T2,  T3>(Action\<T1,  T2,  T3>, Action\<T1,  T2,  T3>)
 
  Extension to combine two logging methods into a new one. 
 
@@ -3260,7 +3260,7 @@ A new method combining both methods specified in the parameters.
 
 
 ---
-### Method: ActionExtension.Append\<T1,  T2,  T3,  T4>(System.Action\<T1,  T2,  T3,  T4>, System.Action\<T1,  T2,  T3,  T4>)
+### Method: ActionExtension.Append\<T1,  T2,  T3,  T4>(Action\<T1,  T2,  T3,  T4>, Action\<T1,  T2,  T3,  T4>)
 
  Extension to combine two logging methods into a new one. 
 
@@ -3290,7 +3290,7 @@ A new method combining both methods specified in the parameters.
 
 
 ---
-### Method: EncryptionConverter.Read(System.Text.Json.Utf8JsonReader@, System.Type, System.Text.Json.JsonSerializerOptions)
+### Method: EncryptionConverter.Read(Text.Json.Utf8JsonReader@, Type, Text.Json.JsonSerializerOptions)
 
 Reads and converts the JSON to type string.
 
@@ -3307,7 +3307,7 @@ The converted value.
 
 
 ---
-### Method: EncryptionConverter.Write(System.Text.Json.Utf8JsonWriter, string, System.Text.Json.JsonSerializerOptions)
+### Method: EncryptionConverter.Write(Text.Json.Utf8JsonWriter, String, Text.Json.JsonSerializerOptions)
 
 Writes a specified value as JSON.
 
@@ -3327,7 +3327,7 @@ Writes a specified value as JSON.
 
 
 ---
-### Method: Extensions.Hash(string)
+### Method: Extensions.Hash(String)
 
  Calculates a simple SHA256 hash from a string. 
 
@@ -3342,7 +3342,7 @@ The has as HEX encoded data.
 
 
 ---
-### Method: Extensions.MustNotBeNullOrEmpty(string, string)
+### Method: Extensions.MustNotBeNullOrEmpty(String, String)
 
  Throws an [[|T:System.ArgumentNullException]] when passing NULL or an empty string to  value . 
 
@@ -3358,7 +3358,7 @@ The has as HEX encoded data.
 
 
 ---
-### Method: Extensions.MustNotBeNull\<T1>(``0, string)
+### Method: Extensions.MustNotBeNull\<T1>(``0, String)
 
  Throws an [[|T:System.ArgumentNullException]] when passing NULL values to  value . 
 
@@ -3404,7 +3404,7 @@ A JSON string.
 
 
 ---
-### Method: FileSystemTools.SanitizeFileName(string)
+### Method: FileSystemTools.SanitizeFileName(String)
 
  Removes illegal characters from file names. 
 
@@ -3430,7 +3430,7 @@ The file name without illegal characters.
 
 
 ---
-### Method: InheritanceConverter`1.Read(System.Text.Json.Utf8JsonReader@, System.Type, System.Text.Json.JsonSerializerOptions)
+### Method: InheritanceConverter`1.Read(Text.Json.Utf8JsonReader@, Type, Text.Json.JsonSerializerOptions)
 
 Reads and converts the JSON to type  !! UNSUPPORTED: typeparamref !! .
 
@@ -3447,7 +3447,7 @@ The converted value.
 
 
 ---
-### Method: InheritanceConverter`1.Write(System.Text.Json.Utf8JsonWriter, `0, System.Text.Json.JsonSerializerOptions)
+### Method: InheritanceConverter`1.Write(Text.Json.Utf8JsonWriter, `0, Text.Json.JsonSerializerOptions)
 
 Writes a specified value as JSON.
 
@@ -3471,7 +3471,7 @@ Writes a specified value as JSON.
 
 
 ---
-### Method: SqlDatabase.#ctor(string)
+### Method: SqlDatabase.#ctor(String)
 
  Initializes a new instance of the [[|T:Sem.Data.SprocAccess.SqlServer.SqlDatabase]] class. 
 
@@ -3482,7 +3482,7 @@ Writes a specified value as JSON.
 
 
 ---
-### Method: SqlDatabase.Execute\<T1>(string, Func\<Sem.Data.SprocAccess.IReader, Task\<T1>>, Sem.Tools.Logging.LogScope, KeyValuePair\<string, Object>[])
+### Method: SqlDatabase.Execute\<T1>(String, Func\<Sem.Data.SprocAccess.IReader, Threading.Tasks.Task\<T1>>, Sem.Tools.Logging.LogScope, Collections.Generic.KeyValuePair\<String, Object>[])
 
  Executes a "stored procedure" (aka. "SPROC") and maps the result to a series of POCOs. 
 
@@ -3522,7 +3522,7 @@ A task that represents the asynchronous dispose operation.
 
 
 ---
-### Method: SqlReader.#ctor(System.Data.SqlClient.SqlDataReader)
+### Method: SqlReader.#ctor(Data.SqlClient.SqlDataReader)
 
  Initializes a new instance of the [[|T:Sem.Data.SprocAccess.SqlServer.SqlReader]] class. 
 
@@ -3544,7 +3544,7 @@ A value indicating whether there is still data to be read.
 
 
 ---
-### Method: SqlReader.Get\<T1>(System.Int32)
+### Method: SqlReader.Get\<T1>(Int32)
 
  Reads the value of a column by its index. 
 
@@ -3563,7 +3563,7 @@ The value of the column in the current row.
 
 
 ---
-### Method: SqlReader.Get(System.Int32, System.Type)
+### Method: SqlReader.Get(Int32, Type)
 
  Reads the value of a column by its index. 
 
@@ -3601,7 +3601,7 @@ A task to wait for.
 
 
 ---
-### Method: SqlReader.IndexByName(string)
+### Method: SqlReader.IndexByName(String)
 
  Gets the index of a column by its name (case-insensitive). When there are two columns with the same name, the first index will be returned. 
 
@@ -3627,7 +3627,7 @@ The index of the column.
 
 
 ---
-### Method: IDatabase.Execute\<T1>(string, Func\<IReader, Task\<T1>>, Sem.Tools.Logging.LogScope, KeyValuePair\<string, Object>[])
+### Method: IDatabase.Execute\<T1>(String, Func\<IReader, Threading.Tasks.Task\<T1>>, Sem.Tools.Logging.LogScope, Collections.Generic.KeyValuePair\<String, Object>[])
 
  Executes a "stored procedure" (aka. "SPROC") and maps the result to a series of POCOs. 
 
@@ -3667,7 +3667,7 @@ A value indicating whether there is still data to be read.
 
 
 ---
-### Method: IReader.Get\<T1>(System.Int32)
+### Method: IReader.Get\<T1>(Int32)
 
  Reads the value of a column by its index. 
 
@@ -3686,7 +3686,7 @@ The value of the column in the current row.
 
 
 ---
-### Method: IReader.Get(System.Int32, System.Type)
+### Method: IReader.Get(Int32, Type)
 
  Reads the value of a column by its index. 
 
@@ -3724,7 +3724,7 @@ A task to wait for.
 
 
 ---
-### Method: IReader.IndexByName(string)
+### Method: IReader.IndexByName(String)
 
  Gets the index of a column by its name (case-insensitive). When there are two columns with the same name, the first index will be returned. 
 
@@ -3784,7 +3784,7 @@ A value indicating whether the flag is set.
 
 
 ---
-### Method: LogExtension.AddDebug(System.Action\<LogCategories, LogLevel, LogScope, string>)
+### Method: LogExtension.AddDebug(Action\<LogCategories, LogLevel, LogScope, String>)
 
  Simple output using [[|M:System.Diagnostics.Debug.WriteLine(System.Object)]]. 
 
@@ -3799,7 +3799,7 @@ A new method that is the combination of  logMethod  and an output to [[|T:System
 
 
 ---
-### Method: LogExtension.AddConsole(System.Action\<LogCategories, LogLevel, LogScope, string>)
+### Method: LogExtension.AddConsole(Action\<LogCategories, LogLevel, LogScope, String>)
 
  Simple output using [[|M:System.Console.WriteLine(System.Object)]]. 
 
@@ -3884,7 +3884,7 @@ A new method that is the combination of  logMethod  and an output to [[|T:System
 
 
 ---
-### Method: LogScope.Create(string, System.Action\<LogCategories, LogLevel, LogScope, string>, string, string)
+### Method: LogScope.Create(String, Action\<LogCategories, LogLevel, LogScope, String>, String, String)
 
  Create a new scope instance. 
 
@@ -3902,7 +3902,7 @@ A new logging scope.
 
 
 ---
-### Method: LogScope.MethodStart(Object, string, string)
+### Method: LogScope.MethodStart(Object, String, String)
 
  Call this to indicate a method start. 
 
@@ -3919,7 +3919,7 @@ A new scope.
 
 
 ---
-### Method: LogScope.Child(string, Object, string, string)
+### Method: LogScope.Child(String, Object, String, String)
 
  Creates a new child scope. 
 
@@ -3955,7 +3955,7 @@ A task to wait for.
 
 
 ---
-### Method: LogScope.Log(string, Object)
+### Method: LogScope.Log(String, Object)
 
  Logs a message. 
 
@@ -3967,7 +3967,7 @@ A task to wait for.
 
 
 ---
-### Method: LogScope.Log(LogCategories, LogLevel, string, Object)
+### Method: LogScope.Log(LogCategories, LogLevel, String, Object)
 
  Logs a message. 
 
@@ -3992,7 +3992,7 @@ A task to wait for.
 
 
 ---
-### Method: ActionExtension.Append\<T1>(System.Action\<T1>, System.Action\<T1>)
+### Method: ActionExtension.Append\<T1>(Action\<T1>, Action\<T1>)
 
  Extension to combine two logging methods into a new one. 
 
@@ -4012,7 +4012,7 @@ A new method combining both methods specified in the parameters.
 
 
 ---
-### Method: ActionExtension.Append\<T1,  T2>(System.Action\<T1,  T2>, System.Action\<T1,  T2>)
+### Method: ActionExtension.Append\<T1,  T2>(Action\<T1,  T2>, Action\<T1,  T2>)
 
  Extension to combine two logging methods into a new one. 
 
@@ -4033,7 +4033,7 @@ A new method combining both methods specified in the parameters.
 
 
 ---
-### Method: ActionExtension.Append\<T1,  T2,  T3>(System.Action\<T1,  T2,  T3>, System.Action\<T1,  T2,  T3>)
+### Method: ActionExtension.Append\<T1,  T2,  T3>(Action\<T1,  T2,  T3>, Action\<T1,  T2,  T3>)
 
  Extension to combine two logging methods into a new one. 
 
@@ -4055,7 +4055,7 @@ A new method combining both methods specified in the parameters.
 
 
 ---
-### Method: ActionExtension.Append\<T1,  T2,  T3,  T4>(System.Action\<T1,  T2,  T3,  T4>, System.Action\<T1,  T2,  T3,  T4>)
+### Method: ActionExtension.Append\<T1,  T2,  T3,  T4>(Action\<T1,  T2,  T3,  T4>, Action\<T1,  T2,  T3,  T4>)
 
  Extension to combine two logging methods into a new one. 
 
@@ -4085,7 +4085,7 @@ A new method combining both methods specified in the parameters.
 
 
 ---
-### Method: EncryptionConverter.Read(System.Text.Json.Utf8JsonReader@, System.Type, System.Text.Json.JsonSerializerOptions)
+### Method: EncryptionConverter.Read(Text.Json.Utf8JsonReader@, Type, Text.Json.JsonSerializerOptions)
 
 Reads and converts the JSON to type string.
 
@@ -4102,7 +4102,7 @@ The converted value.
 
 
 ---
-### Method: EncryptionConverter.Write(System.Text.Json.Utf8JsonWriter, string, System.Text.Json.JsonSerializerOptions)
+### Method: EncryptionConverter.Write(Text.Json.Utf8JsonWriter, String, Text.Json.JsonSerializerOptions)
 
 Writes a specified value as JSON.
 
@@ -4122,7 +4122,7 @@ Writes a specified value as JSON.
 
 
 ---
-### Method: Extensions.Hash(string)
+### Method: Extensions.Hash(String)
 
  Calculates a simple SHA256 hash from a string. 
 
@@ -4137,7 +4137,7 @@ The has as HEX encoded data.
 
 
 ---
-### Method: Extensions.MustNotBeNullOrEmpty(string, string)
+### Method: Extensions.MustNotBeNullOrEmpty(String, String)
 
  Throws an [[|T:System.ArgumentNullException]] when passing NULL or an empty string to  value . 
 
@@ -4153,7 +4153,7 @@ The has as HEX encoded data.
 
 
 ---
-### Method: Extensions.MustNotBeNull\<T1>(``0, string)
+### Method: Extensions.MustNotBeNull\<T1>(``0, String)
 
  Throws an [[|T:System.ArgumentNullException]] when passing NULL values to  value . 
 
@@ -4199,7 +4199,7 @@ A JSON string.
 
 
 ---
-### Method: FileSystemTools.SanitizeFileName(string)
+### Method: FileSystemTools.SanitizeFileName(String)
 
  Removes illegal characters from file names. 
 
@@ -4225,7 +4225,7 @@ The file name without illegal characters.
 
 
 ---
-### Method: InheritanceConverter`1.Read(System.Text.Json.Utf8JsonReader@, System.Type, System.Text.Json.JsonSerializerOptions)
+### Method: InheritanceConverter`1.Read(Text.Json.Utf8JsonReader@, Type, Text.Json.JsonSerializerOptions)
 
 Reads and converts the JSON to type  !! UNSUPPORTED: typeparamref !! .
 
@@ -4242,7 +4242,7 @@ The converted value.
 
 
 ---
-### Method: InheritanceConverter`1.Write(System.Text.Json.Utf8JsonWriter, `0, System.Text.Json.JsonSerializerOptions)
+### Method: InheritanceConverter`1.Write(Text.Json.Utf8JsonWriter, `0, Text.Json.JsonSerializerOptions)
 
 Writes a specified value as JSON.
 
@@ -4266,7 +4266,7 @@ Writes a specified value as JSON.
 
 
 ---
-### Method: SqlDatabase.#ctor(string)
+### Method: SqlDatabase.#ctor(String)
 
  Initializes a new instance of the [[|T:Sem.Data.SprocAccess.SqlServer.SqlDatabase]] class. 
 
@@ -4277,7 +4277,7 @@ Writes a specified value as JSON.
 
 
 ---
-### Method: SqlDatabase.Execute\<T1>(string, Func\<Sem.Data.SprocAccess.IReader, Task\<T1>>, Sem.Tools.Logging.LogScope, KeyValuePair\<string, Object>[])
+### Method: SqlDatabase.Execute\<T1>(String, Func\<Sem.Data.SprocAccess.IReader, Threading.Tasks.Task\<T1>>, Sem.Tools.Logging.LogScope, Collections.Generic.KeyValuePair\<String, Object>[])
 
  Executes a "stored procedure" (aka. "SPROC") and maps the result to a series of POCOs. 
 
@@ -4317,7 +4317,7 @@ A task that represents the asynchronous dispose operation.
 
 
 ---
-### Method: SqlReader.#ctor(System.Data.SqlClient.SqlDataReader)
+### Method: SqlReader.#ctor(Data.SqlClient.SqlDataReader)
 
  Initializes a new instance of the [[|T:Sem.Data.SprocAccess.SqlServer.SqlReader]] class. 
 
@@ -4339,7 +4339,7 @@ A value indicating whether there is still data to be read.
 
 
 ---
-### Method: SqlReader.Get\<T1>(System.Int32)
+### Method: SqlReader.Get\<T1>(Int32)
 
  Reads the value of a column by its index. 
 
@@ -4358,7 +4358,7 @@ The value of the column in the current row.
 
 
 ---
-### Method: SqlReader.Get(System.Int32, System.Type)
+### Method: SqlReader.Get(Int32, Type)
 
  Reads the value of a column by its index. 
 
@@ -4396,7 +4396,7 @@ A task to wait for.
 
 
 ---
-### Method: SqlReader.IndexByName(string)
+### Method: SqlReader.IndexByName(String)
 
  Gets the index of a column by its name (case-insensitive). When there are two columns with the same name, the first index will be returned. 
 
@@ -4422,7 +4422,7 @@ The index of the column.
 
 
 ---
-### Method: IDatabase.Execute\<T1>(string, Func\<IReader, Task\<T1>>, Sem.Tools.Logging.LogScope, KeyValuePair\<string, Object>[])
+### Method: IDatabase.Execute\<T1>(String, Func\<IReader, Threading.Tasks.Task\<T1>>, Sem.Tools.Logging.LogScope, Collections.Generic.KeyValuePair\<String, Object>[])
 
  Executes a "stored procedure" (aka. "SPROC") and maps the result to a series of POCOs. 
 
@@ -4462,7 +4462,7 @@ A value indicating whether there is still data to be read.
 
 
 ---
-### Method: IReader.Get\<T1>(System.Int32)
+### Method: IReader.Get\<T1>(Int32)
 
  Reads the value of a column by its index. 
 
@@ -4481,7 +4481,7 @@ The value of the column in the current row.
 
 
 ---
-### Method: IReader.Get(System.Int32, System.Type)
+### Method: IReader.Get(Int32, Type)
 
  Reads the value of a column by its index. 
 
@@ -4519,7 +4519,7 @@ A task to wait for.
 
 
 ---
-### Method: IReader.IndexByName(string)
+### Method: IReader.IndexByName(String)
 
  Gets the index of a column by its name (case-insensitive). When there are two columns with the same name, the first index will be returned. 
 
@@ -4579,7 +4579,7 @@ A value indicating whether the flag is set.
 
 
 ---
-### Method: LogExtension.AddDebug(System.Action\<LogCategories, LogLevel, LogScope, string>)
+### Method: LogExtension.AddDebug(Action\<LogCategories, LogLevel, LogScope, String>)
 
  Simple output using [[|M:System.Diagnostics.Debug.WriteLine(System.Object)]]. 
 
@@ -4594,7 +4594,7 @@ A new method that is the combination of  logMethod  and an output to [[|T:System
 
 
 ---
-### Method: LogExtension.AddConsole(System.Action\<LogCategories, LogLevel, LogScope, string>)
+### Method: LogExtension.AddConsole(Action\<LogCategories, LogLevel, LogScope, String>)
 
  Simple output using [[|M:System.Console.WriteLine(System.Object)]]. 
 
@@ -4679,7 +4679,7 @@ A new method that is the combination of  logMethod  and an output to [[|T:System
 
 
 ---
-### Method: LogScope.Create(string, System.Action\<LogCategories, LogLevel, LogScope, string>, string, string)
+### Method: LogScope.Create(String, Action\<LogCategories, LogLevel, LogScope, String>, String, String)
 
  Create a new scope instance. 
 
@@ -4697,7 +4697,7 @@ A new logging scope.
 
 
 ---
-### Method: LogScope.MethodStart(Object, string, string)
+### Method: LogScope.MethodStart(Object, String, String)
 
  Call this to indicate a method start. 
 
@@ -4714,7 +4714,7 @@ A new scope.
 
 
 ---
-### Method: LogScope.Child(string, Object, string, string)
+### Method: LogScope.Child(String, Object, String, String)
 
  Creates a new child scope. 
 
@@ -4750,7 +4750,7 @@ A task to wait for.
 
 
 ---
-### Method: LogScope.Log(string, Object)
+### Method: LogScope.Log(String, Object)
 
  Logs a message. 
 
@@ -4762,7 +4762,7 @@ A task to wait for.
 
 
 ---
-### Method: LogScope.Log(LogCategories, LogLevel, string, Object)
+### Method: LogScope.Log(LogCategories, LogLevel, String, Object)
 
  Logs a message. 
 
@@ -4787,7 +4787,7 @@ A task to wait for.
 
 
 ---
-### Method: ActionExtension.Append\<T1>(System.Action\<T1>, System.Action\<T1>)
+### Method: ActionExtension.Append\<T1>(Action\<T1>, Action\<T1>)
 
  Extension to combine two logging methods into a new one. 
 
@@ -4807,7 +4807,7 @@ A new method combining both methods specified in the parameters.
 
 
 ---
-### Method: ActionExtension.Append\<T1,  T2>(System.Action\<T1,  T2>, System.Action\<T1,  T2>)
+### Method: ActionExtension.Append\<T1,  T2>(Action\<T1,  T2>, Action\<T1,  T2>)
 
  Extension to combine two logging methods into a new one. 
 
@@ -4828,7 +4828,7 @@ A new method combining both methods specified in the parameters.
 
 
 ---
-### Method: ActionExtension.Append\<T1,  T2,  T3>(System.Action\<T1,  T2,  T3>, System.Action\<T1,  T2,  T3>)
+### Method: ActionExtension.Append\<T1,  T2,  T3>(Action\<T1,  T2,  T3>, Action\<T1,  T2,  T3>)
 
  Extension to combine two logging methods into a new one. 
 
@@ -4850,7 +4850,7 @@ A new method combining both methods specified in the parameters.
 
 
 ---
-### Method: ActionExtension.Append\<T1,  T2,  T3,  T4>(System.Action\<T1,  T2,  T3,  T4>, System.Action\<T1,  T2,  T3,  T4>)
+### Method: ActionExtension.Append\<T1,  T2,  T3,  T4>(Action\<T1,  T2,  T3,  T4>, Action\<T1,  T2,  T3,  T4>)
 
  Extension to combine two logging methods into a new one. 
 
@@ -4880,7 +4880,7 @@ A new method combining both methods specified in the parameters.
 
 
 ---
-### Method: EncryptionConverter.Read(System.Text.Json.Utf8JsonReader@, System.Type, System.Text.Json.JsonSerializerOptions)
+### Method: EncryptionConverter.Read(Text.Json.Utf8JsonReader@, Type, Text.Json.JsonSerializerOptions)
 
 Reads and converts the JSON to type string.
 
@@ -4897,7 +4897,7 @@ The converted value.
 
 
 ---
-### Method: EncryptionConverter.Write(System.Text.Json.Utf8JsonWriter, string, System.Text.Json.JsonSerializerOptions)
+### Method: EncryptionConverter.Write(Text.Json.Utf8JsonWriter, String, Text.Json.JsonSerializerOptions)
 
 Writes a specified value as JSON.
 
@@ -4917,7 +4917,7 @@ Writes a specified value as JSON.
 
 
 ---
-### Method: Extensions.Hash(string)
+### Method: Extensions.Hash(String)
 
  Calculates a simple SHA256 hash from a string. 
 
@@ -4932,7 +4932,7 @@ The has as HEX encoded data.
 
 
 ---
-### Method: Extensions.MustNotBeNullOrEmpty(string, string)
+### Method: Extensions.MustNotBeNullOrEmpty(String, String)
 
  Throws an [[|T:System.ArgumentNullException]] when passing NULL or an empty string to  value . 
 
@@ -4948,7 +4948,7 @@ The has as HEX encoded data.
 
 
 ---
-### Method: Extensions.MustNotBeNull\<T1>(``0, string)
+### Method: Extensions.MustNotBeNull\<T1>(``0, String)
 
  Throws an [[|T:System.ArgumentNullException]] when passing NULL values to  value . 
 
@@ -4994,7 +4994,7 @@ A JSON string.
 
 
 ---
-### Method: FileSystemTools.SanitizeFileName(string)
+### Method: FileSystemTools.SanitizeFileName(String)
 
  Removes illegal characters from file names. 
 
@@ -5020,7 +5020,7 @@ The file name without illegal characters.
 
 
 ---
-### Method: InheritanceConverter`1.Read(System.Text.Json.Utf8JsonReader@, System.Type, System.Text.Json.JsonSerializerOptions)
+### Method: InheritanceConverter`1.Read(Text.Json.Utf8JsonReader@, Type, Text.Json.JsonSerializerOptions)
 
 Reads and converts the JSON to type  !! UNSUPPORTED: typeparamref !! .
 
@@ -5037,7 +5037,7 @@ The converted value.
 
 
 ---
-### Method: InheritanceConverter`1.Write(System.Text.Json.Utf8JsonWriter, `0, System.Text.Json.JsonSerializerOptions)
+### Method: InheritanceConverter`1.Write(Text.Json.Utf8JsonWriter, `0, Text.Json.JsonSerializerOptions)
 
 Writes a specified value as JSON.
 
@@ -5061,7 +5061,7 @@ Writes a specified value as JSON.
 
 
 ---
-### Method: ActionExtension.Append\<T1>(System.Action\<T1>, System.Action\<T1>)
+### Method: ActionExtension.Append\<T1>(Action\<T1>, Action\<T1>)
 
  Extension to combine two logging methods into a new one. 
 
@@ -5081,7 +5081,7 @@ A new method combining both methods specified in the parameters.
 
 
 ---
-### Method: ActionExtension.Append\<T1,  T2>(System.Action\<T1,  T2>, System.Action\<T1,  T2>)
+### Method: ActionExtension.Append\<T1,  T2>(Action\<T1,  T2>, Action\<T1,  T2>)
 
  Extension to combine two logging methods into a new one. 
 
@@ -5102,7 +5102,7 @@ A new method combining both methods specified in the parameters.
 
 
 ---
-### Method: ActionExtension.Append\<T1,  T2,  T3>(System.Action\<T1,  T2,  T3>, System.Action\<T1,  T2,  T3>)
+### Method: ActionExtension.Append\<T1,  T2,  T3>(Action\<T1,  T2,  T3>, Action\<T1,  T2,  T3>)
 
  Extension to combine two logging methods into a new one. 
 
@@ -5124,7 +5124,7 @@ A new method combining both methods specified in the parameters.
 
 
 ---
-### Method: ActionExtension.Append\<T1,  T2,  T3,  T4>(System.Action\<T1,  T2,  T3,  T4>, System.Action\<T1,  T2,  T3,  T4>)
+### Method: ActionExtension.Append\<T1,  T2,  T3,  T4>(Action\<T1,  T2,  T3,  T4>, Action\<T1,  T2,  T3,  T4>)
 
  Extension to combine two logging methods into a new one. 
 
@@ -5154,7 +5154,7 @@ A new method combining both methods specified in the parameters.
 
 
 ---
-### Method: EncryptionConverter.Read(System.Text.Json.Utf8JsonReader@, System.Type, System.Text.Json.JsonSerializerOptions)
+### Method: EncryptionConverter.Read(Text.Json.Utf8JsonReader@, Type, Text.Json.JsonSerializerOptions)
 
 Reads and converts the JSON to type string.
 
@@ -5171,7 +5171,7 @@ The converted value.
 
 
 ---
-### Method: EncryptionConverter.Write(System.Text.Json.Utf8JsonWriter, string, System.Text.Json.JsonSerializerOptions)
+### Method: EncryptionConverter.Write(Text.Json.Utf8JsonWriter, String, Text.Json.JsonSerializerOptions)
 
 Writes a specified value as JSON.
 
@@ -5191,7 +5191,7 @@ Writes a specified value as JSON.
 
 
 ---
-### Method: Extensions.Hash(string)
+### Method: Extensions.Hash(String)
 
  Calculates a simple SHA256 hash from a string. 
 
@@ -5206,7 +5206,7 @@ The has as HEX encoded data.
 
 
 ---
-### Method: Extensions.MustNotBeNullOrEmpty(string, string)
+### Method: Extensions.MustNotBeNullOrEmpty(String, String)
 
  Throws an [[|T:System.ArgumentNullException]] when passing NULL or an empty string to  value . 
 
@@ -5222,7 +5222,7 @@ The has as HEX encoded data.
 
 
 ---
-### Method: Extensions.MustNotBeNull\<T1>(``0, string)
+### Method: Extensions.MustNotBeNull\<T1>(``0, String)
 
  Throws an [[|T:System.ArgumentNullException]] when passing NULL values to  value . 
 
@@ -5268,7 +5268,7 @@ A JSON string.
 
 
 ---
-### Method: FileSystemTools.SanitizeFileName(string)
+### Method: FileSystemTools.SanitizeFileName(String)
 
  Removes illegal characters from file names. 
 
@@ -5294,7 +5294,7 @@ The file name without illegal characters.
 
 
 ---
-### Method: InheritanceConverter`1.Read(System.Text.Json.Utf8JsonReader@, System.Type, System.Text.Json.JsonSerializerOptions)
+### Method: InheritanceConverter`1.Read(Text.Json.Utf8JsonReader@, Type, Text.Json.JsonSerializerOptions)
 
 Reads and converts the JSON to type  !! UNSUPPORTED: typeparamref !! .
 
@@ -5311,7 +5311,7 @@ The converted value.
 
 
 ---
-### Method: InheritanceConverter`1.Write(System.Text.Json.Utf8JsonWriter, `0, System.Text.Json.JsonSerializerOptions)
+### Method: InheritanceConverter`1.Write(Text.Json.Utf8JsonWriter, `0, Text.Json.JsonSerializerOptions)
 
 Writes a specified value as JSON.
 
@@ -5372,7 +5372,7 @@ _C# code_
 
 
 ---
-### Method: MenuItem.#ctor(string, Func\<Task>, string)
+### Method: MenuItem.#ctor(String, Func\<Threading.Tasks.Task>, String)
 
  Initializes a new instance of the [[|T:Sem.Tools.CmdLine.MenuItem]] class. 
 
@@ -5399,7 +5399,7 @@ _C# code_
 
 
 ---
-### Method: MenuItem.Print(System.Linq.Expressions.Expression\<Func\<System.Collections.Generic.IAsyncEnumerable\<string>>>, string)
+### Method: MenuItem.Print(Linq.Expressions.Expression\<Func\<Collections.Generic.IAsyncEnumerable\<String>>>, String)
 
  Creates a [[|T:Sem.Tools.CmdLine.MenuItem]] from an expression - is meant to be used with a [[|T:System.Linq.Expressions.MethodCallExpression]]. 
 
@@ -5415,7 +5415,7 @@ A new menu item.
 
 
 ---
-### Method: MenuItem.Print(System.Linq.Expressions.Expression\<Func\<Task\<string>>>, string)
+### Method: MenuItem.Print(Linq.Expressions.Expression\<Func\<Threading.Tasks.Task\<String>>>, String)
 
  Creates a [[|T:Sem.Tools.CmdLine.MenuItem]] from an expression - is meant to be used with a [[|T:System.Linq.Expressions.MethodCallExpression]]. 
 
@@ -5431,7 +5431,7 @@ A new menu item.
 
 
 ---
-### Method: MenuItem.Print(System.Linq.Expressions.Expression\<Func\<Task\<System.Collections.Generic.IEnumerable\<string>>>>, string)
+### Method: MenuItem.Print(Linq.Expressions.Expression\<Func\<Threading.Tasks.Task\<Collections.Generic.IEnumerable\<String>>>>, String)
 
  Creates a [[|T:Sem.Tools.CmdLine.MenuItem]] from an expression - is meant to be used with a [[|T:System.Linq.Expressions.MethodCallExpression]]. 
 
@@ -5447,7 +5447,7 @@ A new menu item.
 
 
 ---
-### Method: MenuItem.Print(string, Func\<Task\<string>>, string)
+### Method: MenuItem.Print(String, Func\<Threading.Tasks.Task\<String>>, String)
 
  Creates a [[|T:Sem.Tools.CmdLine.MenuItem]] from an expression - is meant to be used with a [[|T:System.Linq.Expressions.MethodCallExpression]]. 
 
@@ -5464,7 +5464,7 @@ A new menu item.
 
 
 ---
-### Method: MenuItem.Print(string, Func\<System.Collections.Generic.IAsyncEnumerable\<string>>, string)
+### Method: MenuItem.Print(String, Func\<Collections.Generic.IAsyncEnumerable\<String>>, String)
 
  Creates a [[|T:Sem.Tools.CmdLine.MenuItem]] from an expression - is meant to be used with a [[|T:System.Linq.Expressions.MethodCallExpression]]. 
 
@@ -5481,7 +5481,7 @@ A new menu item.
 
 
 ---
-### Method: MenuItem.Print(string, Func\<Task\<System.Collections.Generic.IEnumerable\<string>>>, string)
+### Method: MenuItem.Print(String, Func\<Threading.Tasks.Task\<Collections.Generic.IEnumerable\<String>>>, String)
 
  Creates a [[|T:Sem.Tools.CmdLine.MenuItem]] from an expression - is meant to be used with a [[|T:System.Linq.Expressions.MethodCallExpression]]. 
 
@@ -5517,7 +5517,7 @@ A menu entry with sub menu items.
 
 
 ---
-### Method: MenuItem.GetDescriptionFromXml(System.Reflection.MemberInfo)
+### Method: MenuItem.GetDescriptionFromXml(Reflection.MemberInfo)
 
  Extracts the description from the XML documentation of a method (the XML file mst be generated while building the assembly). 
 
@@ -5532,7 +5532,7 @@ The extracted description.
 
 
 ---
-### Method: MenuItem.GetDescriptionFromXml(System.Type)
+### Method: MenuItem.GetDescriptionFromXml(Type)
 
  Extracts the description from the XML documentation of a class (the XML file mst be generated while building the assembly). 
 
@@ -5547,7 +5547,7 @@ The extracted description.
 
 
 ---
-### Method: MenuItem.GetMethod\<T1>(System.Linq.Expressions.Expression\<Func\<T1>>)
+### Method: MenuItem.GetMethod\<T1>(Linq.Expressions.Expression\<Func\<T1>>)
 
  Gets the method information from a [[|T:System.Linq.Expressions.MethodCallExpression]]. 
 
@@ -5566,7 +5566,7 @@ The method information from the called method.
 
 
 ---
-### Method: MenuItem.InvokeAction\<T1,  T2>(System.Reflection.MethodBase, Object[])
+### Method: MenuItem.InvokeAction\<T1,  T2>(Reflection.MethodBase, Object[])
 
  Invokes a method with the needed parameters. 
 
@@ -5598,7 +5598,7 @@ The call result.
 
 
 ---
-### Method: ActionExtension.Append\<T1>(System.Action\<T1>, System.Action\<T1>)
+### Method: ActionExtension.Append\<T1>(Action\<T1>, Action\<T1>)
 
  Extension to combine two logging methods into a new one. 
 
@@ -5618,7 +5618,7 @@ A new method combining both methods specified in the parameters.
 
 
 ---
-### Method: ActionExtension.Append\<T1,  T2>(System.Action\<T1,  T2>, System.Action\<T1,  T2>)
+### Method: ActionExtension.Append\<T1,  T2>(Action\<T1,  T2>, Action\<T1,  T2>)
 
  Extension to combine two logging methods into a new one. 
 
@@ -5639,7 +5639,7 @@ A new method combining both methods specified in the parameters.
 
 
 ---
-### Method: ActionExtension.Append\<T1,  T2,  T3>(System.Action\<T1,  T2,  T3>, System.Action\<T1,  T2,  T3>)
+### Method: ActionExtension.Append\<T1,  T2,  T3>(Action\<T1,  T2,  T3>, Action\<T1,  T2,  T3>)
 
  Extension to combine two logging methods into a new one. 
 
@@ -5661,7 +5661,7 @@ A new method combining both methods specified in the parameters.
 
 
 ---
-### Method: ActionExtension.Append\<T1,  T2,  T3,  T4>(System.Action\<T1,  T2,  T3,  T4>, System.Action\<T1,  T2,  T3,  T4>)
+### Method: ActionExtension.Append\<T1,  T2,  T3,  T4>(Action\<T1,  T2,  T3,  T4>, Action\<T1,  T2,  T3,  T4>)
 
  Extension to combine two logging methods into a new one. 
 
@@ -5691,7 +5691,7 @@ A new method combining both methods specified in the parameters.
 
 
 ---
-### Method: EncryptionConverter.Read(System.Text.Json.Utf8JsonReader@, System.Type, System.Text.Json.JsonSerializerOptions)
+### Method: EncryptionConverter.Read(Text.Json.Utf8JsonReader@, Type, Text.Json.JsonSerializerOptions)
 
 Reads and converts the JSON to type string.
 
@@ -5708,7 +5708,7 @@ The converted value.
 
 
 ---
-### Method: EncryptionConverter.Write(System.Text.Json.Utf8JsonWriter, string, System.Text.Json.JsonSerializerOptions)
+### Method: EncryptionConverter.Write(Text.Json.Utf8JsonWriter, String, Text.Json.JsonSerializerOptions)
 
 Writes a specified value as JSON.
 
@@ -5728,7 +5728,7 @@ Writes a specified value as JSON.
 
 
 ---
-### Method: Extensions.Hash(string)
+### Method: Extensions.Hash(String)
 
  Calculates a simple SHA256 hash from a string. 
 
@@ -5743,7 +5743,7 @@ The has as HEX encoded data.
 
 
 ---
-### Method: Extensions.MustNotBeNullOrEmpty(string, string)
+### Method: Extensions.MustNotBeNullOrEmpty(String, String)
 
  Throws an [[|T:System.ArgumentNullException]] when passing NULL or an empty string to  value . 
 
@@ -5759,7 +5759,7 @@ The has as HEX encoded data.
 
 
 ---
-### Method: Extensions.MustNotBeNull\<T1>(``0, string)
+### Method: Extensions.MustNotBeNull\<T1>(``0, String)
 
  Throws an [[|T:System.ArgumentNullException]] when passing NULL values to  value . 
 
@@ -5805,7 +5805,7 @@ A JSON string.
 
 
 ---
-### Method: FileSystemTools.SanitizeFileName(string)
+### Method: FileSystemTools.SanitizeFileName(String)
 
  Removes illegal characters from file names. 
 
@@ -5831,7 +5831,7 @@ The file name without illegal characters.
 
 
 ---
-### Method: InheritanceConverter`1.Read(System.Text.Json.Utf8JsonReader@, System.Type, System.Text.Json.JsonSerializerOptions)
+### Method: InheritanceConverter`1.Read(Text.Json.Utf8JsonReader@, Type, Text.Json.JsonSerializerOptions)
 
 Reads and converts the JSON to type  !! UNSUPPORTED: typeparamref !! .
 
@@ -5848,7 +5848,7 @@ The converted value.
 
 
 ---
-### Method: InheritanceConverter`1.Write(System.Text.Json.Utf8JsonWriter, `0, System.Text.Json.JsonSerializerOptions)
+### Method: InheritanceConverter`1.Write(Text.Json.Utf8JsonWriter, `0, Text.Json.JsonSerializerOptions)
 
 Writes a specified value as JSON.
 
@@ -5906,7 +5906,7 @@ A value indicating whether the flag is set.
 
 
 ---
-### Method: LogExtension.AddDebug(System.Action\<LogCategories, LogLevel, LogScope, string>)
+### Method: LogExtension.AddDebug(Action\<LogCategories, LogLevel, LogScope, String>)
 
  Simple output using [[|M:System.Diagnostics.Debug.WriteLine(System.Object)]]. 
 
@@ -5921,7 +5921,7 @@ A new method that is the combination of  logMethod  and an output to [[|T:System
 
 
 ---
-### Method: LogExtension.AddConsole(System.Action\<LogCategories, LogLevel, LogScope, string>)
+### Method: LogExtension.AddConsole(Action\<LogCategories, LogLevel, LogScope, String>)
 
  Simple output using [[|M:System.Console.WriteLine(System.Object)]]. 
 
@@ -6006,7 +6006,7 @@ A new method that is the combination of  logMethod  and an output to [[|T:System
 
 
 ---
-### Method: LogScope.Create(string, System.Action\<LogCategories, LogLevel, LogScope, string>, string, string)
+### Method: LogScope.Create(String, Action\<LogCategories, LogLevel, LogScope, String>, String, String)
 
  Create a new scope instance. 
 
@@ -6024,7 +6024,7 @@ A new logging scope.
 
 
 ---
-### Method: LogScope.MethodStart(Object, string, string)
+### Method: LogScope.MethodStart(Object, String, String)
 
  Call this to indicate a method start. 
 
@@ -6041,7 +6041,7 @@ A new scope.
 
 
 ---
-### Method: LogScope.Child(string, Object, string, string)
+### Method: LogScope.Child(String, Object, String, String)
 
  Creates a new child scope. 
 
@@ -6077,7 +6077,7 @@ A task to wait for.
 
 
 ---
-### Method: LogScope.Log(string, Object)
+### Method: LogScope.Log(String, Object)
 
  Logs a message. 
 
@@ -6089,7 +6089,7 @@ A task to wait for.
 
 
 ---
-### Method: LogScope.Log(LogCategories, LogLevel, string, Object)
+### Method: LogScope.Log(LogCategories, LogLevel, String, Object)
 
  Logs a message. 
 
@@ -6114,7 +6114,7 @@ A task to wait for.
 
 
 ---
-### Method: ActionExtension.Append\<T1>(System.Action\<T1>, System.Action\<T1>)
+### Method: ActionExtension.Append\<T1>(Action\<T1>, Action\<T1>)
 
  Extension to combine two logging methods into a new one. 
 
@@ -6134,7 +6134,7 @@ A new method combining both methods specified in the parameters.
 
 
 ---
-### Method: ActionExtension.Append\<T1,  T2>(System.Action\<T1,  T2>, System.Action\<T1,  T2>)
+### Method: ActionExtension.Append\<T1,  T2>(Action\<T1,  T2>, Action\<T1,  T2>)
 
  Extension to combine two logging methods into a new one. 
 
@@ -6155,7 +6155,7 @@ A new method combining both methods specified in the parameters.
 
 
 ---
-### Method: ActionExtension.Append\<T1,  T2,  T3>(System.Action\<T1,  T2,  T3>, System.Action\<T1,  T2,  T3>)
+### Method: ActionExtension.Append\<T1,  T2,  T3>(Action\<T1,  T2,  T3>, Action\<T1,  T2,  T3>)
 
  Extension to combine two logging methods into a new one. 
 
@@ -6177,7 +6177,7 @@ A new method combining both methods specified in the parameters.
 
 
 ---
-### Method: ActionExtension.Append\<T1,  T2,  T3,  T4>(System.Action\<T1,  T2,  T3,  T4>, System.Action\<T1,  T2,  T3,  T4>)
+### Method: ActionExtension.Append\<T1,  T2,  T3,  T4>(Action\<T1,  T2,  T3,  T4>, Action\<T1,  T2,  T3,  T4>)
 
  Extension to combine two logging methods into a new one. 
 
@@ -6207,7 +6207,7 @@ A new method combining both methods specified in the parameters.
 
 
 ---
-### Method: EncryptionConverter.Read(System.Text.Json.Utf8JsonReader@, System.Type, System.Text.Json.JsonSerializerOptions)
+### Method: EncryptionConverter.Read(Text.Json.Utf8JsonReader@, Type, Text.Json.JsonSerializerOptions)
 
 Reads and converts the JSON to type string.
 
@@ -6224,7 +6224,7 @@ The converted value.
 
 
 ---
-### Method: EncryptionConverter.Write(System.Text.Json.Utf8JsonWriter, string, System.Text.Json.JsonSerializerOptions)
+### Method: EncryptionConverter.Write(Text.Json.Utf8JsonWriter, String, Text.Json.JsonSerializerOptions)
 
 Writes a specified value as JSON.
 
@@ -6244,7 +6244,7 @@ Writes a specified value as JSON.
 
 
 ---
-### Method: Extensions.Hash(string)
+### Method: Extensions.Hash(String)
 
  Calculates a simple SHA256 hash from a string. 
 
@@ -6259,7 +6259,7 @@ The has as HEX encoded data.
 
 
 ---
-### Method: Extensions.MustNotBeNullOrEmpty(string, string)
+### Method: Extensions.MustNotBeNullOrEmpty(String, String)
 
  Throws an [[|T:System.ArgumentNullException]] when passing NULL or an empty string to  value . 
 
@@ -6275,7 +6275,7 @@ The has as HEX encoded data.
 
 
 ---
-### Method: Extensions.MustNotBeNull\<T1>(``0, string)
+### Method: Extensions.MustNotBeNull\<T1>(``0, String)
 
  Throws an [[|T:System.ArgumentNullException]] when passing NULL values to  value . 
 
@@ -6321,7 +6321,7 @@ A JSON string.
 
 
 ---
-### Method: FileSystemTools.SanitizeFileName(string)
+### Method: FileSystemTools.SanitizeFileName(String)
 
  Removes illegal characters from file names. 
 
@@ -6347,7 +6347,7 @@ The file name without illegal characters.
 
 
 ---
-### Method: InheritanceConverter`1.Read(System.Text.Json.Utf8JsonReader@, System.Type, System.Text.Json.JsonSerializerOptions)
+### Method: InheritanceConverter`1.Read(Text.Json.Utf8JsonReader@, Type, Text.Json.JsonSerializerOptions)
 
 Reads and converts the JSON to type  !! UNSUPPORTED: typeparamref !! .
 
@@ -6364,7 +6364,7 @@ The converted value.
 
 
 ---
-### Method: InheritanceConverter`1.Write(System.Text.Json.Utf8JsonWriter, `0, System.Text.Json.JsonSerializerOptions)
+### Method: InheritanceConverter`1.Write(Text.Json.Utf8JsonWriter, `0, Text.Json.JsonSerializerOptions)
 
 Writes a specified value as JSON.
 
@@ -6422,7 +6422,7 @@ A value indicating whether the flag is set.
 
 
 ---
-### Method: LogExtension.AddDebug(System.Action\<LogCategories, LogLevel, LogScope, string>)
+### Method: LogExtension.AddDebug(Action\<LogCategories, LogLevel, LogScope, String>)
 
  Simple output using [[|M:System.Diagnostics.Debug.WriteLine(System.Object)]]. 
 
@@ -6437,7 +6437,7 @@ A new method that is the combination of  logMethod  and an output to [[|T:System
 
 
 ---
-### Method: LogExtension.AddConsole(System.Action\<LogCategories, LogLevel, LogScope, string>)
+### Method: LogExtension.AddConsole(Action\<LogCategories, LogLevel, LogScope, String>)
 
  Simple output using [[|M:System.Console.WriteLine(System.Object)]]. 
 
@@ -6522,7 +6522,7 @@ A new method that is the combination of  logMethod  and an output to [[|T:System
 
 
 ---
-### Method: LogScope.Create(string, System.Action\<LogCategories, LogLevel, LogScope, string>, string, string)
+### Method: LogScope.Create(String, Action\<LogCategories, LogLevel, LogScope, String>, String, String)
 
  Create a new scope instance. 
 
@@ -6540,7 +6540,7 @@ A new logging scope.
 
 
 ---
-### Method: LogScope.MethodStart(Object, string, string)
+### Method: LogScope.MethodStart(Object, String, String)
 
  Call this to indicate a method start. 
 
@@ -6557,7 +6557,7 @@ A new scope.
 
 
 ---
-### Method: LogScope.Child(string, Object, string, string)
+### Method: LogScope.Child(String, Object, String, String)
 
  Creates a new child scope. 
 
@@ -6593,7 +6593,7 @@ A task to wait for.
 
 
 ---
-### Method: LogScope.Log(string, Object)
+### Method: LogScope.Log(String, Object)
 
  Logs a message. 
 
@@ -6605,7 +6605,7 @@ A task to wait for.
 
 
 ---
-### Method: LogScope.Log(LogCategories, LogLevel, string, Object)
+### Method: LogScope.Log(LogCategories, LogLevel, String, Object)
 
  Logs a message. 
 
@@ -6630,7 +6630,7 @@ A task to wait for.
 
 
 ---
-### Method: ActionExtension.Append\<T1>(System.Action\<T1>, System.Action\<T1>)
+### Method: ActionExtension.Append\<T1>(Action\<T1>, Action\<T1>)
 
  Extension to combine two logging methods into a new one. 
 
@@ -6650,7 +6650,7 @@ A new method combining both methods specified in the parameters.
 
 
 ---
-### Method: ActionExtension.Append\<T1,  T2>(System.Action\<T1,  T2>, System.Action\<T1,  T2>)
+### Method: ActionExtension.Append\<T1,  T2>(Action\<T1,  T2>, Action\<T1,  T2>)
 
  Extension to combine two logging methods into a new one. 
 
@@ -6671,7 +6671,7 @@ A new method combining both methods specified in the parameters.
 
 
 ---
-### Method: ActionExtension.Append\<T1,  T2,  T3>(System.Action\<T1,  T2,  T3>, System.Action\<T1,  T2,  T3>)
+### Method: ActionExtension.Append\<T1,  T2,  T3>(Action\<T1,  T2,  T3>, Action\<T1,  T2,  T3>)
 
  Extension to combine two logging methods into a new one. 
 
@@ -6693,7 +6693,7 @@ A new method combining both methods specified in the parameters.
 
 
 ---
-### Method: ActionExtension.Append\<T1,  T2,  T3,  T4>(System.Action\<T1,  T2,  T3,  T4>, System.Action\<T1,  T2,  T3,  T4>)
+### Method: ActionExtension.Append\<T1,  T2,  T3,  T4>(Action\<T1,  T2,  T3,  T4>, Action\<T1,  T2,  T3,  T4>)
 
  Extension to combine two logging methods into a new one. 
 
@@ -6723,7 +6723,7 @@ A new method combining both methods specified in the parameters.
 
 
 ---
-### Method: EncryptionConverter.Read(System.Text.Json.Utf8JsonReader@, System.Type, System.Text.Json.JsonSerializerOptions)
+### Method: EncryptionConverter.Read(Text.Json.Utf8JsonReader@, Type, Text.Json.JsonSerializerOptions)
 
 Reads and converts the JSON to type string.
 
@@ -6740,7 +6740,7 @@ The converted value.
 
 
 ---
-### Method: EncryptionConverter.Write(System.Text.Json.Utf8JsonWriter, string, System.Text.Json.JsonSerializerOptions)
+### Method: EncryptionConverter.Write(Text.Json.Utf8JsonWriter, String, Text.Json.JsonSerializerOptions)
 
 Writes a specified value as JSON.
 
@@ -6760,7 +6760,7 @@ Writes a specified value as JSON.
 
 
 ---
-### Method: Extensions.Hash(string)
+### Method: Extensions.Hash(String)
 
  Calculates a simple SHA256 hash from a string. 
 
@@ -6775,7 +6775,7 @@ The has as HEX encoded data.
 
 
 ---
-### Method: Extensions.MustNotBeNullOrEmpty(string, string)
+### Method: Extensions.MustNotBeNullOrEmpty(String, String)
 
  Throws an [[|T:System.ArgumentNullException]] when passing NULL or an empty string to  value . 
 
@@ -6791,7 +6791,7 @@ The has as HEX encoded data.
 
 
 ---
-### Method: Extensions.MustNotBeNull\<T1>(``0, string)
+### Method: Extensions.MustNotBeNull\<T1>(``0, String)
 
  Throws an [[|T:System.ArgumentNullException]] when passing NULL values to  value . 
 
@@ -6837,7 +6837,7 @@ A JSON string.
 
 
 ---
-### Method: FileSystemTools.SanitizeFileName(string)
+### Method: FileSystemTools.SanitizeFileName(String)
 
  Removes illegal characters from file names. 
 
@@ -6863,7 +6863,7 @@ The file name without illegal characters.
 
 
 ---
-### Method: InheritanceConverter`1.Read(System.Text.Json.Utf8JsonReader@, System.Type, System.Text.Json.JsonSerializerOptions)
+### Method: InheritanceConverter`1.Read(Text.Json.Utf8JsonReader@, Type, Text.Json.JsonSerializerOptions)
 
 Reads and converts the JSON to type  !! UNSUPPORTED: typeparamref !! .
 
@@ -6880,7 +6880,7 @@ The converted value.
 
 
 ---
-### Method: InheritanceConverter`1.Write(System.Text.Json.Utf8JsonWriter, `0, System.Text.Json.JsonSerializerOptions)
+### Method: InheritanceConverter`1.Write(Text.Json.Utf8JsonWriter, `0, Text.Json.JsonSerializerOptions)
 
 Writes a specified value as JSON.
 
@@ -6904,7 +6904,7 @@ Writes a specified value as JSON.
 
 
 ---
-### Method: ActionExtension.Append\<T1>(System.Action\<T1>, System.Action\<T1>)
+### Method: ActionExtension.Append\<T1>(Action\<T1>, Action\<T1>)
 
  Extension to combine two logging methods into a new one. 
 
@@ -6924,7 +6924,7 @@ A new method combining both methods specified in the parameters.
 
 
 ---
-### Method: ActionExtension.Append\<T1,  T2>(System.Action\<T1,  T2>, System.Action\<T1,  T2>)
+### Method: ActionExtension.Append\<T1,  T2>(Action\<T1,  T2>, Action\<T1,  T2>)
 
  Extension to combine two logging methods into a new one. 
 
@@ -6945,7 +6945,7 @@ A new method combining both methods specified in the parameters.
 
 
 ---
-### Method: ActionExtension.Append\<T1,  T2,  T3>(System.Action\<T1,  T2,  T3>, System.Action\<T1,  T2,  T3>)
+### Method: ActionExtension.Append\<T1,  T2,  T3>(Action\<T1,  T2,  T3>, Action\<T1,  T2,  T3>)
 
  Extension to combine two logging methods into a new one. 
 
@@ -6967,7 +6967,7 @@ A new method combining both methods specified in the parameters.
 
 
 ---
-### Method: ActionExtension.Append\<T1,  T2,  T3,  T4>(System.Action\<T1,  T2,  T3,  T4>, System.Action\<T1,  T2,  T3,  T4>)
+### Method: ActionExtension.Append\<T1,  T2,  T3,  T4>(Action\<T1,  T2,  T3,  T4>, Action\<T1,  T2,  T3,  T4>)
 
  Extension to combine two logging methods into a new one. 
 
@@ -6997,7 +6997,7 @@ A new method combining both methods specified in the parameters.
 
 
 ---
-### Method: EncryptionConverter.Read(System.Text.Json.Utf8JsonReader@, System.Type, System.Text.Json.JsonSerializerOptions)
+### Method: EncryptionConverter.Read(Text.Json.Utf8JsonReader@, Type, Text.Json.JsonSerializerOptions)
 
 Reads and converts the JSON to type string.
 
@@ -7014,7 +7014,7 @@ The converted value.
 
 
 ---
-### Method: EncryptionConverter.Write(System.Text.Json.Utf8JsonWriter, string, System.Text.Json.JsonSerializerOptions)
+### Method: EncryptionConverter.Write(Text.Json.Utf8JsonWriter, String, Text.Json.JsonSerializerOptions)
 
 Writes a specified value as JSON.
 
@@ -7034,7 +7034,7 @@ Writes a specified value as JSON.
 
 
 ---
-### Method: Extensions.Hash(string)
+### Method: Extensions.Hash(String)
 
  Calculates a simple SHA256 hash from a string. 
 
@@ -7049,7 +7049,7 @@ The has as HEX encoded data.
 
 
 ---
-### Method: Extensions.MustNotBeNullOrEmpty(string, string)
+### Method: Extensions.MustNotBeNullOrEmpty(String, String)
 
  Throws an [[|T:System.ArgumentNullException]] when passing NULL or an empty string to  value . 
 
@@ -7065,7 +7065,7 @@ The has as HEX encoded data.
 
 
 ---
-### Method: Extensions.MustNotBeNull\<T1>(``0, string)
+### Method: Extensions.MustNotBeNull\<T1>(``0, String)
 
  Throws an [[|T:System.ArgumentNullException]] when passing NULL values to  value . 
 
@@ -7111,7 +7111,7 @@ A JSON string.
 
 
 ---
-### Method: FileSystemTools.SanitizeFileName(string)
+### Method: FileSystemTools.SanitizeFileName(String)
 
  Removes illegal characters from file names. 
 
@@ -7137,7 +7137,7 @@ The file name without illegal characters.
 
 
 ---
-### Method: InheritanceConverter`1.Read(System.Text.Json.Utf8JsonReader@, System.Type, System.Text.Json.JsonSerializerOptions)
+### Method: InheritanceConverter`1.Read(Text.Json.Utf8JsonReader@, Type, Text.Json.JsonSerializerOptions)
 
 Reads and converts the JSON to type  !! UNSUPPORTED: typeparamref !! .
 
@@ -7154,7 +7154,7 @@ The converted value.
 
 
 ---
-### Method: InheritanceConverter`1.Write(System.Text.Json.Utf8JsonWriter, `0, System.Text.Json.JsonSerializerOptions)
+### Method: InheritanceConverter`1.Write(Text.Json.Utf8JsonWriter, `0, Text.Json.JsonSerializerOptions)
 
 Writes a specified value as JSON.
 
