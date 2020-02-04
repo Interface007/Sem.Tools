@@ -9,7 +9,7 @@
 ---
 ## [Type: Sem.Tools.Logging.LogCategoryExtensions](#Ref685440658934ab8a95ee9c968b061604c8be263e3a6cf1b6e5310a48ff9d562b)
 
- Extension class for the enum type [Sem.Tools.Logging.LogCategories](T:Sem.Tools.Logging.md#Ref5b7412e7cdc9dfe6d0dfc0f11eaa5071e22fa8e163edbd04d4325f1389d5e0e5). 
+ Extension class for the enum type [Sem.Tools.Logging.LogCategories](Sem.Tools.Logging.md#Ref5b7412e7cdc9dfe6d0dfc0f11eaa5071e22fa8e163edbd04d4325f1389d5e0e5). 
 
 
 
@@ -51,7 +51,7 @@ A value indicating whether the flag is set.
 |logMethod|The original log method, this method should be added to.|
 
 #### Returns:
-A new method that is the combination of  logMethod  and an output to [System.Diagnostics.Debug](T:System.Diagnostics.md#Ref554a77f145fdc86bed5bb6db2a7adaa4f9badab1dae50f50684c3b715a0c3c73).
+A new method that is the combination of  logMethod  and an output to [System.Diagnostics.Debug](.md#Ref554a77f145fdc86bed5bb6db2a7adaa4f9badab1dae50f50684c3b715a0c3c73).
 
 
 
@@ -66,7 +66,7 @@ A new method that is the combination of  logMethod  and an output to [System.Dia
 |logMethod|The original log method, this method should be added to.|
 
 #### Returns:
-A new method that is the combination of  logMethod  and an output to [System.Console](T:System.md#Ref05511d5578a625dac69ccf086923d830d40470725d676357fb664de57ef27aa7).
+A new method that is the combination of  logMethod  and an output to [System.Console](.md#Ref05511d5578a625dac69ccf086923d830d40470725d676357fb664de57ef27aa7).
 
 
 

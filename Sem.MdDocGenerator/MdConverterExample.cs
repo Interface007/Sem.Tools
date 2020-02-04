@@ -4,7 +4,10 @@
 
     public class MdConverterExample : MarkdownBase
     {
-        public MdConverterExample(XElement el) : base(el) { }
+        public MdConverterExample(XElement el, AssemblyContext context)
+            : base(el, context)
+        {
+        }
 
         public override string ToString()
         {

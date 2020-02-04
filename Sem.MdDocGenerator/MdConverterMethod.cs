@@ -6,7 +6,10 @@ namespace Sem.MdDocGenerator
 
     internal class MdConverterMethod : MarkdownBase
     {
-        public MdConverterMethod(XElement el, string nameSpace) : base(el, nameSpace) { }
+        public MdConverterMethod(XElement el, AssemblyContext context)
+            : base(el, context)
+        {
+        }
 
         public override string ToString()
         {

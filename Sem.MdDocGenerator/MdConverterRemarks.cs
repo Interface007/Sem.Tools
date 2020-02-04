@@ -4,7 +4,7 @@
 
     public class MdConverterRemarks : MarkdownBase
     {
-        public MdConverterRemarks(XElement el) : base(el) { }
+        public MdConverterRemarks(XElement el,AssemblyContext context) : base(el,context) { }
 
         public override string ToString()
         {

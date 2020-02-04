@@ -2,14 +2,14 @@
 
 ## [Type: Sem.Data.SprocAccess.SqlServer.SqlDatabase](#Ref862f04d9094f826c09b6d57fec638e30608146d06092e855c1dd1c9ae39db1a0)
 
- An implementation of [Sem.Data.SprocAccess.IDatabase](T:Sem.Data.SprocAccess.md#Ref3a173008c7c029ceadd480ce5257abcb04f85c10a71936b8a19f0ea7864339e7) using SQL server as a backend. 
+ An implementation of [Sem.Data.SprocAccess.IDatabase](Sem.Data.SprocAccess.md#Ref3a173008c7c029ceadd480ce5257abcb04f85c10a71936b8a19f0ea7864339e7) using SQL server as a backend. 
 
 
 
 ---
 ### [Method: SqlDatabase.#ctor(String)](#Ref2083d2cfd7763d4363b8b4efa4d1b99f5b08329dcf826dc15b4f4145994436ed)
 
- Initializes a new instance of the [Sem.Data.SprocAccess.SqlServer.SqlDatabase](T:Sem.Data.SprocAccess.SqlServer.md#Ref4e2a2c293efa5dee5b8ab120fbc8a5ed02c590709dba4d848bee55b8403083b2) class. 
+ Initializes a new instance of the [Sem.Data.SprocAccess.SqlServer.SqlDatabase](Sem.Data.SprocAccess.SqlServer.md#Ref4e2a2c293efa5dee5b8ab120fbc8a5ed02c590709dba4d848bee55b8403083b2) class. 
 
 #### Parameters:
 |Name | Description |
@@ -53,14 +53,14 @@ A task that represents the asynchronous dispose operation.
 ---
 ## [Type: Sem.Data.SprocAccess.SqlServer.SqlReader](#Refd1e06ca741158a28eb700dad8623a0005f6669f9ebdc7e2533c2e8f8467466bf)
 
- SQL serer implementation of the reader interface [Sem.Data.SprocAccess.IReader](T:Sem.Data.SprocAccess.md#Ref7175fc1b731107cbcf955298e1403907c77383c1244ac47d016ae74986287022). 
+ SQL serer implementation of the reader interface [Sem.Data.SprocAccess.IReader](Sem.Data.SprocAccess.md#Ref7175fc1b731107cbcf955298e1403907c77383c1244ac47d016ae74986287022). 
 
 
 
 ---
 ### [Method: SqlReader.#ctor(Data.SqlClient.SqlDataReader)](#Ref383c4cd66d58ffca3e9218e83257a35caa8f1e679ad089b36b3192623548d4a5)
 
- Initializes a new instance of the [Sem.Data.SprocAccess.SqlServer.SqlReader](T:Sem.Data.SprocAccess.SqlServer.md#Ref7aacb36611ee20435711da42eac1374c7e76107755b1a9ed58881d2d3df2812b) class. 
+ Initializes a new instance of the [Sem.Data.SprocAccess.SqlServer.SqlReader](Sem.Data.SprocAccess.SqlServer.md#Ref7aacb36611ee20435711da42eac1374c7e76107755b1a9ed58881d2d3df2812b) class. 
 
 #### Parameters:
 |Name | Description |

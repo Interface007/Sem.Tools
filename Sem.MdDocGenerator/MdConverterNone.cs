@@ -4,7 +4,7 @@ namespace Sem.MdDocGenerator
 {
     public class MdConverterNone : MarkdownBase
     {
-        public MdConverterNone(XElement el) : base(el) { }
+        public MdConverterNone(XElement el,AssemblyContext context) : base(el,context) { }
 
         public override string ToString()
         {

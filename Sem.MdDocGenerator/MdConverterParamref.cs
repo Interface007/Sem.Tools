@@ -4,7 +4,7 @@
 
     public class MdConverterParamref : MarkdownBase
     {
-        public MdConverterParamref(XElement el) : base(el) { }
+        public MdConverterParamref(XElement el,AssemblyContext context) : base(el,context) { }
 
         public override string ToString()
         {

@@ -4,16 +4,16 @@
 
     public class MdConverterDoc : MarkdownBase
     {
-        public MdConverterDoc(XElement node) : base(node)
+        public MdConverterDoc(XElement node, AssemblyContext context)
+            : base(node, context)
         {
-            this.NameSpace = this.Node.Element("assembly")?.Element("name")?.Value;
         }
 
         public override string ToString()
         {
             var nodes = this.Node.Element("members")?.Elements("member");
             var content = ToMarkDown(nodes);
-            return $"# [{this.NameSpace.Trim()}](#{this.NameSpace})\n\n{content}\n\n---\n";
+            return $"# [{this.Context.NameSpace.Trim()}](#{this.Context.NameSpace})\n\n{content}\n\n---\n";
         }
     }
 }

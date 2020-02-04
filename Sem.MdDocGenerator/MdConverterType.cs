@@ -6,8 +6,8 @@
 
     internal class MdConverterType : MarkdownBase
     {
-        public MdConverterType(XElement el)
-            : base(el)
+        public MdConverterType(XElement el, AssemblyContext context)
+            : base(el, context)
         {
         }
 

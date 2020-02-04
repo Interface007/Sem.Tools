@@ -1,10 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Xml.Linq;
+﻿using System.Linq;
 
 namespace Sem.MdDocGenerator
 {
+    using System;
+    using System.Collections.Generic;
+    using System.IO;
+    using System.Xml.Linq;
+
     class Program
     {
         static void Main(string[] args)
@@ -19,7 +21,8 @@ namespace Sem.MdDocGenerator
             File.Copy(Path.Combine(path, "Preface.md"), toc);
             var processedXmlFile = new List<string>();
 
-            foreach (var file in Directory.EnumerateFiles(path, "sem.*.xml", SearchOption.AllDirectories))
+            var files = Directory.EnumerateFiles(path, "sem.*.xml", SearchOption.AllDirectories).ToArray();
+            foreach (var file in files)
             {
                 if (file.EndsWith("Tests.xml", StringComparison.OrdinalIgnoreCase))
                 {
@@ -51,11 +54,9 @@ namespace Sem.MdDocGenerator
 
                 var xmlDoc = File.ReadAllText(file);
                 var doc = XDocument.Parse(xmlDoc);
-                ////var md1 = doc.Root.ToMarkDown(string.Empty);
-                var md2 = new MdConverterDoc(doc.Root);
+                var md2 = new MdConverterDoc(doc.Root, new AssemblyContext { Files = files.Select(x => Path.ChangeExtension(Path.GetFileName(x), string.Empty).TrimEnd('.')).ToArray(), NameSpace = doc.Root?.Element("assembly")?.Element("name")?.Value });
                 File.AppendAllText(target, md2.ToString());
-
-                File.AppendAllText(toc, "\n# " + md2.NameSpace + $"[{md2.NameSpace}]({md2.NameSpace}.md)");
+                File.AppendAllText(toc, "\n# " + md2.Context.NameSpace + $"[{md2.Context.NameSpace}]({md2.Context.NameSpace}.md)");
 
                 var xmlProj = File.ReadAllText(projectFile);
                 var proj = XDocument.Parse(xmlProj);

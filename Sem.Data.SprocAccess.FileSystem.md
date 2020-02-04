@@ -2,14 +2,14 @@
 
 ## [Type: Sem.Data.SprocAccess.FileSystem.TxtDatabase](#Ref60d3389ea6a4d4a39156251ea08e22afb722c84e813d5b2403b491b5bf75069e)
 
- Simple text file implementation of [Sem.Data.SprocAccess.IDatabase](T:Sem.Data.SprocAccess.md#Ref3a173008c7c029ceadd480ce5257abcb04f85c10a71936b8a19f0ea7864339e7). Can be used to mock database access easily. Each SPROC gets its own folder and each combination of parameters its own file. 
+ Simple text file implementation of [Sem.Data.SprocAccess.IDatabase](Sem.Data.SprocAccess.md#Ref3a173008c7c029ceadd480ce5257abcb04f85c10a71936b8a19f0ea7864339e7). Can be used to mock database access easily. Each SPROC gets its own folder and each combination of parameters its own file. 
 
 
 
 ---
 ### [Method: Sem.Data.SprocAccess.FileTxtDatabase.#ctor(String)](#Ref68e4733945ff30ff2f590cb23ee8026077a4c635a9ed286245b65bdda8913137)
 
- Initializes a new instance of the [Sem.Data.SprocAccess.FileSystem.TxtDatabase](T:Sem.Data.SprocAccess.FileSystem.md#Refeae4b52b5194bfdf317847ba31d76d2ae4280d83b6db823fcfebe7417be1e8fe) class. 
+ Initializes a new instance of the [Sem.Data.SprocAccess.FileSystem.TxtDatabase](Sem.Data.SprocAccess.FileSystem.md#Refeae4b52b5194bfdf317847ba31d76d2ae4280d83b6db823fcfebe7417be1e8fe) class. 
 
 #### Parameters:
 |Name | Description |
@@ -53,14 +53,14 @@ A task that represents the asynchronous dispose operation.
 ---
 ## [Type: Sem.Data.SprocAccess.FileSystem.TxtReader](#Refaeb4298b23e7f3ea0f54e92fde33e19b4e9dfdb27985c8b80d1b5030eaee3ec1)
 
- Reader implementation for a bunch of text files - [Sem.Data.SprocAccess.FileSystem.TxtDatabase](T:Sem.Data.SprocAccess.FileSystem.md#Refeae4b52b5194bfdf317847ba31d76d2ae4280d83b6db823fcfebe7417be1e8fe). 
+ Reader implementation for a bunch of text files - [Sem.Data.SprocAccess.FileSystem.TxtDatabase](Sem.Data.SprocAccess.FileSystem.md#Refeae4b52b5194bfdf317847ba31d76d2ae4280d83b6db823fcfebe7417be1e8fe). 
 
 
 
 ---
 ### [Method: Sem.Data.SprocAccess.FileTxtReader.#ctor(String)](#Ref9360dbabfe408cd40da20092e5d8ed252455dda22938b4c24ca278afcd9aae5c)
 
- Initializes a new instance of the [Sem.Data.SprocAccess.FileSystem.TxtReader](T:Sem.Data.SprocAccess.FileSystem.md#Refb6cea98e7ef30dac565d07a13287340a8b7ed96c037d3f341d4b015210f4df7e) class. 
+ Initializes a new instance of the [Sem.Data.SprocAccess.FileSystem.TxtReader](Sem.Data.SprocAccess.FileSystem.md#Refb6cea98e7ef30dac565d07a13287340a8b7ed96c037d3f341d4b015210f4df7e) class. 
 
 #### Parameters:
 |Name | Description |

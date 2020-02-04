@@ -12,17 +12,17 @@
     {
         protected readonly XElement Node;
 
-        public string NameSpace { set; get; }
+        public AssemblyContext Context { get; }
 
-        protected MarkdownBase(XElement node, string nameSpace = "")
+        protected MarkdownBase(XElement node, AssemblyContext context)
         {
             this.Node = node;
-            this.NameSpace = nameSpace;
+            this.Context = context;
         }
 
         public string ToMarkDown(IEnumerable<XNode> es)
         {
-            return es.Aggregate("", (current, x) => current + ToMarkDown(x));
+            return es.Aggregate(string.Empty, (current, x) => current + this.ToMarkDown(x));
         }
 
         public string ToMarkDown(XNode e)
@@ -30,7 +30,7 @@
             if (e is XElement el)
             {
                 var name = GetName(el);
-                var converter = GetConverter(name, el);
+                var converter = this.GetConverter(name, el);
                 return converter.ToString();
             }
 
@@ -39,7 +39,7 @@
                 : string.Empty;
         }
 
-        protected string[] d(string att, XElement node, string currentNameSpace) => new[]
+        protected string[] d(string att, XElement node) => new[]
         {
             node.Attribute(att)?.Value,
             this.ToMarkDown(node.Nodes()),
@@ -49,59 +49,52 @@
         private static string GetName(XElement el)
         {
             var name = el.Name.LocalName;
-            switch (name)
+            return name switch
             {
-                case "member":
-                    return el.Attribute("name")?.Value[0] switch
-                    {
-                        'F' => "field",
-                        'P' => "property",
-                        'T' => "type",
-                        'E' => "event",
-                        'M' => "method",
-                        _ => "none"
-                    };
-
-                case "see":
-                    return el.Attribute("cref")?.Value.StartsWith("!:#", StringComparison.Ordinal) ?? false ? "seeAnchor" : "seePage";
-
-                case "param":
-                case "typeparam":
-                case "summary":
-                case "returns":
-                case "paramref":
-                case "typeparamref":
-                case "example":
-                    return name;
-
-                default:
-                    return name;
-            }
+                "member" => el.Attribute("name")?.Value[0] switch
+                {
+                    'F' => "field",
+                    'P' => "property",
+                    'T' => "type",
+                    'E' => "event",
+                    'M' => "method",
+                    _ => "none"
+                },
+                "see" => el.Attribute("cref")?.Value.StartsWith("!:#", StringComparison.Ordinal) ?? false ? "seeAnchor" : "seePage",
+                "param" => name,
+                "typeparam" => name,
+                "summary" => name,
+                "returns" => name,
+                "paramref" => name,
+                "typeparamref" => name,
+                "example" => name,
+                _ => name
+            };
         }
 
-        private MarkdownBase GetConverter(string name, XElement el)
+        private MarkdownBase GetConverter(string name, XElement element)
         {
             return name switch
             {
-                "doc" => (MarkdownBase)new MdConverterDoc(el),
-                "type" => new MdConverterType(el),
-                "field" => new MdConverterField(el),
-                "property" => new MdConverterProperty(el),
-                "method" => new MdConverterMethod(el, this.NameSpace),
-                "event" => new MdConverterEvent(el),
-                "summary" => new MdConverterSummary(el),
-                "remarks" => new MdConverterRemarks(el),
-                "example" => new MdConverterExample(el),
-                "seePage" => new MdConverterSeePage(el),
-                "seeAnchor" => new MdConverterSeeAnchor(el),
-                "typeparam" => new MdConverterTypeparam(el),
-                "param" => new MdConverterParam(el),
-                "exception" => new MdConverterException(el),
-                "returns" => new MdConverterReturns(el),
-                "paramref" => new MdConverterParamref(el),
-                "typeparamref" => new MdConverterParamref(el),
-                "none" => new MdConverterNone(el),
-                _ => new MdConverterNone(el)
+                "doc" => (MarkdownBase)new MdConverterDoc(element, this.Context),
+                "type" => new MdConverterType(element, this.Context),
+                "field" => new MdConverterField(element, this.Context),
+                "property" => new MdConverterProperty(element, this.Context),
+                "method" => new MdConverterMethod(element, this.Context),
+                "event" => new MdConverterEvent(element, this.Context),
+                "summary" => new MdConverterSummary(element, this.Context),
+                "remarks" => new MdConverterRemarks(element, this.Context),
+                "example" => new MdConverterExample(element, this.Context),
+                "seePage" => new MdConverterSeePage(element, this.Context),
+                "seeAnchor" => new MdConverterSeeAnchor(element, this.Context),
+                "typeparam" => new MdConverterTypeparam(element, this.Context),
+                "param" => new MdConverterParam(element, this.Context),
+                "exception" => new MdConverterException(element, this.Context),
+                "returns" => new MdConverterReturns(element, this.Context),
+                "paramref" => new MdConverterParamref(element, this.Context),
+                "typeparamref" => new MdConverterParamref(element, this.Context),
+                "none" => new MdConverterNone(element, this.Context),
+                _ => new MdConverterNone(element, this.Context)
             };
         }
 
@@ -112,7 +105,7 @@
 
         public string ToString(string pattern)
         {
-            var parts = d("name", this.Node, this.NameSpace);
+            var parts = d("name", this.Node);
             return this.ToString(pattern, parts);
         }
 
@@ -151,12 +144,18 @@
                 .Replace("}", ">", StringComparison.Ordinal)
                 .Replace(",", ", ", StringComparison.Ordinal);
 
-            if (!string.IsNullOrEmpty(this.NameSpace))
+            if (!string.IsNullOrEmpty(this.Context.NameSpace))
             {
-                name = name?.Replace(this.NameSpace + ".", string.Empty, StringComparison.Ordinal);
+                name = name?.Replace(this.Context.NameSpace + ".", string.Empty, StringComparison.Ordinal);
             }
 
             return name;
         }
+    }
+
+    public class AssemblyContext
+    {
+        public string NameSpace { get; set; }
+        public string[] Files { get; set; }
     }
 }

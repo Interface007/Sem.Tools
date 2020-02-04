@@ -4,7 +4,7 @@
 
     internal class MdConverterField : MarkdownBase
     {
-        public MdConverterField(XElement el) : base(el) { }
+        public MdConverterField(XElement el,AssemblyContext context) : base(el,context) { }
 
         public override string ToString()
         {
