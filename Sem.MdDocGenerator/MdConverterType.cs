@@ -16,7 +16,7 @@
             var name = this.Node.Attribute("name")?.Value.Substring(2);
             var content = this.ToMarkDown(this.Node.Nodes());
 
-            return $"## Type: {name?.Trim()}\n\n{content}\n\n---\n";
+            return $"---\n## Type: {name?.Trim()}\n\n{content}\n\n";
         }
     }
 }

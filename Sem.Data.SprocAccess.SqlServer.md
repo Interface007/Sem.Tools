@@ -1,12 +1,12 @@
 # [Sem.Data.SprocAccess.SqlServer](#Sem.Data.SprocAccess.SqlServer)
 
+---
 ## Type: Sem.Data.SprocAccess.SqlServer.SqlDatabase
 
  An implementation of [Sem.Data.SprocAccess.IDatabase](Sem.Data.SprocAccess.md#type-semdatasprocaccessidatabase) using SQL server as a backend. 
 
 
 
----
 ### Method: SqlDatabase.#ctor(String)
 
  Initializes a new instance of the [Sem.Data.SprocAccess.SqlServer.SqlDatabase](Sem.Data.SprocAccess.SqlServer.md#type-semdatasprocaccesssqlserversqldatabase) class. 
@@ -51,13 +51,13 @@ A task that represents the asynchronous dispose operation.
 
 
 ---
+---
 ## Type: Sem.Data.SprocAccess.SqlServer.SqlReader
 
  SQL serer implementation of the reader interface [Sem.Data.SprocAccess.IReader](Sem.Data.SprocAccess.md#type-semdatasprocaccessireader). 
 
 
 
----
 ### Method: SqlReader.#ctor(Data.SqlClient.SqlDataReader)
 
  Initializes a new instance of the [Sem.Data.SprocAccess.SqlServer.SqlReader](Sem.Data.SprocAccess.SqlServer.md#type-semdatasprocaccesssqlserversqlreader) class. 

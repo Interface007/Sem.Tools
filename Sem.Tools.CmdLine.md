@@ -1,12 +1,12 @@
 # [Sem.Tools.CmdLine](#Sem.Tools.CmdLine)
 
+---
 ## Type: Sem.Tools.CmdLine.Menu
 
  Extension methods to handle command line menu definitions. 
 
 
 
----
 ### Method: Menu.Show(MenuItem[])
 
  Show the menu items and wait for selection of user. 
@@ -21,6 +21,7 @@ A task to wait for.
 
 
 
+---
 ---
 ## Type: Sem.Tools.CmdLine.MenuItem
 
@@ -43,7 +44,6 @@ _C# code_
 
 
 
----
 ### Method: MenuItem.#ctor(String, Func\<Task>, String)
 
  Initializes a new instance of the [Sem.Tools.CmdLine.MenuItem](Sem.Tools.CmdLine.md#type-semtoolscmdlinemenuitem) class. 

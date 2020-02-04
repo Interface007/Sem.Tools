@@ -1,12 +1,12 @@
 # [Sem.Tools](#Sem.Tools)
 
+---
 ## Type: Sem.Tools.ActionExtension
 
  Implements extension methods to handle some "magic" with actions (like concatenating two calls to two methods with the same signature to one method). 
 
 
 
----
 ### Method: ActionExtension.Append\<T1>(Action\<T1>, Action\<T1>)
 
  Extension to combine two logging methods into a new one. 
@@ -93,13 +93,13 @@ A new method combining both methods specified in the parameters.
 
 
 ---
+---
 ## Type: Sem.Tools.EncryptionConverter
 
  A JSON converter encrypting using DPAPI for the local machine and the current user. 
 
 
 
----
 ### Method: EncryptionConverter.Read(Text.Json.Utf8JsonReader@, Type, Text.Json.JsonSerializerOptions)
 
 Reads and converts the JSON to type string.
@@ -130,13 +130,13 @@ Writes a specified value as JSON.
 
 
 ---
+---
 ## Type: Sem.Tools.Extensions
 
  Very basic extension methods. 
 
 
 
----
 ### Method: Extensions.Hash(String)
 
  Calculates a simple SHA256 hash from a string. 
@@ -207,13 +207,13 @@ A JSON string.
 
 
 ---
+---
 ## Type: Sem.Tools.FileSystemTools
 
  Tools for file system interaction. 
 
 
 
----
 ### Method: FileSystemTools.SanitizeFileName(String)
 
  Removes illegal characters from file names. 
@@ -229,6 +229,7 @@ The file name without illegal characters.
 
 
 ---
+---
 ## Type: Sem.Tools.InheritanceConverter`1
 
  Serializes inherited objects in properties. Normally, only the properties of the type explicitly declared on the property is being serialized - with this attribute the property value is fully serialized. 
@@ -239,7 +240,6 @@ The file name without illegal characters.
 |TType|The type to handle with this converter.|
 
 
----
 ### Method: InheritanceConverter`1.Read(Text.Json.Utf8JsonReader@, Type, Text.Json.JsonSerializerOptions)
 
 Reads and converts the JSON to type  TType .

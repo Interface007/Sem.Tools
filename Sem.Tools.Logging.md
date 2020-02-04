@@ -1,5 +1,6 @@
 # [Sem.Tools.Logging](#Sem.Tools.Logging)
 
+---
 ## Type: Sem.Tools.Logging.LogCategories
 
  The logging category distinguishes between technical and business information. 
@@ -13,7 +14,6 @@
 
 
 
----
 ### Method: LogCategoryExtensions.HasFlag\<T1>(``0, ``0)
 
  Tests whether a value has a specific category flag set. 
@@ -34,13 +34,13 @@ A value indicating whether the flag is set.
 
 
 ---
+---
 ## Type: Sem.Tools.Logging.LogExtension
 
  Extension class providing some standard logging methods. 
 
 
 
----
 ### Method: LogExtension.AddDebug(Action\<LogCategories, LogLevel, LogScope, String>)
 
  Simple output using ```Diagnostics.Debug.WriteLine(Object)```. 
@@ -71,6 +71,7 @@ A new method that is the combination of  logMethod  and an output to ```System.C
 
 
 ---
+---
 ## Type: Sem.Tools.Logging.LogLevel
 
  The "chattiness" level. 
@@ -84,7 +85,6 @@ A new method that is the combination of  logMethod  and an output to ```System.C
 
 
 
----
 ### Property: Sem.Tools.Logging.LogScope.DefaultLevel
 
  Gets or sets the level of "chattiness". 

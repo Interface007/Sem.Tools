@@ -1,12 +1,12 @@
 # [Sem.Data.SprocAccess](#Sem.Data.SprocAccess)
 
+---
 ## Type: Sem.Data.SprocAccess.IDatabase
 
  Very simple and small interface to interact with databases. 
 
 
 
----
 ### Method: IDatabase.Execute\<T1>(String, Func\<IReader, Task\<T1>>, Sem.Tools.Logging.LogScope, KeyValuePair\<String, Object>[])
 
  Executes a "stored procedure" (aka. "SPROC") and maps the result to a series of POCOs. 
@@ -29,13 +29,13 @@ A series of POCO instances.
 
 
 ---
+---
 ## Type: Sem.Data.SprocAccess.IReader
 
  Simple data reader interface with only the needed methods to provide an interface that can easily be implemented. 
 
 
 
----
 ### Method: IReader.Read
 
  Advances to the next record. 
