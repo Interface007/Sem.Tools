@@ -1,15 +1,15 @@
 # [Sem.Data.SprocAccess.FileSystem](#Sem.Data.SprocAccess.FileSystem)
 
-## Type: Sem.Data.SprocAccess.FileSystem.TxtDatabase{#Ref60d3389ea6a4d4a39156251ea08e22afb722c84e813d5b2403b491b5bf75069e}
+## Type: Sem.Data.SprocAccess.FileSystem.TxtDatabase
 
- Simple text file implementation of [Sem.Data.SprocAccess.IDatabase](Sem.Data.SprocAccess.md#Ref3a173008c7c029ceadd480ce5257abcb04f85c10a71936b8a19f0ea7864339e7). Can be used to mock database access easily. Each SPROC gets its own folder and each combination of parameters its own file. 
+ Simple text file implementation of [Sem.Data.SprocAccess.IDatabase](Sem.Data.SprocAccess.md#Sem.Data.SprocAccess.IDatabase). Can be used to mock database access easily. Each SPROC gets its own folder and each combination of parameters its own file. 
 
 
 
 ---
-### Method: Sem.Data.SprocAccess.FileTxtDatabase.#ctor(String){#Ref68e4733945ff30ff2f590cb23ee8026077a4c635a9ed286245b65bdda8913137}
+### Method: Sem.Data.SprocAccess.FileTxtDatabase.#ctor(String)
 
- Initializes a new instance of the [Sem.Data.SprocAccess.FileSystem.TxtDatabase](Sem.Data.SprocAccess.FileSystem.md#Refeae4b52b5194bfdf317847ba31d76d2ae4280d83b6db823fcfebe7417be1e8fe) class. 
+ Initializes a new instance of the [Sem.Data.SprocAccess.FileSystem.TxtDatabase](Sem.Data.SprocAccess.FileSystem.md#Sem.Data.SprocAccess.FileSystem.TxtDatabase) class. 
 
 #### Parameters:
 |Name | Description |
@@ -18,7 +18,7 @@
 
 
 ---
-### Method: Sem.Data.SprocAccess.FileTxtDatabase.Execute\<T1>(String, Func\<Sem.Data.SprocAccess.IReader, Task\<T1>>, Sem.Tools.Logging.LogScope, KeyValuePair\<String, Object>[]){#Refabdb6d38673f2025c76b8ad850b69318591adb2cae15cf47ba06f64479b48a25}
+### Method: Sem.Data.SprocAccess.FileTxtDatabase.Execute\<T1>(String, Func\<Sem.Data.SprocAccess.IReader, Task\<T1>>, Sem.Tools.Logging.LogScope, KeyValuePair\<String, Object>[])
 
  Executes a "stored procedure" (aka. "SPROC") and maps the result to a series of POCOs. 
 
@@ -40,7 +40,7 @@ A series of POCO instances.
 
 
 ---
-### Method: Sem.Data.SprocAccess.FileTxtDatabase.DisposeAsync{#Ref26b766b275c72c62368883d6cf24953a87aff81fc2225892dfde7603847c057a}
+### Method: Sem.Data.SprocAccess.FileTxtDatabase.DisposeAsync
 
 Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources asynchronously.
 
@@ -51,16 +51,16 @@ A task that represents the asynchronous dispose operation.
 
 
 ---
-## Type: Sem.Data.SprocAccess.FileSystem.TxtReader{#Refaeb4298b23e7f3ea0f54e92fde33e19b4e9dfdb27985c8b80d1b5030eaee3ec1}
+## Type: Sem.Data.SprocAccess.FileSystem.TxtReader
 
- Reader implementation for a bunch of text files - [Sem.Data.SprocAccess.FileSystem.TxtDatabase](Sem.Data.SprocAccess.FileSystem.md#Refeae4b52b5194bfdf317847ba31d76d2ae4280d83b6db823fcfebe7417be1e8fe). 
+ Reader implementation for a bunch of text files - [Sem.Data.SprocAccess.FileSystem.TxtDatabase](Sem.Data.SprocAccess.FileSystem.md#Sem.Data.SprocAccess.FileSystem.TxtDatabase). 
 
 
 
 ---
-### Method: Sem.Data.SprocAccess.FileTxtReader.#ctor(String){#Ref9360dbabfe408cd40da20092e5d8ed252455dda22938b4c24ca278afcd9aae5c}
+### Method: Sem.Data.SprocAccess.FileTxtReader.#ctor(String)
 
- Initializes a new instance of the [Sem.Data.SprocAccess.FileSystem.TxtReader](Sem.Data.SprocAccess.FileSystem.md#Refb6cea98e7ef30dac565d07a13287340a8b7ed96c037d3f341d4b015210f4df7e) class. 
+ Initializes a new instance of the [Sem.Data.SprocAccess.FileSystem.TxtReader](Sem.Data.SprocAccess.FileSystem.md#Sem.Data.SprocAccess.FileSystem.TxtReader) class. 
 
 #### Parameters:
 |Name | Description |
@@ -69,7 +69,7 @@ A task that represents the asynchronous dispose operation.
 
 
 ---
-### Method: Sem.Data.SprocAccess.FileTxtReader.Read{#Ref9ad4ae127c205153dbd44646cb5fc5fbd4706ff257595b9bf4c5c67ce9a52cb0}
+### Method: Sem.Data.SprocAccess.FileTxtReader.Read
 
  Increments the line pointer. 
 
@@ -80,7 +80,7 @@ A value indicating whether there is still data at this line.
 
 
 ---
-### Method: Sem.Data.SprocAccess.FileTxtReader.Get\<T1>(Int32){#Ref801287467d52cf77b457fae3510056307451c33be700ccee57705218eb5d818b}
+### Method: Sem.Data.SprocAccess.FileTxtReader.Get\<T1>(Int32)
 
  Reads the value of a column by its index. 
 
@@ -99,7 +99,7 @@ The value of the column in the current row.
 
 
 ---
-### Method: Sem.Data.SprocAccess.FileTxtReader.Get(Int32, Type){#Ref9f9ec5aeb2ef2daeb92f59e4956e2274c88fea4fe5bc22bf86e682c1c45ee255}
+### Method: Sem.Data.SprocAccess.FileTxtReader.Get(Int32, Type)
 
  Reads the value of a column by its index. 
 
@@ -115,7 +115,7 @@ The value of the column in the current row.
 
 
 ---
-### Method: Sem.Data.SprocAccess.FileTxtReader.NextResult{#Ref5e8c3c4bb1933803f6bd9031b90f76cb5556e5486cbb6ebebfc4effb22a5c57c}
+### Method: Sem.Data.SprocAccess.FileTxtReader.NextResult
 
  Advances to the next result set. 
 
@@ -126,7 +126,7 @@ A task to wait for.
 
 
 ---
-### Method: Sem.Data.SprocAccess.FileTxtReader.Close{#Reff298c91c65490cac3a6ea023996ff72eaacf1d9b5ffb376b332ef6b8d4116980}
+### Method: Sem.Data.SprocAccess.FileTxtReader.Close
 
  Closes the reader. 
 
@@ -137,7 +137,7 @@ A task to wait for.
 
 
 ---
-### Method: Sem.Data.SprocAccess.FileTxtReader.IndexByName(String){#Ref5899ed7916820c31dc1a1d60e113c1cf7e7b2a1e7b5976146a570d40681b744c}
+### Method: Sem.Data.SprocAccess.FileTxtReader.IndexByName(String)
 
  Gets the index of a column by its name (case-insensitive). When there are two columns with the same name, the first index will be returned. 
 
@@ -152,7 +152,7 @@ The index of the column.
 
 
 ---
-### Method: Sem.Data.SprocAccess.FileTxtReader.Init{#Ref1c6c2e1b3b495d1afa2d9575e7df524bc012cbe4c94273b277644967985074e7}
+### Method: Sem.Data.SprocAccess.FileTxtReader.Init
 
  Reads the text file and initializes the line-pointer. 
 

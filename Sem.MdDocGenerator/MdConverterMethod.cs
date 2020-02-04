@@ -21,7 +21,7 @@ namespace Sem.MdDocGenerator
 
             var name = this.FixMethodName(value);
 
-            return $"### Method: {name}{{#Ref{value.Hash()}}}\n\n{content}\n\n---\n";
+            return $"### Method: {name}\n\n{content}\n\n---\n";
         }
     }
 }

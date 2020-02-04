@@ -1,13 +1,13 @@
 # [Sem.Data.SprocAccess](#Sem.Data.SprocAccess)
 
-## Type: Sem.Data.SprocAccess.IDatabase{#Ref6f3296162599fba927f62939bb8c3b7b397ab65f3e3b6c16e99bef0493fa365a}
+## Type: Sem.Data.SprocAccess.IDatabase
 
  Very simple and small interface to interact with databases. 
 
 
 
 ---
-### Method: IDatabase.Execute\<T1>(String, Func\<IReader, Task\<T1>>, Sem.Tools.Logging.LogScope, KeyValuePair\<String, Object>[]){#Ref3c1ea8c0790167a1c9da869adc9a182ba55e5b382171fedd71d8bb62c136fd83}
+### Method: IDatabase.Execute\<T1>(String, Func\<IReader, Task\<T1>>, Sem.Tools.Logging.LogScope, KeyValuePair\<String, Object>[])
 
  Executes a "stored procedure" (aka. "SPROC") and maps the result to a series of POCOs. 
 
@@ -29,14 +29,14 @@ A series of POCO instances.
 
 
 ---
-## Type: Sem.Data.SprocAccess.IReader{#Refd4ea26ed6963c7d7d862c5d038a3dfe5e8c6fad98ad0756308237234eb54ed5f}
+## Type: Sem.Data.SprocAccess.IReader
 
  Simple data reader interface with only the needed methods to provide an interface that can easily be implemented. 
 
 
 
 ---
-### Method: IReader.Read{#Ref6140e5d80d31c8a065579879011d2b8429d7332edb91e6f6d277da0df00e1ee3}
+### Method: IReader.Read
 
  Advances to the next record. 
 
@@ -47,7 +47,7 @@ A value indicating whether there is still data to be read.
 
 
 ---
-### Method: IReader.Get\<T1>(Int32){#Ref0e911013013473e24b451a38e21edd26440ac35d631e788fbc22a0d0c965003f}
+### Method: IReader.Get\<T1>(Int32)
 
  Reads the value of a column by its index. 
 
@@ -66,7 +66,7 @@ The value of the column in the current row.
 
 
 ---
-### Method: IReader.Get(Int32, Type){#Ref4679f191d96203bac4e9cef80c5e8650d2d19f9f91dff9ec382a8149c581bdd1}
+### Method: IReader.Get(Int32, Type)
 
  Reads the value of a column by its index. 
 
@@ -82,7 +82,7 @@ The value of the column in the current row.
 
 
 ---
-### Method: IReader.NextResult{#Refddffcd4eaf86045a859c21351302f738eb98e725c97eafa50dd8becc6ab4c2dc}
+### Method: IReader.NextResult
 
  Advances to the next result set. 
 
@@ -93,7 +93,7 @@ A task to wait for.
 
 
 ---
-### Method: IReader.Close{#Refa664070908c4c587e509fb9289015c76c80a5c382be8e00a90951aeb26fa5cc1}
+### Method: IReader.Close
 
  Closes the reader. 
 
@@ -104,7 +104,7 @@ A task to wait for.
 
 
 ---
-### Method: IReader.IndexByName(String){#Ref48a0b89351ffc712b194b78d6f8a412b9573a72de1cc2cef0bfd29d1e8ec3b35}
+### Method: IReader.IndexByName(String)
 
  Gets the index of a column by its name (case-insensitive). When there are two columns with the same name, the first index will be returned. 
 
