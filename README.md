@@ -2,19 +2,18 @@ First of all: this project is just meant to give me a playground for programming
 or some "unusual" way of implementation. You are welcome to use this code (it's all MIT licensed) and you are also welcome to give me a 
 hint when something does not work - but still: this code is not tested for production ... before you use it: test it.
 
+[Click here to find the generated documentstion](https://github.com/Interface007/Sem.Tools/blob/master/Documentation.MD)
+I'm currently in the process of refactoring the documentation generation - the final version will create a bunch of files (instead of this single one), link them together, generate a TOC file and produce some readable 
 
-# Sem.Data.SprocAccess[Sem.Data.SprocAccess](Sem.Data.SprocAccess.md)
-Very simple ORM for accessing named result sets / SPROCs - see Sem.Data.SprocAccess.SqlServer 
-      or Sem.Data.SprocAccess.FileSystem. The interface IDatabase implements a single method that executes a 
-      SPROC and returns an IAsyncEnumerable by mapping each row into a plain old C# object (POCO).
-# Sem.Data.SprocAccess.FileSystem[Sem.Data.SprocAccess.FileSystem](Sem.Data.SprocAccess.FileSystem.md)
-Implementation of IDatabase.Execute using static text-files. This implementation can be used to easily 
-      mock database access. Each SPROC gets its own folder and each combination of parameters its own file.
-# Sem.Data.SprocAccess.SqlServer[Sem.Data.SprocAccess.SqlServer](Sem.Data.SprocAccess.SqlServer.md)
-Implementation of IDatabase.Execute using SQL server SPROCs.
-# Sem.Tools[Sem.Tools](Sem.Tools.md)
-Some generic tools.
-# Sem.Tools.CmdLine[Sem.Tools.CmdLine](Sem.Tools.CmdLine.md)
-Command line tools.
-# Sem.Tools.Logging[Sem.Tools.Logging](Sem.Tools.Logging.md)
-Simple scoped logging.
+# Sem.Tools
+A collection of some tools I like to use in my code:
+- Extensions.Hash(this string value)
+  Produces a hex encoded SHA256 hash from a string.
+- Extensions.MustNotBeNull(this T value, string nameOfValue)
+  Checks for null (thows an ArgumentNullException when value is null) and includes variable check hints for ReSharper and FXCop
+- EncryptionConverter
+  A JSON converter encrypting using DPAPI for the local machine and the current user.
+- InheritanceConverter
+  Serializes inherited objects in properties. Normally, only the properties of the type explicitly
+  declared on the property is being serialized - with this attribute the property value is fully serialized
+  and restores the original type.
