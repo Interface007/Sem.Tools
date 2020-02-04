@@ -56,7 +56,7 @@ namespace Sem.MdDocGenerator
                 var doc = XDocument.Parse(xmlDoc);
                 var md2 = new MdConverterDoc(doc.Root, new AssemblyContext { Files = files.Select(x => Path.ChangeExtension(Path.GetFileName(x), string.Empty).TrimEnd('.')).ToArray(), NameSpace = doc.Root?.Element("assembly")?.Element("name")?.Value });
                 File.AppendAllText(target, md2.ToString());
-                File.AppendAllText(toc, "\n# " + md2.Context.NameSpace + $"[{md2.Context.NameSpace}]({md2.Context.NameSpace}.md)");
+                File.AppendAllText(toc, $"\n# [{md2.Context.NameSpace}]({md2.Context.NameSpace}.md)");
 
                 var xmlProj = File.ReadAllText(projectFile);
                 var proj = XDocument.Parse(xmlProj);
