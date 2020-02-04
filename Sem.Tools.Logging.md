@@ -90,57 +90,41 @@ A new method that is the combination of  logMethod  and an output to ```System.C
  Gets or sets the level of "chattiness". 
 
 
-
----
 ### Property: Sem.Tools.Logging.LogScope.DefaultCategory
 
  Gets or sets the type of logs to be written. 
 
 
-
----
 ### Property: Sem.Tools.Logging.LogScope.LogMethod
 
  Gets or sets the method that will write the log information. 
 
 
-
----
 ### Property: Sem.Tools.Logging.LogScope.IdFactory
 
  Gets or sets the method generating an ID for this logger instance - only the last 4 characters will be used. 
 
 
-
----
 ### Property: Sem.Tools.Logging.LogScope.BasePath
 
  Gets or sets a path to be removed in logs. 
 
 
-
----
 ### Property: Sem.Tools.Logging.LogScope.Category
 
  Gets or sets the type of logs to be written. 
 
 
-
----
 ### Property: Sem.Tools.Logging.LogScope.Level
 
  Gets or sets the level of "chattiness". 
 
 
-
----
 ### Property: Sem.Tools.Logging.LogScope.Id
 
  Gets the hierarchical ID of the scope. 
 
 
-
----
 ### Method: LogScope.Create(String, Action\<LogCategories, LogLevel, LogScope, String>, String, String)
 
  Create a new scope instance. 

@@ -62,15 +62,11 @@ _C# code_
  Gets the "label" that should be shown on the screen to describe the functionality. 
 
 
-
----
 ### Property: Sem.Tools.CmdLine.MenuItem.Action
 
  Gets the action to perform when the user selects this menu item. 
 
 
-
----
 ### Method: MenuItem.Print(Linq.Expressions.Expression\<Func\<IAsyncEnumerable\<String>>>, String)
 
  Creates a [Sem.Tools.CmdLine.MenuItem](Sem.Tools.CmdLine.md#type-semtoolscmdlinemenuitem) from an expression - is meant to be used with a ```System.Linq.Expressions.MethodCallExpression```. 
