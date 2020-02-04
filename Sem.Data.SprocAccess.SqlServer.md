@@ -18,7 +18,7 @@
 
 
 ---
-### [Method: SqlDatabase.Execute\<T1>(String, Func\<Sem.Data.SprocAccess.IReader, Threading.Tasks.Task\<T1>>, Sem.Tools.Logging.LogScope, Collections.Generic.KeyValuePair\<String, Object>[])](#Ref8c3a2f50bf1a2c05594683d2ee1f7e335f0a8e26f46f051ea22d4740dcdd475a)
+### [Method: SqlDatabase.Execute\<T1>(String, Func\<Sem.Data.SprocAccess.IReader, Task\<T1>>, Sem.Tools.Logging.LogScope, KeyValuePair\<String, Object>[])](#Ref8c3a2f50bf1a2c05594683d2ee1f7e335f0a8e26f46f051ea22d4740dcdd475a)
 
  Executes a "stored procedure" (aka. "SPROC") and maps the result to a series of POCOs. 
 

@@ -133,10 +133,10 @@
         public string FixMethodName(string value)
         {
             var name = value?.Substring(2)
-                .Replace("System.", string.Empty, StringComparison.Ordinal)
                 .Replace("System.Threading.Tasks.Task", "Task", StringComparison.Ordinal)
                 .Replace("System.Collections.Generic.", string.Empty, StringComparison.Ordinal)
                 .Replace("System.Object", "Object", StringComparison.Ordinal)
+                .Replace("System.", string.Empty, StringComparison.Ordinal)
                 .Replace("{``0,``1,``2,``3,``4}", "\\<T1, T2, T3, T4, T5>", StringComparison.Ordinal)
                 .Replace("{``0,``1,``2,``3}", "\\<T1, T2, T3, T4>", StringComparison.Ordinal)
                 .Replace("{``0,``1,``2}", "\\<T1, T2, T3>", StringComparison.Ordinal)

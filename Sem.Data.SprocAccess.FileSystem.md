@@ -18,7 +18,7 @@
 
 
 ---
-### [Method: Sem.Data.SprocAccess.FileTxtDatabase.Execute\<T1>(String, Func\<Sem.Data.SprocAccess.IReader, Threading.Tasks.Task\<T1>>, Sem.Tools.Logging.LogScope, Collections.Generic.KeyValuePair\<String, Object>[])](#Refabdb6d38673f2025c76b8ad850b69318591adb2cae15cf47ba06f64479b48a25)
+### [Method: Sem.Data.SprocAccess.FileTxtDatabase.Execute\<T1>(String, Func\<Sem.Data.SprocAccess.IReader, Task\<T1>>, Sem.Tools.Logging.LogScope, KeyValuePair\<String, Object>[])](#Refabdb6d38673f2025c76b8ad850b69318591adb2cae15cf47ba06f64479b48a25)
 
  Executes a "stored procedure" (aka. "SPROC") and maps the result to a series of POCOs. 
 
