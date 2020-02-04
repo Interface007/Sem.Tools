@@ -1,4 +1,4 @@
-# Sem.Tools (#Sem.Tools)
+# [Sem.Tools](#Sem.Tools)
 
 ## [Type: Sem.Tools.ActionExtension](#Reff7b0fe1eda427b6b8760c80d089deaa1288df920584a35b07efb71c237d1f2a6)
 

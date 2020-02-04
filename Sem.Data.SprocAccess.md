@@ -1,4 +1,4 @@
-# Sem.Data.SprocAccess (#Sem.Data.SprocAccess)
+# [Sem.Data.SprocAccess](#Sem.Data.SprocAccess)
 
 ## [Type: Sem.Data.SprocAccess.IDatabase](#Ref6f3296162599fba927f62939bb8c3b7b397ab65f3e3b6c16e99bef0493fa365a)
 

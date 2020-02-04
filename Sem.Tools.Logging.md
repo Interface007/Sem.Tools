@@ -1,4 +1,4 @@
-# Sem.Tools.Logging (#Sem.Tools.Logging)
+# [Sem.Tools.Logging](#Sem.Tools.Logging)
 
 ## [Type: Sem.Tools.Logging.LogCategories](#Refa16e2fdadea687a1ee6ac9fb756c3cf75ff65d4fbe6ab945dfff0b40e77aac19)
 

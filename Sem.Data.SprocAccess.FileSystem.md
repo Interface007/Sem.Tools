@@ -1,4 +1,4 @@
-# Sem.Data.SprocAccess.FileSystem (#Sem.Data.SprocAccess.FileSystem)
+# [Sem.Data.SprocAccess.FileSystem](#Sem.Data.SprocAccess.FileSystem)
 
 ## [Type: Sem.Data.SprocAccess.FileSystem.TxtDatabase](#Ref60d3389ea6a4d4a39156251ea08e22afb722c84e813d5b2403b491b5bf75069e)
 

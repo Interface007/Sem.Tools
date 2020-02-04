@@ -1,4 +1,4 @@
-# Sem.Data.SprocAccess.SqlServer (#Sem.Data.SprocAccess.SqlServer)
+# [Sem.Data.SprocAccess.SqlServer](#Sem.Data.SprocAccess.SqlServer)
 
 ## [Type: Sem.Data.SprocAccess.SqlServer.SqlDatabase](#Ref862f04d9094f826c09b6d57fec638e30608146d06092e855c1dd1c9ae39db1a0)
 

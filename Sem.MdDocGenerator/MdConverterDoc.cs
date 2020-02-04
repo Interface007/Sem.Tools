@@ -13,7 +13,7 @@
         {
             var nodes = this.Node.Element("members")?.Elements("member");
             var content = ToMarkDown(nodes);
-            return $"# {this.NameSpace} (#{this.NameSpace})\n\n{content}\n\n---\n";
+            return $"# [{this.NameSpace.Trim()}](#{this.NameSpace})\n\n{content}\n\n---\n";
         }
     }
 }

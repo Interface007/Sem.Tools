@@ -1,4 +1,4 @@
-# Sem.Tools.CmdLine (#Sem.Tools.CmdLine)
+# [Sem.Tools.CmdLine](#Sem.Tools.CmdLine)
 
 ## [Type: Sem.Tools.CmdLine.Menu](#Refa1302f7223c42fc5705da7510cc8304b5ba40c68775225017fef47cd8de2a5c7)
 

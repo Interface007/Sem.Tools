@@ -16,7 +16,7 @@ namespace Sem.MdDocGenerator
                 File.Delete(toc);
             }
 
-            File.Copy(Path.Combine(path,"Preface.md"), toc);
+            File.Copy(Path.Combine(path, "Preface.md"), toc);
             var processedXmlFile = new List<string>();
 
             foreach (var file in Directory.EnumerateFiles(path, "sem.*.xml", SearchOption.AllDirectories))
@@ -39,7 +39,7 @@ namespace Sem.MdDocGenerator
                 {
                     continue;
                 }
-                
+
                 processedXmlFile.Add(fileName);
 
                 var target = Path.Combine(path, Path.ChangeExtension(fileName, "md"));
@@ -48,7 +48,7 @@ namespace Sem.MdDocGenerator
                 {
                     File.Delete(target);
                 }
-                
+
                 var xmlDoc = File.ReadAllText(file);
                 var doc = XDocument.Parse(xmlDoc);
                 ////var md1 = doc.Root.ToMarkDown(string.Empty);
