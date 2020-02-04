@@ -24,7 +24,7 @@ A task to wait for.
 ---
 ## Type: Sem.Tools.CmdLine.MenuItem
 
- Menu item for a command line program. An array of menu items can be displayed using the extension method [Menu.Show(MenuItem[])](Sem.Tools.CmdLine.md#menushow(menuitem[])). 
+ Menu item for a command line program. An array of menu items can be displayed using the extension method [Menu.Show(MenuItem[])](Sem.Tools.CmdLine.md#method-menushowmenuitem). 
 
 _C# code_
 
@@ -46,7 +46,7 @@ _C# code_
 ---
 ### Method: MenuItem.#ctor(String, Func\<Task>, String)
 
- Initializes a new instance of the [Sem.Tools.CmdLine.MenuItem](Sem.Tools.CmdLine.md#semtoolscmdlinemenuitem) class. 
+ Initializes a new instance of the [Sem.Tools.CmdLine.MenuItem](Sem.Tools.CmdLine.md#type-semtoolscmdlinemenuitem) class. 
 
 #### Parameters:
 |Name | Description |
@@ -73,7 +73,7 @@ _C# code_
 ---
 ### Method: MenuItem.Print(Linq.Expressions.Expression\<Func\<IAsyncEnumerable\<String>>>, String)
 
- Creates a [Sem.Tools.CmdLine.MenuItem](Sem.Tools.CmdLine.md#semtoolscmdlinemenuitem) from an expression - is meant to be used with a ```System.Linq.Expressions.MethodCallExpression```. 
+ Creates a [Sem.Tools.CmdLine.MenuItem](Sem.Tools.CmdLine.md#type-semtoolscmdlinemenuitem) from an expression - is meant to be used with a ```System.Linq.Expressions.MethodCallExpression```. 
 
 #### Parameters:
 |Name | Description |
@@ -89,7 +89,7 @@ A new menu item.
 ---
 ### Method: MenuItem.Print(Linq.Expressions.Expression\<Func\<Task\<String>>>, String)
 
- Creates a [Sem.Tools.CmdLine.MenuItem](Sem.Tools.CmdLine.md#semtoolscmdlinemenuitem) from an expression - is meant to be used with a ```System.Linq.Expressions.MethodCallExpression```. 
+ Creates a [Sem.Tools.CmdLine.MenuItem](Sem.Tools.CmdLine.md#type-semtoolscmdlinemenuitem) from an expression - is meant to be used with a ```System.Linq.Expressions.MethodCallExpression```. 
 
 #### Parameters:
 |Name | Description |
@@ -105,7 +105,7 @@ A new menu item.
 ---
 ### Method: MenuItem.Print(Linq.Expressions.Expression\<Func\<Task\<IEnumerable\<String>>>>, String)
 
- Creates a [Sem.Tools.CmdLine.MenuItem](Sem.Tools.CmdLine.md#semtoolscmdlinemenuitem) from an expression - is meant to be used with a ```System.Linq.Expressions.MethodCallExpression```. 
+ Creates a [Sem.Tools.CmdLine.MenuItem](Sem.Tools.CmdLine.md#type-semtoolscmdlinemenuitem) from an expression - is meant to be used with a ```System.Linq.Expressions.MethodCallExpression```. 
 
 #### Parameters:
 |Name | Description |
@@ -121,7 +121,7 @@ A new menu item.
 ---
 ### Method: MenuItem.Print(String, Func\<Task\<String>>, String)
 
- Creates a [Sem.Tools.CmdLine.MenuItem](Sem.Tools.CmdLine.md#semtoolscmdlinemenuitem) from an expression - is meant to be used with a ```System.Linq.Expressions.MethodCallExpression```. 
+ Creates a [Sem.Tools.CmdLine.MenuItem](Sem.Tools.CmdLine.md#type-semtoolscmdlinemenuitem) from an expression - is meant to be used with a ```System.Linq.Expressions.MethodCallExpression```. 
 
 #### Parameters:
 |Name | Description |
@@ -138,7 +138,7 @@ A new menu item.
 ---
 ### Method: MenuItem.Print(String, Func\<IAsyncEnumerable\<String>>, String)
 
- Creates a [Sem.Tools.CmdLine.MenuItem](Sem.Tools.CmdLine.md#semtoolscmdlinemenuitem) from an expression - is meant to be used with a ```System.Linq.Expressions.MethodCallExpression```. 
+ Creates a [Sem.Tools.CmdLine.MenuItem](Sem.Tools.CmdLine.md#type-semtoolscmdlinemenuitem) from an expression - is meant to be used with a ```System.Linq.Expressions.MethodCallExpression```. 
 
 #### Parameters:
 |Name | Description |
@@ -155,7 +155,7 @@ A new menu item.
 ---
 ### Method: MenuItem.Print(String, Func\<Task\<IEnumerable\<String>>>, String)
 
- Creates a [Sem.Tools.CmdLine.MenuItem](Sem.Tools.CmdLine.md#semtoolscmdlinemenuitem) from an expression - is meant to be used with a ```System.Linq.Expressions.MethodCallExpression```. 
+ Creates a [Sem.Tools.CmdLine.MenuItem](Sem.Tools.CmdLine.md#type-semtoolscmdlinemenuitem) from an expression - is meant to be used with a ```System.Linq.Expressions.MethodCallExpression```. 
 
 #### Parameters:
 |Name | Description |

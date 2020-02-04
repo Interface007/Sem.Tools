@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using System.Text.RegularExpressions;
 
 namespace Sem.MdDocGenerator
 {
@@ -19,7 +20,7 @@ namespace Sem.MdDocGenerator
             var parts = d("cref", this.Node);
             var className = string.Empty;
             var ns = this.Context.NameSpace;
-
+            var anchor =string.Empty;
             var part = parts[0];
             if (part[0] == 'T')
             {
@@ -28,6 +29,7 @@ namespace Sem.MdDocGenerator
                     ? part.Substring(0, part.IndexOf('<', StringComparison.Ordinal) - 1)
                     : part;
                 ns = ns.Substring(2, ns.LastIndexOf('.') - 2);
+                anchor = "type-" + Anchor(className);
             }
             else if (part[0] == 'M')
             {
@@ -37,6 +39,7 @@ namespace Sem.MdDocGenerator
                 ns = ns.Substring(2, ns.LastIndexOf('.') - 2);
 
                 className = this.FixMethodName(part);
+                anchor = "method-" + Anchor(className);
             }
 
             var file = this.Context.Files
@@ -44,7 +47,16 @@ namespace Sem.MdDocGenerator
                 .OrderByDescending(x => x.Length)
                 .FirstOrDefault();
 
-            return string.IsNullOrEmpty(file) ? $"```{className}```" : $"[{className}]({file}.md#{className.Replace(" ", "-").Replace(".", "").ToLowerInvariant()})";
+            return string.IsNullOrEmpty(file) ? $"```{className}```" : $"[{className}]({file}.md#{anchor})";
+        }
+
+        private static string Anchor(string className)
+        {
+            return Regex.Replace(className
+                .Replace(" ", "-")
+                .ToLowerInvariant(),
+                "[^a-z-]",
+                "");
         }
     }
 }
