@@ -44,7 +44,7 @@ namespace Sem.MdDocGenerator
                 .OrderByDescending(x => x.Length)
                 .FirstOrDefault();
 
-            return $"[{className}]({file}.md#Ref{part.Hash()})";
+            return string.IsNullOrEmpty(file) ? $"```c# {className}```" : $"[{className}]({file}.md#Ref{part.Hash()})";
         }
     }
 }

@@ -43,7 +43,7 @@ A value indicating whether the flag is set.
 ---
 ### [Method: LogExtension.AddDebug(Action\<LogCategories, LogLevel, LogScope, String>)](#Refd8d6d4518115b920e7b656ba0709e08c6a4734a5327c55f8f9130acaec3f4a33)
 
- Simple output using [Diagnostics.Debug.WriteLine(Object)](.md#Ref9c867351535619d79dbd3eaff886a8762949cc7f5cb0c884538757bdbfade33d). 
+ Simple output using ```c# Diagnostics.Debug.WriteLine(Object)```. 
 
 #### Parameters:
 |Name | Description |
@@ -51,14 +51,14 @@ A value indicating whether the flag is set.
 |logMethod|The original log method, this method should be added to.|
 
 #### Returns:
-A new method that is the combination of  logMethod  and an output to [System.Diagnostics.Debug](.md#Ref554a77f145fdc86bed5bb6db2a7adaa4f9badab1dae50f50684c3b715a0c3c73).
+A new method that is the combination of  logMethod  and an output to ```c# System.Diagnostics.Debug```.
 
 
 
 ---
 ### [Method: LogExtension.AddConsole(Action\<LogCategories, LogLevel, LogScope, String>)](#Refc7c426b970c3271913aa56b33807400ce35f06d0d2ea3b9b9dd72448de3edf8d)
 
- Simple output using [Console.WriteLine(Object)](.md#Ref69eb2c7c019accca7c1c1231b57321fc7f3d21d519e7d84f7a6f379922cbbd53). 
+ Simple output using ```c# Console.WriteLine(Object)```. 
 
 #### Parameters:
 |Name | Description |
@@ -66,7 +66,7 @@ A new method that is the combination of  logMethod  and an output to [System.Dia
 |logMethod|The original log method, this method should be added to.|
 
 #### Returns:
-A new method that is the combination of  logMethod  and an output to [System.Console](.md#Ref05511d5578a625dac69ccf086923d830d40470725d676357fb664de57ef27aa7).
+A new method that is the combination of  logMethod  and an output to ```c# System.Console```.
 
 
 
