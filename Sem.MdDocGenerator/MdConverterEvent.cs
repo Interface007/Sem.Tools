@@ -8,7 +8,7 @@
 
         public override string ToString()
         {
-            return base.ToString("### {0} (#{0})\n\n{1}\n\n---\n");
+            return base.ToString("### {0} (#{0})\n\n{1}\n");
         }
     }
 }

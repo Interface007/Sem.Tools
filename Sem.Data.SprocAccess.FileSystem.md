@@ -16,8 +16,6 @@
 |-----|------|
 |baseFolder|The base folder for the data files.|
 
-
----
 ### Method: Sem.Data.SprocAccess.FileTxtDatabase.Execute\<T1>(String, Func\<Sem.Data.SprocAccess.IReader, Task\<T1>>, Sem.Tools.Logging.LogScope, KeyValuePair\<String, Object>[])
 
  Executes a "stored procedure" (aka. "SPROC") and maps the result to a series of POCOs. 
@@ -38,8 +36,6 @@
 A series of POCO instances.
 
 
-
----
 ### Method: Sem.Data.SprocAccess.FileTxtDatabase.DisposeAsync
 
 Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources asynchronously.
@@ -49,8 +45,6 @@ Performs application-defined tasks associated with freeing, releasing, or resett
 A task that represents the asynchronous dispose operation.
 
 
-
----
 ---
 ## Type: Sem.Data.SprocAccess.FileSystem.TxtReader
 
@@ -67,8 +61,6 @@ A task that represents the asynchronous dispose operation.
 |-----|------|
 |fileName|The name of the file containing the data.|
 
-
----
 ### Method: Sem.Data.SprocAccess.FileTxtReader.Read
 
  Increments the line pointer. 
@@ -78,8 +70,6 @@ A task that represents the asynchronous dispose operation.
 A value indicating whether there is still data at this line.
 
 
-
----
 ### Method: Sem.Data.SprocAccess.FileTxtReader.Get\<T1>(Int32)
 
  Reads the value of a column by its index. 
@@ -97,8 +87,6 @@ A value indicating whether there is still data at this line.
 The value of the column in the current row.
 
 
-
----
 ### Method: Sem.Data.SprocAccess.FileTxtReader.Get(Int32, Type)
 
  Reads the value of a column by its index. 
@@ -113,8 +101,6 @@ The value of the column in the current row.
 The value of the column in the current row.
 
 
-
----
 ### Method: Sem.Data.SprocAccess.FileTxtReader.NextResult
 
  Advances to the next result set. 
@@ -124,8 +110,6 @@ The value of the column in the current row.
 A task to wait for.
 
 
-
----
 ### Method: Sem.Data.SprocAccess.FileTxtReader.Close
 
  Closes the reader. 
@@ -135,8 +119,6 @@ A task to wait for.
 A task to wait for.
 
 
-
----
 ### Method: Sem.Data.SprocAccess.FileTxtReader.IndexByName(String)
 
  Gets the index of a column by its name (case-insensitive). When there are two columns with the same name, the first index will be returned. 
@@ -150,15 +132,11 @@ A task to wait for.
 The index of the column.
 
 
-
----
 ### Method: Sem.Data.SprocAccess.FileTxtReader.Init
 
  Reads the text file and initializes the line-pointer. 
 
 
-
----
 
 
 ---

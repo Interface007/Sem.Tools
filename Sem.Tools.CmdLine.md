@@ -20,8 +20,6 @@
 A task to wait for.
 
 
-
----
 ---
 ## Type: Sem.Tools.CmdLine.MenuItem
 
@@ -55,8 +53,6 @@ _C# code_
 |action: |The action to perform when the user selects this menu item.|
 |suffixForMenu: |A suffix for the display string.|
 
-
----
 ### Property: Sem.Tools.CmdLine.MenuItem.DisplayString
 
  Gets the "label" that should be shown on the screen to describe the functionality. 
@@ -81,8 +77,6 @@ _C# code_
 A new menu item.
 
 
-
----
 ### Method: MenuItem.Print(Linq.Expressions.Expression\<Func\<Task\<String>>>, String)
 
  Creates a [Sem.Tools.CmdLine.MenuItem](Sem.Tools.CmdLine.md#type-semtoolscmdlinemenuitem) from an expression - is meant to be used with a ```System.Linq.Expressions.MethodCallExpression```. 
@@ -97,8 +91,6 @@ A new menu item.
 A new menu item.
 
 
-
----
 ### Method: MenuItem.Print(Linq.Expressions.Expression\<Func\<Task\<IEnumerable\<String>>>>, String)
 
  Creates a [Sem.Tools.CmdLine.MenuItem](Sem.Tools.CmdLine.md#type-semtoolscmdlinemenuitem) from an expression - is meant to be used with a ```System.Linq.Expressions.MethodCallExpression```. 
@@ -113,8 +105,6 @@ A new menu item.
 A new menu item.
 
 
-
----
 ### Method: MenuItem.Print(String, Func\<Task\<String>>, String)
 
  Creates a [Sem.Tools.CmdLine.MenuItem](Sem.Tools.CmdLine.md#type-semtoolscmdlinemenuitem) from an expression - is meant to be used with a ```System.Linq.Expressions.MethodCallExpression```. 
@@ -130,8 +120,6 @@ A new menu item.
 A new menu item.
 
 
-
----
 ### Method: MenuItem.Print(String, Func\<IAsyncEnumerable\<String>>, String)
 
  Creates a [Sem.Tools.CmdLine.MenuItem](Sem.Tools.CmdLine.md#type-semtoolscmdlinemenuitem) from an expression - is meant to be used with a ```System.Linq.Expressions.MethodCallExpression```. 
@@ -147,8 +135,6 @@ A new menu item.
 A new menu item.
 
 
-
----
 ### Method: MenuItem.Print(String, Func\<Task\<IEnumerable\<String>>>, String)
 
  Creates a [Sem.Tools.CmdLine.MenuItem](Sem.Tools.CmdLine.md#type-semtoolscmdlinemenuitem) from an expression - is meant to be used with a ```System.Linq.Expressions.MethodCallExpression```. 
@@ -164,8 +150,6 @@ A new menu item.
 A new menu item.
 
 
-
----
 ### Method: MenuItem.For\<T1>(Object[])
 
  Creates menu entries for public methods of  T . 
@@ -183,8 +167,6 @@ A new menu item.
 A menu entry with sub menu items.
 
 
-
----
 ### Method: MenuItem.GetDescriptionFromXml(Reflection.MemberInfo)
 
  Extracts the description from the XML documentation of a method (the XML file mst be generated while building the assembly). 
@@ -198,8 +180,6 @@ A menu entry with sub menu items.
 The extracted description.
 
 
-
----
 ### Method: MenuItem.GetDescriptionFromXml(Type)
 
  Extracts the description from the XML documentation of a class (the XML file mst be generated while building the assembly). 
@@ -213,8 +193,6 @@ The extracted description.
 The extracted description.
 
 
-
----
 ### Method: MenuItem.GetMethod\<T1>(Linq.Expressions.Expression\<Func\<T1>>)
 
  Gets the method information from a ```System.Linq.Expressions.MethodCallExpression```. 
@@ -232,8 +210,6 @@ The extracted description.
 The method information from the called method.
 
 
-
----
 ### Method: MenuItem.InvokeAction\<T1,  T2>(Reflection.MethodBase, Object[])
 
  Invokes a method with the needed parameters. 
@@ -253,8 +229,6 @@ The method information from the called method.
 The call result.
 
 
-
----
 
 
 ---

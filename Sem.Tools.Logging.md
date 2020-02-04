@@ -32,8 +32,6 @@
 A value indicating whether the flag is set.
 
 
-
----
 ---
 ## Type: Sem.Tools.Logging.LogExtension
 
@@ -54,8 +52,6 @@ A value indicating whether the flag is set.
 A new method that is the combination of  logMethod  and an output to ```System.Diagnostics.Debug```.
 
 
-
----
 ### Method: LogExtension.AddConsole(Action\<LogCategories, LogLevel, LogScope, String>)
 
  Simple output using ```Console.WriteLine(Object)```. 
@@ -69,8 +65,6 @@ A new method that is the combination of  logMethod  and an output to ```System.D
 A new method that is the combination of  logMethod  and an output to ```System.Console```.
 
 
-
----
 ---
 ## Type: Sem.Tools.Logging.LogLevel
 
@@ -141,8 +135,6 @@ A new method that is the combination of  logMethod  and an output to ```System.C
 A new logging scope.
 
 
-
----
 ### Method: LogScope.MethodStart(Object, String, String)
 
  Call this to indicate a method start. 
@@ -158,8 +150,6 @@ A new logging scope.
 A new scope.
 
 
-
----
 ### Method: LogScope.Child(String, Object, String, String)
 
  Creates a new child scope. 
@@ -176,8 +166,6 @@ A new scope.
 A new scope.
 
 
-
----
 ### Method: LogScope.DisposeAsync
 
  Async implementation of the dispose pattern. 
@@ -187,15 +175,11 @@ A new scope.
 A task to wait for.
 
 
-
----
 ### Method: LogScope.Dispose
 
  Logs the end of the scope. 
 
 
-
----
 ### Method: LogScope.Log(String, Object)
 
  Logs a message. 
@@ -206,8 +190,6 @@ A task to wait for.
 |message|The message to be logged.|
 |value: |A value that should be included into the message as addition data.|
 
-
----
 ### Method: LogScope.Log(LogCategories, LogLevel, String, Object)
 
  Logs a message. 
@@ -220,8 +202,6 @@ A task to wait for.
 |message: |The message to be logged.|
 |value: |A value that should be included into the message as addition data.|
 
-
----
 
 
 ---

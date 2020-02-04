@@ -27,8 +27,6 @@
 A series of POCO instances.
 
 
-
----
 ---
 ## Type: Sem.Data.SprocAccess.IReader
 
@@ -45,8 +43,6 @@ A series of POCO instances.
 A value indicating whether there is still data to be read.
 
 
-
----
 ### Method: IReader.Get\<T1>(Int32)
 
  Reads the value of a column by its index. 
@@ -64,8 +60,6 @@ A value indicating whether there is still data to be read.
 The value of the column in the current row.
 
 
-
----
 ### Method: IReader.Get(Int32, Type)
 
  Reads the value of a column by its index. 
@@ -80,8 +74,6 @@ The value of the column in the current row.
 The value of the column in the current row.
 
 
-
----
 ### Method: IReader.NextResult
 
  Advances to the next result set. 
@@ -91,8 +83,6 @@ The value of the column in the current row.
 A task to wait for.
 
 
-
----
 ### Method: IReader.Close
 
  Closes the reader. 
@@ -102,8 +92,6 @@ A task to wait for.
 A task to wait for.
 
 
-
----
 ### Method: IReader.IndexByName(String)
 
  Gets the index of a column by its name (case-insensitive). When there are two columns with the same name, the first index will be returned. 
@@ -117,8 +105,6 @@ A task to wait for.
 The index of the column.
 
 
-
----
 
 
 ---

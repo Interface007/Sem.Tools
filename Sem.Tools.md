@@ -25,8 +25,6 @@
 A new method combining both methods specified in the parameters.
 
 
-
----
 ### Method: ActionExtension.Append\<T1,  T2>(Action\<T1,  T2>, Action\<T1,  T2>)
 
  Extension to combine two logging methods into a new one. 
@@ -46,8 +44,6 @@ A new method combining both methods specified in the parameters.
 A new method combining both methods specified in the parameters.
 
 
-
----
 ### Method: ActionExtension.Append\<T1,  T2,  T3>(Action\<T1,  T2,  T3>, Action\<T1,  T2,  T3>)
 
  Extension to combine two logging methods into a new one. 
@@ -68,8 +64,6 @@ A new method combining both methods specified in the parameters.
 A new method combining both methods specified in the parameters.
 
 
-
----
 ### Method: ActionExtension.Append\<T1,  T2,  T3,  T4>(Action\<T1,  T2,  T3,  T4>, Action\<T1,  T2,  T3,  T4>)
 
  Extension to combine two logging methods into a new one. 
@@ -91,8 +85,6 @@ A new method combining both methods specified in the parameters.
 A new method combining both methods specified in the parameters.
 
 
-
----
 ---
 ## Type: Sem.Tools.EncryptionConverter
 
@@ -115,8 +107,6 @@ Reads and converts the JSON to type string.
 The converted value.
 
 
-
----
 ### Method: EncryptionConverter.Write(Text.Json.Utf8JsonWriter, String, Text.Json.JsonSerializerOptions)
 
 Writes a specified value as JSON.
@@ -128,8 +118,6 @@ Writes a specified value as JSON.
 |value: |The value to convert to JSON.|
 |options: |An object that specifies serialization options to use.|
 
-
----
 ---
 ## Type: Sem.Tools.Extensions
 
@@ -150,8 +138,6 @@ Writes a specified value as JSON.
 The has as HEX encoded data.
 
 
-
----
 ### Method: Extensions.MustNotBeNullOrEmpty(String, String)
 
  Throws an ```System.ArgumentNullException``` when passing NULL or an empty string to  value . 
@@ -166,8 +152,6 @@ The has as HEX encoded data.
  The original value of  value . 
 
 
-
----
 ### Method: Extensions.MustNotBeNull\<T1>(``0, String)
 
  Throws an ```System.ArgumentNullException``` when passing NULL values to  value . 
@@ -186,8 +170,6 @@ The has as HEX encoded data.
  The original value of  value . 
 
 
-
----
 ### Method: Extensions.ToJson\<T1>(``0)
 
  Extends all objects to have a simple JsonSerialization method. 
@@ -205,8 +187,6 @@ The has as HEX encoded data.
 A JSON string.
 
 
-
----
 ---
 ## Type: Sem.Tools.FileSystemTools
 
@@ -227,8 +207,6 @@ A JSON string.
 The file name without illegal characters.
 
 
-
----
 ---
 ## Type: Sem.Tools.InheritanceConverter`1
 
@@ -255,8 +233,6 @@ Reads and converts the JSON to type  TType .
 The converted value.
 
 
-
----
 ### Method: InheritanceConverter`1.Write(Text.Json.Utf8JsonWriter, `0, Text.Json.JsonSerializerOptions)
 
 Writes a specified value as JSON.
@@ -268,8 +244,6 @@ Writes a specified value as JSON.
 |value: |The value to convert to JSON.|
 |options: |An object that specifies serialization options to use.|
 
-
----
 
 
 ---
