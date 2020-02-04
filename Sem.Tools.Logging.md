@@ -43,7 +43,7 @@ A value indicating whether the flag is set.
 ---
 ### [Method: LogExtension.AddDebug(Action\<LogCategories, LogLevel, LogScope, String>)](#Refd8d6d4518115b920e7b656ba0709e08c6a4734a5327c55f8f9130acaec3f4a33)
 
- Simple output using ```c# Diagnostics.Debug.WriteLine(Object)```. 
+ Simple output using ```Diagnostics.Debug.WriteLine(Object)```. 
 
 #### Parameters:
 |Name | Description |
@@ -51,14 +51,14 @@ A value indicating whether the flag is set.
 |logMethod|The original log method, this method should be added to.|
 
 #### Returns:
-A new method that is the combination of  logMethod  and an output to ```c# System.Diagnostics.Debug```.
+A new method that is the combination of  logMethod  and an output to ```System.Diagnostics.Debug```.
 
 
 
 ---
 ### [Method: LogExtension.AddConsole(Action\<LogCategories, LogLevel, LogScope, String>)](#Refc7c426b970c3271913aa56b33807400ce35f06d0d2ea3b9b9dd72448de3edf8d)
 
- Simple output using ```c# Console.WriteLine(Object)```. 
+ Simple output using ```Console.WriteLine(Object)```. 
 
 #### Parameters:
 |Name | Description |
@@ -66,7 +66,7 @@ A new method that is the combination of  logMethod  and an output to ```c# Syste
 |logMethod|The original log method, this method should be added to.|
 
 #### Returns:
-A new method that is the combination of  logMethod  and an output to ```c# System.Console```.
+A new method that is the combination of  logMethod  and an output to ```System.Console```.
 
 
 

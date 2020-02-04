@@ -154,7 +154,7 @@ The has as HEX encoded data.
 ---
 ### [Method: Extensions.MustNotBeNullOrEmpty(String, String)](#Ref48966661ee8513e88e591b03acf9f2bb14ed267f4e9b15552a43d04fc0248516)
 
- Throws an ```c# System.ArgumentNullException``` when passing NULL or an empty string to  value . 
+ Throws an ```System.ArgumentNullException``` when passing NULL or an empty string to  value . 
 
 #### Parameters:
 |Name | Description |
@@ -170,7 +170,7 @@ The has as HEX encoded data.
 ---
 ### [Method: Extensions.MustNotBeNull\<T1>(``0, String)](#Ref0a37c78ef77ccb8040d5da511476d9f706139e8ca1d868e61993231d1e398570)
 
- Throws an ```c# System.ArgumentNullException``` when passing NULL values to  value . 
+ Throws an ```System.ArgumentNullException``` when passing NULL values to  value . 
 
 #### Type parameters:
 |Name | Description |
