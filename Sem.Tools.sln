@@ -27,16 +27,25 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "10 Tools", "10 Tools", "{CA
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sem.Data.SprocAccess.FileSystemTests", "Sem.Data.SprocAccess.FileSystemTests\Sem.Data.SprocAccess.FileSystemTests.csproj", "{C00E3448-388F-4FBE-B9CE-43100D47CA54}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sem.Tools.Tests", "Sem.Tools.Tests\Sem.Tools.Tests.csproj", "{C5984BC4-5CFF-492E-B038-AABDB05A1131}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sem.Tools.Tests", "Sem.Tools.Tests\Sem.Tools.Tests.csproj", "{C5984BC4-5CFF-492E-B038-AABDB05A1131}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "00 Solution Items", "00 Solution Items", "{9EB11DEE-AE0D-4641-A965-67A701AC1E7D}"
 	ProjectSection(SolutionItems) = preProject
 		azure-pipelines.yml = azure-pipelines.yml
-		Documentation.MD = Documentation.MD
-		README.md = README.md
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sem.MdDocGenerator", "Sem.MdDocGenerator\Sem.MdDocGenerator.csproj", "{33581FB6-74C5-42EA-B406-A2D8E54EA710}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sem.MdDocGenerator", "Sem.MdDocGenerator\Sem.MdDocGenerator.csproj", "{33581FB6-74C5-42EA-B406-A2D8E54EA710}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "05 Documentation", "05 Documentation", "{8D16712C-EF4F-4411-B81D-768F16CD5E24}"
+	ProjectSection(SolutionItems) = preProject
+		README.md = README.md
+		Sem.Data.SprocAccess.FileSystem.md = Sem.Data.SprocAccess.FileSystem.md
+		Sem.Data.SprocAccess.md = Sem.Data.SprocAccess.md
+		Sem.Data.SprocAccess.SqlServer.md = Sem.Data.SprocAccess.SqlServer.md
+		Sem.Tools.CmdLine.md = Sem.Tools.CmdLine.md
+		Sem.Tools.Logging.md = Sem.Tools.Logging.md
+		Sem.Tools.md = Sem.Tools.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
