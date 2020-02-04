@@ -9,7 +9,7 @@
 ---
 ## Type: Sem.Tools.Logging.LogCategoryExtensions
 
- Extension class for the enum type [Sem.Tools.Logging.LogCategories](Sem.Tools.Logging.md#Sem.Tools.Logging.LogCategories). 
+ Extension class for the enum type [Sem.Tools.Logging.LogCategories](Sem.Tools.Logging.md#semtoolslogginglogcategories). 
 
 
 

@@ -2,14 +2,14 @@
 
 ## Type: Sem.Data.SprocAccess.FileSystem.TxtDatabase
 
- Simple text file implementation of [Sem.Data.SprocAccess.IDatabase](Sem.Data.SprocAccess.md#Sem.Data.SprocAccess.IDatabase). Can be used to mock database access easily. Each SPROC gets its own folder and each combination of parameters its own file. 
+ Simple text file implementation of [Sem.Data.SprocAccess.IDatabase](Sem.Data.SprocAccess.md#semdatasprocaccessidatabase). Can be used to mock database access easily. Each SPROC gets its own folder and each combination of parameters its own file. 
 
 
 
 ---
 ### Method: Sem.Data.SprocAccess.FileTxtDatabase.#ctor(String)
 
- Initializes a new instance of the [Sem.Data.SprocAccess.FileSystem.TxtDatabase](Sem.Data.SprocAccess.FileSystem.md#Sem.Data.SprocAccess.FileSystem.TxtDatabase) class. 
+ Initializes a new instance of the [Sem.Data.SprocAccess.FileSystem.TxtDatabase](Sem.Data.SprocAccess.FileSystem.md#semdatasprocaccessfilesystemtxtdatabase) class. 
 
 #### Parameters:
 |Name | Description |
@@ -53,14 +53,14 @@ A task that represents the asynchronous dispose operation.
 ---
 ## Type: Sem.Data.SprocAccess.FileSystem.TxtReader
 
- Reader implementation for a bunch of text files - [Sem.Data.SprocAccess.FileSystem.TxtDatabase](Sem.Data.SprocAccess.FileSystem.md#Sem.Data.SprocAccess.FileSystem.TxtDatabase). 
+ Reader implementation for a bunch of text files - [Sem.Data.SprocAccess.FileSystem.TxtDatabase](Sem.Data.SprocAccess.FileSystem.md#semdatasprocaccessfilesystemtxtdatabase). 
 
 
 
 ---
 ### Method: Sem.Data.SprocAccess.FileTxtReader.#ctor(String)
 
- Initializes a new instance of the [Sem.Data.SprocAccess.FileSystem.TxtReader](Sem.Data.SprocAccess.FileSystem.md#Sem.Data.SprocAccess.FileSystem.TxtReader) class. 
+ Initializes a new instance of the [Sem.Data.SprocAccess.FileSystem.TxtReader](Sem.Data.SprocAccess.FileSystem.md#semdatasprocaccessfilesystemtxtreader) class. 
 
 #### Parameters:
 |Name | Description |

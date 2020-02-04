@@ -44,7 +44,7 @@ namespace Sem.MdDocGenerator
                 .OrderByDescending(x => x.Length)
                 .FirstOrDefault();
 
-            return string.IsNullOrEmpty(file) ? $"```{className}```" : $"[{className}]({file}.md#{className.Replace(" ", "-")})";
+            return string.IsNullOrEmpty(file) ? $"```{className}```" : $"[{className}]({file}.md#{className.Replace(" ", "-").Replace(".", "").ToLowerInvariant()})";
         }
     }
 }
