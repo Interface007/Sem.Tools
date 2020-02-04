@@ -57,14 +57,14 @@ _C# code_
 
 
 ---
-### P:Sem.Tools.CmdLine.MenuItem.DisplayString (#P:Sem.Tools.CmdLine.MenuItem.DisplayString)
+### Property: Sem.Tools.CmdLine.MenuItem.DisplayString
 
  Gets the "label" that should be shown on the screen to describe the functionality. 
 
 
 
 ---
-### P:Sem.Tools.CmdLine.MenuItem.Action (#P:Sem.Tools.CmdLine.MenuItem.Action)
+### Property: Sem.Tools.CmdLine.MenuItem.Action
 
  Gets the action to perform when the user selects this menu item. 
 

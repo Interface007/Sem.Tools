@@ -4,11 +4,12 @@
 
     public class MdConverterProperty : MarkdownBase
     {
-        public MdConverterProperty(XElement el,AssemblyContext context) : base(el,context) { }
+        public MdConverterProperty(XElement el, AssemblyContext context) : base(el, context) { }
 
         public override string ToString()
         {
-            return base.ToString("### {0} (#{0})\n\n{1}\n\n---\n");
+            var x = d("name", this.Node);
+            return $"### Property: {x[0].Substring(2)}\n\n{x[1]}\n\n---\n";
         }
     }
 }

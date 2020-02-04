@@ -85,56 +85,56 @@ A new method that is the combination of  logMethod  and an output to ```System.C
 
 
 ---
-### P:Sem.Tools.Logging.LogScope.DefaultLevel (#P:Sem.Tools.Logging.LogScope.DefaultLevel)
+### Property: Sem.Tools.Logging.LogScope.DefaultLevel
 
  Gets or sets the level of "chattiness". 
 
 
 
 ---
-### P:Sem.Tools.Logging.LogScope.DefaultCategory (#P:Sem.Tools.Logging.LogScope.DefaultCategory)
+### Property: Sem.Tools.Logging.LogScope.DefaultCategory
 
  Gets or sets the type of logs to be written. 
 
 
 
 ---
-### P:Sem.Tools.Logging.LogScope.LogMethod (#P:Sem.Tools.Logging.LogScope.LogMethod)
+### Property: Sem.Tools.Logging.LogScope.LogMethod
 
  Gets or sets the method that will write the log information. 
 
 
 
 ---
-### P:Sem.Tools.Logging.LogScope.IdFactory (#P:Sem.Tools.Logging.LogScope.IdFactory)
+### Property: Sem.Tools.Logging.LogScope.IdFactory
 
  Gets or sets the method generating an ID for this logger instance - only the last 4 characters will be used. 
 
 
 
 ---
-### P:Sem.Tools.Logging.LogScope.BasePath (#P:Sem.Tools.Logging.LogScope.BasePath)
+### Property: Sem.Tools.Logging.LogScope.BasePath
 
  Gets or sets a path to be removed in logs. 
 
 
 
 ---
-### P:Sem.Tools.Logging.LogScope.Category (#P:Sem.Tools.Logging.LogScope.Category)
+### Property: Sem.Tools.Logging.LogScope.Category
 
  Gets or sets the type of logs to be written. 
 
 
 
 ---
-### P:Sem.Tools.Logging.LogScope.Level (#P:Sem.Tools.Logging.LogScope.Level)
+### Property: Sem.Tools.Logging.LogScope.Level
 
  Gets or sets the level of "chattiness". 
 
 
 
 ---
-### P:Sem.Tools.Logging.LogScope.Id (#P:Sem.Tools.Logging.LogScope.Id)
+### Property: Sem.Tools.Logging.LogScope.Id
 
  Gets the hierarchical ID of the scope. 
 
