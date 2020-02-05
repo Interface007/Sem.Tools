@@ -12,6 +12,8 @@ namespace Sem.MdDocGenerator
     using System.Xml;
     using System.Xml.Linq;
 
+    using Sem.Tools;
+
     /// <summary>
     /// Base class for translating C# XML comments into markdown.
     /// </summary>
@@ -39,16 +41,6 @@ namespace Sem.MdDocGenerator
         protected XElement Node { get; }
 
         /// <summary>
-        /// Converts a collection of XML nodes to markdown.
-        /// </summary>
-        /// <param name="nodes">The nodes to be converted.</param>
-        /// <returns>The generated markdown.</returns>
-        protected string ToMarkDown(IEnumerable<XNode> nodes)
-        {
-            return nodes.Aggregate(string.Empty, (current, x) => current + this.ToMarkDown(x));
-        }
-
-        /// <summary>
         /// Converts the node to markdown.
         /// </summary>
         /// <returns>The markdown representing the documentation node.</returns>
@@ -58,15 +50,36 @@ namespace Sem.MdDocGenerator
         }
 
         /// <summary>
+        /// Converts the node to markdown.
+        /// </summary>
+        /// <param name="pattern">The template for the markdown.</param>
+        /// <param name="parts">The parts extracted from the node.</param>
+        /// <returns>The markdown representing the documentation node.</returns>
+        protected static string ToString(string pattern, string[] parts)
+        {
+            return string.Format(CultureInfo.InvariantCulture, pattern, parts);
+        }
+
+        /// <summary>
         /// Converts the value into a code block.
         /// </summary>
         /// <param name="value">The value to be wrapped into a code block.</param>
         /// <returns>The markdown for the code block containing the value.</returns>
         protected static string ToCodeBlock(string value)
         {
-            var lines = value.Split(new[] { '\n' }, StringSplitOptions.RemoveEmptyEntries);
+            var lines = value.MustNotBeNull(nameof(value)).Split(new[] { '\n' }, StringSplitOptions.RemoveEmptyEntries);
             var blank = lines[0].TakeWhile(x => x == ' ').Count() - 4;
             return string.Join("\n", lines.Select(x => new string(x.SkipWhile((y, i) => i < blank).ToArray())));
+        }
+
+        /// <summary>
+        /// Converts a collection of XML nodes to markdown.
+        /// </summary>
+        /// <param name="nodes">The nodes to be converted.</param>
+        /// <returns>The generated markdown.</returns>
+        protected string ToMarkDown(IEnumerable<XNode> nodes)
+        {
+            return nodes.Aggregate(string.Empty, (current, x) => current + this.ToMarkDown(x));
         }
 
         /// <summary>
@@ -89,18 +102,7 @@ namespace Sem.MdDocGenerator
         protected string ToString(string pattern)
         {
             var parts = this.DefaultConvert("name", this.Node);
-            return this.ToString(pattern, parts);
-        }
-
-        /// <summary>
-        /// Converts the node to markdown.
-        /// </summary>
-        /// <param name="pattern">The template for the markdown.</param>
-        /// <param name="parts">The parts extracted from the node.</param>
-        /// <returns>The markdown representing the documentation node.</returns>
-        protected string ToString(string pattern, string[] parts)
-        {
-            return string.Format(CultureInfo.InvariantCulture, pattern, parts);
+            return ToString(pattern, parts);
         }
 
         /// <summary>
@@ -138,25 +140,6 @@ namespace Sem.MdDocGenerator
         }
 
         /// <summary>
-        /// Converts an XML node to markdown.
-        /// </summary>
-        /// <param name="node">The node to be converted.</param>
-        /// <returns>The generated markdown.</returns>
-        private string ToMarkDown(XNode node)
-        {
-            if (node is XElement el)
-            {
-                var name = GetName(el);
-                var converter = this.GetConverter(name, el);
-                return converter.ToString();
-            }
-
-            return node?.NodeType == XmlNodeType.Text
-                ? Regex.Replace(((XText)node).Value.Replace('\n', ' '), @"\s+", " ")
-                : string.Empty;
-        }
-
-        /// <summary>
         /// Translates some of the names into more specific names.
         /// </summary>
         /// <param name="node">The node to get the name for.</param>
@@ -185,6 +168,25 @@ namespace Sem.MdDocGenerator
                 "example" => name,
                 _ => name
             };
+        }
+
+        /// <summary>
+        /// Converts an XML node to markdown.
+        /// </summary>
+        /// <param name="node">The node to be converted.</param>
+        /// <returns>The generated markdown.</returns>
+        private string ToMarkDown(XNode node)
+        {
+            if (node is XElement el)
+            {
+                var name = GetName(el);
+                var converter = this.GetConverter(name, el);
+                return converter.ToString();
+            }
+
+            return node?.NodeType == XmlNodeType.Text
+                ? Regex.Replace(((XText)node).Value.Replace('\n', ' '), @"\s+", " ")
+                : string.Empty;
         }
 
         /// <summary>

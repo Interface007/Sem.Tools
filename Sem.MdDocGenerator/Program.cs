@@ -1,15 +1,24 @@
-﻿using System.Linq;
+﻿// <copyright file="Program.cs" company="Sven Erik Matzen">
+// Copyright (c) Sven Erik Matzen. All rights reserved.
+// </copyright>
 
 namespace Sem.MdDocGenerator
 {
     using System;
     using System.Collections.Generic;
     using System.IO;
+    using System.Linq;
     using System.Xml.Linq;
 
-    class Program
+    /// <summary>
+    /// The process that converts documentation XML into markdown.
+    /// </summary>
+    public static class Program
     {
-        static void Main(string[] args)
+        /// <summary>
+        /// Main entry point.
+        /// </summary>
+        public static void Main()
         {
             var path = Path.GetFullPath("..\\..\\..\\..");
             var toc = Path.Combine(path, "README.md");

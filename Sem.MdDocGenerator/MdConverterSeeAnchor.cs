@@ -26,7 +26,7 @@ namespace Sem.MdDocGenerator
         {
             var parts = this.DefaultConvert("cref", this.Node);
             parts[0] = parts[0].ToLowerInvariant();
-            return base.ToString("[{1}]({0}#{2})", parts);
+            return ToString("[{1}]({0}#{2})", parts);
         }
     }
 }

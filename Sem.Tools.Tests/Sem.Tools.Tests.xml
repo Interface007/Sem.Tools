@@ -1,0 +1,98 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Sem.Tools.Tests</name>
+    </assembly>
+    <members>
+        <member name="T:Sem.Tools.Tests.ClassExtensions">
+            <summary>
+            Tests the class <see cref="T:Sem.Tools.Tests.ClassExtensions"/>.
+            </summary>
+        </member>
+        <member name="T:Sem.Tools.Tests.ClassExtensions.Hash">
+            <summary>
+            Tests the method <see cref="T:Sem.Tools.Tests.ClassExtensions.Hash"/>.
+            </summary>
+        </member>
+        <member name="M:Sem.Tools.Tests.ClassExtensions.Hash.CorrectHashForEmptyString">
+            <summary>
+            Tests whether an empty string is accepted and returns the correct hash value.
+            </summary>
+        </member>
+        <member name="M:Sem.Tools.Tests.ClassExtensions.Hash.CorrectHashForNull">
+            <summary>
+            Tests whether a null string is accepted and returns the correct hash value.
+            </summary>
+        </member>
+        <member name="M:Sem.Tools.Tests.ClassExtensions.Hash.CorrectHashForKnownString">
+            <summary>
+            Tests whether a known string returns a defined value.
+            </summary>
+        </member>
+        <member name="T:Sem.Tools.Tests.ClassExtensions.MustNotBeNull">
+            <summary>
+            Tests the method <see cref="T:Sem.Tools.Tests.ClassExtensions.MustNotBeNull"/>.
+            </summary>
+        </member>
+        <member name="M:Sem.Tools.Tests.ClassExtensions.MustNotBeNull.ThrowsExceptionForNullValue">
+            <summary>
+            Tests whether the method throws an exception for NULL-values.
+            </summary>
+        </member>
+        <member name="M:Sem.Tools.Tests.ClassExtensions.MustNotBeNull.DoesNotThrowExceptionForNonNullValue">
+            <summary>
+            Tests whether the method accepts non-null values and returns them.
+            </summary>
+        </member>
+        <member name="T:Sem.Tools.Tests.ClassExtensions.MustNotBeNullOrEmpty">
+            <summary>
+            Tests the method <see cref="T:Sem.Tools.Tests.ClassExtensions.MustNotBeNullOrEmpty"/>.
+            </summary>
+        </member>
+        <member name="M:Sem.Tools.Tests.ClassExtensions.MustNotBeNullOrEmpty.ThrowsExceptionForNullValue">
+            <summary>
+            Tests whether the method throws an exception for NULL-values.
+            </summary>
+        </member>
+        <member name="M:Sem.Tools.Tests.ClassExtensions.MustNotBeNullOrEmpty.ThrowsExceptionForEmptyValue">
+            <summary>
+            Tests whether the method throws an exception for <see cref="F:System.String.Empty"/>.
+            </summary>
+        </member>
+        <member name="M:Sem.Tools.Tests.ClassExtensions.MustNotBeNullOrEmpty.DoesNotThrowExceptionForNonNullValue">
+            <summary>
+            Tests whether the method accepts non-null values and returns them.
+            </summary>
+        </member>
+        <member name="T:Sem.Tools.Tests.ClassExtensions.ToJson">
+            <summary>
+            Tests the method <see cref="M:Sem.Tools.Extensions.ToJson``1(``0)"/>.
+            </summary>
+        </member>
+        <member name="M:Sem.Tools.Tests.ClassExtensions.ToJson.SerializesKnownStructure">
+            <summary>
+            Tests whether a known structure is still serialized the same.
+            </summary>
+        </member>
+        <member name="T:Sem.Tools.Tests.ClassFileSystemTools">
+            <summary>
+            Tests the class <see cref="T:Sem.Tools.FileSystemTools"/>.
+            </summary>
+        </member>
+        <member name="T:Sem.Tools.Tests.ClassFileSystemTools.SanitizeFileName">
+            <summary>
+            Tests the method <see cref="M:Sem.Tools.FileSystemTools.SanitizeFileName(System.String)"/>.
+            </summary>
+        </member>
+        <member name="M:Sem.Tools.Tests.ClassFileSystemTools.SanitizeFileName.RemovesSpecialCharacters">
+            <summary>
+            Tests whether special characters are removed.
+            </summary>
+        </member>
+        <member name="M:Sem.Tools.Tests.ClassFileSystemTools.SanitizeFileName.AcceptsNull">
+            <summary>
+            Tests whether NULL values are accepted.
+            </summary>
+        </member>
+    </members>
+</doc>

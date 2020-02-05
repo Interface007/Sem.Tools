@@ -30,7 +30,7 @@ namespace Sem.MdDocGenerator
             var parts = this.DefaultConvert("cref", this.Node);
             var className = string.Empty;
             var ns = this.Context.NameSpace;
-            var anchor =string.Empty;
+            var anchor = string.Empty;
             var part = parts[0];
             if (part[0] == 'T')
             {

@@ -17,7 +17,9 @@ namespace Sem.MdDocGenerator
         /// <param name="element">The element to be converted.</param>
         /// <param name="context">The current execution context.</param>
         public MdConverterRemarks(XElement element, AssemblyContext context)
-            : base(element, context) { }
+            : base(element, context)
+        {
+        }
 
         /// <inheritdoc/>
         public override string ToString()
