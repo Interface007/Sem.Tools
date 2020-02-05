@@ -38,6 +38,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sem.MdDocGenerator", "Sem.M
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "05 Documentation", "05 Documentation", "{8D16712C-EF4F-4411-B81D-768F16CD5E24}"
 	ProjectSection(SolutionItems) = preProject
+		Preface.md = Preface.md
 		README.md = README.md
 		Sem.Data.SprocAccess.FileSystem.md = Sem.Data.SprocAccess.FileSystem.md
 		Sem.Data.SprocAccess.md = Sem.Data.SprocAccess.md

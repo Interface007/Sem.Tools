@@ -6,7 +6,8 @@
     <Version>1.0.7</Version>
     <Authors>Sven Erik Matzen</Authors>
     <Product>Sem.Tools</Product>
-    <Description>Some generic tools.</Description>
+    <Description>Some generic tools like encrypting JSON converter, simple string hashing and 
+      guard methods for null-validation of method parameters.</Description>
     <Copyright>Sven Erik Matzen</Copyright>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageProjectUrl>https://dev.azure.com/matzen/Sven</PackageProjectUrl>
