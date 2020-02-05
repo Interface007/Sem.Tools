@@ -11,7 +11,7 @@
 
         public override string ToString()
         {
-            var parts = d("cref", this.Node);
+            var parts = DefaultConvert("cref", this.Node);
             return base.ToString("[[{0}|{0}]]: {1}\n\n", parts);
         }
     }

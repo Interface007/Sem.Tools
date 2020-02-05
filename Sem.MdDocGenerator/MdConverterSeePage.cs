@@ -1,23 +1,33 @@
-﻿using System.Linq;
-using System.Text.RegularExpressions;
+﻿// <copyright file="MdConverterSeePage.cs" company="Sven Erik Matzen">
+// Copyright (c) Sven Erik Matzen. All rights reserved.
+// </copyright>
 
 namespace Sem.MdDocGenerator
 {
     using System;
+    using System.Linq;
+    using System.Text.RegularExpressions;
     using System.Xml.Linq;
 
-    using Sem.Tools;
-
+    /// <summary>
+    /// Converts a reference to another method/type.
+    /// </summary>
     public class MdConverterSeePage : MarkdownBase
     {
-        public MdConverterSeePage(XElement el, AssemblyContext context)
-            : base(el, context)
+        /// <summary>
+        /// Initializes a new instance of the <see cref="MdConverterSeePage"/> class.
+        /// </summary>
+        /// <param name="element">The element to be converted.</param>
+        /// <param name="context">The current execution context.</param>
+        public MdConverterSeePage(XElement element, AssemblyContext context)
+            : base(element, context)
         {
         }
 
+        /// <inheritdoc/>
         public override string ToString()
         {
-            var parts = d("cref", this.Node);
+            var parts = this.DefaultConvert("cref", this.Node);
             var className = string.Empty;
             var ns = this.Context.NameSpace;
             var anchor =string.Empty;
@@ -50,13 +60,19 @@ namespace Sem.MdDocGenerator
             return string.IsNullOrEmpty(file) ? $"```{className}```" : $"[{className}]({file}.md#{anchor})";
         }
 
-        private static string Anchor(string className)
+        /// <summary>
+        /// Creates an anchor md-string.
+        /// </summary>
+        /// <param name="name">The name of the referenced element.</param>
+        /// <returns>The expected anchor name.</returns>
+        private static string Anchor(string name)
         {
-            return Regex.Replace(className
-                .Replace(" ", "-")
-                .ToLowerInvariant(),
+            return Regex.Replace(
+                name
+                        .Replace(" ", "-", StringComparison.Ordinal)
+                        .ToLowerInvariant(),
                 "[^a-z-]",
-                "");
+                string.Empty);
         }
     }
 }

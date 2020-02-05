@@ -1,16 +1,27 @@
-﻿namespace Sem.MdDocGenerator
+﻿// <copyright file="MdConverterType.cs" company="Sven Erik Matzen">
+// Copyright (c) Sven Erik Matzen. All rights reserved.
+// </copyright>
+
+namespace Sem.MdDocGenerator
 {
     using System.Xml.Linq;
 
-    using Sem.Tools;
-
+    /// <summary>
+    /// Converts a type documentation.
+    /// </summary>
     internal class MdConverterType : MarkdownBase
     {
-        public MdConverterType(XElement el, AssemblyContext context)
-            : base(el, context)
+        /// <summary>
+        /// Initializes a new instance of the <see cref="MdConverterType"/> class.
+        /// </summary>
+        /// <param name="element">The element to be converted.</param>
+        /// <param name="context">The current execution context.</param>
+        public MdConverterType(XElement element, AssemblyContext context)
+            : base(element, context)
         {
         }
 
+        /// <inheritdoc/>
         public override string ToString()
         {
             var name = this.Node.Attribute("name")?.Value.Substring(2);
