@@ -95,5 +95,16 @@ namespace Sem.Tools
             // the type here explicitly.
             return JsonSerializer.Serialize(value, value.GetType(), serializeOptions);
         }
+
+        /// <summary>
+        /// Extends all strings to have a simple JsonDeSerialization method.
+        /// </summary>
+        /// <typeparam name="T">The type of the object to be serialized.</typeparam>
+        /// <param name="value">The value to be serialized.</param>
+        /// <returns>A JSON string.</returns>
+        public static T FromJson<T>(this string value)
+        {
+            return JsonSerializer.Deserialize<T>(value);
+        }
     }
 }

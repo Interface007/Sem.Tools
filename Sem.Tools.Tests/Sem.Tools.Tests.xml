@@ -4,6 +4,111 @@
         <name>Sem.Tools.Tests</name>
     </assembly>
     <members>
+        <member name="T:Sem.Tools.Tests.ClassActionExtension">
+            <summary>
+            Tests the extension class <see cref="T:Sem.Tools.ActionExtension"/>.
+            </summary>
+        </member>
+        <member name="T:Sem.Tools.Tests.ClassActionExtension.Append">
+            <summary>
+            Tests the method <see cref="M:Sem.Tools.ActionExtension.Append(System.Action,System.Action)"/> and its overloads.
+            </summary>
+        </member>
+        <member name="M:Sem.Tools.Tests.ClassActionExtension.Append.ConcatenatesActionsWith0Parameter">
+            <summary>
+            Tests whether both of two methods with 0 parameters are being called.
+            </summary>
+        </member>
+        <member name="M:Sem.Tools.Tests.ClassActionExtension.Append.ConcatenatesActionsWith1Parameter">
+            <summary>
+            Tests whether both of two methods with 1 parameters are being called.
+            </summary>
+        </member>
+        <member name="M:Sem.Tools.Tests.ClassActionExtension.Append.ConcatenatesActionsWith2Parameter">
+            <summary>
+            Tests whether both of two methods with 2 parameters are being called.
+            </summary>
+        </member>
+        <member name="M:Sem.Tools.Tests.ClassActionExtension.Append.ConcatenatesActionsWith3Parameter">
+            <summary>
+            Tests whether both of two methods with 3 parameters are being called.
+            </summary>
+        </member>
+        <member name="M:Sem.Tools.Tests.ClassActionExtension.Append.ConcatenatesActionsWith4Parameter">
+            <summary>
+            Tests whether both of two methods with 4 parameters are being called.
+            </summary>
+        </member>
+        <member name="M:Sem.Tools.Tests.ClassActionExtension.Append.HandlesNullInFirstActionsWith0Parameter">
+            <summary>
+            Tests whether both of two methods with 0 parameters are being called.
+            </summary>
+        </member>
+        <member name="M:Sem.Tools.Tests.ClassActionExtension.Append.HandlesNullInFirstActionsWith1Parameter">
+            <summary>
+            Tests whether both of two methods with 1 parameters are being called.
+            </summary>
+        </member>
+        <member name="M:Sem.Tools.Tests.ClassActionExtension.Append.HandlesNullInFirstActionsWith2Parameter">
+            <summary>
+            Tests whether both of two methods with 2 parameters are being called.
+            </summary>
+        </member>
+        <member name="M:Sem.Tools.Tests.ClassActionExtension.Append.HandlesNullInFirstActionsWith3Parameter">
+            <summary>
+            Tests whether both of two methods with 3 parameters are being called.
+            </summary>
+        </member>
+        <member name="M:Sem.Tools.Tests.ClassActionExtension.Append.HandlesNullInFirstActionsWith4Parameter">
+            <summary>
+            Tests whether both of two methods with 4 parameters are being called.
+            </summary>
+        </member>
+        <member name="M:Sem.Tools.Tests.ClassActionExtension.Append.HandlesNullInSecondActionsWith0Parameter">
+            <summary>
+            Tests whether both of two methods with 0 parameters are being called.
+            </summary>
+        </member>
+        <member name="M:Sem.Tools.Tests.ClassActionExtension.Append.HandlesNullInSecondActionsWith1Parameter">
+            <summary>
+            Tests whether both of two methods with 1 parameters are being called.
+            </summary>
+        </member>
+        <member name="M:Sem.Tools.Tests.ClassActionExtension.Append.HandlesNullInSecondActionsWith2Parameter">
+            <summary>
+            Tests whether both of two methods with 2 parameters are being called.
+            </summary>
+        </member>
+        <member name="M:Sem.Tools.Tests.ClassActionExtension.Append.HandlesNullInSecondActionsWith3Parameter">
+            <summary>
+            Tests whether both of two methods with 3 parameters are being called.
+            </summary>
+        </member>
+        <member name="M:Sem.Tools.Tests.ClassActionExtension.Append.HandlesNullInSecondActionsWith4Parameter">
+            <summary>
+            Tests whether both of two methods with 4 parameters are being called.
+            </summary>
+        </member>
+        <member name="T:Sem.Tools.Tests.ClassEncryptionConverter">
+            <summary>
+            Tests the class <see cref="T:Sem.Tools.EncryptionConverter"/>.
+            </summary>
+        </member>
+        <member name="T:Sem.Tools.Tests.ClassEncryptionConverter.Serialize">
+            <summary>
+            Tests the serialization.
+            </summary>
+        </member>
+        <member name="M:Sem.Tools.Tests.ClassEncryptionConverter.Serialize.SerializesInheritedProperties">
+            <summary>
+            Serialized value should encrypt the property with the <see cref="T:Sem.Tools.EncryptionConverter"/> attribute.
+            </summary>
+        </member>
+        <member name="M:Sem.Tools.Tests.ClassEncryptionConverter.Serialize.DeSerializesInheritedProperties">
+            <summary>
+            Previously encrypted value can be restored.
+            </summary>
+        </member>
         <member name="T:Sem.Tools.Tests.ClassExtensions">
             <summary>
             Tests the class <see cref="T:Sem.Tools.Tests.ClassExtensions"/>.
@@ -92,6 +197,56 @@
         <member name="M:Sem.Tools.Tests.ClassFileSystemTools.SanitizeFileName.AcceptsNull">
             <summary>
             Tests whether NULL values are accepted.
+            </summary>
+        </member>
+        <member name="T:Sem.Tools.Tests.ClassInheritanceConverter">
+            <summary>
+            Tests the class <see cref="T:Sem.Tools.InheritanceConverter`1"/>.
+            </summary>
+        </member>
+        <member name="T:Sem.Tools.Tests.ClassInheritanceConverter.Serialize">
+            <summary>
+            Tests the serialization.
+            </summary>
+        </member>
+        <member name="M:Sem.Tools.Tests.ClassInheritanceConverter.Serialize.SerializesInheritedProperties">
+            <summary>
+            Serialized value should contain the inherited property
+            </summary>
+        </member>
+        <member name="T:Sem.Tools.Tests.ItemSource">
+            <summary>
+            Test inheriting class.
+            </summary>
+        </member>
+        <member name="P:Sem.Tools.Tests.ItemSource.InInheritingClass">
+            <summary>
+            Gets or sets a simple string.
+            </summary>
+        </member>
+        <member name="T:Sem.Tools.Tests.SourceBase">
+            <summary>
+            Test base class.
+            </summary>
+        </member>
+        <member name="P:Sem.Tools.Tests.SourceBase.InBaseClass">
+            <summary>
+            Gets or sets a simple string.
+            </summary>
+        </member>
+        <member name="T:Sem.Tools.Tests.TestClass">
+            <summary>
+            Simple test class for serialization.
+            </summary>
+        </member>
+        <member name="P:Sem.Tools.Tests.TestClass.EncryptedString">
+            <summary>
+            Gets or sets a string that will be encrypted while serialization.
+            </summary>
+        </member>
+        <member name="P:Sem.Tools.Tests.TestClass.Source">
+            <summary>
+            Gets or sets a property with a base class declaration.
             </summary>
         </member>
     </members>

@@ -125,7 +125,7 @@ namespace Sem.Tools.Tests
             [TestMethod]
             public void DoesNotThrowExceptionForNonNullValue()
             {
-                var result = "Hello".MustNotBeNull("value");
+                var result = "Hello".MustNotBeNullOrEmpty("value");
                 Assert.AreEqual("Hello", result);
             }
         }

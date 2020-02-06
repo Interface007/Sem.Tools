@@ -18,4 +18,6 @@ Some generic tools like encrypting JSON converter, simple string hashing and
 Command line tools including a menu-system that creates menu entries from 
       methods or public methods of classes by interpreting the documentation comments.
 # [Sem.Tools.Logging](Sem.Tools.Logging.md)
-Simple scoped logging.
+Simple scoped logging. Provides ability to forward log entries to other frameworks. 
+    The main aspect to implement this was to provide logging inside my libraries while still letting 
+    the main application decide what framework to use for log-output.

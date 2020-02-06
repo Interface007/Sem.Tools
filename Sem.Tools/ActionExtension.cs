@@ -14,6 +14,31 @@ namespace Sem.Tools
         /// <summary>
         /// Extension to combine two logging methods into a new one.
         /// </summary>
+        /// <param name="currentAction">The logging method that should be executed first.</param>
+        /// <param name="actionToAdd">The logging method to be executed after <paramref name="currentAction"/>.</param>
+        /// <returns>A new method combining both methods specified in the parameters.</returns>
+        public static Action Append(this Action currentAction, Action actionToAdd)
+        {
+            if (currentAction == null)
+            {
+                return actionToAdd;
+            }
+
+            if (actionToAdd == null)
+            {
+                return currentAction;
+            }
+
+            return () =>
+            {
+                currentAction();
+                actionToAdd();
+            };
+        }
+
+        /// <summary>
+        /// Extension to combine two logging methods into a new one.
+        /// </summary>
         /// <typeparam name="T1">The type of the first parameter of the methods to concatenate.</typeparam>
         /// <param name="currentAction">The logging method that should be executed first.</param>
         /// <param name="actionToAdd">The logging method to be executed after <paramref name="currentAction"/>.</param>
@@ -23,6 +48,11 @@ namespace Sem.Tools
             if (currentAction == null)
             {
                 return actionToAdd;
+            }
+
+            if (actionToAdd == null)
+            {
+                return currentAction;
             }
 
             return arg1 =>
@@ -45,6 +75,11 @@ namespace Sem.Tools
             if (currentAction == null)
             {
                 return actionToAdd;
+            }
+
+            if (actionToAdd == null)
+            {
+                return currentAction;
             }
 
             return (arg1, arg2) =>
@@ -70,6 +105,11 @@ namespace Sem.Tools
                 return actionToAdd;
             }
 
+            if (actionToAdd == null)
+            {
+                return currentAction;
+            }
+
             return (arg1, arg2, arg3) =>
             {
                 currentAction(arg1, arg2, arg3);
@@ -92,6 +132,11 @@ namespace Sem.Tools
             if (currentAction == null)
             {
                 return actionToAdd;
+            }
+
+            if (actionToAdd == null)
+            {
+                return currentAction;
             }
 
             return (arg1, arg2, arg3, arg4) =>
