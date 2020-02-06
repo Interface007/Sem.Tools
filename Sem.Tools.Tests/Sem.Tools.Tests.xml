@@ -211,7 +211,12 @@
         </member>
         <member name="M:Sem.Tools.Tests.ClassInheritanceConverter.Serialize.SerializesInheritedProperties">
             <summary>
-            Serialized value should contain the inherited property
+            Serialized value should contain the inherited property.
+            </summary>
+        </member>
+        <member name="M:Sem.Tools.Tests.ClassInheritanceConverter.Serialize.DeSerializesInheritedProperties">
+            <summary>
+            Tests whether inherited properties are being deserializes properly.
             </summary>
         </member>
         <member name="T:Sem.Tools.Tests.ItemSource">

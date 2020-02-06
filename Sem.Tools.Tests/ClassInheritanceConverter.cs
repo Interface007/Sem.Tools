@@ -19,7 +19,7 @@ namespace Sem.Tools.Tests
         public class Serialize
         {
             /// <summary>
-            /// Serialized value should contain the inherited property
+            /// Serialized value should contain the inherited property.
             /// </summary>
             [TestMethod]
             public void SerializesInheritedProperties()
@@ -38,6 +38,9 @@ namespace Sem.Tools.Tests
                 Assert.IsTrue(actual.Contains(expected, StringComparison.Ordinal));
             }
 
+            /// <summary>
+            /// Tests whether inherited properties are being deserializes properly.
+            /// </summary>
             [TestMethod]
             public void DeSerializesInheritedProperties()
             {

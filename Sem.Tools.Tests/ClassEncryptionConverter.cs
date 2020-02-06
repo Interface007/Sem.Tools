@@ -1,4 +1,4 @@
-﻿// <copyright file="ClassInheritanceConverter.cs" company="Sven Erik Matzen">
+﻿// <copyright file="ClassEncryptionConverter.cs" company="Sven Erik Matzen">
 // Copyright (c) Sven Erik Matzen. All rights reserved.
 // </copyright>
 
@@ -51,7 +51,6 @@ namespace Sem.Tools.Tests
                 const string expected = "A15A3685-55CC-4634-972D-436DA6BE9268";
 
                 Assert.AreEqual(expected, actual.EncryptedString);
-
             }
         }
     }

@@ -2,6 +2,8 @@
 // Copyright (c) Sven Erik Matzen. All rights reserved.
 // </copyright>
 
+// ReSharper disable ConvertToLocalFunction
+// ReSharper disable ExpressionIsAlwaysNull
 namespace Sem.Tools.Tests
 {
     using System;
@@ -26,9 +28,9 @@ namespace Sem.Tools.Tests
             {
                 var value = 0;
                 Action action1 = () => value++;
-                Action action2 = () => value += 2;
+                void Action2() => value += 2;
 
-                action1.Append(action2)();
+                action1.Append(Action2)();
 
                 Assert.AreEqual(3, value);
             }
@@ -41,9 +43,9 @@ namespace Sem.Tools.Tests
             {
                 var value = 0;
                 Action<int> action1 = x => value++;
-                Action<int> action2 = x => value += 2;
+                void Action2(int x) => value += 2;
 
-                action1.Append(action2)(1);
+                action1.Append(Action2)(1);
 
                 Assert.AreEqual(3, value);
             }
@@ -56,9 +58,9 @@ namespace Sem.Tools.Tests
             {
                 var value = 0;
                 Action<int, int> action1 = (x, y) => value++;
-                Action<int, int> action2 = (x, y) => value += 2;
+                void Action2(int x, int y) => value += 2;
 
-                action1.Append(action2)(1, 2);
+                action1.Append(Action2)(1, 2);
 
                 Assert.AreEqual(3, value);
             }
@@ -71,9 +73,9 @@ namespace Sem.Tools.Tests
             {
                 var value = 0;
                 Action<int, int, int> action1 = (x, y, z) => value++;
-                Action<int, int, int> action2 = (x, y, z) => value += 2;
+                void Action2(int x, int y, int z) => value += 2;
 
-                action1.Append(action2)(1, 2, 3);
+                action1.Append(Action2)(1, 2, 3);
 
                 Assert.AreEqual(3, value);
             }
@@ -86,13 +88,13 @@ namespace Sem.Tools.Tests
             {
                 var value = 0;
                 Action<int, int, int, int> action1 = (x, y, z, a) => value++;
-                Action<int, int, int, int> action2 = (x, y, z, a) => value += 2;
+                void Action2(int x, int y, int z, int a) => value += 2;
 
-                action1.Append(action2)(1, 2, 3, 4);
+                action1.Append(Action2)(1, 2, 3, 4);
 
                 Assert.AreEqual(3, value);
             }
-        
+
             /// <summary>
             /// Tests whether both of two methods with 0 parameters are being called.
             /// </summary>
@@ -101,9 +103,9 @@ namespace Sem.Tools.Tests
             {
                 var value = 0;
                 Action action1 = null;
-                Action action2 = () => value += 2;
+                void Action2() => value += 2;
 
-                action1.Append(action2)();
+                action1.Append(Action2)();
 
                 Assert.AreEqual(2, value);
             }
@@ -116,9 +118,9 @@ namespace Sem.Tools.Tests
             {
                 var value = 0;
                 Action<int> action1 = null;
-                Action<int> action2 = x => value += 2;
+                void Action2(int x) => value += 2;
 
-                action1.Append(action2)(1);
+                action1.Append(Action2)(1);
 
                 Assert.AreEqual(2, value);
             }
@@ -131,9 +133,9 @@ namespace Sem.Tools.Tests
             {
                 var value = 0;
                 Action<int, int> action1 = null;
-                Action<int, int> action2 = (x, y) => value += 2;
+                void Action2(int x, int y) => value += 2;
 
-                action1.Append(action2)(1, 2);
+                action1.Append(Action2)(1, 2);
 
                 Assert.AreEqual(2, value);
             }
@@ -146,9 +148,9 @@ namespace Sem.Tools.Tests
             {
                 var value = 0;
                 Action<int, int, int> action1 = null;
-                Action<int, int, int> action2 = (x, y, z) => value += 2;
+                void Action2(int x, int y, int z) => value += 2;
 
-                action1.Append(action2)(1, 2, 3);
+                action1.Append(Action2)(1, 2, 3);
 
                 Assert.AreEqual(2, value);
             }
@@ -161,9 +163,9 @@ namespace Sem.Tools.Tests
             {
                 var value = 0;
                 Action<int, int, int, int> action1 = null;
-                Action<int, int, int, int> action2 = (x, y, z, a) => value += 2;
+                void Action2(int x, int y, int z, int a) => value += 2;
 
-                action1.Append(action2)(1, 2, 3, 4);
+                action1.Append(Action2)(1, 2, 3, 4);
 
                 Assert.AreEqual(2, value);
             }

@@ -38,7 +38,7 @@ namespace Sem.MdDocGenerator
                 ns = part.Contains("<", StringComparison.Ordinal)
                     ? part.Substring(0, part.IndexOf('<', StringComparison.Ordinal) - 1)
                     : part;
-                ns = ns.Substring(2, ns.LastIndexOf('.') - 2);
+                ns = ns[2..ns.LastIndexOf('.')];
                 anchor = "type-" + Anchor(className);
             }
             else if (part[0] == 'M')
@@ -46,7 +46,7 @@ namespace Sem.MdDocGenerator
                 ns = part.Contains("(", StringComparison.Ordinal)
                     ? part.Substring(0, part.IndexOf('(', StringComparison.Ordinal) - 1)
                     : part;
-                ns = ns.Substring(2, ns.LastIndexOf('.') - 2);
+                ns = ns[2..ns.LastIndexOf('.')];
 
                 className = this.FixMethodName(part);
                 anchor = "method-" + Anchor(className);

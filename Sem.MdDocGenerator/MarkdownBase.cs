@@ -57,6 +57,7 @@ namespace Sem.MdDocGenerator
         /// <returns>The markdown representing the documentation node.</returns>
         protected static string ToString(string pattern, string[] parts)
         {
+            // ReSharper disable once CoVariantArrayConversion
             return string.Format(CultureInfo.InvariantCulture, pattern, parts);
         }
 
