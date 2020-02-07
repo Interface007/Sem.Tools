@@ -11,6 +11,7 @@ namespace Sem.Tools.Tests
     using Microsoft.VisualStudio.TestTools.UnitTesting;
 
     using Sem.Tools;
+    using Sem.Tools.TestHelper;
 
     /// <summary>
     /// Tests the class <see cref="ClassExtensions"/>.
@@ -67,7 +68,7 @@ namespace Sem.Tools.Tests
             /// Tests whether the method throws an exception for NULL-values.
             /// </summary>
             [TestMethod]
-            [ExpectedException(typeof(ArgumentNullException))]
+            [ExpectedExceptionMessage(typeof(ArgumentNullException), "$Value cannot be null. (Parameter 'value')^")]
             [ExcludeFromCodeCoverage]
             public void ThrowsExceptionForNullValue()
             {

@@ -42,6 +42,8 @@ steps:
     diagnosticsEnabled: true
     codeCoverageEnabled: true
 
+- task: WhiteSource Bolt@20
+
 - task: DotNetCoreCLI@2
   displayName: 'dotnet pack Sem.Tools'
   inputs:
@@ -73,6 +75,12 @@ steps:
     packagesToPack: 'Sem.Data.SprocAccess.FileSystem/Sem.Data.SprocAccess.FileSystem.csproj'
 
 - task: DotNetCoreCLI@2
+  displayName: 'dotnet pack Sem.Tools.TestHelper'
+  inputs:
+    command: pack
+    packagesToPack: 'Sem.Tools.TestHelper/Sem.Tools.TestHelper.csproj'
+
+- task: DotNetCoreCLI@2
   displayName: 'dotnet pack Sem.Data.SprocAccess.SqlServer'
   inputs:
     command: pack
@@ -80,10 +88,3 @@ steps:
 
 - script: dotnet nuget push $(Build.ArtifactStagingDirectory)/**/*.nupkg --source https://api.nuget.org/v3/index.json --api-key $(NUGET_API_KEY) --skip-duplicate --no-symbols true
   displayName: 'Uploads nuGet packages'
-
-#- task: NuGetCommand@2
-#  inputs:
-#    command: 'push'
-#    packagesToPush: '$(Build.ArtifactStagingDirectory)/**/*.nupkg;!$(Build.ArtifactStagingDirectory)/**/*.symbols.nupkg'
-#    nuGetFeedType: 'external'
-#    publishFeedCredentials: 'NuGetPush'
