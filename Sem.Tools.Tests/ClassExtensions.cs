@@ -68,7 +68,7 @@ namespace Sem.Tools.Tests
             /// Tests whether the method throws an exception for NULL-values.
             /// </summary>
             [TestMethod]
-            [ExpectedExceptionMessage(typeof(ArgumentNullException), "$Value cannot be null. (Parameter 'value')^")]
+            [ExpectedExceptionMessage(typeof(ArgumentNullException), "^Value cannot be null. \\(Parameter 'value'\\)$")]
             [ExcludeFromCodeCoverage]
             public void ThrowsExceptionForNullValue()
             {
