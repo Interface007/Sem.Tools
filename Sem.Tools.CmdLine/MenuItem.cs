@@ -2,6 +2,7 @@
 // Copyright (c) Sven Erik Matzen. All rights reserved.
 // </copyright>
 
+// ReSharper disable MemberCanBePrivate.Global
 namespace Sem.Tools.CmdLine
 {
     using System;
@@ -112,7 +113,7 @@ namespace Sem.Tools.CmdLine
         /// <param name="action">The expression to create a menu item for.</param>
         /// <param name="suffixForMenu">A suffix for the description of the method (the description will be extracted from the documentation XML file).</param>
         /// <returns>A new menu item.</returns>
-        private static MenuItem Print(string displayString, Action action, string suffixForMenu = "")
+        public static MenuItem Print(string displayString, Action action, string suffixForMenu = "")
         {
             action.MustNotBeNull(nameof(action));
             return new MenuItem(
