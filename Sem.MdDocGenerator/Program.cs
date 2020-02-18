@@ -8,7 +8,10 @@ namespace Sem.MdDocGenerator
     using System.Collections.Generic;
     using System.IO;
     using System.Linq;
+    using System.Threading.Tasks;
     using System.Xml.Linq;
+
+    using Sem.Tools.CmdLine;
 
     /// <summary>
     /// The process that converts documentation XML into markdown.
@@ -18,12 +21,26 @@ namespace Sem.MdDocGenerator
         /// <summary>
         /// Main entry point.
         /// </summary>
-        public static void Main()
+        public static async Task Main()
         {
-            var path = Path.GetFullPath("..\\..\\..\\..");
+            await new[]
+            {
+                MenuItem.Print(() => Render(Path.GetFullPath("..\\..\\..\\.."))),
+            }.Show().ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// Renders the XML documentation of a solution starting at path <paramref name="path"/> into a TOC and
+        /// multiple MD files.
+        /// </summary>
+        /// <param name="path">The path to start searching for XML files.</param>
+        /// <returns>A series of status messages.</returns>
+        private static async IAsyncEnumerable<string> Render(string path)
+        {
             var toc = Path.Combine(path, "README.md");
             if (File.Exists(toc))
             {
+                yield return "deleting existing TOC";
                 File.Delete(toc);
             }
 
@@ -52,12 +69,14 @@ namespace Sem.MdDocGenerator
                     continue;
                 }
 
+                yield return $"processing {fileName}";
                 processedXmlFile.Add(fileName);
 
                 var target = Path.Combine(path, Path.ChangeExtension(fileName, "md"));
 
                 if (File.Exists(target))
                 {
+                    yield return $"deleting existing file {fileName}";
                     File.Delete(target);
                 }
 
@@ -71,6 +90,7 @@ namespace Sem.MdDocGenerator
                 var proj = XDocument.Parse(xmlProj);
 
                 File.AppendAllText(toc, "\n" + proj.Root?.Element("PropertyGroup")?.Element("Description")?.Value);
+                yield return $"done rendering {fileName}";
             }
         }
     }

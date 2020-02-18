@@ -10,6 +10,7 @@ namespace Sem.Tools.CmdLine
     using System.Linq;
     using System.Linq.Expressions;
     using System.Reflection;
+    using System.Text.RegularExpressions;
     using System.Threading.Tasks;
     using System.Xml;
 
@@ -65,7 +66,7 @@ namespace Sem.Tools.CmdLine
         public static MenuItem Print(Expression<Func<IAsyncEnumerable<string>>> action, string suffixForMenu = "")
         {
             action.MustNotBeNull(nameof(action));
-            return Print(GetDescriptionFromXml(GetMethod(action)) + suffixForMenu, action.Compile());
+            return Print(GetDescription(GetMethod(action)) + suffixForMenu, action.Compile());
         }
 
         /// <summary>
@@ -77,7 +78,7 @@ namespace Sem.Tools.CmdLine
         public static MenuItem Print(Expression<Func<Task<string>>> action, string suffixForMenu = "")
         {
             action.MustNotBeNull(nameof(action));
-            return Print(GetDescriptionFromXml(GetMethod(action)) + suffixForMenu, action.Compile());
+            return Print(GetDescription(GetMethod(action)) + suffixForMenu, action.Compile());
         }
 
         /// <summary>
@@ -89,7 +90,38 @@ namespace Sem.Tools.CmdLine
         public static MenuItem Print(Expression<Func<Task<IEnumerable<string>>>> action, string suffixForMenu = "")
         {
             action.MustNotBeNull(nameof(action));
-            return Print(GetDescriptionFromXml(GetMethod(action)) + suffixForMenu, action.Compile());
+            return Print(GetDescription(GetMethod(action)) + suffixForMenu, action.Compile());
+        }
+
+        /// <summary>
+        /// Creates a <see cref="MenuItem"/> from a non-async void expression - is meant to be used with a <see cref="MethodCallExpression"/>.
+        /// </summary>
+        /// <param name="action">The expression to create a menu item for.</param>
+        /// <param name="suffixForMenu">A suffix for the description of the method (the description will be extracted from the documentation XML file).</param>
+        /// <returns>A new menu item.</returns>
+        public static MenuItem Print(Expression<Action> action, string suffixForMenu = "")
+        {
+            action.MustNotBeNull(nameof(action));
+            return Print(GetDescription(GetMethod(action)) + suffixForMenu, action.Compile());
+        }
+
+        /// <summary>
+        /// Creates a <see cref="MenuItem"/> from a non-async void expression - is meant to be used with a <see cref="MethodCallExpression"/>.
+        /// </summary>
+        /// <param name="displayString">The explicit "label" to be used for the menu entry.</param>
+        /// <param name="action">The expression to create a menu item for.</param>
+        /// <param name="suffixForMenu">A suffix for the description of the method (the description will be extracted from the documentation XML file).</param>
+        /// <returns>A new menu item.</returns>
+        private static MenuItem Print(string displayString, Action action, string suffixForMenu = "")
+        {
+            action.MustNotBeNull(nameof(action));
+            return new MenuItem(
+                displayString + suffixForMenu,
+                () =>
+            {
+                action.Invoke();
+                return Task.CompletedTask;
+            });
         }
 
         /// <summary>
@@ -155,17 +187,28 @@ namespace Sem.Tools.CmdLine
         /// <returns>A menu entry with sub menu items.</returns>
         public static MenuItem For<T>(params object[] parameters)
         {
-            var methods = typeof(T).GetMethods();
             return new MenuItem(
-                GetDescriptionFromXml(typeof(T)),
+                GetDescription(typeof(T)),
                 async () =>
                 {
-                    await methods.Where(x => x.ReturnType == typeof(IAsyncEnumerable<string>)).Select(x => Print(GetDescriptionFromXml(x), () => InvokeAction<IAsyncEnumerable<string>, T>(x, parameters)))
-                        .Union(methods.Where(x => x.ReturnType == typeof(Task<string>)).Select(x => Print(GetDescriptionFromXml(x), () => InvokeAction<Task<string>, T>(x, parameters))))
-                        .ToArray()
-                        .Show()
-                        .ConfigureAwait(false);
+                    var items = MenuItemsFor<T>(parameters);
+                    await items.Show().ConfigureAwait(false);
                 });
+        }
+
+        /// <summary>
+        /// Creates menu entries for public methods of <typeparamref name="T"/>.
+        /// </summary>
+        /// <typeparam name="T">The type to create entries for.</typeparam>
+        /// <param name="parameters">Parameter values for the methods.</param>
+        /// <returns>A menu entry with sub menu items.</returns>
+        public static MenuItem[] MenuItemsFor<T>(params object[] parameters)
+        {
+            var methods = typeof(T).GetMethods();
+            var items = methods.Where(x => x.ReturnType == typeof(IAsyncEnumerable<string>)).Select(x => Print(GetDescription(x), () => InvokeAction<IAsyncEnumerable<string>, T>(x, parameters)))
+                .Union(methods.Where(x => x.ReturnType == typeof(Task<string>)).Select(x => Print(GetDescription(x), () => InvokeAction<Task<string>, T>(x, parameters))))
+                .ToArray();
+            return items;
         }
 
         /// <summary>
@@ -173,7 +216,7 @@ namespace Sem.Tools.CmdLine
         /// </summary>
         /// <param name="method">The method to get the description for.</param>
         /// <returns>The extracted description.</returns>
-        private static string GetDescriptionFromXml(MemberInfo method)
+        private static string GetDescription(MemberInfo method)
         {
             method.MustNotBeNull(nameof(method));
             var assemblyFolder = method.DeclaringType?.Assembly.CodeBase.Replace("file:///", string.Empty, StringComparison.Ordinal) ?? ".";
@@ -188,7 +231,7 @@ namespace Sem.Tools.CmdLine
 
                 var path = "M:" + method.DeclaringType?.FullName + "." + method.Name;
 
-                var methodDocumentation = document.SelectSingleNode("//member[starts-with(@name, '" + path + "')]/summary");
+                var methodDocumentation = document.SelectSingleNode("//member[starts-with(@name, '" + path + "(') or @name = '" + path + "']/summary");
                 documentation = methodDocumentation?
                     .InnerText
                     .Replace("\r", string.Empty, StringComparison.Ordinal)
@@ -196,7 +239,13 @@ namespace Sem.Tools.CmdLine
                     .Trim();
             }
 
-            return documentation ?? $"[no description found for {method.Name}]";
+            var description = documentation ?? Regex.Replace(method.Name, "([^a-z][a-z])", x => " " + x).Trim();
+            while (description.Contains("  ", StringComparison.Ordinal))
+            {
+                description = description.Replace("  ", " ", StringComparison.Ordinal);
+            }
+
+            return description;
         }
 
         /// <summary>
@@ -204,7 +253,7 @@ namespace Sem.Tools.CmdLine
         /// </summary>
         /// <param name="type">The class type to get the description for.</param>
         /// <returns>The extracted description.</returns>
-        private static string GetDescriptionFromXml(Type type)
+        private static string GetDescription(Type type)
         {
             var assemblyFolder = type.Assembly.CodeBase.Replace("file:///", string.Empty, StringComparison.Ordinal) ?? ".";
             var documentationXml = Path.ChangeExtension(Path.GetFullPath(assemblyFolder), ".XML");
@@ -236,6 +285,16 @@ namespace Sem.Tools.CmdLine
         /// <param name="action">The expression calling a method.</param>
         /// <returns>The method information from the called method.</returns>
         private static MethodInfo GetMethod<T>(Expression<Func<T>> action)
+        {
+            return ((MethodCallExpression)action.Body).Method;
+        }
+
+        /// <summary>
+        /// Gets the method information from a <see cref="MethodCallExpression"/>.
+        /// </summary>
+        /// <param name="action">The expression calling a method.</param>
+        /// <returns>The method information from the called method.</returns>
+        private static MethodInfo GetMethod(Expression<Action> action)
         {
             return ((MethodCallExpression)action.Body).Method;
         }

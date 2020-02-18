@@ -12,10 +12,7 @@
     <PackageProjectUrl>https://dev.azure.com/matzen/Sven</PackageProjectUrl>
 
     <IsPackable>false</IsPackable>
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <DocumentationFile>C:\Users\matzensv\source\GitHub\Sem.Tools\Sem.Data.SprocAccess.FileSystemTests\Sem.Data.SprocAccess.FileSystemTests.xml</DocumentationFile>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>

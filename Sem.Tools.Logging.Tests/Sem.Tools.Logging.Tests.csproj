@@ -10,10 +10,7 @@
     <Copyright>Sven Erik Matzen</Copyright>
 
     <IsPackable>false</IsPackable>
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <DocumentationFile>C:\Users\matzensv\source\GitHub\Sem.Tools\Sem.Tools.Logging.Tests\Sem.Tools.Logging.Tests.xml</DocumentationFile>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
