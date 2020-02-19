@@ -1,12 +1,17 @@
-using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Threading.Tasks;
-using Sem.Tools.TestHelper;
+// <copyright file="ClassMenuItem.cs" company="Sven Erik Matzen">
+// Copyright (c) Sven Erik Matzen. All rights reserved.
+// </copyright>
 
 namespace Sem.Tools.CmdLine.Tests
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Globalization;
+    using System.Threading.Tasks;
+
     using Microsoft.VisualStudio.TestTools.UnitTesting;
+
+    using Sem.Tools.TestHelper;
 
     /// <summary>
     /// Tests the class <see cref="MenuItem"/>.

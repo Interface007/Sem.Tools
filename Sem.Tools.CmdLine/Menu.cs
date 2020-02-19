@@ -13,6 +13,11 @@ namespace Sem.Tools.CmdLine
     public static class Menu
     {
         /// <summary>
+        /// Gets or sets an implementation for console actions.
+        /// </summary>
+        public static IConsole Console { get; set; } = new ConsoleWrapper();
+
+        /// <summary>
         /// Show the menu items and wait for selection of user.
         /// </summary>
         /// <param name="items">The items to display.</param>
@@ -29,14 +34,14 @@ namespace Sem.Tools.CmdLine
                     System.Console.WriteLine($"{i}) {menuItem.DisplayString}");
                 }
 
-                System.Console.WriteLine("what should be executed?");
+                Console.WriteLine("what should be executed?");
 
                 if (!int.TryParse(System.Console.ReadLine(), out int number) || number >= items.Length)
                 {
                     return;
                 }
 
-                System.Console.WriteLine($"executing menu item {items[number].DisplayString}");
+                Console.WriteLine($"executing menu item {items[number].DisplayString}");
 
                 try
                 {
@@ -47,9 +52,9 @@ namespace Sem.Tools.CmdLine
                     System.Console.WriteLine(e);
                 }
 
-                System.Console.WriteLine("done");
-                System.Console.WriteLine("press any key to continue");
-                System.Console.ReadKey();
+                Console.WriteLine("done");
+                Console.WriteLine("press any key to continue");
+                Console.ReadKey();
             }
         }
     }

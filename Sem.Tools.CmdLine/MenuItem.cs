@@ -49,6 +49,11 @@ namespace Sem.Tools.CmdLine
         }
 
         /// <summary>
+        /// Gets or sets an implementation for console actions.
+        /// </summary>
+        public static IConsole Console { get; set; } = new ConsoleWrapper();
+
+        /// <summary>
         /// Gets the "label" that should be shown on the screen to describe the functionality.
         /// </summary>
         public string DisplayString { get; }
@@ -135,7 +140,7 @@ namespace Sem.Tools.CmdLine
         public static MenuItem Print(string displayString, Func<Task<string>> action, string suffixForMenu = "")
         {
             action.MustNotBeNull(nameof(action));
-            return new MenuItem(displayString + suffixForMenu, async () => System.Console.WriteLine("\n" + await action().ConfigureAwait(false)));
+            return new MenuItem(displayString + suffixForMenu, async () => Console.WriteLine("\n" + await action().ConfigureAwait(false)));
         }
 
         /// <summary>
@@ -154,7 +159,7 @@ namespace Sem.Tools.CmdLine
                 {
                     await foreach (var result in action.Invoke())
                     {
-                        System.Console.WriteLine($"\n{result}");
+                        Console.WriteLine($"\n{result}");
                     }
                 });
         }
@@ -207,9 +212,9 @@ namespace Sem.Tools.CmdLine
         {
             var methods = typeof(T).GetMethods();
             var items = methods.Where(x => x.ReturnType == typeof(IAsyncEnumerable<string>)).Select(x => Print(GetDescription(x), () => InvokeAction<IAsyncEnumerable<string>, T>(x, parameters)))
-                .Union(methods.Where(x => x.ReturnType == typeof(Task<string>)).Select(x => Print(GetDescription(x), () => InvokeAction<Task<string>, T>(x, parameters))))
-                .Union(methods.Where(x => x.ReturnType == typeof(void) && !x.Name.StartsWith("set_", StringComparison.Ordinal)).Select(x => Print(GetDescription(x), () => InvokeAction<Task, T>(x, parameters))))
-                .ToArray();
+                 .Union(methods.Where(x => x.ReturnType == typeof(Task<string>)).Select(x => Print(GetDescription(x), () => InvokeAction<Task<string>, T>(x, parameters))))
+                 .Union(methods.Where(x => x.ReturnType == typeof(void) && !x.Name.StartsWith("set_", StringComparison.Ordinal)).Select(x => Print(GetDescription(x), () => InvokeAction<Task, T>(x, parameters))))
+                 .ToArray();
             return items;
         }
 
@@ -220,39 +225,15 @@ namespace Sem.Tools.CmdLine
         /// <returns>The extracted description.</returns>
         private static string GetDescription(MethodInfo method)
         {
-            method.MustNotBeNull(nameof(method));
-            var assemblyFolder = method.DeclaringType?.Assembly.CodeBase.Replace("file:///", string.Empty, StringComparison.Ordinal) ?? ".";
-            var documentationXml = Path.ChangeExtension(Path.GetFullPath(assemblyFolder), ".XML");
+            var declaringType = method.DeclaringType;
+            declaringType.MustNotBeNull(nameof(declaringType));
 
-            string documentation = null;
+            var fullName = declaringType.FullName + "." + method.Name;
+            var xPath = method.GetParameters().Length > 0
+                ? $"//member[starts-with(@name, 'M:{fullName}(')]/summary"
+                : $"//member[@name = 'M:{fullName}']/summary";
 
-            if (File.Exists(documentationXml))
-            {
-                var document = new XmlDocument();
-                document.Load(documentationXml);
-
-                var path = "M:" + method.DeclaringType?.FullName + "." + method.Name;
-
-                var parameters = method.GetParameters();
-
-                var methodDocumentation =
-                    parameters.Length > 0
-                    ? document.SelectSingleNode("//member[starts-with(@name, '" + path + "(')]/summary")
-                    : document.SelectSingleNode("//member[@name = '" + path + "']/summary");
-                documentation = methodDocumentation?
-                    .InnerText
-                    .Replace("\r", string.Empty, StringComparison.Ordinal)
-                    .Replace("\n", string.Empty, StringComparison.Ordinal)
-                    .Trim();
-            }
-
-            var description = documentation ?? Regex.Replace(method.Name, "([^a-z][a-z])", x => " " + x).Trim();
-            while (description.Contains("  ", StringComparison.Ordinal))
-            {
-                description = description.Replace("  ", " ", StringComparison.Ordinal);
-            }
-
-            return description;
+            return GetDocumentationFromXml(declaringType, xPath, method.Name);
         }
 
         /// <summary>
@@ -262,27 +243,42 @@ namespace Sem.Tools.CmdLine
         /// <returns>The extracted description.</returns>
         private static string GetDescription(Type type)
         {
-            var assemblyFolder = type.Assembly.CodeBase.Replace("file:///", string.Empty, StringComparison.Ordinal) ?? ".";
+            var xPath = $"//member[@name = 'T:{type.FullName}']/summary";
+
+            return GetDocumentationFromXml(type, xPath, type.Name);
+        }
+
+        /// <summary>
+        /// Extracts the documentation from the XML file of the assembly.
+        /// </summary>
+        /// <param name="declaringType">The declaring type to find the assembly.</param>
+        /// <param name="xPath">The XPath expression to find the correct element.</param>
+        /// <param name="name">The name of the element to compensate a missing file or XML comment.</param>
+        /// <returns>A documentation read from the file or generated from the name.</returns>
+        private static string GetDocumentationFromXml(Type declaringType, string xPath, string name)
+        {
+            var assemblyFolder = declaringType?.Assembly.CodeBase.Replace("file:///", string.Empty, StringComparison.Ordinal) ?? ".";
             var documentationXml = Path.ChangeExtension(Path.GetFullPath(assemblyFolder), ".XML");
 
-            string documentation = null;
-
-            if (File.Exists(documentationXml))
+            if (!File.Exists(documentationXml))
             {
-                var document = new XmlDocument();
-                document.Load(documentationXml);
-
-                var path = "T:" + type.FullName;
-
-                var methodDocumentation = document.SelectSingleNode("//member[starts-with(@name, '" + path + "')]/summary");
-                documentation = methodDocumentation?
-                    .InnerText
-                    .Replace("\r", string.Empty, StringComparison.Ordinal)
-                    .Replace("\n", string.Empty, StringComparison.Ordinal)
-                    .Trim();
+                return null;
             }
 
-            return documentation ?? $"[no description found for {type.Name}]";
+            var document = new XmlDocument();
+            document.Load(documentationXml);
+
+            var documentationNode = document.SelectSingleNode(xPath);
+            var description = documentationNode?.InnerText ?? Regex.Replace(name, "([^a-z][a-z])", x => " " + x).Trim();
+            while (description.Contains("  ", StringComparison.Ordinal))
+            {
+                description = description.Replace("  ", " ", StringComparison.Ordinal);
+            }
+
+            return description
+                .Replace("\r", string.Empty, StringComparison.Ordinal)
+                .Replace("\n", string.Empty, StringComparison.Ordinal)
+                .Trim();
         }
 
         /// <summary>
