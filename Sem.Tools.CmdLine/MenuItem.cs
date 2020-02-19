@@ -135,7 +135,7 @@ namespace Sem.Tools.CmdLine
         public static MenuItem Print(string displayString, Func<Task<string>> action, string suffixForMenu = "")
         {
             action.MustNotBeNull(nameof(action));
-            return new MenuItem(displayString + suffixForMenu, async () => System.Console.WriteLine("\n" + await action.Invoke().ConfigureAwait(false)));
+            return new MenuItem(displayString + suffixForMenu, async () => System.Console.WriteLine("\n" + await action().ConfigureAwait(false)));
         }
 
         /// <summary>
@@ -208,6 +208,7 @@ namespace Sem.Tools.CmdLine
             var methods = typeof(T).GetMethods();
             var items = methods.Where(x => x.ReturnType == typeof(IAsyncEnumerable<string>)).Select(x => Print(GetDescription(x), () => InvokeAction<IAsyncEnumerable<string>, T>(x, parameters)))
                 .Union(methods.Where(x => x.ReturnType == typeof(Task<string>)).Select(x => Print(GetDescription(x), () => InvokeAction<Task<string>, T>(x, parameters))))
+                .Union(methods.Where(x => x.ReturnType == typeof(void) && !x.Name.StartsWith("set_", StringComparison.Ordinal)).Select(x => Print(GetDescription(x), () => InvokeAction<Task, T>(x, parameters))))
                 .ToArray();
             return items;
         }
@@ -217,7 +218,7 @@ namespace Sem.Tools.CmdLine
         /// </summary>
         /// <param name="method">The method to get the description for.</param>
         /// <returns>The extracted description.</returns>
-        private static string GetDescription(MemberInfo method)
+        private static string GetDescription(MethodInfo method)
         {
             method.MustNotBeNull(nameof(method));
             var assemblyFolder = method.DeclaringType?.Assembly.CodeBase.Replace("file:///", string.Empty, StringComparison.Ordinal) ?? ".";
@@ -232,7 +233,12 @@ namespace Sem.Tools.CmdLine
 
                 var path = "M:" + method.DeclaringType?.FullName + "." + method.Name;
 
-                var methodDocumentation = document.SelectSingleNode("//member[starts-with(@name, '" + path + "(') or @name = '" + path + "']/summary");
+                var parameters = method.GetParameters();
+
+                var methodDocumentation =
+                    parameters.Length > 0
+                    ? document.SelectSingleNode("//member[starts-with(@name, '" + path + "(')]/summary")
+                    : document.SelectSingleNode("//member[@name = '" + path + "']/summary");
                 documentation = methodDocumentation?
                     .InnerText
                     .Replace("\r", string.Empty, StringComparison.Ordinal)

@@ -12,7 +12,7 @@ namespace Sem.Data.SprocAccess.SqlServer
     /// <summary>
     /// SQL serer implementation of the reader interface <see cref="IReader"/>.
     /// </summary>
-    public class SqlReader : IReader
+    public sealed class SqlReader : IReader
     {
         private readonly SqlDataReader sqlDataReader;
 
@@ -83,6 +83,12 @@ namespace Sem.Data.SprocAccess.SqlServer
         public int IndexByName(string columnName)
         {
             return this.sqlDataReader.GetOrdinal(columnName);
+        }
+
+        /// <inheritdoc />
+        public void Dispose()
+        {
+            this.sqlDataReader?.Dispose();
         }
     }
 }

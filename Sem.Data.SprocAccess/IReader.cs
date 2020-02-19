@@ -11,7 +11,7 @@ namespace Sem.Data.SprocAccess
     /// Simple data reader interface with only the needed methods to
     /// provide an interface that can easily be implemented.
     /// </summary>
-    public interface IReader
+    public interface IReader : IDisposable
     {
         /// <summary>
         /// Advances to the next record.

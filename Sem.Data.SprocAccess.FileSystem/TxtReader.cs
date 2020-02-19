@@ -14,7 +14,7 @@ namespace Sem.Data.SprocAccess.FileSystem
     /// <summary>
     /// Reader implementation for a bunch of text files - <see cref="TxtDatabase"/>.
     /// </summary>
-    public class TxtReader : IReader
+    public sealed class TxtReader : IReader
     {
         /// <summary>
         /// The file name of the data file for this result.
@@ -124,6 +124,11 @@ namespace Sem.Data.SprocAccess.FileSystem
         {
             this.fileLines = File.ReadAllLines($"{this.fileName}+{this.resultIndex.ToString("00", CultureInfo.InvariantCulture)}.txt");
             this.lineIndex = -1;
+        }
+
+        /// <inheritdoc />
+        public void Dispose()
+        {
         }
     }
 }

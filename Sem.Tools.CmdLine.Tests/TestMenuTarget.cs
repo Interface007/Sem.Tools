@@ -5,14 +5,18 @@
 namespace Sem.Tools.CmdLine.Tests
 {
     using System.Collections.Generic;
+    using System.Diagnostics.CodeAnalysis;
 
     /// <summary>
     /// A class containing method to create a menu from.
     /// </summary>
     public class TestMenuTarget
     {
+        public string Parameter { get; set; }
+
 #pragma warning disable 1591
 #pragma warning disable CS1998 // Async method lacks 'await' operators and will run synchronously
+        [ExcludeFromCodeCoverage]
         public async IAsyncEnumerable<string> DoItTheRightWay()
 #pragma warning restore 1591
         {
@@ -23,14 +27,26 @@ namespace Sem.Tools.CmdLine.Tests
         /// This is a good documented method.
         /// </summary>
         /// <returns>A stream of output messages.</returns>
+        [ExcludeFromCodeCoverage]
         public async IAsyncEnumerable<string> DoItTheRightWayWithDocumentation()
         {
             yield return "ok";
         }
 
         /// <summary>
+        /// This is a good documented void method with parameter.
+        /// </summary>
+        /// <param name="myParameter">Just a simple parameter.</param>
+        [ExcludeFromCodeCoverage]
+        public void ThisIsAVoidMethod(string myParameter, TestMenuTarget target)
+        {
+            target.Parameter = myParameter;
+        }
+
+        /// <summary>
         /// This is a good documented void method.
         /// </summary>
+        [ExcludeFromCodeCoverage]
         public void ThisIsAVoidMethod()
         {
         }

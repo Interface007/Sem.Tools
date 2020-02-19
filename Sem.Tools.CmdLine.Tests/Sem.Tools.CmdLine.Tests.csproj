@@ -40,6 +40,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Sem.Tools.CmdLine\Sem.Tools.CmdLine.csproj" />
+    <ProjectReference Include="..\Sem.Tools.TestHelper\Sem.Tools.TestHelper.csproj" />
   </ItemGroup>
 
 </Project>
