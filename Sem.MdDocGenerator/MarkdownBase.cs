@@ -152,7 +152,7 @@ namespace Sem.MdDocGenerator
 
         private static string Replace(string name, string fromString, string toString)
         {
-            return Regex.Replace(name, "([, (<])" + fromString + "([, >)])", x => x.Groups[1] + toString + x.Groups[2]);
+            return Regex.Replace(name, "([, (<])" + fromString + "([, >)\\]\\[])", x => x.Groups[1] + toString + x.Groups[2]);
         }
 
         /// <summary>

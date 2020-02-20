@@ -150,7 +150,7 @@ A new menu item.
 A new menu item.
 
 
-### Method: MenuItem.For\<T1>(Object[])
+### Method: MenuItem.For\<T1>(object[])
 
  Creates menu entries for public methods of  T . 
 
@@ -210,7 +210,7 @@ The extracted description.
 The method information from the called method.
 
 
-### Method: MenuItem.InvokeAction\<T1,  T2>(Reflection.MethodBase, Object[])
+### Method: MenuItem.InvokeAction\<T1,  T2>(Reflection.MethodBase, object[])
 
  Invokes a method with the needed parameters. 
 
