@@ -49,7 +49,8 @@ namespace Sem.Tools.CmdLine
         }
 
         /// <summary>
-        /// Gets or sets an implementation for console actions.
+        /// Gets or sets an implementation for console actions. This is helpful for
+        /// testing and automating processes that have been created using this library.
         /// </summary>
         public static IConsole Console { get; set; } = new ConsoleWrapper();
 
@@ -65,6 +66,8 @@ namespace Sem.Tools.CmdLine
 
         /// <summary>
         /// Creates a <see cref="MenuItem"/> from an expression - is meant to be used with a <see cref="MethodCallExpression"/>.
+        /// This method assumes that <paramref name="action"/> is a method that returns a sequence of strings using an
+        /// <see cref="IAsyncEnumerable{T}"/> of <see cref="string"/>. Each of the strings will be printed to the console.
         /// </summary>
         /// <param name="action">The expression to create a menu item for.</param>
         /// <param name="suffixForMenu">A suffix for the description of the method (the description will be extracted from the documentation XML file).</param>
@@ -77,18 +80,8 @@ namespace Sem.Tools.CmdLine
 
         /// <summary>
         /// Creates a <see cref="MenuItem"/> from an expression - is meant to be used with a <see cref="MethodCallExpression"/>.
-        /// </summary>
-        /// <param name="action">The expression to create a menu item for.</param>
-        /// <param name="suffixForMenu">A suffix for the description of the method (the description will be extracted from the documentation XML file).</param>
-        /// <returns>A new menu item.</returns>
-        public static MenuItem Print(Expression<Func<Task<string>>> action, string suffixForMenu = "")
-        {
-            action.MustNotBeNull(nameof(action));
-            return Print(GetDescription(GetMethod(action)) + suffixForMenu, action.Compile());
-        }
-
-        /// <summary>
-        /// Creates a <see cref="MenuItem"/> from an expression - is meant to be used with a <see cref="MethodCallExpression"/>.
+        /// This method assumes that <paramref name="action"/> is a method that returns a sequence of strings using an
+        /// <see cref="IEnumerable{T}"/> of <see cref="string"/>. Each of the strings will be printed to the console.
         /// </summary>
         /// <param name="action">The expression to create a menu item for.</param>
         /// <param name="suffixForMenu">A suffix for the description of the method (the description will be extracted from the documentation XML file).</param>
@@ -100,7 +93,21 @@ namespace Sem.Tools.CmdLine
         }
 
         /// <summary>
+        /// Creates a <see cref="MenuItem"/> from an expression - is meant to be used with a <see cref="MethodCallExpression"/>.
+        /// This method assumes that <paramref name="action"/> is an async method that returns a single string.
+        /// </summary>
+        /// <param name="action">The expression to create a menu item for.</param>
+        /// <param name="suffixForMenu">A suffix for the description of the method (the description will be extracted from the documentation XML file).</param>
+        /// <returns>A new menu item.</returns>
+        public static MenuItem Print(Expression<Func<Task<string>>> action, string suffixForMenu = "")
+        {
+            action.MustNotBeNull(nameof(action));
+            return Print(GetDescription(GetMethod(action)) + suffixForMenu, action.Compile());
+        }
+
+        /// <summary>
         /// Creates a <see cref="MenuItem"/> from a non-async void expression - is meant to be used with a <see cref="MethodCallExpression"/>.
+        /// This method assumes that <paramref name="action"/> is a method that returns a single string.
         /// </summary>
         /// <param name="action">The expression to create a menu item for.</param>
         /// <param name="suffixForMenu">A suffix for the description of the method (the description will be extracted from the documentation XML file).</param>
@@ -206,6 +213,45 @@ namespace Sem.Tools.CmdLine
         /// Creates menu entries for public methods of <typeparamref name="T"/>.
         /// </summary>
         /// <typeparam name="T">The type to create entries for.</typeparam>
+        /// <param name="action">The action to perform.</param>
+        /// <param name="parameters">Parameter values for the methods.</param>
+        /// <returns>A menu entry with sub menu items.</returns>
+        public static MenuItem For<T>(Expression<Action> action, params object[] parameters)
+        {
+            var methodInfo = GetMethod(action.MustNotBeNull(nameof(action)));
+            return Print(GetDescription(methodInfo), () => InvokeAction<Task<string>, T>(methodInfo, parameters));
+        }
+
+        /// <summary>
+        /// Creates menu entries for public methods of <typeparamref name="T"/>.
+        /// </summary>
+        /// <typeparam name="T">The type to create entries for.</typeparam>
+        /// <param name="method">The action to perform.</param>
+        /// <param name="parameters">Parameter values for the methods.</param>
+        /// <returns>A menu entry with sub menu items.</returns>
+        public static MenuItem For<T>(Expression<Action<T>> method, params object[] parameters)
+        {
+            var methodInfo = GetMethod(method.MustNotBeNull(nameof(method)));
+            return Print(GetDescription(methodInfo), () => InvokeAction<T>(methodInfo, parameters));
+        }
+
+        /// <summary>
+        /// Creates menu entries for public methods of <typeparamref name="T"/>.
+        /// </summary>
+        /// <typeparam name="T">The type to create entries for.</typeparam>
+        /// <param name="method">The action to perform.</param>
+        /// <param name="parameters">Parameter values for the methods.</param>
+        /// <returns>A menu entry with sub menu items.</returns>
+        public static MenuItem For<T>(Expression<Func<T, Task>> method, params object[] parameters)
+        {
+            var methodInfo = GetMethod(method.MustNotBeNull(nameof(method)));
+            return Print(GetDescription(methodInfo), () => InvokeAction<Task, T>(methodInfo, parameters));
+        }
+
+        /// <summary>
+        /// Creates menu entries for public methods of <typeparamref name="T"/>.
+        /// </summary>
+        /// <typeparam name="T">The type to create entries for.</typeparam>
         /// <param name="parameters">Parameter values for the methods.</param>
         /// <returns>A menu entry with sub menu items.</returns>
         public static MenuItem[] MenuItemsFor<T>(params object[] parameters)
@@ -289,22 +335,24 @@ namespace Sem.Tools.CmdLine
         /// <summary>
         /// Gets the method information from a <see cref="MethodCallExpression"/>.
         /// </summary>
-        /// <typeparam name="T">The return type of the method.</typeparam>
         /// <param name="action">The expression calling a method.</param>
         /// <returns>The method information from the called method.</returns>
-        private static MethodInfo GetMethod<T>(Expression<Func<T>> action)
+        private static MethodInfo GetMethod(LambdaExpression action)
         {
             return ((MethodCallExpression)action.Body).Method;
         }
 
         /// <summary>
-        /// Gets the method information from a <see cref="MethodCallExpression"/>.
+        /// Invokes a method with the needed parameters.
         /// </summary>
-        /// <param name="action">The expression calling a method.</param>
-        /// <returns>The method information from the called method.</returns>
-        private static MethodInfo GetMethod(Expression<Action> action)
+        /// <typeparam name="TClass">The class type that contains the method.</typeparam>
+        /// <param name="methodInfo">The method information.</param>
+        /// <param name="parameters">The potential parameters for the method call.</param>
+        private static void InvokeAction<TClass>(MethodBase methodInfo, object[] parameters)
         {
-            return ((MethodCallExpression)action.Body).Method;
+            var obj = CreateInstance<TClass>(methodInfo, parameters);
+            var callParams = CallParams(methodInfo, parameters);
+            methodInfo.Invoke(obj, callParams);
         }
 
         /// <summary>
@@ -317,32 +365,73 @@ namespace Sem.Tools.CmdLine
         /// <returns>The call result.</returns>
         private static TResult InvokeAction<TResult, TClass>(MethodBase methodInfo, object[] parameters)
         {
-            object LookupParameter(ParameterInfo parameterInfo)
+            var obj = CreateInstance<TClass>(methodInfo, parameters);
+            var callParams = CallParams(methodInfo, parameters);
+            return (TResult)methodInfo.Invoke(obj, callParams);
+        }
+
+        /// <summary>
+        /// Creates an instance of <see cref="TClass"/> using the widest constructor (the one with the most parameters).
+        /// </summary>
+        /// <typeparam name="TClass">The type of object to be created.</typeparam>
+        /// <param name="methodInfo">The method info for the call - if the method is static, NULL will be returned.</param>
+        /// <param name="parameters">The parameters that might be used for the CTOR and the method call.</param>
+        /// <returns>The result of the method call.</returns>
+        private static object CreateInstance<TClass>(MethodBase methodInfo, object[] parameters)
+        {
+            if (methodInfo.IsStatic)
             {
-                var parameterType = parameterInfo.ParameterType;
-
-                var value = parameters.FirstOrDefault(x => x.GetType() == parameterType)
-                            ?? parameters
-                                .Where(x => x.GetType().Name.StartsWith("<", StringComparison.Ordinal))
-                                .SelectMany(x => x.GetType().GetProperties().Select(p => new { Value = p.GetValue(x), p.Name }))
-                                .FirstOrDefault(x => x.Name == parameterInfo.Name && x.Value.GetType() == parameterType)?.Value;
-
-                if (value == null)
-                {
-                    throw new InvalidOperationException($"no value found for the parameter [{parameterInfo.Name}] of method [{methodInfo.Name}] with the type [{parameterType.Name}]");
-                }
-
-                return value;
+                return null;
             }
 
+            var ctor = typeof(TClass)
+                .GetConstructors()
+                .OrderByDescending(x => x.GetParameters().Length)
+                .First();
+
+            var callParams = CallParams(ctor, parameters);
+            var obj = ctor.Invoke(callParams);
+            return obj;
+        }
+
+        /// <summary>
+        /// Determines the parameters that best match the call signature.
+        /// </summary>
+        /// <param name="methodInfo">The info about the method that should be called.</param>
+        /// <param name="parameters">The potential parameters for the call.</param>
+        /// <returns>The parameters that match the method signature.</returns>
+        private static object[] CallParams(MethodBase methodInfo, object[] parameters)
+        {
             var callParams = methodInfo
                 .GetParameters()
-                .Select(LookupParameter)
+                .Select(x => LookupParameter(methodInfo, x, parameters))
                 .ToArray();
+            return callParams;
+        }
 
-            var obj = methodInfo.IsStatic ? null : typeof(TClass).GetConstructor(Array.Empty<Type>())?.Invoke(Array.Empty<object>());
+        /// <summary>
+        /// Determines the best match for a method parameter from a set of potential parameters.
+        /// </summary>
+        /// <param name="methodInfo">The method info for the call to be made.</param>
+        /// <param name="parameterInfo">The parameter info from the method <paramref name="methodInfo"/>.</param>
+        /// <param name="parameters">The potential parameters to select from.</param>
+        /// <returns>The matching parameters.</returns>
+        private static object LookupParameter(MemberInfo methodInfo, ParameterInfo parameterInfo, object[] parameters)
+        {
+            var parameterType = parameterInfo.ParameterType;
 
-            return (TResult)methodInfo.Invoke(obj, callParams);
+            var value = parameters.FirstOrDefault(x => x.GetType() == parameterType)
+                        ?? parameters
+                            .Where(x => x.GetType().Name.StartsWith("<", StringComparison.Ordinal))
+                            .SelectMany(x => x.GetType().GetProperties().Select(p => new { Value = p.GetValue(x), p.Name }))
+                            .FirstOrDefault(x => x.Name == parameterInfo.Name && x.Value.GetType() == parameterType)?.Value;
+
+            if (value == null)
+            {
+                throw new InvalidOperationException($"no value found for the parameter [{parameterInfo.Name}] of method [{methodInfo.Name}] with the type [{parameterType.Name}]");
+            }
+
+            return value;
         }
     }
 }

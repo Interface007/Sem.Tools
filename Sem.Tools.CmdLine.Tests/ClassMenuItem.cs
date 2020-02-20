@@ -36,6 +36,21 @@ namespace Sem.Tools.CmdLine.Tests
                 var target = MenuItem.For<TestMenuTarget>();
                 Assert.AreEqual("A class containing method to create a menu from.", target.DisplayString);
             }
+
+            /// <summary>
+            /// Tests whether the method extracts one item for a single method.
+            /// </summary>
+            [TestMethod]
+            public async Task AcceptsExpressionToSingleAsyncMethod()
+            {
+                var container = new TestMenuTargetWithCtorParameter("false");
+                var target = MenuItem.For<TestMenuTargetWithCtorParameter>(x => x.DoIt(container), "some text", container);
+
+                Assert.AreEqual("Do It", target.DisplayString);
+
+                await target.Action();
+                Assert.AreEqual("some text", container.Text);
+            }
         }
 
         /// <summary>
