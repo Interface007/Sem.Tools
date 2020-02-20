@@ -117,6 +117,11 @@ namespace Sem.Data.SprocAccess.FileSystem
                 columnName.ToUpperInvariant());
         }
 
+        /// <inheritdoc />
+        public void Dispose()
+        {
+        }
+
         /// <summary>
         /// Reads the text file and initializes the line-pointer.
         /// </summary>
@@ -124,11 +129,6 @@ namespace Sem.Data.SprocAccess.FileSystem
         {
             this.fileLines = File.ReadAllLines($"{this.fileName}+{this.resultIndex.ToString("00", CultureInfo.InvariantCulture)}.txt");
             this.lineIndex = -1;
-        }
-
-        /// <inheritdoc />
-        public void Dispose()
-        {
         }
     }
 }

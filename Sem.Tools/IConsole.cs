@@ -2,7 +2,7 @@
 // Copyright (c) Sven Erik Matzen. All rights reserved.
 // </copyright>
 
-namespace Sem.Tools.CmdLine
+namespace Sem.Tools
 {
     /// <summary>
     /// Interface of for methods used from <see cref="System.Console"/>.
@@ -24,5 +24,11 @@ namespace Sem.Tools.CmdLine
         /// Waits for the user pressing a key.
         /// </summary>
         void ReadKey();
+
+        /// <summary>
+        /// Returns a line of text entered by the user.
+        /// </summary>
+        /// <returns>The text.</returns>
+        string ReadLine();
     }
 }

@@ -21,6 +21,7 @@ namespace Sem.MdDocGenerator
         /// <summary>
         /// Main entry point.
         /// </summary>
+        /// <returns>A task to wait for.</returns>
         public static async Task Main()
         {
             await new[]
@@ -35,7 +36,9 @@ namespace Sem.MdDocGenerator
         /// </summary>
         /// <param name="path">The path to start searching for XML files.</param>
         /// <returns>A series of status messages.</returns>
+#pragma warning disable CS1998 // Async method lacks 'await' operators and will run synchronously
         private static async IAsyncEnumerable<string> Render(string path)
+#pragma warning restore CS1998 // Async method lacks 'await' operators and will run synchronously
         {
             var toc = Path.Combine(path, "README.md");
             if (File.Exists(toc))

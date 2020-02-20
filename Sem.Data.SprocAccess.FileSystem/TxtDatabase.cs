@@ -53,8 +53,7 @@ namespace Sem.Data.SprocAccess.FileSystem
 
             var targetPath = Path.Combine(this.baseFolder, FileSystemTools.SanitizeFileName(sproc), FileSystemTools.SanitizeFileName(fileName));
 
-            var reader = new TxtReader(targetPath);
-
+            using var reader = new TxtReader(targetPath);
             scope?.Log(LogCategories.Technical, LogLevel.Trace, "reader created", reader);
             while (await reader.Read().ConfigureAwait(false))
             {

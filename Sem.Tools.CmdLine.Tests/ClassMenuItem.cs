@@ -11,6 +11,7 @@ namespace Sem.Tools.CmdLine.Tests
 
     using Microsoft.VisualStudio.TestTools.UnitTesting;
 
+    using Sem.Tools.CmdLine.TestProject;
     using Sem.Tools.TestHelper;
 
     /// <summary>
@@ -19,7 +20,7 @@ namespace Sem.Tools.CmdLine.Tests
     public static class ClassMenuItem
     {
         /// <summary>
-        /// Tests the method <see cref="MenuItem.Print(System.Linq.Expressions.Expression{System.Func{System.Collections.Generic.IAsyncEnumerable{string}}},string)"/>
+        /// Tests the method <see cref="MenuItem.Print(System.Linq.Expressions.Expression{System.Func{System.Collections.Generic.IAsyncEnumerable{string}}},string)"/>.
         /// </summary>
         [TestClass]
 #pragma warning disable CA1716 // Identifiers should not match keywords
@@ -119,6 +120,17 @@ namespace Sem.Tools.CmdLine.Tests
         [TestClass]
         public class Print
         {
+            /// <summary>
+            /// Builds the description from the method name when no XML available.
+            /// </summary>
+            [TestMethod]
+            public void BuildsDescriptionFromNameWhenNoXmlAvailable()
+            {
+                var menuTarget = new SampleClassWithoutDocumentation();
+                var target = MenuItem.Print(() => menuTarget.JustASimpleMethod());
+                Assert.AreEqual("Just A Simple Method", target.DisplayString);
+            }
+
             /// <summary>
             /// Tests whether the method extracts a menu item description
             /// from the method name when the method is not documented.

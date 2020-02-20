@@ -37,10 +37,11 @@ namespace Sem.Tools.CmdLine.Tests
         /// This is a good documented void method with parameter.
         /// </summary>
         /// <param name="myParameter">Just a simple parameter.</param>
+        /// <param name="target">The class that should get the value of <paramref name="myParameter"/>.</param>
         [ExcludeFromCodeCoverage]
         public void ThisIsAVoidMethod(string myParameter, TestMenuTarget target)
         {
-            target.Parameter = myParameter;
+            target.MustNotBeNull(nameof(target)).Parameter = myParameter;
         }
 
         /// <summary>

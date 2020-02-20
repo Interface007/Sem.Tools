@@ -19,7 +19,7 @@ namespace Sem.Tools.CmdLine
 
     /// <summary>
     /// Menu item for a command line program. An array of menu items can be displayed using the extension method
-    /// <see cref="Menu.Show"/>.
+    /// <see cref="Menu.Show(Sem.Tools.CmdLine.MenuItem[])"/>.
     /// </summary>
     /// <example>
     /// <code>
@@ -180,7 +180,7 @@ namespace Sem.Tools.CmdLine
                 {
                     foreach (var result in await action.Invoke().ConfigureAwait(false))
                     {
-                        System.Console.WriteLine($"\n{result}");
+                        Console.WriteLine($"\n{result}");
                     }
                 });
         }
@@ -257,19 +257,24 @@ namespace Sem.Tools.CmdLine
         /// <returns>A documentation read from the file or generated from the name.</returns>
         private static string GetDocumentationFromXml(Type declaringType, string xPath, string name)
         {
-            var assemblyFolder = declaringType?.Assembly.CodeBase.Replace("file:///", string.Empty, StringComparison.Ordinal) ?? ".";
+            var assemblyFolder = declaringType.Assembly.CodeBase.Replace("file:///", string.Empty, StringComparison.Ordinal);
             var documentationXml = Path.ChangeExtension(Path.GetFullPath(assemblyFolder), ".XML");
 
-            if (!File.Exists(documentationXml))
+            var description = string.Empty;
+            if (File.Exists(documentationXml))
             {
-                return null;
+                var document = new XmlDocument();
+                document.Load(documentationXml);
+
+                var documentationNode = document.SelectSingleNode(xPath);
+                description = documentationNode?.InnerText.Trim();
             }
 
-            var document = new XmlDocument();
-            document.Load(documentationXml);
+            if (string.IsNullOrEmpty(description))
+            {
+                description = Regex.Replace(name, "([^a-z])", x => " " + x).Trim();
+            }
 
-            var documentationNode = document.SelectSingleNode(xPath);
-            var description = documentationNode?.InnerText ?? Regex.Replace(name, "([^a-z][a-z])", x => " " + x).Trim();
             while (description.Contains("  ", StringComparison.Ordinal))
             {
                 description = description.Replace("  ", " ", StringComparison.Ordinal);

@@ -13,35 +13,41 @@ namespace Sem.Tools.CmdLine
     public static class Menu
     {
         /// <summary>
-        /// Gets or sets an implementation for console actions.
+        /// Show the menu items and wait for selection of user.
         /// </summary>
-        public static IConsole Console { get; set; } = new ConsoleWrapper();
+        /// <param name="items">The items to display.</param>
+        /// <returns>A task to wait for.</returns>
+        public static Task Show(this MenuItem[] items)
+        {
+            return Show(items, new ConsoleWrapper());
+        }
 
         /// <summary>
         /// Show the menu items and wait for selection of user.
         /// </summary>
         /// <param name="items">The items to display.</param>
+        /// <param name="console">The console implementation.</param>
         /// <returns>A task to wait for.</returns>
-        public static async Task Show(this MenuItem[] items)
+        public static async Task Show(this MenuItem[] items, IConsole console)
         {
             while (true)
             {
-                Console.Clear();
+                console.Clear();
 
                 for (var i = 0; i < items.Length; i++)
                 {
                     var menuItem = items[i];
-                    System.Console.WriteLine($"{i}) {menuItem.DisplayString}");
+                    console.WriteLine($"{i}) {menuItem.DisplayString}");
                 }
 
-                Console.WriteLine("what should be executed?");
+                console.WriteLine("what should be executed?");
 
-                if (!int.TryParse(System.Console.ReadLine(), out int number) || number >= items.Length)
+                if (!int.TryParse(console.ReadLine(), out int number) || number >= items.Length)
                 {
                     return;
                 }
 
-                Console.WriteLine($"executing menu item {items[number].DisplayString}");
+                console.WriteLine($"executing menu item {items[number].DisplayString}");
 
                 try
                 {
@@ -49,12 +55,12 @@ namespace Sem.Tools.CmdLine
                 }
                 catch (Exception e)
                 {
-                    System.Console.WriteLine(e);
+                    console.WriteLine(e.ToString());
                 }
 
-                Console.WriteLine("done");
-                Console.WriteLine("press any key to continue");
-                Console.ReadKey();
+                console.WriteLine("done");
+                console.WriteLine("press any key to continue");
+                console.ReadKey();
             }
         }
     }

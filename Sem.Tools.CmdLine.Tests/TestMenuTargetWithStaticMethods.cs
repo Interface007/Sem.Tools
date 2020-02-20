@@ -2,10 +2,9 @@
 // Copyright (c) Sven Erik Matzen. All rights reserved.
 // </copyright>
 
-using System.Collections.Generic;
-
 namespace Sem.Tools.CmdLine.Tests
 {
+    using System.Collections.Generic;
     using System.Diagnostics.CodeAnalysis;
     using System.Threading.Tasks;
 
