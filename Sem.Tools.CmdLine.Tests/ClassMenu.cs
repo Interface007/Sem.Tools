@@ -12,11 +12,21 @@ namespace Sem.Tools.CmdLine.Tests
 
     using Sem.Tools.TestHelper;
 
+    /// <summary>
+    /// Unit tests for the class <see cref="Menu"/>.
+    /// </summary>
     public static class ClassMenu
     {
+        /// <summary>
+        /// Tests for the method <see cref="Menu.Show(Sem.Tools.CmdLine.MenuItem[])"/>.
+        /// </summary>
         [TestClass]
         public class Show
         {
+            /// <summary>
+            /// Tests whether the action will be invoked correctly.
+            /// </summary>
+            /// <returns>A <see cref="Task"/> representing the asynchronous unit test.</returns>
             [TestMethod]
             public async Task InvokesAction()
             {

@@ -1,22 +1,36 @@
-using System.Threading.Tasks;
+// <copyright file="TestMenuTargetWithCtorParameter.cs" company="Sven Erik Matzen">
+// Copyright (c) Sven Erik Matzen. All rights reserved.
+// </copyright>
 
 namespace Sem.Tools.CmdLine.Tests
 {
+    using System.Threading.Tasks;
+
     /// <summary>
     /// A class containing method to create a menu from.
     /// </summary>
     public class TestMenuTargetWithCtorParameter
     {
-        public string Text { get; set; }
-
+        /// <summary>
+        /// Initializes a new instance of the <see cref="TestMenuTargetWithCtorParameter"/> class.
+        /// </summary>
+        /// <param name="text">The value for the text property.</param>
         public TestMenuTargetWithCtorParameter(string text)
         {
-            Text = text;
+            this.Text = text;
         }
 
+        /// <summary>
+        /// Gets or sets a simple property.
+        /// </summary>
+        public string Text { get; set; }
+
+#pragma warning disable 1591
         public async Task DoIt(TestMenuTargetWithCtorParameter container)
+#pragma warning restore 1591
         {
-            container.Text = this.Text;
+            await Task.Delay(5);
+            container.MustNotBeNull(nameof(container)).Text = this.Text;
         }
     }
 }

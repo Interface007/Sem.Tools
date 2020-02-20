@@ -6,6 +6,7 @@ namespace Sem.Tools.CmdLine.Tests
 {
     using System;
     using System.Collections.Generic;
+    using System.Diagnostics.CodeAnalysis;
     using System.Globalization;
     using System.Threading.Tasks;
 
@@ -40,6 +41,7 @@ namespace Sem.Tools.CmdLine.Tests
             /// <summary>
             /// Tests whether the method extracts one item for a single method.
             /// </summary>
+            /// <returns>A <see cref="Task"/> representing the asynchronous unit test.</returns>
             [TestMethod]
             public async Task AcceptsExpressionToSingleAsyncMethod()
             {
@@ -57,6 +59,7 @@ namespace Sem.Tools.CmdLine.Tests
         /// Tests the method <see cref="MenuItem.MenuItemsFor{T}"/>.
         /// </summary>
         [TestClass]
+        [ExcludeFromCodeCoverage]
         public class MenuItemsFor
         {
             /// <summary>

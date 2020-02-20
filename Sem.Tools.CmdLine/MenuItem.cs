@@ -150,6 +150,12 @@ namespace Sem.Tools.CmdLine
             return new MenuItem(displayString + suffixForMenu, async () => Console.WriteLine("\n" + await action().ConfigureAwait(false)));
         }
 
+        public static MenuItem Print(string displayString, Func<Task> action, string suffixForMenu = "")
+        {
+            action.MustNotBeNull(nameof(action));
+            return new MenuItem(displayString + suffixForMenu, async () => await action().ConfigureAwait(false));
+        }
+
         /// <summary>
         /// Creates a <see cref="MenuItem"/> from an expression - is meant to be used with a <see cref="MethodCallExpression"/>.
         /// </summary>
@@ -245,7 +251,7 @@ namespace Sem.Tools.CmdLine
         public static MenuItem For<T>(Expression<Func<T, Task>> method, params object[] parameters)
         {
             var methodInfo = GetMethod(method.MustNotBeNull(nameof(method)));
-            return Print(GetDescription(methodInfo), () => InvokeAction<Task, T>(methodInfo, parameters));
+            return Print(GetDescription(methodInfo), () => InvokeActionAsync<T>(methodInfo, parameters));
         }
 
         /// <summary>
@@ -256,12 +262,26 @@ namespace Sem.Tools.CmdLine
         /// <returns>A menu entry with sub menu items.</returns>
         public static MenuItem[] MenuItemsFor<T>(params object[] parameters)
         {
+            static bool IsIAsyncEnum(MethodInfo methodInfo) => methodInfo.ReturnType == typeof(IAsyncEnumerable<string>);
+            static bool IsTaskString(MethodInfo methodInfo) => methodInfo.ReturnType == typeof(Task<string>);
+            static bool IsVoidMethod(MethodInfo methodInfo) => methodInfo.ReturnType == typeof(void) && !methodInfo.Name.StartsWith("set_", StringComparison.Ordinal);
+
             var methods = typeof(T).GetMethods();
-            var items = methods.Where(x => x.ReturnType == typeof(IAsyncEnumerable<string>)).Select(x => Print(GetDescription(x), () => InvokeAction<IAsyncEnumerable<string>, T>(x, parameters)))
-                 .Union(methods.Where(x => x.ReturnType == typeof(Task<string>)).Select(x => Print(GetDescription(x), () => InvokeAction<Task<string>, T>(x, parameters))))
-                 .Union(methods.Where(x => x.ReturnType == typeof(void) && !x.Name.StartsWith("set_", StringComparison.Ordinal)).Select(x => Print(GetDescription(x), () => InvokeAction<Task, T>(x, parameters))))
+            var items = methods.Where(IsIAsyncEnum).Select(x => Print(GetDescription(x), () => InvokeAction<IAsyncEnumerable<string>, T>(x, parameters)))
+                 .Union(methods.Where(IsTaskString).Select(x => Print(GetDescription(x), () => InvokeAction<Task<string>, T>(x, parameters))))
+                 .Union(methods.Where(IsVoidMethod).Select(x => Print(GetDescription(x), () => InvokeAction<T>(x, parameters))))
                  .ToArray();
+
             return items;
+        }
+
+        /// <summary>
+        /// Represents the method to call.
+        /// </summary>
+        /// <returns>The method description.</returns>
+        public override string ToString()
+        {
+            return this.DisplayString;
         }
 
         /// <summary>
@@ -358,6 +378,20 @@ namespace Sem.Tools.CmdLine
         /// <summary>
         /// Invokes a method with the needed parameters.
         /// </summary>
+        /// <typeparam name="TClass">The class type that contains the method.</typeparam>
+        /// <param name="methodInfo">The method information.</param>
+        /// <param name="parameters">The potential parameters for the method call.</param>
+        /// <returns>The call result.</returns>
+        private static async Task InvokeActionAsync<TClass>(MethodBase methodInfo, object[] parameters)
+        {
+            var obj = CreateInstance<TClass>(methodInfo, parameters);
+            var callParams = CallParams(methodInfo, parameters);
+            await ((Task)methodInfo.Invoke(obj, callParams)).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// Invokes a method with the needed parameters.
+        /// </summary>
         /// <typeparam name="TResult">The result type of the method.</typeparam>
         /// <typeparam name="TClass">The class type that contains the method.</typeparam>
         /// <param name="methodInfo">The method information.</param>
@@ -371,7 +405,7 @@ namespace Sem.Tools.CmdLine
         }
 
         /// <summary>
-        /// Creates an instance of <see cref="TClass"/> using the widest constructor (the one with the most parameters).
+        /// Creates an instance of <typeparamref name="TClass"/> using the widest constructor (the one with the most parameters).
         /// </summary>
         /// <typeparam name="TClass">The type of object to be created.</typeparam>
         /// <param name="methodInfo">The method info for the call - if the method is static, NULL will be returned.</param>

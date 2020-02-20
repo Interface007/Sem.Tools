@@ -10,6 +10,7 @@ namespace Sem.Tools.CmdLine.Tests
     /// <summary>
     /// A class containing method to create a menu from.
     /// </summary>
+    [ExcludeFromCodeCoverage]
     public class TestMenuTarget
     {
         public string Parameter { get; set; }
