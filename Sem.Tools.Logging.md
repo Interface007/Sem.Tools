@@ -39,9 +39,9 @@ A value indicating whether the flag is set.
 
 
 
-### Method: LogExtension.AddDebug(Action\<LogCategories, LogLevel, LogScope, String>)
+### Method: LogExtension.AddDebug(Action\<LogCategories, LogLevel, LogScope, string>)
 
- Simple output using ```Diagnostics.Debug.WriteLine(Object)```. 
+ Simple output using ```Diagnostics.Debug.WriteLine(object)```. 
 
 #### Parameters:
 |Name | Description |
@@ -52,9 +52,9 @@ A value indicating whether the flag is set.
 A new method that is the combination of  logMethod  and an output to ```System.Diagnostics.Debug```.
 
 
-### Method: LogExtension.AddConsole(Action\<LogCategories, LogLevel, LogScope, String>)
+### Method: LogExtension.AddConsole(Action\<LogCategories, LogLevel, LogScope, string>)
 
- Simple output using ```Console.WriteLine(Object)```. 
+ Simple output using ```Console.WriteLine(object)```. 
 
 #### Parameters:
 |Name | Description |
@@ -119,7 +119,7 @@ A new method that is the combination of  logMethod  and an output to ```System.C
  Gets the hierarchical ID of the scope. 
 
 
-### Method: LogScope.Create(String, Action\<LogCategories, LogLevel, LogScope, String>, String, String)
+### Method: LogScope.Create(string, Action\<LogCategories, LogLevel, LogScope, string>, string, string)
 
  Create a new scope instance. 
 
@@ -135,7 +135,7 @@ A new method that is the combination of  logMethod  and an output to ```System.C
 A new logging scope.
 
 
-### Method: LogScope.MethodStart(Object, String, String)
+### Method: LogScope.MethodStart(object, string, string)
 
  Call this to indicate a method start. 
 
@@ -150,7 +150,7 @@ A new logging scope.
 A new scope.
 
 
-### Method: LogScope.Child(String, Object, String, String)
+### Method: LogScope.Child(string, object, string, string)
 
  Creates a new child scope. 
 
@@ -180,7 +180,7 @@ A task to wait for.
  Logs the end of the scope. 
 
 
-### Method: LogScope.Log(String, Object)
+### Method: LogScope.Log(string, object)
 
  Logs a message. 
 
@@ -190,7 +190,7 @@ A task to wait for.
 |message|The message to be logged.|
 |value: |A value that should be included into the message as addition data.|
 
-### Method: LogScope.Log(LogCategories, LogLevel, String, Object)
+### Method: LogScope.Log(LogCategories, LogLevel, string, object)
 
  Logs a message. 
 

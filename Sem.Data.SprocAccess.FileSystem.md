@@ -7,7 +7,7 @@
 
 
 
-### Method: Sem.Data.SprocAccess.FileTxtDatabase.#ctor(String)
+### Method: Sem.Data.SprocAccess.FileTxtDatabase.#ctor(string)
 
  Initializes a new instance of the [Sem.Data.SprocAccess.FileSystem.TxtDatabase](Sem.Data.SprocAccess.FileSystem.md#type-semdatasprocaccessfilesystemtxtdatabase) class. 
 
@@ -16,7 +16,7 @@
 |-----|------|
 |baseFolder|The base folder for the data files.|
 
-### Method: Sem.Data.SprocAccess.FileTxtDatabase.Execute\<T1>(String, Func\<Sem.Data.SprocAccess.IReader, Task\<T1>>, Sem.Tools.Logging.LogScope, KeyValuePair\<String, Object>[])
+### Method: Sem.Data.SprocAccess.FileTxtDatabase.Execute\<T1>(string, Func\<Sem.Data.SprocAccess.IReader, Task\<T1>>, Sem.Tools.Logging.LogScope, KeyValuePair\<string, object>[])
 
  Executes a "stored procedure" (aka. "SPROC") and maps the result to a series of POCOs. 
 
@@ -52,7 +52,7 @@ A task that represents the asynchronous dispose operation.
 
 
 
-### Method: Sem.Data.SprocAccess.FileTxtReader.#ctor(String)
+### Method: Sem.Data.SprocAccess.FileTxtReader.#ctor(string)
 
  Initializes a new instance of the [Sem.Data.SprocAccess.FileSystem.TxtReader](Sem.Data.SprocAccess.FileSystem.md#type-semdatasprocaccessfilesystemtxtreader) class. 
 
@@ -70,7 +70,7 @@ A task that represents the asynchronous dispose operation.
 A value indicating whether there is still data at this line.
 
 
-### Method: Sem.Data.SprocAccess.FileTxtReader.Get\<T1>(Int32)
+### Method: Sem.Data.SprocAccess.FileTxtReader.Get\<T1>(int)
 
  Reads the value of a column by its index. 
 
@@ -87,7 +87,7 @@ A value indicating whether there is still data at this line.
 The value of the column in the current row.
 
 
-### Method: Sem.Data.SprocAccess.FileTxtReader.Get(Int32, Type)
+### Method: Sem.Data.SprocAccess.FileTxtReader.Get(int, Type)
 
  Reads the value of a column by its index. 
 
@@ -119,7 +119,7 @@ A task to wait for.
 A task to wait for.
 
 
-### Method: Sem.Data.SprocAccess.FileTxtReader.IndexByName(String)
+### Method: Sem.Data.SprocAccess.FileTxtReader.IndexByName(string)
 
  Gets the index of a column by its name (case-insensitive). When there are two columns with the same name, the first index will be returned. 
 

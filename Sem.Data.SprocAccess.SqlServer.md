@@ -7,7 +7,7 @@
 
 
 
-### Method: SqlDatabase.#ctor(String)
+### Method: SqlDatabase.#ctor(string)
 
  Initializes a new instance of the [Sem.Data.SprocAccess.SqlServer.SqlDatabase](Sem.Data.SprocAccess.SqlServer.md#type-semdatasprocaccesssqlserversqldatabase) class. 
 
@@ -16,7 +16,7 @@
 |-----|------|
 |connectionString|The database connection string to use for this instance.|
 
-### Method: SqlDatabase.Execute\<T1>(String, Func\<Sem.Data.SprocAccess.IReader, Task\<T1>>, Sem.Tools.Logging.LogScope, KeyValuePair\<String, Object>[])
+### Method: SqlDatabase.Execute\<T1>(string, Func\<Sem.Data.SprocAccess.IReader, Task\<T1>>, Sem.Tools.Logging.LogScope, KeyValuePair\<string, object>[])
 
  Executes a "stored procedure" (aka. "SPROC") and maps the result to a series of POCOs. 
 
@@ -70,7 +70,7 @@ A task that represents the asynchronous dispose operation.
 A value indicating whether there is still data to be read.
 
 
-### Method: SqlReader.Get\<T1>(Int32)
+### Method: SqlReader.Get\<T1>(int)
 
  Reads the value of a column by its index. 
 
@@ -87,7 +87,7 @@ A value indicating whether there is still data to be read.
 The value of the column in the current row.
 
 
-### Method: SqlReader.Get(Int32, Type)
+### Method: SqlReader.Get(int, Type)
 
  Reads the value of a column by its index. 
 
@@ -119,7 +119,7 @@ A task to wait for.
 A task to wait for.
 
 
-### Method: SqlReader.IndexByName(String)
+### Method: SqlReader.IndexByName(string)
 
  Gets the index of a column by its name (case-insensitive). When there are two columns with the same name, the first index will be returned. 
 

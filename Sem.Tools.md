@@ -107,7 +107,7 @@ Reads and converts the JSON to type string.
 The converted value.
 
 
-### Method: EncryptionConverter.Write(Text.Json.Utf8JsonWriter, String, Text.Json.JsonSerializerOptions)
+### Method: EncryptionConverter.Write(Text.Json.Utf8JsonWriter, string, Text.Json.JsonSerializerOptions)
 
 Writes a specified value as JSON.
 
@@ -125,7 +125,7 @@ Writes a specified value as JSON.
 
 
 
-### Method: Extensions.Hash(String)
+### Method: Extensions.Hash(string)
 
  Calculates a simple SHA256 hash from a string. 
 
@@ -138,7 +138,7 @@ Writes a specified value as JSON.
 The has as HEX encoded data.
 
 
-### Method: Extensions.MustNotBeNullOrEmpty(String, String)
+### Method: Extensions.MustNotBeNullOrEmpty(string, string)
 
  Throws an ```System.ArgumentNullException``` when passing NULL or an empty string to  value . 
 
@@ -152,7 +152,7 @@ The has as HEX encoded data.
  The original value of  value . 
 
 
-### Method: Extensions.MustNotBeNull\<T1>(``0, String)
+### Method: Extensions.MustNotBeNull\<T1>(``0, string)
 
  Throws an ```System.ArgumentNullException``` when passing NULL values to  value . 
 
@@ -194,7 +194,7 @@ A JSON string.
 
 
 
-### Method: FileSystemTools.SanitizeFileName(String)
+### Method: FileSystemTools.SanitizeFileName(string)
 
  Removes illegal characters from file names. 
 

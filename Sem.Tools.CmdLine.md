@@ -42,7 +42,7 @@ _C# code_
 
 
 
-### Method: MenuItem.#ctor(String, Func\<Task>, String)
+### Method: MenuItem.#ctor(string, Func\<Task>, string)
 
  Initializes a new instance of the [Sem.Tools.CmdLine.MenuItem](Sem.Tools.CmdLine.md#type-semtoolscmdlinemenuitem) class. 
 
@@ -63,7 +63,7 @@ _C# code_
  Gets the action to perform when the user selects this menu item. 
 
 
-### Method: MenuItem.Print(Linq.Expressions.Expression\<Func\<IAsyncEnumerable\<String>>>, String)
+### Method: MenuItem.Print(Expression\<Func\<IAsyncEnumerable\<string>>>, string)
 
  Creates a [Sem.Tools.CmdLine.MenuItem](Sem.Tools.CmdLine.md#type-semtoolscmdlinemenuitem) from an expression - is meant to be used with a ```System.Linq.Expressions.MethodCallExpression```. 
 
@@ -77,7 +77,7 @@ _C# code_
 A new menu item.
 
 
-### Method: MenuItem.Print(Linq.Expressions.Expression\<Func\<Task\<String>>>, String)
+### Method: MenuItem.Print(Expression\<Func\<Task\<string>>>, string)
 
  Creates a [Sem.Tools.CmdLine.MenuItem](Sem.Tools.CmdLine.md#type-semtoolscmdlinemenuitem) from an expression - is meant to be used with a ```System.Linq.Expressions.MethodCallExpression```. 
 
@@ -91,7 +91,7 @@ A new menu item.
 A new menu item.
 
 
-### Method: MenuItem.Print(Linq.Expressions.Expression\<Func\<Task\<IEnumerable\<String>>>>, String)
+### Method: MenuItem.Print(Expression\<Func\<Task\<IEnumerable\<string>>>>, string)
 
  Creates a [Sem.Tools.CmdLine.MenuItem](Sem.Tools.CmdLine.md#type-semtoolscmdlinemenuitem) from an expression - is meant to be used with a ```System.Linq.Expressions.MethodCallExpression```. 
 
@@ -105,7 +105,7 @@ A new menu item.
 A new menu item.
 
 
-### Method: MenuItem.Print(String, Func\<Task\<String>>, String)
+### Method: MenuItem.Print(string, Func\<Task\<string>>, string)
 
  Creates a [Sem.Tools.CmdLine.MenuItem](Sem.Tools.CmdLine.md#type-semtoolscmdlinemenuitem) from an expression - is meant to be used with a ```System.Linq.Expressions.MethodCallExpression```. 
 
@@ -120,7 +120,7 @@ A new menu item.
 A new menu item.
 
 
-### Method: MenuItem.Print(String, Func\<IAsyncEnumerable\<String>>, String)
+### Method: MenuItem.Print(string, Func\<IAsyncEnumerable\<string>>, string)
 
  Creates a [Sem.Tools.CmdLine.MenuItem](Sem.Tools.CmdLine.md#type-semtoolscmdlinemenuitem) from an expression - is meant to be used with a ```System.Linq.Expressions.MethodCallExpression```. 
 
@@ -135,7 +135,7 @@ A new menu item.
 A new menu item.
 
 
-### Method: MenuItem.Print(String, Func\<Task\<IEnumerable\<String>>>, String)
+### Method: MenuItem.Print(string, Func\<Task\<IEnumerable\<string>>>, string)
 
  Creates a [Sem.Tools.CmdLine.MenuItem](Sem.Tools.CmdLine.md#type-semtoolscmdlinemenuitem) from an expression - is meant to be used with a ```System.Linq.Expressions.MethodCallExpression```. 
 
@@ -193,7 +193,7 @@ The extracted description.
 The extracted description.
 
 
-### Method: MenuItem.GetMethod\<T1>(Linq.Expressions.Expression\<Func\<T1>>)
+### Method: MenuItem.GetMethod\<T1>(Expression\<Func\<T1>>)
 
  Gets the method information from a ```System.Linq.Expressions.MethodCallExpression```. 
 

@@ -118,6 +118,7 @@ namespace Sem.MdDocGenerator
                 .Replace("System.Collections.Generic.", string.Empty, StringComparison.Ordinal)
                 .Replace("System.Object", "Object", StringComparison.Ordinal)
                 .Replace("System.", string.Empty, StringComparison.Ordinal)
+                .Replace("Linq.Expressions.", string.Empty, StringComparison.Ordinal)
                 .Replace("{``0,``1,``2,``3,``4}", "\\<T1, T2, T3, T4, T5>", StringComparison.Ordinal)
                 .Replace("{``0,``1,``2,``3}", "\\<T1, T2, T3, T4>", StringComparison.Ordinal)
                 .Replace("{``0,``1,``2}", "\\<T1, T2, T3>", StringComparison.Ordinal)
@@ -132,12 +133,26 @@ namespace Sem.MdDocGenerator
                 .Replace("}", ">", StringComparison.Ordinal)
                 .Replace(",", ", ", StringComparison.Ordinal);
 
+            name = Replace(name, "String", "string");
+            name = Replace(name, "Object", "object");
+            name = Replace(name, "Int32", "int");
+            name = Replace(name, "Boolean", "bool");
+            name = Replace(name, "Byte", "byte");
+            name = Replace(name, "Char", "char");
+            name = Replace(name, "Int64", "long");
+            name = Replace(name, "Int16", "short");
+
             if (!string.IsNullOrEmpty(this.Context.NameSpace))
             {
                 name = name?.Replace(this.Context.NameSpace + ".", string.Empty, StringComparison.Ordinal);
             }
 
             return name;
+        }
+
+        private static string Replace(string name, string fromString, string toString)
+        {
+            return Regex.Replace(name, "([, (<])" + fromString + "([, >)])", x => x.Groups[1] + toString + x.Groups[2]);
         }
 
         /// <summary>
