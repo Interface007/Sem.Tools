@@ -8,6 +8,7 @@ namespace Sem.Tools.CmdLine.Tests
     using System.Collections.Generic;
     using System.Diagnostics.CodeAnalysis;
     using System.Globalization;
+    using System.Linq;
     using System.Threading.Tasks;
 
     using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -18,8 +19,85 @@ namespace Sem.Tools.CmdLine.Tests
     /// <summary>
     /// Tests the class <see cref="MenuItem"/>.
     /// </summary>
+    [SuppressMessage("ReSharper", "UnusedParameter.Local", Justification = "parameters are just to build up different signatures")]
     public static class ClassMenuItem
     {
+        /// <summary>
+        /// Tests a complete sample of many ways to create a method.
+        /// </summary>
+        [TestClass]
+        [ExcludeFromCodeCoverage]
+        public class MenuSample
+        {
+            /// <summary>
+            /// Sample with multiple ways to specify what should be available in the menu.
+            /// </summary>
+            /// <returns>A task to wait for.</returns>
+            [TestMethod]
+            public async Task SampleMenuCreation()
+            {
+                var console = new ConsoleSimulator(" ", " ");
+                var menuTarget = new TestMenuTargetWithStaticMethods();
+                var parameter2 = new TestMenuTargetWithCtorParameter("fail");
+
+                await new[]
+                {
+                    MenuItem.Print(() => this.LocalVoidMethodWithParameter(string.Empty)),
+                    MenuItem.Print(() => this.LocalStringMethodWithParameter(string.Empty)),
+                    MenuItem.Print(() => this.LocalAsyncVoidMethodWithParameter(string.Empty)),
+                    MenuItem.Print(() => this.LocalAsyncStringMethodWithParameter(string.Empty)),
+                    MenuItem.For<TestMenuTargetWithStaticMethods>("hello", menuTarget),
+                    MenuItem.For<TestMenuTarget>(x => x.ThisIsAVoidMethod(), "hello", menuTarget),
+                    MenuItem.For<TestMenuTargetWithCtorParameter>(x => x.DoIt(parameter2), "hello", menuTarget),
+                }.Show(console);
+
+                var result = console.Output.Aggregate((x, s) => x + "\n" + s);
+                const string expected = "{clear}\n0) Local Void Method With Parameter\n1) Local String Method With Parameter\n2) Local Async Void Method With Parameter\n3) Local Async String Method With Parameter\n4) A class containing method to create a menu from.\n5) This is a good documented void method.\n6) Do It\nwhat should be executed?";
+
+                Assert.AreEqual(expected, result);
+            }
+
+            /// <summary>
+            /// Sample void sync method with parameter.
+            /// </summary>
+            /// <param name="value">A simple parameter.</param>
+            private void LocalVoidMethodWithParameter(string value)
+            {
+            }
+
+            /// <summary>
+            /// Sample sync method with parameter.
+            /// </summary>
+            /// <param name="value">A simple parameter.</param>
+            /// <returns>The value of <paramref name="value"/>.</returns>
+            // ReSharper disable once UnusedMethodReturnValue.Local
+            private string LocalStringMethodWithParameter(string value)
+            {
+                return value;
+            }
+
+            /// <summary>
+            /// Sample async method with parameter without return value.
+            /// </summary>
+            /// <param name="value">A simple parameter.</param>
+            /// <returns>A task to wait for.</returns>
+            // ReSharper disable once UnusedMethodReturnValue.Local
+            private Task LocalAsyncVoidMethodWithParameter(string value)
+            {
+                return Task.CompletedTask;
+            }
+
+            /// <summary>
+            /// Sample async method with parameter.
+            /// </summary>
+            /// <param name="value">A simple parameter.</param>
+            /// <returns>A string returned as a task to wait for.</returns>
+            private Task<string> LocalAsyncStringMethodWithParameter(string value)
+            {
+                return Task.FromResult(value);
+            }
+        }
+
         /// <summary>
         /// Tests the method <see cref="MenuItem.Print(System.Linq.Expressions.Expression{System.Func{System.Collections.Generic.IAsyncEnumerable{string}}},string)"/>.
         /// </summary>

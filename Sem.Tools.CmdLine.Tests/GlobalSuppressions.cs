@@ -10,5 +10,6 @@
 [assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822:Mark members as static", Justification = "Intentionally empty instance method", Scope = "member", Target = "~M:Sem.Tools.CmdLine.Tests.TestMenuTarget.ThisIsAVoidMethod")]
 [assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822:Mark members as static", Justification = "Intentionally non-static.", Scope = "member", Target = "~M:Sem.Tools.CmdLine.Tests.TestMenuTarget.ThisIsAVoidMethod(System.String,Sem.Tools.CmdLine.Tests.TestMenuTarget)")]
 [assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("StyleCop.CSharp.DocumentationRules", "SA1600:Elements should be documented", Justification = "Undocumented intentionally to test documentation.", Scope = "member", Target = "~M:Sem.Tools.CmdLine.Tests.TestMenuTargetWithCtorParameter.DoIt(Sem.Tools.CmdLine.Tests.TestMenuTargetWithCtorParameter)~System.Threading.Tasks.Task")]
-
-[assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Globalization", "CA1303:Do not pass literals as localized parameters", Justification = "<Pending>", Scope = "member", Target = "~M:Sem.Tools.CmdLine.Tests.ClassMenuItem.For.AcceptsExpressionToSingleAsyncMethod~System.Threading.Tasks.Task")]
+[assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Globalization", "CA1303:Do not pass literals as localized parameters", Justification = "No localization wanted")]
+[assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE0060:Remove unused parameter", Justification = "parameters are just to build up different signatures")]
+[assembly: System.Diagnostics.CodeAnalysis.SuppressMessage("Usage", "CA1801:Review unused parameters", Justification = "parameters are just to build up different signatures")]

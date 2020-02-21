@@ -13,6 +13,9 @@ namespace Sem.Tools.CmdLine.Tests
     [ExcludeFromCodeCoverage]
     public class TestMenuTarget
     {
+        /// <summary>
+        /// Gets or sets the parameter that has been set by <see cref="ThisIsAVoidMethod(string,Sem.Tools.CmdLine.Tests.TestMenuTarget)"/>.
+        /// </summary>
         public string Parameter { get; set; }
 
 #pragma warning disable 1591

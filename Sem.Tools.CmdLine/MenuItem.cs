@@ -144,16 +144,23 @@ namespace Sem.Tools.CmdLine
         /// <param name="action">The expression to create a menu item for.</param>
         /// <param name="suffixForMenu">A suffix for the description of the method (the description will be extracted from the documentation XML file).</param>
         /// <returns>A new menu item.</returns>
-        public static MenuItem Print(string displayString, Func<Task<string>> action, string suffixForMenu = "")
-        {
-            action.MustNotBeNull(nameof(action));
-            return new MenuItem(displayString + suffixForMenu, async () => Console.WriteLine("\n" + await action().ConfigureAwait(false)));
-        }
-
         public static MenuItem Print(string displayString, Func<Task> action, string suffixForMenu = "")
         {
             action.MustNotBeNull(nameof(action));
             return new MenuItem(displayString + suffixForMenu, async () => await action().ConfigureAwait(false));
+        }
+
+        /// <summary>
+        /// Creates a <see cref="MenuItem"/> from an expression - is meant to be used with a <see cref="MethodCallExpression"/>.
+        /// </summary>
+        /// <param name="displayString">The explicit "label" to be used for the menu entry.</param>
+        /// <param name="action">The expression to create a menu item for.</param>
+        /// <param name="suffixForMenu">A suffix for the description of the method (the description will be extracted from the documentation XML file).</param>
+        /// <returns>A new menu item.</returns>
+        public static MenuItem Print(string displayString, Func<Task<string>> action, string suffixForMenu = "")
+        {
+            action.MustNotBeNull(nameof(action));
+            return new MenuItem(displayString + suffixForMenu, async () => Console.WriteLine("\n" + await action().ConfigureAwait(false)));
         }
 
         /// <summary>
@@ -239,6 +246,19 @@ namespace Sem.Tools.CmdLine
         {
             var methodInfo = GetMethod(method.MustNotBeNull(nameof(method)));
             return Print(GetDescription(methodInfo), () => InvokeAction<T>(methodInfo, parameters));
+        }
+
+        /// <summary>
+        /// Creates menu entries for public methods of <typeparamref name="T"/>.
+        /// </summary>
+        /// <typeparam name="T">The type to create entries for.</typeparam>
+        /// <param name="method">The action to perform.</param>
+        /// <param name="parameters">Parameter values for the methods.</param>
+        /// <returns>A menu entry with sub menu items.</returns>
+        public static MenuItem For<T>(Expression<Func<Task>> method, params object[] parameters)
+        {
+            var methodInfo = GetMethod(method.MustNotBeNull(nameof(method)));
+            return Print(GetDescription(methodInfo), () => InvokeActionAsync<T>(methodInfo, parameters));
         }
 
         /// <summary>
