@@ -180,7 +180,7 @@ namespace Sem.Tools.Logging
             }
 
             var data = value == null ? string.Empty : (" - Data: " + JsonSerializer.Serialize(value, value.GetType()));
-            this.logMethod?.Invoke(logCategory, logLevel, this, $"{this.scopeName} - {message}" + data);
+            this.logMethod?.Invoke(logCategory, logLevel, this, this.scopeName + " - " + message + data);
         }
 
         private static string GetBasePath([CallerFilePath] string path = "")

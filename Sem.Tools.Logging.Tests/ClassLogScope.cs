@@ -3,6 +3,10 @@
 // </copyright>
 
 // ReSharper disable UnusedVariable
+
+using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
+
 namespace Sem.Tools.Logging.Tests
 {
     using System;
@@ -125,6 +129,62 @@ namespace Sem.Tools.Logging.Tests
 
                 const string expected = "Technical, Trace, /0004, NewScope - Finished scope - Data: {\"scopeName\":\"NewScope\",\"ms\":";
                 Assert.IsTrue(this.LogMessages[0].StartsWith(expected, StringComparison.Ordinal));
+            }
+        }
+
+        /// <summary>
+        /// Tests the static property <see cref="LogScope.LogMethod"/>.
+        /// </summary>
+        [TestClass]
+        public class LogMethod : LoggerTestBase
+        {
+            /// <summary>
+            /// Uses the default log method when no log method has been provided.
+            /// </summary>
+            [TestMethod]
+            public void DefaultMethodWillBeUsed()
+            {
+                var logs = new List<string>();
+                LogScope.LogMethod = (categories, level, scope, message) => logs.Add(message);
+                using var target = LogScope.Create("test");
+                Assert.AreEqual("test - Starting scope test in member DefaultMethodWillBeUsed of ClassLogScope.cs.", logs[0]);
+            }
+
+            /// <summary>
+            /// Explicit method overrides default method.
+            /// </summary>
+            [TestMethod]
+            public void ExplicitOverridesDefaultMethod()
+            {
+                var logs1 = new List<string>();
+                var logs2 = new List<string>();
+                void Log2(LogCategories categories, LogLevel level, LogScope scope, string message) => logs2.Add(message);
+                LogScope.LogMethod = Log1;
+                using var target = LogScope.Create("test", Log2);
+                Assert.AreEqual("test - Starting scope test in member ExplicitOverridesDefaultMethod of ClassLogScope.cs.", logs2[0]);
+            }
+
+            /// <summary>
+            /// Explicit method overrides default method.
+            /// </summary>
+            [TestMethod]
+            public void NullLogMethodDoesNotThrowExceptions()
+            {
+                LogScope.LogMethod = null;
+                using var target = LogScope.Create("test");
+            }
+
+            /// <summary>
+            /// Test log method that throws an exception (should not be called).
+            /// </summary>
+            /// <param name="categories">The categories of the log entry.</param>
+            /// <param name="level">The log level.</param>
+            /// <param name="scope">The scope logging the message.</param>
+            /// <param name="message">The message to be logged.</param>
+            [ExcludeFromCodeCoverage]
+            private void Log1(LogCategories categories, LogLevel level, LogScope scope, string message)
+            {
+                throw new Exception();
             }
         }
 
