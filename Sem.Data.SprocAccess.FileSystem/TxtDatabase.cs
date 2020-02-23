@@ -51,7 +51,7 @@ namespace Sem.Data.SprocAccess.FileSystem
                 .Aggregate("params-", (s, pair) => $"{s}-{pair.Key}={pair.Value}")
                 .Replace("@", string.Empty, StringComparison.Ordinal);
 
-            var targetPath = Path.Combine(this.baseFolder, FileSystemTools.SanitizeFileName(sproc), FileSystemTools.SanitizeFileName(fileName));
+            var targetPath = Path.Combine(this.baseFolder, sproc.SanitizeFileName(), fileName.SanitizeFileName());
 
             using var reader = new TxtReader(targetPath);
             scope?.Log(LogCategories.Technical, LogLevel.Trace, "reader created", reader);

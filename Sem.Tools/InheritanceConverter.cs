@@ -30,16 +30,10 @@ namespace Sem.Tools
             // "{type name}",
             reader.Read();
             var typeName = reader.GetString();
-            if (typeName == null)
-            {
-                throw new InvalidOperationException("Problem reading type name.");
-            }
+            typeName.MustNotBeNull("type cannot be read");
 
             var returnType = Type.GetType(typeName);
-            if (returnType == null)
-            {
-                throw new InvalidOperationException($"Problem creating type info for {typeName}.");
-            }
+            typeName.MustNotBeNull("Problem creating type info for " + typeName + ".");
 
             // "Data":
             reader.Read();

@@ -27,7 +27,7 @@ namespace Sem.Data.SprocAccess.FileSystemTests
             [TestMethod]
             public async Task MapsSampleType()
             {
-                var target = new TxtDatabase("Data");
+                await using var target = new TxtDatabase("Data");
                 var result = target.Execute("sample", FileSystemTests.Map.To<Sample>);
                 await foreach (var item in result)
                 {

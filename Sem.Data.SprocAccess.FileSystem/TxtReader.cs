@@ -91,6 +91,7 @@ namespace Sem.Data.SprocAccess.FileSystem
         {
             this.resultIndex++;
             this.Init();
+            this.lineIndex = 0;
             return Task.CompletedTask;
         }
 
@@ -120,6 +121,7 @@ namespace Sem.Data.SprocAccess.FileSystem
         /// <inheritdoc />
         public void Dispose()
         {
+            this.Close();
         }
 
         /// <summary>

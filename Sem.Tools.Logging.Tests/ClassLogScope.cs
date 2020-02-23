@@ -3,14 +3,12 @@
 // </copyright>
 
 // ReSharper disable UnusedVariable
-
-using System;
-using System.Threading.Tasks;
-
 namespace Sem.Tools.Logging.Tests
 {
+    using System;
     using System.Linq;
     using System.Text.RegularExpressions;
+    using System.Threading.Tasks;
 
     using Microsoft.VisualStudio.TestTools.UnitTesting;
 

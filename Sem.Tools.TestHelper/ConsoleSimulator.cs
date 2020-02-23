@@ -2,6 +2,8 @@
 // Copyright (c) Sven Erik Matzen. All rights reserved.
 // </copyright>
 
+using System.Diagnostics.CodeAnalysis;
+
 namespace Sem.Tools.TestHelper
 {
     using System.Collections.Generic;
@@ -45,6 +47,7 @@ namespace Sem.Tools.TestHelper
         /// Writes a value to the list of output.
         /// </summary>
         /// <param name="value">The value to be added.</param>
+        [ExcludeFromCodeCoverage]
         public void WriteLine(string value)
         {
             this.Output.Add(value?.Trim('\n'));
