@@ -47,7 +47,7 @@ namespace Sem.Tools.CmdLine
                     return;
                 }
 
-                console.WriteLine($"executing menu item {items[number].DisplayString}");
+                console.WriteLine($"executing menu item #{number} {items[number].DisplayString}");
 
                 try
                 {

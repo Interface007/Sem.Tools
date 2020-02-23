@@ -3,6 +3,10 @@
 // </copyright>
 
 // ReSharper disable UnusedVariable
+
+using System;
+using System.Threading.Tasks;
+
 namespace Sem.Tools.Logging.Tests
 {
     using System.Linq;
@@ -100,6 +104,53 @@ namespace Sem.Tools.Logging.Tests
 
                 Assert.AreEqual(1, this.LogMessages.Count);
                 Assert.AreEqual(expected, this.LogMessages[0]);
+            }
+        }
+
+        /// <summary>
+        /// Tests the method <see cref="LogScope.DisposeAsync"/>.
+        /// </summary>
+        [TestClass]
+        public class AsyncDispose : LoggerTestBase
+        {
+            /// <summary>
+            /// Tests whether the method <see cref="LogScope.DisposeAsync"/> logs correctly.
+            /// </summary>
+            /// <returns>A <see cref="Task"/> representing the asynchronous unit test.</returns>
+            [TestMethod]
+            public async Task AsyncDisposeCorrectlyLogsEndOfScope()
+            {
+                await using (var logScope = LogScope.Create("NewScope", this.LogMethod))
+                {
+                    this.LogMessages.Clear();
+                }
+
+                const string expected = "Technical, Trace, /0004, NewScope - Finished scope - Data: {\"scopeName\":\"NewScope\",\"ms\":";
+                Assert.IsTrue(this.LogMessages[0].StartsWith(expected, StringComparison.Ordinal));
+            }
+        }
+
+        /// <summary>
+        /// Tests the method <see cref="LogScope.MethodStart"/>.
+        /// </summary>
+        [TestClass]
+        public class MethodStart : LoggerTestBase
+        {
+            /// <summary>
+            /// Tests whether the method <see cref="LogScope.MethodStart"/> logs correctly the parameters.
+            /// </summary>
+            /// <returns>A <see cref="Task"/> representing the asynchronous unit test.</returns>
+            [TestMethod]
+            public async Task ParametersAreCorrectlyLogged()
+            {
+                await using (var logScope = LogScope.Create("NewScope", this.LogMethod))
+                {
+                    this.LogMessages.Clear();
+                    await using var subScope = logScope.MethodStart(new { this.LogMessages.Count, test = "true" });
+                }
+
+                Assert.AreEqual("Technical, Trace, /0004/0005, MethodScope - Starting scope MethodScope in member ParametersAreCorrectlyLogged of ClassLogScope.cs.", this.LogMessages[0]);
+                Assert.AreEqual("Technical, Information, /0004/0005, MethodScope - scope value:  - Data: {\"Count\":0,\"test\":\"true\"}", this.LogMessages[1]);
             }
         }
 

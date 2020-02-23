@@ -44,7 +44,7 @@ namespace Sem.Tools.CmdLine.Tests
                 Assert.AreEqual("2) This is a good documented void method with parameter.", simulator.Output[3]);
                 Assert.AreEqual("3) This is a good documented void method.", simulator.Output[4]);
                 Assert.AreEqual("what should be executed?", simulator.Output[5]);
-                Assert.AreEqual("executing menu item Do It The Right Way", simulator.Output[6]);
+                Assert.AreEqual("executing menu item #0 Do It The Right Way", simulator.Output[6]);
                 Assert.AreEqual("ok", simulator.Output[7]);
                 Assert.AreEqual("done", simulator.Output[8]);
                 Assert.AreEqual("press any key to continue", simulator.Output[9]);

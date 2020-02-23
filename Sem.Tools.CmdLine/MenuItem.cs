@@ -218,7 +218,15 @@ namespace Sem.Tools.CmdLine
                 async () =>
                 {
                     var items = MenuItemsFor<T>(parameters);
-                    await items.Show().ConfigureAwait(false);
+                    var console = parameters.FirstOrDefault(x => x is IConsole);
+                    if (console != null)
+                    {
+                        await items.Show((IConsole)console).ConfigureAwait(false);
+                    }
+                    else
+                    {
+                        await items.Show().ConfigureAwait(false);
+                    }
                 });
         }
 
@@ -232,7 +240,7 @@ namespace Sem.Tools.CmdLine
         public static MenuItem For<T>(Expression<Action> action, params object[] parameters)
         {
             var methodInfo = GetMethod(action.MustNotBeNull(nameof(action)));
-            return Print(GetDescription(methodInfo), () => InvokeAction<Task<string>, T>(methodInfo, parameters));
+            return Print(GetDescription(methodInfo), () => InvokeAction<T>(methodInfo, parameters));
         }
 
         /// <summary>
@@ -379,7 +387,12 @@ namespace Sem.Tools.CmdLine
         /// <returns>The method information from the called method.</returns>
         private static MethodInfo GetMethod(LambdaExpression action)
         {
-            return ((MethodCallExpression)action.Body).Method;
+            if (!(action.Body is MethodCallExpression callExpression))
+            {
+                throw new ArgumentException("must be an expression with body of type MethodCallExpression", nameof(action));
+            }
+
+            return callExpression.Method;
         }
 
         /// <summary>

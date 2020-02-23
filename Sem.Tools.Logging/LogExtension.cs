@@ -2,6 +2,8 @@
 // Copyright (c) Sven Erik Matzen. All rights reserved.
 // </copyright>
 
+using System.Diagnostics.CodeAnalysis;
+
 namespace Sem.Tools.Logging
 {
     using System;
@@ -17,6 +19,7 @@ namespace Sem.Tools.Logging
         /// </summary>
         /// <param name="logMethod">The original log method, this method should be added to.</param>
         /// <returns>A new method that is the combination of <paramref name="logMethod"/> and an output to <see cref="Debug"/>.</returns>
+        [ExcludeFromCodeCoverage]
         public static Action<LogCategories, LogLevel, LogScope, string> AddDebug(this Action<LogCategories, LogLevel, LogScope, string> logMethod)
         {
             return logMethod.Append((logCategories, logLevel, logScope, message) => Debug.WriteLine($"{DateTime.Now:s} - {logScope.Id} - {message}"));
@@ -27,6 +30,7 @@ namespace Sem.Tools.Logging
         /// </summary>
         /// <param name="logMethod">The original log method, this method should be added to.</param>
         /// <returns>A new method that is the combination of <paramref name="logMethod"/> and an output to <see cref="Console"/>.</returns>
+        [ExcludeFromCodeCoverage]
         public static Action<LogCategories, LogLevel, LogScope, string> AddConsole(this Action<LogCategories, LogLevel, LogScope, string> logMethod)
         {
             return logMethod.Append((logCategories, logLevel, logScope, message) => System.Console.WriteLine($"{DateTime.Now:s} - {logScope.Id} - {message}"));
