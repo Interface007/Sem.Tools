@@ -3,6 +3,9 @@
 // </copyright>
 
 // ReSharper disable MemberCanBePrivate.Global
+
+using System.Diagnostics.CodeAnalysis;
+
 namespace Sem.Tools.TestHelper
 {
     using System;
@@ -88,6 +91,7 @@ namespace Sem.Tools.TestHelper
             }
         }
 
+        [ExcludeFromCodeCoverage]
         private static string GetExceptionMsg(Exception ex)
         {
             var stringBuilder = new StringBuilder();
@@ -101,11 +105,11 @@ namespace Sem.Tools.TestHelper
                 }
                 catch
                 {
+                    // searching for a way to test this ...
                     str = string.Format(CultureInfo.CurrentCulture, "Failed to get exception message for type {0}", exception.GetType());
                 }
 
-                stringBuilder.Append(string.Format((IFormatProvider)CultureInfo.CurrentCulture, "{0}{1}: {2}", flag ? string.Empty : " ---> ", exception.GetType(), str));
-
+                stringBuilder.Append(string.Format(CultureInfo.CurrentCulture, "{0}{1}: {2}", flag ? string.Empty : " ---> ", exception.GetType(), str));
                 flag = false;
             }
 

@@ -2,6 +2,8 @@
 // Copyright (c) Sven Erik Matzen. All rights reserved.
 // </copyright>
 
+using System.Diagnostics.CodeAnalysis;
+
 namespace Sem.Tools.CmdLine
 {
     using System;
@@ -17,6 +19,7 @@ namespace Sem.Tools.CmdLine
         /// </summary>
         /// <param name="items">The items to display.</param>
         /// <returns>A task to wait for.</returns>
+        [ExcludeFromCodeCoverage]
         public static Task Show(this MenuItem[] items)
         {
             return Show(items, new ConsoleWrapper());

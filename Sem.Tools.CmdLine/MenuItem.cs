@@ -3,6 +3,9 @@
 // </copyright>
 
 // ReSharper disable MemberCanBePrivate.Global
+
+using System.Diagnostics.CodeAnalysis;
+
 namespace Sem.Tools.CmdLine
 {
     using System;
@@ -219,14 +222,7 @@ namespace Sem.Tools.CmdLine
                 {
                     var items = MenuItemsFor<T>(parameters);
                     var console = parameters.FirstOrDefault(x => x is IConsole);
-                    if (console != null)
-                    {
-                        await items.Show((IConsole)console).ConfigureAwait(false);
-                    }
-                    else
-                    {
-                        await items.Show().ConfigureAwait(false);
-                    }
+                    await ShowMenuItem(console, items).ConfigureAwait(false);
                 });
         }
 
@@ -331,6 +327,20 @@ namespace Sem.Tools.CmdLine
         }
 
         /// <summary>
+        /// "Shows" the menu of the item.
+        /// </summary>
+        /// <param name="console">The <see cref="IConsole"/> implementation to use.</param>
+        /// <param name="items">The items of the menu.</param>
+        /// <returns>A task to wait for.</returns>
+        [ExcludeFromCodeCoverage]
+        private static Task ShowMenuItem(object console, MenuItem[] items)
+        {
+            return console != null
+                ? items.Show((IConsole)console)
+                : items.Show();
+        }
+
+        /// <summary>
         /// Extracts the description from the XML documentation of a class (the XML file mst be generated while building the assembly).
         /// </summary>
         /// <param name="type">The class type to get the description for.</param>
@@ -366,7 +376,7 @@ namespace Sem.Tools.CmdLine
 
             if (string.IsNullOrEmpty(description))
             {
-                description = Regex.Replace(name, "([^a-z])", x => " " + x).Trim();
+                description = Regex.Replace(name, "([^a-z])", x => $" {x}").Trim();
             }
 
             while (description.Contains("  ", StringComparison.Ordinal))

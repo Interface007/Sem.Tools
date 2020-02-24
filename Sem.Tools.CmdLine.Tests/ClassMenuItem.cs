@@ -50,11 +50,12 @@ namespace Sem.Tools.CmdLine.Tests
                     MenuItem.For<TestMenuTarget>(x => x.ThisIsAVoidMethod(), "hello", menuTarget),
                     MenuItem.For<TestMenuTargetWithCtorParameter>(x => x.DoIt(instance), "hello", menuTarget),
                     MenuItem.For<TestMenuTargetWithCtorParameter>(x => x.DoIt(), "hello", menuTarget),
+                    MenuItem.For<TestMenuTargetWithCtorParameter>(() => instance.DoIt(), "hello", menuTarget),
                     MenuItem.For<TestMenuTargetWithCtorParameter>(() => instance.VoidDoIt(), "hello", menuTarget),
                 }.Show(console);
 
                 var result = console.Output.Aggregate((x, s) => x + "\n" + s);
-                const string expected = "{clear}\n0) Local Void Method With Parameter\n1) Local String Method With Parameter\n2) Local Async Void Method With Parameter\n3) Local Async String Method With Parameter\n4) A class containing method to create a menu from.\n5) This is a good documented void method.\n6) Do It\n7) Do It\n8) Void Do It\nwhat should be executed?";
+                const string expected = "{clear}\n0) Local Void Method With Parameter\n1) Local String Method With Parameter\n2) Local Async Void Method With Parameter\n3) Local Async String Method With Parameter\n4) A class containing method to create a menu from.\n5) This is a good documented void method.\n6) Do It\n7) Do It\n8) Do It\n9) Void Do It\nwhat should be executed?";
 
                 Assert.AreEqual(expected, result);
             }
@@ -66,9 +67,9 @@ namespace Sem.Tools.CmdLine.Tests
             [TestMethod]
             public async Task ExecutionTest()
             {
-                var userInput = Enumerable.Range(0, 9)
+                var userInput = Enumerable.Range(0, 10)
                                           .SelectMany(x => new[] { x.ToString(CultureInfo.InvariantCulture), " " })
-                                          .Take(17)
+                                          .Take(19)
                                           .Append("0")
                                           .Append(" ")
                                           .Append("1")
@@ -92,12 +93,13 @@ namespace Sem.Tools.CmdLine.Tests
                     MenuItem.For<TestMenuTarget>(x => x.ThisIsAVoidMethod(), "hello", menuTarget),
                     MenuItem.For<TestMenuTargetWithCtorParameter>(x => x.DoIt(instance), "hello", menuTarget, instance),
                     MenuItem.For<TestMenuTargetWithCtorParameter>(x => x.DoIt(), "hello", menuTarget),
+                    MenuItem.For<TestMenuTargetWithCtorParameter>(() => instance.DoIt(), "hello", menuTarget),
                     MenuItem.For<TestMenuTargetWithCtorParameter>(() => instance.VoidDoIt(), "hello", menuTarget),
                     MenuItem.For<TestMenuTargetWithStaticMethods>("hello", menuTarget, console),
                 }.Show(console);
 
                 var result = console.Output.Aggregate((x, s) => x + "\n" + s);
-                const string expected = "{clear}\n0) Local Void Method With Parameter\n1) Local String Method With Parameter\n2) Local Async Void Method With Parameter\n3) Local Async String Method With Parameter\n4) This is a good documented void method.\n5) Do It\n6) Do It\n7) Void Do It\n8) A class containing method to create a menu from.\nwhat should be executed?\nexecuting menu item #0 Local Void Method With Parameter\ndone\npress any key to continue\n{clear}\n0) Local Void Method With Parameter\n1) Local String Method With Parameter\n2) Local Async Void Method With Parameter\n3) Local Async String Method With Parameter\n4) This is a good documented void method.\n5) Do It\n6) Do It\n7) Void Do It\n8) A class containing method to create a menu from.\nwhat should be executed?\nexecuting menu item #1 Local String Method With Parameter\ndone\npress any key to continue\n{clear}\n0) Local Void Method With Parameter\n1) Local String Method With Parameter\n2) Local Async Void Method With Parameter\n3) Local Async String Method With Parameter\n4) This is a good documented void method.\n5) Do It\n6) Do It\n7) Void Do It\n8) A class containing method to create a menu from.\nwhat should be executed?\nexecuting menu item #2 Local Async Void Method With Parameter\ndone\npress any key to continue\n{clear}\n0) Local Void Method With Parameter\n1) Local String Method With Parameter\n2) Local Async Void Method With Parameter\n3) Local Async String Method With Parameter\n4) This is a good documented void method.\n5) Do It\n6) Do It\n7) Void Do It\n8) A class containing method to create a menu from.\nwhat should be executed?\nexecuting menu item #3 Local Async String Method With Parameter\ndone\npress any key to continue\n{clear}\n0) Local Void Method With Parameter\n1) Local String Method With Parameter\n2) Local Async Void Method With Parameter\n3) Local Async String Method With Parameter\n4) This is a good documented void method.\n5) Do It\n6) Do It\n7) Void Do It\n8) A class containing method to create a menu from.\nwhat should be executed?\nexecuting menu item #4 This is a good documented void method.\ndone\npress any key to continue\n{clear}\n0) Local Void Method With Parameter\n1) Local String Method With Parameter\n2) Local Async Void Method With Parameter\n3) Local Async String Method With Parameter\n4) This is a good documented void method.\n5) Do It\n6) Do It\n7) Void Do It\n8) A class containing method to create a menu from.\nwhat should be executed?\nexecuting menu item #5 Do It\ndone\npress any key to continue\n{clear}\n0) Local Void Method With Parameter\n1) Local String Method With Parameter\n2) Local Async Void Method With Parameter\n3) Local Async String Method With Parameter\n4) This is a good documented void method.\n5) Do It\n6) Do It\n7) Void Do It\n8) A class containing method to create a menu from.\nwhat should be executed?\nexecuting menu item #6 Do It\ndone\npress any key to continue\n{clear}\n0) Local Void Method With Parameter\n1) Local String Method With Parameter\n2) Local Async Void Method With Parameter\n3) Local Async String Method With Parameter\n4) This is a good documented void method.\n5) Do It\n6) Do It\n7) Void Do It\n8) A class containing method to create a menu from.\nwhat should be executed?\nexecuting menu item #7 Void Do It\ndone\npress any key to continue\n{clear}\n0) Local Void Method With Parameter\n1) Local String Method With Parameter\n2) Local Async Void Method With Parameter\n3) Local Async String Method With Parameter\n4) This is a good documented void method.\n5) Do It\n6) Do It\n7) Void Do It\n8) A class containing method to create a menu from.\nwhat should be executed?\nexecuting menu item #8 A class containing method to create a menu from.\n{clear}\n0) This is a method returning a string async.\n1) This is a good documented void method.\nwhat should be executed?\nexecuting menu item #0 This is a method returning a string async.\ndone\npress any key to continue\n{clear}\n0) This is a method returning a string async.\n1) This is a good documented void method.\nwhat should be executed?\nexecuting menu item #1 This is a good documented void method.\ndone\npress any key to continue\n{clear}\n0) This is a method returning a string async.\n1) This is a good documented void method.\nwhat should be executed?\ndone\npress any key to continue\n{clear}\n0) Local Void Method With Parameter\n1) Local String Method With Parameter\n2) Local Async Void Method With Parameter\n3) Local Async String Method With Parameter\n4) This is a good documented void method.\n5) Do It\n6) Do It\n7) Void Do It\n8) A class containing method to create a menu from.\nwhat should be executed?";
+                const string expected = "{clear}\n0) Local Void Method With Parameter\n1) Local String Method With Parameter\n2) Local Async Void Method With Parameter\n3) Local Async String Method With Parameter\n4) This is a good documented void method.\n5) Do It\n6) Do It\n7) Do It\n8) Void Do It\n9) A class containing method to create a menu from.\nwhat should be executed?\nexecuting menu item #0 Local Void Method With Parameter\ndone\npress any key to continue\n{clear}\n0) Local Void Method With Parameter\n1) Local String Method With Parameter\n2) Local Async Void Method With Parameter\n3) Local Async String Method With Parameter\n4) This is a good documented void method.\n5) Do It\n6) Do It\n7) Do It\n8) Void Do It\n9) A class containing method to create a menu from.\nwhat should be executed?\nexecuting menu item #1 Local String Method With Parameter\ndone\npress any key to continue\n{clear}\n0) Local Void Method With Parameter\n1) Local String Method With Parameter\n2) Local Async Void Method With Parameter\n3) Local Async String Method With Parameter\n4) This is a good documented void method.\n5) Do It\n6) Do It\n7) Do It\n8) Void Do It\n9) A class containing method to create a menu from.\nwhat should be executed?\nexecuting menu item #2 Local Async Void Method With Parameter\ndone\npress any key to continue\n{clear}\n0) Local Void Method With Parameter\n1) Local String Method With Parameter\n2) Local Async Void Method With Parameter\n3) Local Async String Method With Parameter\n4) This is a good documented void method.\n5) Do It\n6) Do It\n7) Do It\n8) Void Do It\n9) A class containing method to create a menu from.\nwhat should be executed?\nexecuting menu item #3 Local Async String Method With Parameter\ndone\npress any key to continue\n{clear}\n0) Local Void Method With Parameter\n1) Local String Method With Parameter\n2) Local Async Void Method With Parameter\n3) Local Async String Method With Parameter\n4) This is a good documented void method.\n5) Do It\n6) Do It\n7) Do It\n8) Void Do It\n9) A class containing method to create a menu from.\nwhat should be executed?\nexecuting menu item #4 This is a good documented void method.\ndone\npress any key to continue\n{clear}\n0) Local Void Method With Parameter\n1) Local String Method With Parameter\n2) Local Async Void Method With Parameter\n3) Local Async String Method With Parameter\n4) This is a good documented void method.\n5) Do It\n6) Do It\n7) Do It\n8) Void Do It\n9) A class containing method to create a menu from.\nwhat should be executed?\nexecuting menu item #5 Do It\ndone\npress any key to continue\n{clear}\n0) Local Void Method With Parameter\n1) Local String Method With Parameter\n2) Local Async Void Method With Parameter\n3) Local Async String Method With Parameter\n4) This is a good documented void method.\n5) Do It\n6) Do It\n7) Do It\n8) Void Do It\n9) A class containing method to create a menu from.\nwhat should be executed?\nexecuting menu item #6 Do It\ndone\npress any key to continue\n{clear}\n0) Local Void Method With Parameter\n1) Local String Method With Parameter\n2) Local Async Void Method With Parameter\n3) Local Async String Method With Parameter\n4) This is a good documented void method.\n5) Do It\n6) Do It\n7) Do It\n8) Void Do It\n9) A class containing method to create a menu from.\nwhat should be executed?\nexecuting menu item #7 Do It\ndone\npress any key to continue\n{clear}\n0) Local Void Method With Parameter\n1) Local String Method With Parameter\n2) Local Async Void Method With Parameter\n3) Local Async String Method With Parameter\n4) This is a good documented void method.\n5) Do It\n6) Do It\n7) Do It\n8) Void Do It\n9) A class containing method to create a menu from.\nwhat should be executed?\nexecuting menu item #8 Void Do It\ndone\npress any key to continue\n{clear}\n0) Local Void Method With Parameter\n1) Local String Method With Parameter\n2) Local Async Void Method With Parameter\n3) Local Async String Method With Parameter\n4) This is a good documented void method.\n5) Do It\n6) Do It\n7) Do It\n8) Void Do It\n9) A class containing method to create a menu from.\nwhat should be executed?\nexecuting menu item #9 A class containing method to create a menu from.\n{clear}\n0) This is a method returning a string async.\n1) This is a good documented void method.\nwhat should be executed?\nexecuting menu item #0 This is a method returning a string async.\ndone\npress any key to continue\n{clear}\n0) This is a method returning a string async.\n1) This is a good documented void method.\nwhat should be executed?\nexecuting menu item #1 This is a good documented void method.\ndone\npress any key to continue\n{clear}\n0) This is a method returning a string async.\n1) This is a good documented void method.\nwhat should be executed?\ndone\npress any key to continue\n{clear}\n0) Local Void Method With Parameter\n1) Local String Method With Parameter\n2) Local Async Void Method With Parameter\n3) Local Async String Method With Parameter\n4) This is a good documented void method.\n5) Do It\n6) Do It\n7) Do It\n8) Void Do It\n9) A class containing method to create a menu from.\nwhat should be executed?";
 
                 Assert.AreEqual(expected, result);
             }
@@ -256,9 +258,28 @@ namespace Sem.Tools.CmdLine.Tests
         }
 
         /// <summary>
+        /// Tests the method <see cref="MenuItem.ToString"/>.
+        /// </summary>
+        [TestClass]
+        [ExcludeFromCodeCoverage]
+        public class ToString
+        {
+            /// <summary>
+            /// Returns the description property.
+            /// </summary>
+            [TestMethod]
+            public void BuildsDescriptionFromNameWhenNoXmlAvailable()
+            {
+                var target = new MenuItem("Hello", () => Task.CompletedTask);
+                Assert.AreEqual("Hello", target.ToString());
+            }
+        }
+
+        /// <summary>
         /// Tests the method <see cref="MenuItem.Print(System.Linq.Expressions.Expression{System.Func{System.Collections.Generic.IAsyncEnumerable{string}}},string)"/>.
         /// </summary>
         [TestClass]
+        [ExcludeFromCodeCoverage]
         public class Print
         {
             /// <summary>
@@ -270,6 +291,17 @@ namespace Sem.Tools.CmdLine.Tests
                 var menuTarget = new SampleClassWithoutDocumentation();
                 var target = MenuItem.Print(() => menuTarget.JustASimpleMethod());
                 Assert.AreEqual("Just A Simple Method", target.DisplayString);
+            }
+
+            /// <summary>
+            /// Tests whether a wrong expression throws the expected exception.
+            /// </summary>
+            /// <returns>A <see cref="Task"/> representing the asynchronous unit test.</returns>
+            [TestMethod]
+            [ExpectedExceptionMessage(typeof(ArgumentException), "must be an expression with body of type MethodCallExpression")]
+            public async Task ThrowsCorrectException()
+            {
+                var target = MenuItem.For<Print>(() => Task.CompletedTask);
             }
 
             /// <summary>

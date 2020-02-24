@@ -189,6 +189,25 @@ namespace Sem.Tools.Logging.Tests
         }
 
         /// <summary>
+        /// Tests the method <see cref="LogScope.BasePath"/>.
+        /// </summary>
+        [TestClass]
+        public class BasePath : LoggerTestBase
+        {
+            /// <summary>
+            /// Non-determined base path does not create problems.
+            /// </summary>
+            [TestMethod]
+            public void ExplicitNullBasePathIsAccepted()
+            {
+                var basePath = LogScope.BasePath;
+                LogScope.BasePath = null;
+                using var target = LogScope.Create("test");
+                LogScope.BasePath = basePath;
+            }
+        }
+
+        /// <summary>
         /// Tests the method <see cref="LogScope.MethodStart"/>.
         /// </summary>
         [TestClass]
@@ -209,6 +228,93 @@ namespace Sem.Tools.Logging.Tests
 
                 Assert.AreEqual("Technical, Trace, /0004/0005, MethodScope - Starting scope MethodScope in member ParametersAreCorrectlyLogged of ClassLogScope.cs.", this.LogMessages[0]);
                 Assert.AreEqual("Technical, Information, /0004/0005, MethodScope - scope value:  - Data: {\"Count\":0,\"test\":\"true\"}", this.LogMessages[1]);
+            }
+        }
+
+        /// <summary>
+        /// Tests the method <see cref="LogScope.DefaultCategory"/>.
+        /// </summary>
+        [TestClass]
+        public class DefaultCategory : LoggerTestBase
+        {
+            /// <summary>
+            /// Tests whether the property <see cref="LogScope.DefaultCategory"/> sets the default logging category.
+            /// </summary>
+            /// <returns>A <see cref="Task"/> representing the asynchronous unit test.</returns>
+            [TestMethod]
+            public async Task OnlyMatchingLogMessagesAreLogged()
+            {
+                var category = LogScope.DefaultCategory;
+                try
+                {
+                    LogScope.DefaultCategory = LogCategories.Business;
+                    await using (var logScope = LogScope.Create("NewScope", this.LogMethod))
+                    {
+                        this.LogMessages.Clear();
+                        logScope.Log(LogCategories.Business, LogLevel.Information, "test1");
+                        logScope.Log(LogCategories.Technical, LogLevel.Information, "test2");
+                        Assert.AreEqual(1, this.LogMessages.Count);
+                        Assert.AreEqual("Business, Information, /0004, NewScope - test1", this.LogMessages[0]);
+                    }
+
+                    LogScope.DefaultCategory = LogCategories.Technical;
+                    await using (var logScope = LogScope.Create("NewScope", this.LogMethod))
+                    {
+                        this.LogMessages.Clear();
+                        logScope.Log(LogCategories.Business, LogLevel.Information, "test1");
+                        logScope.Log(LogCategories.Technical, LogLevel.Information, "test2");
+                        Assert.AreEqual(1, this.LogMessages.Count);
+                        Assert.AreEqual("Technical, Information, /0004, NewScope - test2", this.LogMessages[0]);
+                    }
+                }
+                finally
+                {
+                    LogScope.DefaultCategory = category;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Tests the method <see cref="LogScope.DefaultLevel"/>.
+        /// </summary>
+        [TestClass]
+        public class DefaultLevel : LoggerTestBase
+        {
+            /// <summary>
+            /// Tests whether the property <see cref="LogScope.DefaultLevel"/> sets the default logging level.
+            /// </summary>
+            /// <returns>A <see cref="Task"/> representing the asynchronous unit test.</returns>
+            [TestMethod]
+            public async Task OnlyMatchingLogMessagesAreLogged()
+            {
+                var level = LogScope.DefaultLevel;
+                try
+                {
+                    LogScope.DefaultLevel = LogLevel.Information;
+                    await using (var logScope = LogScope.Create("NewScope", this.LogMethod))
+                    {
+                        this.LogMessages.Clear();
+                        logScope.Log(LogCategories.Business, LogLevel.Information, "test1");
+                        logScope.Log(LogCategories.Technical, LogLevel.Trace, "test2");
+                        Assert.AreEqual(1, this.LogMessages.Count);
+                        Assert.AreEqual("Business, Information, /0004, NewScope - test1", this.LogMessages[0]);
+                    }
+
+                    LogScope.DefaultLevel = LogLevel.Trace;
+                    await using (var logScope = LogScope.Create("NewScope", this.LogMethod))
+                    {
+                        this.LogMessages.Clear();
+                        logScope.Log(LogCategories.Business, LogLevel.Information, "test1");
+                        logScope.Log(LogCategories.Technical, LogLevel.Trace, "test2");
+                        Assert.AreEqual(2, this.LogMessages.Count);
+                        Assert.AreEqual("Business, Information, /0004, NewScope - test1", this.LogMessages[0]);
+                        Assert.AreEqual("Technical, Trace, /0004, NewScope - test2", this.LogMessages[1]);
+                    }
+                }
+                finally
+                {
+                    LogScope.DefaultLevel = level;
+                }
             }
         }
 

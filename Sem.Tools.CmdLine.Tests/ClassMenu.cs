@@ -28,6 +28,22 @@ namespace Sem.Tools.CmdLine.Tests
             /// </summary>
             /// <returns>A <see cref="Task"/> representing the asynchronous unit test.</returns>
             [TestMethod]
+            public async Task ShowsExceptionInOutput()
+            {
+                var simulator = new ConsoleSimulator("0", " ", " ");
+                MenuItem.Console = simulator;
+
+                var target = new[] { MenuItem.For<TestMenuTargetForException>(x => x.ThrowException()) };
+                await target.Show(simulator);
+
+                Assert.IsTrue(simulator.Output[4].Contains("System.Reflection.TargetInvocationException: Exception has been thrown by the target of an invocation.\r\n ---> System.NotImplementedException: The method or operation is not implemented", StringComparison.OrdinalIgnoreCase));
+            }
+
+            /// <summary>
+            /// Tests whether the action will be invoked correctly.
+            /// </summary>
+            /// <returns>A <see cref="Task"/> representing the asynchronous unit test.</returns>
+            [TestMethod]
             public async Task InvokesAction()
             {
                 var value = Guid.NewGuid().ToString("N", CultureInfo.InvariantCulture);

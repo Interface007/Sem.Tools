@@ -40,7 +40,9 @@ namespace Sem.Tools.Logging
             var newId = LogScope.IdFactory(this);
             this.idStack.Push($"{parent?.Id}/{newId.Substring(newId.Length - 4)}");
 
-            var replace = string.IsNullOrEmpty(LogScope.BasePath) ? path : path.Replace(LogScope.BasePath, string.Empty, StringComparison.OrdinalIgnoreCase);
+            var replace = !string.IsNullOrEmpty(LogScope.BasePath)
+                ? path.Replace(LogScope.BasePath, string.Empty, StringComparison.OrdinalIgnoreCase)
+                : path;
             var pat = replace.Trim('\\').Trim('/');
             this.Log(LogCategories.Technical, LogLevel.Trace, $"Starting scope {scopeName} in member {member} of {pat}.");
         }
