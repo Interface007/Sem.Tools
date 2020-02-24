@@ -76,7 +76,8 @@ namespace Sem.Tools.TestHelper.Tests
             [ExpectedExceptionMessage(typeof(ArgumentNullException), ".")]
             public void CtorThrowsExpectedExceptionWhenTypeIsNull()
             {
-                var target = new ExpectedExceptionMessageAttribute(null, string.Empty);
+                // ReSharper disable once ObjectCreationAsStatement
+                new ExpectedExceptionMessageAttribute(null, string.Empty);
             }
 
             /// <summary>
@@ -87,7 +88,8 @@ namespace Sem.Tools.TestHelper.Tests
             [ExpectedExceptionMessage(typeof(ArgumentException), "Expected exception type must derive from exception")]
             public void CtorThrowsExpectedExceptionWhenExceptionTypeNotInheritsException()
             {
-                var target = new ExpectedExceptionMessageAttribute(typeof(string), null);
+                // ReSharper disable once ObjectCreationAsStatement
+                new ExpectedExceptionMessageAttribute(typeof(string), null);
             }
         }
 

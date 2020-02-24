@@ -262,7 +262,9 @@ namespace Sem.Tools.CmdLine.Tests
         /// </summary>
         [TestClass]
         [ExcludeFromCodeCoverage]
+#pragma warning disable CS0108 // Member hides inherited member; missing new keyword
         public class ToString
+#pragma warning restore CS0108 // Member hides inherited member; missing new keyword
         {
             /// <summary>
             /// Returns the description property.
@@ -296,10 +298,9 @@ namespace Sem.Tools.CmdLine.Tests
             /// <summary>
             /// Tests whether a wrong expression throws the expected exception.
             /// </summary>
-            /// <returns>A <see cref="Task"/> representing the asynchronous unit test.</returns>
             [TestMethod]
             [ExpectedExceptionMessage(typeof(ArgumentException), "must be an expression with body of type MethodCallExpression")]
-            public async Task ThrowsCorrectException()
+            public void ThrowsCorrectException()
             {
                 var target = MenuItem.For<Print>(() => Task.CompletedTask);
             }

@@ -3,12 +3,10 @@
 // </copyright>
 
 // ReSharper disable MemberCanBePrivate.Global
-
-using System.Diagnostics.CodeAnalysis;
-
 namespace Sem.Tools.TestHelper
 {
     using System;
+    using System.Diagnostics.CodeAnalysis;
     using System.Globalization;
     using System.Reflection;
     using System.Text;

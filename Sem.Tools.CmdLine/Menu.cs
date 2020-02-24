@@ -1,12 +1,10 @@
 ﻿// <copyright file="Menu.cs" company="Sven Erik Matzen">
 // Copyright (c) Sven Erik Matzen. All rights reserved.
 // </copyright>
-
-using System.Diagnostics.CodeAnalysis;
-
 namespace Sem.Tools.CmdLine
 {
     using System;
+    using System.Diagnostics.CodeAnalysis;
     using System.Threading.Tasks;
 
     /// <summary>

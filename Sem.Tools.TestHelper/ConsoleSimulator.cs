@@ -1,12 +1,10 @@
 ﻿// <copyright file="ConsoleSimulator.cs" company="Sven Erik Matzen">
 // Copyright (c) Sven Erik Matzen. All rights reserved.
 // </copyright>
-
-using System.Diagnostics.CodeAnalysis;
-
 namespace Sem.Tools.TestHelper
 {
     using System.Collections.Generic;
+    using System.Diagnostics.CodeAnalysis;
 
     /// <summary>
     /// Helps to test functionality that relies on <see cref="System.Console"/>.

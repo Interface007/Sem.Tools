@@ -1,19 +1,17 @@
 // <copyright file="ClassTxtDatabase.cs" company="Sven Erik Matzen">
 // Copyright (c) Sven Erik Matzen. All rights reserved.
 // </copyright>
-
-using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
-using Sem.Tools.Logging;
-
 namespace Sem.Data.SprocAccess.FileSystemTests
 {
     using System;
+    using System.Collections.Generic;
+    using System.Diagnostics.CodeAnalysis;
     using System.Threading.Tasks;
 
     using Microsoft.VisualStudio.TestTools.UnitTesting;
 
     using Sem.Data.SprocAccess.FileSystem;
+    using Sem.Tools.Logging;
 
     /// <summary>
     /// Tests for the class <see cref="TxtDatabase"/>.
@@ -99,7 +97,7 @@ namespace Sem.Data.SprocAccess.FileSystemTests
             }
 
             /// <summary>
-            /// Tests whether 
+            /// Tests whether the method can read a 2nd result set.
             /// </summary>
             /// <returns>A task to wait for.</returns>
             [TestMethod]

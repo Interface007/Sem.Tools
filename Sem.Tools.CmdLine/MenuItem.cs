@@ -3,13 +3,11 @@
 // </copyright>
 
 // ReSharper disable MemberCanBePrivate.Global
-
-using System.Diagnostics.CodeAnalysis;
-
 namespace Sem.Tools.CmdLine
 {
     using System;
     using System.Collections.Generic;
+    using System.Diagnostics.CodeAnalysis;
     using System.IO;
     using System.Linq;
     using System.Linq.Expressions;

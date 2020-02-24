@@ -3,13 +3,11 @@
 // </copyright>
 
 // ReSharper disable UnusedVariable
-
-using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
-
 namespace Sem.Tools.Logging.Tests
 {
     using System;
+    using System.Collections.Generic;
+    using System.Diagnostics.CodeAnalysis;
     using System.Linq;
     using System.Text.RegularExpressions;
     using System.Threading.Tasks;
@@ -159,7 +157,7 @@ namespace Sem.Tools.Logging.Tests
                 var logs1 = new List<string>();
                 var logs2 = new List<string>();
                 void Log2(LogCategories categories, LogLevel level, LogScope scope, string message) => logs2.Add(message);
-                LogScope.LogMethod = Log1;
+                LogScope.LogMethod = this.Log1;
                 using var target = LogScope.Create("test", Log2);
                 Assert.AreEqual("test - Starting scope test in member ExplicitOverridesDefaultMethod of ClassLogScope.cs.", logs2[0]);
             }
