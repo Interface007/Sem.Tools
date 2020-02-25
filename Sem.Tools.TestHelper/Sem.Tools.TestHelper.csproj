@@ -7,7 +7,7 @@
     <Authors>Sven Erik Matzen</Authors>
     <Product>Sem.Tools</Product>
     <Description>Some helper methods to write "better" / "easier to read" unit tests. One example is ExpectedExceptionMessageAttribute - 
-      a replacement fo the ExpectedExceptionAttribute that also validates the exception message.</Description>
+a replacement fo the ExpectedExceptionAttribute that also validates the exception message.</Description>
     <Copyright>Sven Erik Matzen</Copyright>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageProjectUrl>https://dev.azure.com/matzen/Sven</PackageProjectUrl>
@@ -27,7 +27,7 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="MSTest.TestFramework" Version="2.0.0" />
+    <PackageReference Include="MSTest.TestFramework" Version="2.1.0" />
     <PackageReference Include="StyleCop.Analyzers" Version="1.1.118">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>

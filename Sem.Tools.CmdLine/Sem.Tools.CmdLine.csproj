@@ -7,7 +7,7 @@
     <Authors>Sven Erik Matzen</Authors>
     <Product>Sem.Tools</Product>
     <Description>Command line tools including a menu-system that creates menu entries from 
-      methods or public methods of classes by interpreting the documentation comments.</Description>
+methods or public methods of classes by interpreting the documentation comments.</Description>
     <Copyright>Sven Erik Matzen</Copyright>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageProjectUrl>https://dev.azure.com/matzen/Sven</PackageProjectUrl>
