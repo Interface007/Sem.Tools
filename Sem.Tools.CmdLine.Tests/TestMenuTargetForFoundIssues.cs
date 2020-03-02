@@ -1,7 +1,7 @@
 // <copyright file="TestMenuTargetForFoundIssues.cs" company="Sven Erik Matzen">
 // Copyright (c) Sven Erik Matzen. All rights reserved.
 // </copyright>
-
+// ReSharper disable ClassNeverInstantiated.Global
 namespace Sem.Tools.CmdLine.Tests
 {
     using System.Diagnostics.CodeAnalysis;
@@ -13,6 +13,17 @@ namespace Sem.Tools.CmdLine.Tests
     [ExcludeFromCodeCoverage]
     public class TestMenuTargetForFoundIssues
     {
+        private readonly TestMenuTargetComplexParameter parameter;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="TestMenuTargetForFoundIssues"/> class.
+        /// </summary>
+        /// <param name="parameter">A simple ctor parameter.</param>
+        public TestMenuTargetForFoundIssues(TestMenuTargetComplexParameter parameter)
+        {
+            this.parameter = parameter;
+        }
+
         /// <summary>
         /// Sample method of case 1 that was missing.
         /// </summary>

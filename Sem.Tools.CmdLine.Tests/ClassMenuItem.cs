@@ -265,6 +265,17 @@ namespace Sem.Tools.CmdLine.Tests
                 var target = MenuItem.MenuItemsFor<TestMenuTargetForFoundIssues>();
                 Assert.AreEqual("Sample method of case 1 that was missing.", target[0].DisplayString);
             }
+
+            /// <summary>
+            /// Tests whether constructor parameters are mapped correctly.
+            /// </summary>
+            /// <returns>A <see cref="Task"/> representing the asynchronous unit test.</returns>
+            [TestMethod]
+            public async Task InvokesWithCtorParameter()
+            {
+                var target = MenuItem.MenuItemsFor<TestMenuTargetForFoundIssues>(new { parameter = new TestMenuTargetComplexParameter(), param1 = "Hello", param2 = 42, param3 = "you" });
+                await target[0].Action.Invoke().ConfigureAwait(false);
+            }
         }
 
         /// <summary>

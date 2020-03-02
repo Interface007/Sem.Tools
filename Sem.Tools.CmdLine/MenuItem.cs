@@ -292,7 +292,7 @@ namespace Sem.Tools.CmdLine
             var methods = typeof(T).GetMethods();
             var items = methods.Where(IsIAsyncEnum).Select(x => Print(GetDescription(x), () => InvokeAction<IAsyncEnumerable<string>, T>(x, parameters)))
                  .Union(methods.Where(IsTaskString).Select(x => Print(GetDescription(x), () => InvokeAction<Task<string>, T>(x, parameters))))
-                 .Union(methods.Where(IsTaskVoid).Select(x => Print(GetDescription(x), () => InvokeAction<Task>(x, parameters))))
+                 .Union(methods.Where(IsTaskVoid).Select(x => Print(GetDescription(x), () => InvokeAction<T>(x, parameters))))
                  .Union(methods.Where(IsVoidMethod).Select(x => Print(GetDescription(x), () => InvokeAction<T>(x, parameters))))
                  .ToArray();
 
