@@ -255,6 +255,16 @@ namespace Sem.Tools.CmdLine.Tests
                 await target[0].Action.Invoke().ConfigureAwait(false);
                 Assert.AreEqual("ok", menuTarget.Result);
             }
+
+            /// <summary>
+            /// Tests whether the method extracts formerly missing signatures.
+            /// </summary>
+            [TestMethod]
+            public void GenerateForMissingSignatures()
+            {
+                var target = MenuItem.MenuItemsFor<TestMenuTargetForFoundIssues>();
+                Assert.AreEqual("Sample method of case 1 that was missing.", target[0].DisplayString);
+            }
         }
 
         /// <summary>
