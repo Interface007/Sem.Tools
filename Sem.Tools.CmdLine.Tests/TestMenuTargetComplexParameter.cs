@@ -4,6 +4,8 @@
 
 namespace Sem.Tools.CmdLine.Tests
 {
+    using System.Diagnostics.CodeAnalysis;
+
     /// <summary>
     /// Just a simple complex class used as a parameter for test.
     /// </summary>
@@ -12,6 +14,7 @@ namespace Sem.Tools.CmdLine.Tests
         /// <summary>
         /// Gets or sets a simple property.
         /// </summary>
+        [ExcludeFromCodeCoverage]
         public string Sample1 { get; set; }
     }
 }

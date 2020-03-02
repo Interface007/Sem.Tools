@@ -286,13 +286,13 @@ namespace Sem.Tools.CmdLine
         {
             static bool IsIAsyncEnum(MethodInfo methodInfo) => methodInfo.ReturnType == typeof(IAsyncEnumerable<string>);
             static bool IsTaskString(MethodInfo methodInfo) => methodInfo.ReturnType == typeof(Task<string>);
-            static bool IsTaskVoid(MethodInfo methodInfo) => methodInfo.ReturnType == typeof(Task);
+            static bool IsTaskNoType(MethodInfo methodInfo) => methodInfo.ReturnType == typeof(Task);
             static bool IsVoidMethod(MethodInfo methodInfo) => methodInfo.ReturnType == typeof(void) && !methodInfo.Name.StartsWith("set_", StringComparison.Ordinal);
 
             var methods = typeof(T).GetMethods();
             var items = methods.Where(IsIAsyncEnum).Select(x => Print(GetDescription(x), () => InvokeAction<IAsyncEnumerable<string>, T>(x, parameters)))
                  .Union(methods.Where(IsTaskString).Select(x => Print(GetDescription(x), () => InvokeAction<Task<string>, T>(x, parameters))))
-                 .Union(methods.Where(IsTaskVoid).Select(x => Print(GetDescription(x), () => InvokeAction<T, Task>(x, parameters))))
+                 .Union(methods.Where(IsTaskNoType).Select(x => Print(GetDescription(x), () => InvokeAction<Task, T>(x, parameters))))
                  .Union(methods.Where(IsVoidMethod).Select(x => Print(GetDescription(x), () => InvokeAction<T>(x, parameters))))
                  .ToArray();
 
