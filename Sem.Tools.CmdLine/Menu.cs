@@ -1,10 +1,12 @@
 ﻿// <copyright file="Menu.cs" company="Sven Erik Matzen">
 // Copyright (c) Sven Erik Matzen. All rights reserved.
 // </copyright>
+
 namespace Sem.Tools.CmdLine
 {
     using System;
     using System.Diagnostics.CodeAnalysis;
+    using System.Linq;
     using System.Threading.Tasks;
 
     /// <summary>
@@ -20,17 +22,37 @@ namespace Sem.Tools.CmdLine
         [ExcludeFromCodeCoverage]
         public static Task Show(this MenuItem[] items)
         {
-            return Show(items, new ConsoleWrapper());
+            return ShowInternal(items, new ConsoleWrapper());
         }
 
         /// <summary>
         /// Show the menu items and wait for selection of user.
         /// </summary>
         /// <param name="items">The items to display.</param>
-        /// <param name="console">The console implementation.</param>
+        /// <param name="parameters">The parameters for method calls and/or constructors.</param>
         /// <returns>A task to wait for.</returns>
-        public static async Task Show(this MenuItem[] items, IConsole console)
+        [ExcludeFromCodeCoverage]
+        public static Task Show(this MenuItem[] items, params object[] parameters)
         {
+            var console = parameters.First(x => x is IConsole);
+            if (console == null)
+            {
+                parameters = new[] { (object)new ConsoleWrapper() }.Union(parameters).ToArray();
+            }
+
+            return ShowInternal(items, parameters);
+        }
+
+        /// <summary>
+        /// Show the menu items and wait for selection of user.
+        /// </summary>
+        /// <param name="items">The items to display.</param>
+        /// <param name="parameters">The parameters for method calls and/or constructors.</param>
+        /// <returns>A task to wait for.</returns>
+        private static async Task ShowInternal(this MenuItem[] items, params object[] parameters)
+        {
+            var console = (IConsole)parameters.First(x => x is IConsole);
+
             while (true)
             {
                 console.Clear();
@@ -52,7 +74,10 @@ namespace Sem.Tools.CmdLine
 
                 try
                 {
-                    await items[number].Action().ConfigureAwait(false);
+                    if (items[number].ActionWithParameters != null)
+                    {
+                        await items[number].ActionWithParameters(parameters).ConfigureAwait(false);
+                    }
                 }
                 catch (Exception e)
                 {

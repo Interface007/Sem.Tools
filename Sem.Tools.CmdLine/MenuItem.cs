@@ -7,7 +7,6 @@ namespace Sem.Tools.CmdLine
 {
     using System;
     using System.Collections.Generic;
-    using System.Diagnostics.CodeAnalysis;
     using System.IO;
     using System.Linq;
     using System.Linq.Expressions;
@@ -37,16 +36,28 @@ namespace Sem.Tools.CmdLine
     /// </example>
     public class MenuItem
     {
+        /////// <summary>
+        /////// Initializes a new instance of the <see cref="MenuItem"/> class.
+        /////// </summary>
+        /////// <param name="displayString">The "label" that should be shown on the screen to describe the functionality.</param>
+        /////// <param name="action">The action to perform when the user selects this menu item.</param>
+        /////// <param name="suffixForMenu">A suffix for the display string.</param>
+        ////public MenuItem(string displayString, Func<Task> action, string suffixForMenu = "")
+        ////{
+        ////    this.DisplayString = displayString + suffixForMenu;
+        ////    this.Action = action;
+        ////}
+
         /// <summary>
         /// Initializes a new instance of the <see cref="MenuItem"/> class.
         /// </summary>
         /// <param name="displayString">The "label" that should be shown on the screen to describe the functionality.</param>
         /// <param name="action">The action to perform when the user selects this menu item.</param>
         /// <param name="suffixForMenu">A suffix for the display string.</param>
-        public MenuItem(string displayString, Func<Task> action, string suffixForMenu = "")
+        public MenuItem(string displayString, Func<object[], Task> action, string suffixForMenu = "")
         {
             this.DisplayString = displayString + suffixForMenu;
-            this.Action = action;
+            this.ActionWithParameters = action;
         }
 
         /// <summary>
@@ -61,9 +72,9 @@ namespace Sem.Tools.CmdLine
         public string DisplayString { get; }
 
         /// <summary>
-        /// Gets the action to perform when the user selects this menu item.
+        /// Gets the action with parameters to perform when the user selects this menu item.
         /// </summary>
-        public Func<Task> Action { get; }
+        public Func<object[], Task> ActionWithParameters { get; }
 
         /// <summary>
         /// Creates a <see cref="MenuItem"/> from an expression - is meant to be used with a <see cref="MethodCallExpression"/>.
@@ -121,6 +132,62 @@ namespace Sem.Tools.CmdLine
 
         /// <summary>
         /// Creates a <see cref="MenuItem"/> from a non-async void expression - is meant to be used with a <see cref="MethodCallExpression"/>.
+        /// This method assumes that <paramref name="action"/> is a method that returns a single string.
+        /// </summary>
+        /// <typeparam name="T1">The parameter type of the first method parameter.</typeparam>
+        /// <param name="action">The expression to create a menu item for.</param>
+        /// <param name="suffixForMenu">A suffix for the description of the method (the description will be extracted from the documentation XML file).</param>
+        /// <returns>A new menu item.</returns>
+        public static MenuItem Print<T1>(Action<T1> action, string suffixForMenu = "")
+        {
+            action.MustNotBeNull(nameof(action));
+            var methodInfo = action.GetMethodInfo();
+            return Print(GetDescription(methodInfo) + suffixForMenu, action);
+        }
+
+        /// <summary>
+        /// Creates a <see cref="MenuItem"/> from a non-async void expression - is meant to be used with a <see cref="MethodCallExpression"/>.
+        /// This method assumes that <paramref name="action"/> is a method that returns a single string.
+        /// </summary>
+        /// <typeparam name="T1">The parameter type of the first method parameter.</typeparam>
+        /// <param name="action">The expression to create a menu item for.</param>
+        /// <param name="suffixForMenu">A suffix for the description of the method (the description will be extracted from the documentation XML file).</param>
+        /// <returns>A new menu item.</returns>
+        public static MenuItem Print<T1>(Func<T1, string> action, string suffixForMenu = "")
+        {
+            action.MustNotBeNull(nameof(action));
+            var methodInfo = action.GetMethodInfo();
+            return Print(GetDescription(methodInfo) + suffixForMenu, action);
+        }
+
+        /// <summary>
+        /// Creates a <see cref="MenuItem"/> from an expression - is meant to be used with a <see cref="MethodCallExpression"/>.
+        /// </summary>
+        /// <typeparam name="T1">The parameter type of the first method parameter.</typeparam>
+        /// <param name="action">The expression to create a menu item for.</param>
+        /// <param name="suffixForMenu">A suffix for the description of the method (the description will be extracted from the documentation XML file).</param>
+        /// <returns>A new menu item.</returns>
+        public static MenuItem Print<T1>(Func<T1, Task<string>> action, string suffixForMenu = "")
+        {
+            var methodInfo = action.GetMethodInfo();
+            return Print(GetDescription(methodInfo) + suffixForMenu, action);
+        }
+
+        /// <summary>
+        /// Creates a <see cref="MenuItem"/> from an expression - is meant to be used with a <see cref="MethodCallExpression"/>.
+        /// </summary>
+        /// <typeparam name="T1">The parameter type of the first method parameter.</typeparam>
+        /// <param name="action">The expression to create a menu item for.</param>
+        /// <param name="suffixForMenu">A suffix for the description of the method (the description will be extracted from the documentation XML file).</param>
+        /// <returns>A new menu item.</returns>
+        public static MenuItem Print<T1>(Func<T1, Task> action, string suffixForMenu = "")
+        {
+            var methodInfo = action.GetMethodInfo();
+            return Print(GetDescription(methodInfo) + suffixForMenu, action);
+        }
+
+        /// <summary>
+        /// Creates a <see cref="MenuItem"/> from a non-async void expression - is meant to be used with a <see cref="MethodCallExpression"/>.
         /// </summary>
         /// <param name="displayString">The explicit "label" to be used for the menu entry.</param>
         /// <param name="action">The expression to create a menu item for.</param>
@@ -131,10 +198,52 @@ namespace Sem.Tools.CmdLine
             action.MustNotBeNull(nameof(action));
             return new MenuItem(
                 displayString + suffixForMenu,
-                () =>
+                p =>
             {
                 action.Invoke();
                 return Task.CompletedTask;
+            });
+        }
+
+        /// <summary>
+        /// Creates a <see cref="MenuItem"/> from a non-async void expression - is meant to be used with a <see cref="MethodCallExpression"/>.
+        /// </summary>
+        /// <typeparam name="T1">The parameter type of the first method parameter.</typeparam>
+        /// <param name="displayString">The explicit "label" to be used for the menu entry.</param>
+        /// <param name="action">The expression to create a menu item for.</param>
+        /// <param name="suffixForMenu">A suffix for the description of the method (the description will be extracted from the documentation XML file).</param>
+        /// <returns>A new menu item.</returns>
+        public static MenuItem Print<T1>(string displayString, Action<T1> action, string suffixForMenu = "")
+        {
+            action.MustNotBeNull(nameof(action));
+            return new MenuItem(
+                displayString + suffixForMenu,
+                parameters =>
+            {
+                var callParams = CallParams(action.GetMethodInfo(), parameters);
+                action.Invoke((T1)callParams[0]);
+                return Task.CompletedTask;
+            });
+        }
+
+        /// <summary>
+        /// Creates a <see cref="MenuItem"/> from a non-async void expression - is meant to be used with a <see cref="MethodCallExpression"/>.
+        /// </summary>
+        /// <typeparam name="T1">The parameter type of the first method parameter.</typeparam>
+        /// <param name="displayString">The explicit "label" to be used for the menu entry.</param>
+        /// <param name="action">The expression to create a menu item for.</param>
+        /// <param name="suffixForMenu">A suffix for the description of the method (the description will be extracted from the documentation XML file).</param>
+        /// <returns>A new menu item.</returns>
+        public static MenuItem Print<T1>(string displayString, Func<T1, string> action, string suffixForMenu = "")
+        {
+            action.MustNotBeNull(nameof(action));
+            return new MenuItem(
+                displayString + suffixForMenu,
+                parameters =>
+            {
+                var callParams = CallParams(action.GetMethodInfo(), parameters);
+                var returnValue = action.Invoke((T1)callParams[0]);
+                return Task.FromResult(returnValue);
             });
         }
 
@@ -148,20 +257,43 @@ namespace Sem.Tools.CmdLine
         public static MenuItem Print(string displayString, Func<Task> action, string suffixForMenu = "")
         {
             action.MustNotBeNull(nameof(action));
-            return new MenuItem(displayString + suffixForMenu, async () => await action().ConfigureAwait(false));
+            return new MenuItem(displayString + suffixForMenu, async p => await action().ConfigureAwait(false));
         }
 
         /// <summary>
         /// Creates a <see cref="MenuItem"/> from an expression - is meant to be used with a <see cref="MethodCallExpression"/>.
         /// </summary>
+        /// <typeparam name="T1">The parameter type of the first method parameter.</typeparam>
         /// <param name="displayString">The explicit "label" to be used for the menu entry.</param>
         /// <param name="action">The expression to create a menu item for.</param>
         /// <param name="suffixForMenu">A suffix for the description of the method (the description will be extracted from the documentation XML file).</param>
         /// <returns>A new menu item.</returns>
-        public static MenuItem Print(string displayString, Func<Task<string>> action, string suffixForMenu = "")
+        public static MenuItem Print<T1>(string displayString, Func<T1, Task<string>> action, string suffixForMenu = "")
         {
             action.MustNotBeNull(nameof(action));
-            return new MenuItem(displayString + suffixForMenu, async () => Console.WriteLine("\n" + await action().ConfigureAwait(false)));
+            return new MenuItem(displayString + suffixForMenu, async (parameters) =>
+            {
+                var callParams = CallParams(action.GetMethodInfo(), parameters);
+                Console.WriteLine("\n" + await action((T1)callParams[0]).ConfigureAwait(false));
+            });
+        }
+
+        /// <summary>
+        /// Creates a <see cref="MenuItem"/> from an expression - is meant to be used with a <see cref="MethodCallExpression"/>.
+        /// </summary>
+        /// <typeparam name="T1">The parameter type of the first method parameter.</typeparam>
+        /// <param name="displayString">The explicit "label" to be used for the menu entry.</param>
+        /// <param name="action">The expression to create a menu item for.</param>
+        /// <param name="suffixForMenu">A suffix for the description of the method (the description will be extracted from the documentation XML file).</param>
+        /// <returns>A new menu item.</returns>
+        public static MenuItem Print<T1>(string displayString, Func<T1, Task> action, string suffixForMenu = "")
+        {
+            action.MustNotBeNull(nameof(action));
+            return new MenuItem(displayString + suffixForMenu, async (parameters) =>
+            {
+                var callParams = CallParams(action.GetMethodInfo(), parameters);
+                await action((T1)callParams[0]).ConfigureAwait(false);
+            });
         }
 
         /// <summary>
@@ -176,9 +308,9 @@ namespace Sem.Tools.CmdLine
             action.MustNotBeNull(nameof(action));
             return new MenuItem(
                 displayString + suffixForMenu,
-                async () =>
+                async p =>
                 {
-                    await foreach (var result in action.Invoke())
+                    await foreach (var result in action())
                     {
                         Console.WriteLine($"\n{result}");
                     }
@@ -197,9 +329,9 @@ namespace Sem.Tools.CmdLine
             action.MustNotBeNull(nameof(action));
             return new MenuItem(
                 displayString + suffixForMenu,
-                async () =>
+                async p =>
                 {
-                    foreach (var result in await action.Invoke().ConfigureAwait(false))
+                    foreach (var result in await action().ConfigureAwait(false))
                     {
                         Console.WriteLine($"\n{result}");
                     }
@@ -216,11 +348,10 @@ namespace Sem.Tools.CmdLine
         {
             return new MenuItem(
                 GetDescription(typeof(T)),
-                async () =>
+                async callParams =>
                 {
                     var items = MenuItemsFor<T>(parameters);
-                    var console = parameters.FirstOrDefault(x => x is IConsole);
-                    await ShowMenuItem(console, items).ConfigureAwait(false);
+                    await items.Show(callParams.Union(parameters).ToArray()).ConfigureAwait(false);
                 });
         }
 
@@ -234,7 +365,11 @@ namespace Sem.Tools.CmdLine
         public static MenuItem For<T>(Expression<Action> action, params object[] parameters)
         {
             var methodInfo = GetMethod(action.MustNotBeNull(nameof(action)));
-            return Print(GetDescription(methodInfo), () => InvokeAction<T>(methodInfo, parameters));
+            return new MenuItem(GetDescription(methodInfo), p =>
+            {
+                InvokeAction<T>(methodInfo, parameters.Union(p).ToArray());
+                return Task.CompletedTask;
+            });
         }
 
         /// <summary>
@@ -260,7 +395,7 @@ namespace Sem.Tools.CmdLine
         public static MenuItem For<T>(Expression<Func<Task>> method, params object[] parameters)
         {
             var methodInfo = GetMethod(method.MustNotBeNull(nameof(method)));
-            return Print(GetDescription(methodInfo), () => InvokeActionAsync<T>(methodInfo, parameters));
+            return new MenuItem(GetDescription(methodInfo), async p => await InvokeActionAsync<T>(methodInfo, parameters.Union(p).ToArray()).ConfigureAwait(false));
         }
 
         /// <summary>
@@ -273,7 +408,7 @@ namespace Sem.Tools.CmdLine
         public static MenuItem For<T>(Expression<Func<T, Task>> method, params object[] parameters)
         {
             var methodInfo = GetMethod(method.MustNotBeNull(nameof(method)));
-            return Print(GetDescription(methodInfo), () => InvokeActionAsync<T>(methodInfo, parameters));
+            return new MenuItem(GetDescription(methodInfo), async p => await InvokeActionAsync<T>(methodInfo, parameters.Union(p).ToArray()).ConfigureAwait(false));
         }
 
         /// <summary>
@@ -290,10 +425,18 @@ namespace Sem.Tools.CmdLine
             static bool IsVoidMethod(MethodInfo methodInfo) => methodInfo.ReturnType == typeof(void) && !methodInfo.Name.StartsWith("set_", StringComparison.Ordinal);
 
             var methods = typeof(T).GetMethods();
-            var items = methods.Where(IsIAsyncEnum).Select(x => Print(GetDescription(x), () => InvokeAction<IAsyncEnumerable<string>, T>(x, parameters)))
-                 .Union(methods.Where(IsTaskString).Select(x => Print(GetDescription(x), () => InvokeAction<Task<string>, T>(x, parameters))))
-                 .Union(methods.Where(IsTaskNoType).Select(x => Print(GetDescription(x), () => InvokeAction<Task, T>(x, parameters))))
-                 .Union(methods.Where(IsVoidMethod).Select(x => Print(GetDescription(x), () => InvokeAction<T>(x, parameters))))
+            var items = methods.Where(IsIAsyncEnum).Select(x => new MenuItem(
+                GetDescription(x),
+                async p =>
+                {
+                    await foreach (var result in InvokeAction<IAsyncEnumerable<string>, T>(x, parameters.Union(p).ToArray()))
+                    {
+                        Console.WriteLine($"\n{result}");
+                    }
+                }))
+                 .Union(methods.Where(IsTaskString).Select(x => new MenuItem(GetDescription(x), p => InvokeAction<Task<string>, T>(x, parameters.Union(p).ToArray()))))
+                 .Union(methods.Where(IsTaskNoType).Select(x => new MenuItem(GetDescription(x), p => InvokeAction<Task, T>(x, parameters.Union(p).ToArray()))))
+                 .Union(methods.Where(IsVoidMethod).Select(x => new MenuItem(GetDescription(x), p => { InvokeAction<T>(x, parameters.Union(p).ToArray()); return Task.CompletedTask; })))
                  .ToArray();
 
             return items;
@@ -315,29 +458,15 @@ namespace Sem.Tools.CmdLine
         /// <returns>The extracted description.</returns>
         private static string GetDescription(MethodInfo method)
         {
-            var declaringType = method.DeclaringType;
-            declaringType.MustNotBeNull(nameof(declaringType));
+            var declaringType = method.MustNotBeNull(nameof(method)).DeclaringType;
 
-            var fullName = declaringType.FullName + "." + method.Name;
+            // ReSharper disable once AssignNullToNotNullAttribute
+            var fullName = declaringType.MustNotBeNull(nameof(declaringType)).FullName + "." + method.Name;
             var xPath = method.GetParameters().Length > 0
                 ? $"//member[starts-with(@name, 'M:{fullName}(')]/summary"
                 : $"//member[@name = 'M:{fullName}']/summary";
 
             return GetDocumentationFromXml(declaringType, xPath, method.Name);
-        }
-
-        /// <summary>
-        /// "Shows" the menu of the item.
-        /// </summary>
-        /// <param name="console">The <see cref="IConsole"/> implementation to use.</param>
-        /// <param name="items">The items of the menu.</param>
-        /// <returns>A task to wait for.</returns>
-        [ExcludeFromCodeCoverage]
-        private static Task ShowMenuItem(object console, MenuItem[] items)
-        {
-            return console != null
-                ? items.Show((IConsole)console)
-                : items.Show();
         }
 
         /// <summary>
@@ -497,10 +626,16 @@ namespace Sem.Tools.CmdLine
         {
             var parameterType = parameterInfo.ParameterType;
 
+            var objects = parameters
+                .Where(x => x.GetType().Name.StartsWith("<", StringComparison.Ordinal))
+                .ToArray();
+
+            var properties = objects
+                .SelectMany(x => x.GetType().GetProperties().Select(p => new { Value = p.GetValue(x), p.Name }))
+                .ToArray();
+
             var value = parameters.FirstOrDefault(x => x.GetType() == parameterType)
-                        ?? parameters
-                            .Where(x => x.GetType().Name.StartsWith("<", StringComparison.Ordinal))
-                            .SelectMany(x => x.GetType().GetProperties().Select(p => new { Value = p.GetValue(x), p.Name }))
+                        ?? properties
                             .FirstOrDefault(x => x.Name == parameterInfo.Name && x.Value.GetType() == parameterType)?.Value;
 
             if (value == null)

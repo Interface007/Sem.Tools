@@ -24,6 +24,24 @@ namespace Sem.Tools.CmdLine.Tests
         public class Show
         {
             /// <summary>
+            /// Tests whether the method <see cref="Menu.Show(Sem.Tools.CmdLine.MenuItem[])"/>
+            /// forwards parameters to the called method.
+            /// </summary>
+            /// <returns>A <see cref="Task"/> representing the asynchronous unit test.</returns>
+            [TestMethod]
+            public async Task ParametersAreForwardedToMethods()
+            {
+                var simulator = new ConsoleSimulator("0", " ", " ");
+                MenuItem.Console = simulator;
+
+                var target = new[] { MenuItem.Print<TestMenuTargetWithStaticMethods>(TestMenuTargetWithStaticMethods.ThisIsAVoidMethod) };
+                var parameter = new TestMenuTargetWithStaticMethods();
+                await target.Show(simulator, parameter);
+
+                Assert.AreEqual("ok", parameter.Result);
+            }
+
+            /// <summary>
             /// Tests whether the action will be invoked correctly.
             /// </summary>
             /// <returns>A <see cref="Task"/> representing the asynchronous unit test.</returns>
@@ -37,6 +55,25 @@ namespace Sem.Tools.CmdLine.Tests
                 await target.Show(simulator);
 
                 Assert.IsTrue(simulator.Output[4].Contains("System.Reflection.TargetInvocationException: Exception has been thrown by the target of an invocation.\r\n ---> System.NotImplementedException: The method or operation is not implemented", StringComparison.OrdinalIgnoreCase));
+            }
+
+            /// <summary>
+            /// Tests whether the action will be invoked correctly.
+            /// </summary>
+            /// <returns>A <see cref="Task"/> representing the asynchronous unit test.</returns>
+            [TestMethod]
+            public async Task InvokesAction2()
+            {
+                var menuTarget = new TestMenuTarget();
+                var target = new[] { MenuItem.Print(() => menuTarget.DoItTheRightWay()) };
+
+                var simulator = new ConsoleSimulator("0", " ", " ");
+                MenuItem.Console = simulator;
+
+                await target.Show(simulator);
+
+                Assert.AreEqual("{clear}", simulator.Output[0]);
+                Assert.AreEqual("0) Do It The Right Way", simulator.Output[1]);
             }
 
             /// <summary>
