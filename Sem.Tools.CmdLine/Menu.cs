@@ -34,7 +34,7 @@ namespace Sem.Tools.CmdLine
         [ExcludeFromCodeCoverage]
         public static Task Show(this MenuItem[] items, params object[] parameters)
         {
-            var console = parameters.First(x => x is IConsole);
+            var console = parameters.FirstOrDefault(x => x is IConsole);
             if (console == null)
             {
                 parameters = new[] { (object)new ConsoleWrapper() }.Union(parameters).ToArray();
