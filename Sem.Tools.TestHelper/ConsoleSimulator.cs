@@ -56,7 +56,10 @@ namespace Sem.Tools.TestHelper
         /// </summary>
         public void ReadKey()
         {
-            this.lines.Dequeue();
+            if (this.lines.Count > 0)
+            {
+                this.lines.Dequeue();
+            }
         }
 
         /// <summary>
@@ -65,7 +68,12 @@ namespace Sem.Tools.TestHelper
         /// <returns>One text line.</returns>
         public string ReadLine()
         {
-            return this.lines.Dequeue();
+            if (this.lines.Count > 0)
+            {
+                return this.lines.Dequeue();
+            }
+
+            return string.Empty;
         }
     }
 }

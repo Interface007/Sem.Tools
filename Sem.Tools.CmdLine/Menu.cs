@@ -76,7 +76,15 @@ namespace Sem.Tools.CmdLine
                 {
                     if (items[number].ActionWithParameters != null)
                     {
-                        await items[number].ActionWithParameters(parameters).ConfigureAwait(false);
+                        var task = items[number].ActionWithParameters(parameters);
+                        if (task is Task<string> stringTask)
+                        {
+                            console.WriteLine(await stringTask.ConfigureAwait(false));
+                        }
+                        else
+                        {
+                            await task.ConfigureAwait(false);
+                        }
                     }
                 }
                 catch (Exception e)

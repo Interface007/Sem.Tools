@@ -8,7 +8,7 @@ namespace Sem.Tools.CmdLine.Tests
     using System.Diagnostics.CodeAnalysis;
 
     /// <summary>
-    /// A class containing method to create a menu from.
+    /// A class containing a method to create a menu from.
     /// </summary>
     [ExcludeFromCodeCoverage]
     public class TestMenuTarget
