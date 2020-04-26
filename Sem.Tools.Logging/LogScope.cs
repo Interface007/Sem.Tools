@@ -26,19 +26,14 @@ namespace Sem.Tools.Logging
 
         private readonly Action<LogCategories, LogLevel, LogScope, string> logMethod;
 
-        /// <summary>
-        /// Gets the structure handling the hierarchy.
-        /// </summary>
-        private readonly ConcurrentStack<string> idStack;
-
         private LogScope(string scopeName, string member, string path, LogScope parent, Action<LogCategories, LogLevel, LogScope, string> logMethod)
         {
             this.scopeName = scopeName;
-            this.idStack = parent?.idStack ?? new ConcurrentStack<string>();
             this.logMethod = logMethod ?? LogMethod;
 
-            var newId = LogScope.IdFactory(this);
-            this.idStack.Push($"{parent?.Id}/{newId.Substring(newId.Length - 4)}");
+            var newId = LogScope.IdFactory(parent ?? this);
+
+            this.Id = $"{parent?.Id}/{newId}";
 
             var replace = !string.IsNullOrEmpty(LogScope.BasePath)
                 ? path.Replace(LogScope.BasePath, string.Empty, StringComparison.OrdinalIgnoreCase)
@@ -86,7 +81,7 @@ namespace Sem.Tools.Logging
         /// <summary>
         /// Gets the hierarchical ID of the scope.
         /// </summary>
-        public string Id => this.idStack.TryPeek(out var id) ? id : "0000";
+        public string Id { get; } = "0000";
 
         /// <summary>
         /// Create a new scope instance.
@@ -154,7 +149,6 @@ namespace Sem.Tools.Logging
         {
             var ms = (DateTime.UtcNow - this.start).TotalMilliseconds;
             this.Log(LogCategories.Technical, LogLevel.Trace, "Finished scope", new { this.scopeName, ms });
-            this.idStack.TryPop(out _);
         }
 
         /// <summary>
