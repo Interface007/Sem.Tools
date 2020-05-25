@@ -46,7 +46,7 @@ namespace Sem.Data.SprocAccess.IntegrationTests
                     },
                     logger);
 
-                Console.WriteLine(await enumerable.CountAsync());
+                Console.WriteLine(await enumerable.CountAsync().ConfigureAwait(false));
             }
         }
     }

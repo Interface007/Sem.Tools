@@ -1,4 +1,4 @@
-// <copyright file="TestMenuTargetWithCtorParameter.cs" company="Sven Erik Matzen">
+﻿// <copyright file="TestMenuTargetWithCtorParameter.cs" company="Sven Erik Matzen">
 // Copyright (c) Sven Erik Matzen. All rights reserved.
 // </copyright>
 
@@ -34,11 +34,8 @@ namespace Sem.Tools.CmdLine.Tests
         }
 
 #pragma warning disable 1591
-        public async Task DoIt()
+        public async Task DoIt() => await Task.Delay(5);
 #pragma warning restore 1591
-        {
-            await Task.Delay(5);
-        }
 
 #pragma warning disable 1591
         public void VoidDoIt()

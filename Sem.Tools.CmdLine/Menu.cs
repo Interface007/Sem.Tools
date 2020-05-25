@@ -20,10 +20,7 @@ namespace Sem.Tools.CmdLine
         /// <param name="items">The items to display.</param>
         /// <returns>A task to wait for.</returns>
         [ExcludeFromCodeCoverage]
-        public static Task Show(this MenuItem[] items)
-        {
-            return ShowInternal(items, new ConsoleWrapper());
-        }
+        public static Task Show(this MenuItem[] items) => ShowInternal(items, new ConsoleWrapper());
 
         /// <summary>
         /// Show the menu items and wait for selection of user.
@@ -65,7 +62,7 @@ namespace Sem.Tools.CmdLine
 
                 console.WriteLine("what should be executed?");
 
-                if (!int.TryParse(console.ReadLine(), out int number) || number >= items.Length)
+                if (!int.TryParse(console.ReadLine(), out var number) || number >= items.Length)
                 {
                     return;
                 }

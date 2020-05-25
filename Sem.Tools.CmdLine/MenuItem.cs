@@ -344,16 +344,14 @@ namespace Sem.Tools.CmdLine
         /// <typeparam name="T">The type to create entries for.</typeparam>
         /// <param name="parameters">Parameter values for the methods.</param>
         /// <returns>A menu entry with sub menu items.</returns>
-        public static MenuItem For<T>(params object[] parameters)
-        {
-            return new MenuItem(
+        public static MenuItem For<T>(params object[] parameters) =>
+            new MenuItem(
                 GetDescription(typeof(T)),
                 async callParams =>
                 {
                     var items = MenuItemsFor<T>(parameters);
                     await items.Show(callParams.Union(parameters).ToArray()).ConfigureAwait(false);
                 });
-        }
 
         /// <summary>
         /// Creates menu entries for public methods of <typeparamref name="T"/>.
@@ -446,10 +444,7 @@ namespace Sem.Tools.CmdLine
         /// Represents the method to call.
         /// </summary>
         /// <returns>The method description.</returns>
-        public override string ToString()
-        {
-            return this.DisplayString;
-        }
+        public override string ToString() => this.DisplayString;
 
         /// <summary>
         /// Extracts the description from the XML documentation of a method (the XML file mst be generated while building the assembly).

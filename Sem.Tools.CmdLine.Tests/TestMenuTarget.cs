@@ -1,4 +1,4 @@
-// <copyright file="TestMenuTarget.cs" company="Sven Erik Matzen">
+﻿// <copyright file="TestMenuTarget.cs" company="Sven Erik Matzen">
 // Copyright (c) Sven Erik Matzen. All rights reserved.
 // </copyright>
 
@@ -43,10 +43,7 @@ namespace Sem.Tools.CmdLine.Tests
         /// <param name="myParameter">Just a simple parameter.</param>
         /// <param name="target">The class that should get the value of <paramref name="myParameter"/>.</param>
         [ExcludeFromCodeCoverage]
-        public void ThisIsAVoidMethod(string myParameter, TestMenuTarget target)
-        {
-            target.MustNotBeNull(nameof(target)).Parameter = myParameter;
-        }
+        public void ThisIsAVoidMethod(string myParameter, TestMenuTarget target) => target.MustNotBeNull(nameof(target)).Parameter = myParameter;
 
         /// <summary>
         /// This is a good documented void method.

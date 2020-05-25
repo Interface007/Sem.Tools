@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Diagnostics.CodeAnalysis;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -74,11 +74,9 @@ namespace Sem.Tools.TestHelper.Tests
             [TestMethod]
             [ExcludeFromCodeCoverage]
             [ExpectedExceptionMessage(typeof(ArgumentNullException), ".")]
-            public void CtorThrowsExpectedExceptionWhenTypeIsNull()
-            {
+            public void CtorThrowsExpectedExceptionWhenTypeIsNull() =>
                 // ReSharper disable once ObjectCreationAsStatement
                 new ExpectedExceptionMessageAttribute(null, string.Empty);
-            }
 
             /// <summary>
             /// Ctor should throw an exception when the type does not inherit from <see cref="Exception"/>.
@@ -86,11 +84,9 @@ namespace Sem.Tools.TestHelper.Tests
             [TestMethod]
             [ExcludeFromCodeCoverage]
             [ExpectedExceptionMessage(typeof(ArgumentException), "Expected exception type must derive from exception")]
-            public void CtorThrowsExpectedExceptionWhenExceptionTypeNotInheritsException()
-            {
+            public void CtorThrowsExpectedExceptionWhenExceptionTypeNotInheritsException() =>
                 // ReSharper disable once ObjectCreationAsStatement
                 new ExpectedExceptionMessageAttribute(typeof(string), null);
-            }
         }
 
         public class ExpectedExceptionMessageAttributeWrapper
@@ -101,10 +97,7 @@ namespace Sem.Tools.TestHelper.Tests
             {
             }
 
-            public void VerifyAccessor(Exception exception)
-            {
-                base.Verify(exception);
-            }
+            public void VerifyAccessor(Exception exception) => base.Verify(exception);
         }
     }
 }

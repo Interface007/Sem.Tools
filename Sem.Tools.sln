@@ -54,7 +54,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sem.Tools.CmdLine.Tests", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sem.Tools.CmdLine.TestProject", "Sem.Tools.CmdLine.TestProject\Sem.Tools.CmdLine.TestProject.csproj", "{8ABF3A59-B089-414C-A0BC-7144B3B5D5A0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sem.Tools.TestHelper.Tests", "Sem.Tools.TestHelper.Tests\Sem.Tools.TestHelper.Tests.csproj", "{44AEBB38-11EC-4718-8150-B486D0AB4B77}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sem.Tools.TestHelper.Tests", "Sem.Tools.TestHelper.Tests\Sem.Tools.TestHelper.Tests.csproj", "{44AEBB38-11EC-4718-8150-B486D0AB4B77}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{1B6940EA-1E0B-44CB-A9E4-115FF3E9EE8A}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

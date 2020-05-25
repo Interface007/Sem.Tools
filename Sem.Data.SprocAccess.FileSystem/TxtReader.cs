@@ -63,10 +63,8 @@ namespace Sem.Data.SprocAccess.FileSystem
         /// <typeparam name="T">The type of the result.</typeparam>
         /// <param name="index">The column index.</param>
         /// <returns>The value of the column in the current row.</returns>
-        public async Task<T> Get<T>(int index)
-        {
-            return (T)(await this.Get(index, typeof(T)).ConfigureAwait(false));
-        }
+        public async Task<T> Get<T>(int index) =>
+            (T)await this.Get(index, typeof(T)).ConfigureAwait(false);
 
         /// <summary>
         /// Reads the value of a column by its index.
@@ -99,10 +97,8 @@ namespace Sem.Data.SprocAccess.FileSystem
         /// Closes the reader.
         /// </summary>
         /// <returns>A task to wait for.</returns>
-        public Task Close()
-        {
-            return Task.CompletedTask;
-        }
+        public Task Close() =>
+            Task.CompletedTask;
 
         /// <summary>
         /// Gets the index of a column by its name (case-insensitive).
@@ -119,10 +115,8 @@ namespace Sem.Data.SprocAccess.FileSystem
         }
 
         /// <inheritdoc />
-        public void Dispose()
-        {
+        public void Dispose() =>
             this.Close();
-        }
 
         /// <summary>
         /// Reads the text file and initializes the line-pointer.

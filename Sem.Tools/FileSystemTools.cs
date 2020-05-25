@@ -22,11 +22,9 @@ namespace Sem.Tools
         /// </summary>
         /// <param name="fileName">The file name to sanitize.</param>
         /// <returns>The file name without illegal characters.</returns>
-        public static string SanitizeFileName(this string fileName)
-        {
-            return string.IsNullOrEmpty(fileName)
+        public static string SanitizeFileName(this string fileName) =>
+            string.IsNullOrEmpty(fileName)
                 ? string.Empty
                 : Sanitizer.Replace(fileName, string.Empty);
-        }
     }
 }

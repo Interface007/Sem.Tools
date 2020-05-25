@@ -1,4 +1,4 @@
-// <copyright file="ClassExtensions.cs" company="Sven Erik Matzen">
+﻿// <copyright file="ClassExtensions.cs" company="Sven Erik Matzen">
 // Copyright (c) Sven Erik Matzen. All rights reserved.
 // </copyright>
 
@@ -115,10 +115,7 @@ namespace Sem.Tools.Tests
             [TestMethod]
             [ExpectedException(typeof(ArgumentNullException))]
             [ExcludeFromCodeCoverage]
-            public void ThrowsExceptionForEmptyValue()
-            {
-                string.Empty.MustNotBeNullOrEmpty("value");
-            }
+            public void ThrowsExceptionForEmptyValue() => string.Empty.MustNotBeNullOrEmpty("value");
 
             /// <summary>
             /// Tests whether the method accepts non-null values and returns them.

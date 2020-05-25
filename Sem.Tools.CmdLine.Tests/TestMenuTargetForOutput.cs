@@ -1,4 +1,4 @@
-// <copyright file="TestMenuTargetForOutput.cs" company="Sven Erik Matzen">
+﻿// <copyright file="TestMenuTargetForOutput.cs" company="Sven Erik Matzen">
 // Copyright (c) Sven Erik Matzen. All rights reserved.
 // </copyright>
 
@@ -16,10 +16,7 @@ namespace Sem.Tools.CmdLine.Tests
     public class TestMenuTargetForOutput
     {
 #pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
-        public static Task<string> ReadSingleContact(TestMenuTarget client, Guid sampleCrmId)
+        public static Task<string> ReadSingleContact(TestMenuTarget client, Guid sampleCrmId) => Task.FromResult("ok");
 #pragma warning restore CS1591 // Missing XML comment for publicly visible type or member
-        {
-            return Task.FromResult("ok");
-        }
     }
 }

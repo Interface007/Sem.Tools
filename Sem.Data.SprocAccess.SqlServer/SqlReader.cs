@@ -29,10 +29,8 @@ namespace Sem.Data.SprocAccess.SqlServer
         /// Advances to the next record.
         /// </summary>
         /// <returns>A value indicating whether there is still data to be read.</returns>
-        public Task<bool> Read()
-        {
-            return this.sqlDataReader.ReadAsync();
-        }
+        public Task<bool> Read() =>
+            this.sqlDataReader.ReadAsync();
 
         /// <summary>
         /// Reads the value of a column by its index.
@@ -40,10 +38,8 @@ namespace Sem.Data.SprocAccess.SqlServer
         /// <typeparam name="T">The type of the result.</typeparam>
         /// <param name="index">The column index.</param>
         /// <returns>The value of the column in the current row.</returns>
-        public Task<T> Get<T>(int index)
-        {
-            return this.sqlDataReader.GetFieldValueAsync<T>(index);
-        }
+        public Task<T> Get<T>(int index) =>
+            this.sqlDataReader.GetFieldValueAsync<T>(index);
 
         /// <summary>
         /// Reads the value of a column by its index.
@@ -51,28 +47,22 @@ namespace Sem.Data.SprocAccess.SqlServer
         /// <param name="index">The column index.</param>
         /// <param name="type">The type of the result.</param>
         /// <returns>The value of the column in the current row.</returns>
-        public Task<object> Get(int index, Type type)
-        {
-            return Task.FromResult(Convert.ChangeType(this.sqlDataReader.GetValue(index), type, CultureInfo.InvariantCulture));
-        }
+        public Task<object> Get(int index, Type type) =>
+            Task.FromResult(Convert.ChangeType(this.sqlDataReader.GetValue(index), type, CultureInfo.InvariantCulture));
 
         /// <summary>
         /// Advances to the next result set.
         /// </summary>
         /// <returns>A task to wait for.</returns>
-        public Task NextResult()
-        {
-            return this.sqlDataReader.NextResultAsync();
-        }
+        public Task NextResult() =>
+            this.sqlDataReader.NextResultAsync();
 
         /// <summary>
         /// Closes the reader.
         /// </summary>
         /// <returns>A task to wait for.</returns>
-        public Task Close()
-        {
-            return this.sqlDataReader.CloseAsync();
-        }
+        public Task Close() =>
+            this.sqlDataReader.CloseAsync();
 
         /// <summary>
         /// Gets the index of a column by its name (case-insensitive).
@@ -80,15 +70,11 @@ namespace Sem.Data.SprocAccess.SqlServer
         /// </summary>
         /// <param name="columnName">The name of the column to search.</param>
         /// <returns>The index of the column.</returns>
-        public int IndexByName(string columnName)
-        {
-            return this.sqlDataReader.GetOrdinal(columnName);
-        }
+        public int IndexByName(string columnName) =>
+            this.sqlDataReader.GetOrdinal(columnName);
 
         /// <inheritdoc />
-        public void Dispose()
-        {
+        public void Dispose() =>
             this.sqlDataReader?.Dispose();
-        }
     }
 }

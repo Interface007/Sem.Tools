@@ -102,9 +102,6 @@ namespace Sem.Tools
         /// <typeparam name="T">The type of the object to be serialized.</typeparam>
         /// <param name="value">The value to be serialized.</param>
         /// <returns>A JSON string.</returns>
-        public static T FromJson<T>(this string value)
-        {
-            return JsonSerializer.Deserialize<T>(value);
-        }
+        public static T FromJson<T>(this string value) => JsonSerializer.Deserialize<T>(value);
     }
 }

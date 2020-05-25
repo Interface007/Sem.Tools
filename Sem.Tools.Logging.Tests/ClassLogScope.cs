@@ -1,4 +1,4 @@
-// <copyright file="ClassLogScope.cs" company="Sven Erik Matzen">
+﻿// <copyright file="ClassLogScope.cs" company="Sven Erik Matzen">
 // Copyright (c) Sven Erik Matzen. All rights reserved.
 // </copyright>
 
@@ -156,9 +156,9 @@ namespace Sem.Tools.Logging.Tests
             {
                 var logs1 = new List<string>();
                 var logs2 = new List<string>();
-                void Log2(LogCategories categories, LogLevel level, LogScope scope, string message) => logs2.Add(message);
+                void log2(LogCategories categories, LogLevel level, LogScope scope, string message) => logs2.Add(message);
                 LogScope.LogMethod = this.Log1;
-                using var target = LogScope.Create("test", Log2);
+                using var target = LogScope.Create("test", log2);
                 Assert.AreEqual("test - Starting scope test in member ExplicitOverridesDefaultMethod of ClassLogScope.cs.", logs2[0]);
             }
 
@@ -180,10 +180,8 @@ namespace Sem.Tools.Logging.Tests
             /// <param name="scope">The scope logging the message.</param>
             /// <param name="message">The message to be logged.</param>
             [ExcludeFromCodeCoverage]
-            private void Log1(LogCategories categories, LogLevel level, LogScope scope, string message)
-            {
+            private void Log1(LogCategories categories, LogLevel level, LogScope scope, string message) =>
                 throw new Exception();
-            }
         }
 
         /// <summary>

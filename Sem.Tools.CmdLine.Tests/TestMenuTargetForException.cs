@@ -15,9 +15,6 @@ namespace Sem.Tools.CmdLine.Tests
         /// <summary>
         /// Simply throws an exception.
         /// </summary>
-        public void ThrowException()
-        {
-            throw new NotImplementedException();
-        }
+        public void ThrowException() => throw new NotImplementedException();
     }
 }

@@ -34,14 +34,8 @@ namespace Sem.Tools
         /// <param name="options">An object that specifies serialization options to use.</param>
         public override void Write(Utf8JsonWriter writer, string value, JsonSerializerOptions options) => writer.MustNotBeNull(nameof(writer)).WriteStringValue(Convert.ToBase64String(this.encrypt(value)));
 
-        private static byte[] EncryptWithDpapi(string value)
-        {
-            return ProtectedData.Protect(Encoding.UTF8.GetBytes(value), OptionalEntropy, DataProtectionScope.CurrentUser);
-        }
+        private static byte[] EncryptWithDpapi(string value) => ProtectedData.Protect(Encoding.UTF8.GetBytes(value), OptionalEntropy, DataProtectionScope.CurrentUser);
 
-        private static string DecryptWithDpapi(byte[] data)
-        {
-            return Encoding.UTF8.GetString(ProtectedData.Unprotect(data, OptionalEntropy, DataProtectionScope.CurrentUser));
-        }
+        private static string DecryptWithDpapi(byte[] data) => Encoding.UTF8.GetString(ProtectedData.Unprotect(data, OptionalEntropy, DataProtectionScope.CurrentUser));
     }
 }

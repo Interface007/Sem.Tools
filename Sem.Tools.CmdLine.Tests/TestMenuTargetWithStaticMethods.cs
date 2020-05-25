@@ -1,4 +1,4 @@
-// <copyright file="TestMenuTargetWithStaticMethods.cs" company="Sven Erik Matzen">
+﻿// <copyright file="TestMenuTargetWithStaticMethods.cs" company="Sven Erik Matzen">
 // Copyright (c) Sven Erik Matzen. All rights reserved.
 // </copyright>
 
@@ -23,10 +23,7 @@ namespace Sem.Tools.CmdLine.Tests
         /// </summary>
         /// <param name="menuTarget">The instance to accept the result.</param>
         [ExcludeFromCodeCoverage]
-        public static void ThisIsAVoidMethod(TestMenuTargetWithStaticMethods menuTarget)
-        {
-            menuTarget.MustNotBeNull(nameof(menuTarget)).Result = "ok";
-        }
+        public static void ThisIsAVoidMethod(TestMenuTargetWithStaticMethods menuTarget) => menuTarget.MustNotBeNull(nameof(menuTarget)).Result = "ok";
 
         /// <summary>
         /// This is a method returning a string async.

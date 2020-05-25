@@ -1,4 +1,4 @@
-// <copyright file="ClassMenuItem.cs" company="Sven Erik Matzen">
+﻿// <copyright file="ClassMenuItem.cs" company="Sven Erik Matzen">
 // Copyright (c) Sven Erik Matzen. All rights reserved.
 // </copyright>
 
@@ -200,10 +200,7 @@ namespace Sem.Tools.CmdLine.Tests
             /// <param name="value">A simple parameter.</param>
             /// <returns>The value of <paramref name="value"/>.</returns>
             // ReSharper disable once UnusedMethodReturnValue.Local
-            private string LocalStringMethodWithParameter(string value)
-            {
-                return value;
-            }
+            private string LocalStringMethodWithParameter(string value) => value;
 
             /// <summary>
             /// Sample async method with parameter without return value.
@@ -211,20 +208,14 @@ namespace Sem.Tools.CmdLine.Tests
             /// <param name="value">A simple parameter.</param>
             /// <returns>A task to wait for.</returns>
             // ReSharper disable once UnusedMethodReturnValue.Local
-            private Task LocalAsyncVoidMethodWithParameter(string value)
-            {
-                return Task.CompletedTask;
-            }
+            private Task LocalAsyncVoidMethodWithParameter(string value) => Task.CompletedTask;
 
             /// <summary>
             /// Sample async method with parameter.
             /// </summary>
             /// <param name="value">A simple parameter.</param>
             /// <returns>A string returned as a task to wait for.</returns>
-            private Task<string> LocalAsyncStringMethodWithParameter(string value)
-            {
-                return Task.FromResult(value);
-            }
+            private Task<string> LocalAsyncStringMethodWithParameter(string value) => Task.FromResult(value);
         }
 
         /// <summary>

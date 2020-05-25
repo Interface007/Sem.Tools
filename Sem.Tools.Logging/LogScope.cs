@@ -8,7 +8,6 @@
 namespace Sem.Tools.Logging
 {
     using System;
-    using System.Collections.Concurrent;
     using System.Globalization;
     using System.IO;
     using System.Runtime.CompilerServices;
@@ -91,10 +90,8 @@ namespace Sem.Tools.Logging
         /// <param name="member">The member (method) that creates the instance.</param>
         /// <param name="path">The path to the class file.</param>
         /// <returns>A new logging scope.</returns>
-        public static LogScope Create(string scopeName, Action<LogCategories, LogLevel, LogScope, string> logMethod = null, [CallerMemberName] string member = "", [CallerFilePath] string path = "")
-        {
-            return new LogScope(scopeName, member, path, null, logMethod);
-        }
+        public static LogScope Create(string scopeName, Action<LogCategories, LogLevel, LogScope, string> logMethod = null, [CallerMemberName] string member = "", [CallerFilePath] string path = "") =>
+            new LogScope(scopeName, member, path, null, logMethod);
 
         /// <summary>
         /// Call this to indicate a method start.
@@ -103,10 +100,8 @@ namespace Sem.Tools.Logging
         /// <param name="member">The name of the method.</param>
         /// <param name="path">The path of the source file.</param>
         /// <returns>A new scope.</returns>
-        public LogScope MethodStart(object value = null, [CallerMemberName] string member = "", [CallerFilePath] string path = "")
-        {
-            return this.Child("MethodScope", value, member, path);
-        }
+        public LogScope MethodStart(object value = null, [CallerMemberName] string member = "", [CallerFilePath] string path = "") =>
+            this.Child("MethodScope", value, member, path);
 
         /// <summary>
         /// Creates a new child scope.
@@ -156,10 +151,8 @@ namespace Sem.Tools.Logging
         /// </summary>
         /// <param name="message">The message to be logged.</param>
         /// <param name="value">A value that should be included into the message as addition data.</param>
-        public void Log(string message, object value = null)
-        {
+        public void Log(string message, object value = null) =>
             this.Log(LogCategories.Technical, LogLevel.Information, message, value);
-        }
 
         /// <summary>
         /// Logs a message.
@@ -170,18 +163,16 @@ namespace Sem.Tools.Logging
         /// <param name="value">A value that should be included into the message as addition data.</param>
         public void Log(LogCategories logCategory, LogLevel logLevel, string message, object value = null)
         {
-            if ((logLevel > this.Level) || (logCategory & this.Category) == 0)
+            if (logLevel > this.Level || (logCategory & this.Category) == 0)
             {
                 return;
             }
 
-            var data = value == null ? string.Empty : (" - Data: " + JsonSerializer.Serialize(value, value.GetType()));
+            var data = value == null ? string.Empty : " - Data: " + JsonSerializer.Serialize(value, value.GetType());
             this.logMethod?.Invoke(logCategory, logLevel, this, this.scopeName + " - " + message + data);
         }
 
-        private static string GetBasePath([CallerFilePath] string path = "")
-        {
-            return Path.GetDirectoryName(path);
-        }
+        private static string GetBasePath([CallerFilePath] string path = "") =>
+            Path.GetDirectoryName(path);
     }
 }

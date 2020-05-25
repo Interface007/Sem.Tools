@@ -1,4 +1,4 @@
-// <copyright file="TestMenuTargetForFoundIssues.cs" company="Sven Erik Matzen">
+﻿// <copyright file="TestMenuTargetForFoundIssues.cs" company="Sven Erik Matzen">
 // Copyright (c) Sven Erik Matzen. All rights reserved.
 // </copyright>
 // ReSharper disable ClassNeverInstantiated.Global
@@ -31,9 +31,6 @@ namespace Sem.Tools.CmdLine.Tests
         /// <param name="param2">Just a simple parameter #2.</param>
         /// <param name="param3">Just a simple parameter #3.</param>
         /// <returns>A task to wait for.</returns>
-        public Task AsyncTaskMethod(string param1, int param2, string param3)
-        {
-            return Task.CompletedTask;
-        }
+        public Task AsyncTaskMethod(string param1, int param2, string param3) => Task.CompletedTask;
     }
 }

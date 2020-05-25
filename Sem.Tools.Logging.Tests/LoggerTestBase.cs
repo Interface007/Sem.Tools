@@ -1,4 +1,4 @@
-// <copyright file="LoggerTestBase.cs" company="Sven Erik Matzen">
+﻿// <copyright file="LoggerTestBase.cs" company="Sven Erik Matzen">
 // Copyright (c) Sven Erik Matzen. All rights reserved.
 // </copyright>
 
@@ -46,9 +46,7 @@ namespace Sem.Tools.Logging.Tests
         /// </summary>
         /// <param name="path">Path of this class will be set at compile time.</param>
         /// <returns>The source code path of this class.</returns>
-        private static string BasePath([CallerFilePath] string path = "")
-        {
-            return Path.GetDirectoryName(path);
-        }
+        private static string BasePath([CallerFilePath] string path = "") =>
+            Path.GetDirectoryName(path);
     }
 }

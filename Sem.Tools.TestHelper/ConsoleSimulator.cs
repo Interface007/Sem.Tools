@@ -36,20 +36,14 @@ namespace Sem.Tools.TestHelper
         /// <summary>
         /// Adds a "{clear}" entry to the list of output.
         /// </summary>
-        public void Clear()
-        {
-            this.Output.Add("{clear}");
-        }
+        public void Clear() => this.Output.Add("{clear}");
 
         /// <summary>
         /// Writes a value to the list of output.
         /// </summary>
         /// <param name="value">The value to be added.</param>
         [ExcludeFromCodeCoverage]
-        public void WriteLine(string value)
-        {
-            this.Output.Add(value?.Trim('\n'));
-        }
+        public void WriteLine(string value) => this.Output.Add(value?.Trim('\n'));
 
         /// <summary>
         /// Dequeues an entry from the list of user input (simulates "press any key").
