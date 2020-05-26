@@ -22,13 +22,11 @@ namespace Sem.MdDocGenerator
         /// Main entry point.
         /// </summary>
         /// <returns>A task to wait for.</returns>
-        public static async Task Main()
-        {
+        public static async Task Main() =>
             await new[]
             {
                 MenuItem.Print(() => Render(Path.GetFullPath("..\\..\\..\\.."))),
             }.Show().ConfigureAwait(false);
-        }
 
         /// <summary>
         /// Renders the XML documentation of a solution starting at path <paramref name="path"/> into a TOC and
@@ -83,16 +81,16 @@ namespace Sem.MdDocGenerator
                     File.Delete(target);
                 }
 
-                var xmlDoc = File.ReadAllText(file);
+                var xmlDoc = await File.ReadAllTextAsync(file).ConfigureAwait(false);
                 var doc = XDocument.Parse(xmlDoc);
-                var md2 = new MdConverterDoc(doc.Root, new AssemblyContext { Files = files.Select(x => Path.ChangeExtension(Path.GetFileName(x), string.Empty).TrimEnd('.')).ToArray(), NameSpace = doc.Root?.Element("assembly")?.Element("name")?.Value });
-                File.AppendAllText(target, md2.ToString());
-                File.AppendAllText(toc, $"\n# [{md2.Context.NameSpace}]({md2.Context.NameSpace}.md)");
+                var md2 = new MdConverterDoc(doc.Root, new AssemblyContext { Files = files.Select(x => Path.ChangeExtension(Path.GetFileName(x), string.Empty)?.TrimEnd('.')).ToArray(), NameSpace = doc.Root?.Element("assembly")?.Element("name")?.Value });
+                await File.AppendAllTextAsync(target, md2.ToString()).ConfigureAwait(false);
+                await File.AppendAllTextAsync(toc, $"\n# [{md2.Context.NameSpace}]({md2.Context.NameSpace}.md)").ConfigureAwait(false);
 
-                var xmlProj = File.ReadAllText(projectFile);
+                var xmlProj = await File.ReadAllTextAsync(projectFile).ConfigureAwait(false);
                 var proj = XDocument.Parse(xmlProj);
 
-                File.AppendAllText(toc, "\n" + proj.Root?.Element("PropertyGroup")?.Element("Description")?.Value);
+                await File.AppendAllTextAsync(toc, "\n" + proj.Root?.Element("PropertyGroup")?.Element("Description")?.Value).ConfigureAwait(false);
                 yield return $"done rendering {fileName}";
             }
         }

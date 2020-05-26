@@ -22,9 +22,6 @@ namespace Sem.MdDocGenerator
         }
 
         /// <inheritdoc/>
-        public override string ToString()
-        {
-            return $"_C# code_\n\n```c#\n{ToCodeBlock(this.Node.Value)}\n```\n\n";
-        }
+        public override string ToString() => $"_C# code_\n\n```c#\n{ToCodeBlock(this.Node.Value)}\n```\n\n";
     }
 }

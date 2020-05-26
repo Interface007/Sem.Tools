@@ -22,9 +22,6 @@ namespace Sem.MdDocGenerator
         }
 
         /// <inheritdoc/>
-        public override string ToString()
-        {
-            return this.ToMarkDown(this.Node.Nodes()) + "\n\n";
-        }
+        public override string ToString() => this.ToMarkDown(this.Node.Nodes()) + "\n\n";
     }
 }

@@ -65,14 +65,12 @@ namespace Sem.MdDocGenerator
         /// </summary>
         /// <param name="name">The name of the referenced element.</param>
         /// <returns>The expected anchor name.</returns>
-        private static string Anchor(string name)
-        {
-            return Regex.Replace(
+        private static string Anchor(string name) =>
+            Regex.Replace(
                 name
-                        .Replace(" ", "-", StringComparison.Ordinal)
-                        .ToLowerInvariant(),
+                    .Replace(" ", "-", StringComparison.Ordinal)
+                    .ToLowerInvariant(),
                 "[^a-z-]",
                 string.Empty);
-        }
     }
 }

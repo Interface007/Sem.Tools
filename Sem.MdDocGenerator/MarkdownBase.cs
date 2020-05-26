@@ -44,10 +44,7 @@ namespace Sem.MdDocGenerator
         /// Converts the node to markdown.
         /// </summary>
         /// <returns>The markdown representing the documentation node.</returns>
-        public override string ToString()
-        {
-            return this.ToString("{0}\n");
-        }
+        public override string ToString() => this.ToString("{0}\n");
 
         /// <summary>
         /// Converts the node to markdown.
@@ -55,11 +52,8 @@ namespace Sem.MdDocGenerator
         /// <param name="pattern">The template for the markdown.</param>
         /// <param name="parts">The parts extracted from the node.</param>
         /// <returns>The markdown representing the documentation node.</returns>
-        protected static string ToString(string pattern, string[] parts)
-        {
-            // ReSharper disable once CoVariantArrayConversion
-            return string.Format(CultureInfo.InvariantCulture, pattern, parts);
-        }
+        protected static string ToString(string pattern, string[] parts) =>
+            string.Format(CultureInfo.InvariantCulture, pattern, parts.Cast<object>());
 
         /// <summary>
         /// Converts the value into a code block.
@@ -78,10 +72,7 @@ namespace Sem.MdDocGenerator
         /// </summary>
         /// <param name="nodes">The nodes to be converted.</param>
         /// <returns>The generated markdown.</returns>
-        protected string ToMarkDown(IEnumerable<XNode> nodes)
-        {
-            return nodes.Aggregate(string.Empty, (current, x) => current + this.ToMarkDown(x));
-        }
+        protected string ToMarkDown(IEnumerable<XNode> nodes) => nodes.Aggregate(string.Empty, (current, x) => current + this.ToMarkDown(x));
 
         /// <summary>
         /// The default converter gets the name and the conversion of the child nodes.
@@ -150,10 +141,7 @@ namespace Sem.MdDocGenerator
             return name;
         }
 
-        private static string Replace(string name, string fromString, string toString)
-        {
-            return Regex.Replace(name, "([, (<])" + fromString + "([, >)\\]\\[])", x => x.Groups[1] + toString + x.Groups[2]);
-        }
+        private static string Replace(string name, string fromString, string toString) => Regex.Replace(name, "([, (<])" + fromString + "([, >)\\]\\[])", x => x.Groups[1] + toString + x.Groups[2]);
 
         /// <summary>
         /// Translates some of the names into more specific names.
@@ -211,11 +199,10 @@ namespace Sem.MdDocGenerator
         /// <param name="name">The name of the element.</param>
         /// <param name="element">The element to get the converter for.</param>
         /// <returns>The converter instance.</returns>
-        private MarkdownBase GetConverter(string name, XElement element)
-        {
-            return name switch
+        private MarkdownBase GetConverter(string name, XElement element) =>
+            name switch
             {
-                "doc" => (MarkdownBase)new MdConverterDoc(element, this.Context),
+                "doc" => new MdConverterDoc(element, this.Context),
                 "type" => new MdConverterType(element, this.Context),
                 "field" => new MdConverterField(element, this.Context),
                 "property" => new MdConverterProperty(element, this.Context),
@@ -235,6 +222,5 @@ namespace Sem.MdDocGenerator
                 "none" => new MdConverterNone(element, this.Context),
                 _ => new MdConverterNone(element, this.Context)
             };
-        }
     }
 }

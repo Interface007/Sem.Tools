@@ -88,6 +88,13 @@ dotnet_naming_rule.static_readonly_fields_should_be_pascal_case.style       = pa
 dotnet_naming_symbols.static_readonly_fields.applicable_kinds               = field
 dotnet_naming_symbols.static_readonly_fields.applicable_accessibilities     = private
 dotnet_naming_symbols.static_readonly_fields.required_modifiers             = static,readonly
+                                                                            
+# Use PascalCase for local functions
+dotnet_naming_rule.local_function_should_be_camel_case.severity             = warning
+dotnet_naming_rule.local_function_should_be_camel_case.symbols              = private_local_function
+dotnet_naming_rule.local_function_should_be_camel_case.style                = pascal_case_style
+dotnet_naming_symbols.private_local_function.applicable_kinds               = local_function
+dotnet_naming_symbols.private_local_function.applicable_accessibilities     = private
 
 # Use camelCase for private fields
 dotnet_naming_rule.private_inst_fields_should_be_camel_case.severity        = warning
@@ -95,13 +102,6 @@ dotnet_naming_rule.private_inst_fields_should_be_camel_case.symbols         = pr
 dotnet_naming_rule.private_inst_fields_should_be_camel_case.style           = camel_case_style
 dotnet_naming_symbols.private_inst_fields.applicable_kinds                  = field
 dotnet_naming_symbols.private_inst_fields.applicable_accessibilities        = private
-                                                                            
-# Use camelCase for local functions
-dotnet_naming_rule.local_function_should_be_camel_case.severity             = warning
-dotnet_naming_rule.local_function_should_be_camel_case.symbols              = private_local_function
-dotnet_naming_rule.local_function_should_be_camel_case.style                = camel_case_style
-dotnet_naming_symbols.private_local_function.applicable_kinds               = local_function
-dotnet_naming_symbols.private_local_function.applicable_accessibilities     = private
 
 # Interfaces must be PascalCase and have an I prefix
 dotnet_naming_rule.interfaces_start_with_I.severity                         = warning
@@ -216,3 +216,5 @@ resharper_suggest_var_or_type_built_in_types_highlighting                   = wa
 resharper_suggest_var_or_type_elsewhere_highlighting                        = warning
 resharper_suggest_var_or_type_simple_types_highlighting                     = warning
 resharper_unused_member_global_highlighting                                 = none
+
+dotnet_diagnostic.IDE1006.severity                                          = none

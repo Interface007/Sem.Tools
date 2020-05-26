@@ -22,10 +22,7 @@ namespace Sem.MdDocGenerator
         }
 
         /// <inheritdoc/>
-        public override string ToString()
-        {
-            // we don't describe fields, because they represent internal state.
-            return string.Empty;
-        }
+        public override string ToString() =>
+            string.Empty;
     }
 }

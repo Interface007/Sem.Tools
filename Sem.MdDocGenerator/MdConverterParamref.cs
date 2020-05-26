@@ -22,9 +22,6 @@ namespace Sem.MdDocGenerator
         }
 
         /// <inheritdoc/>
-        public override string ToString()
-        {
-            return this.ToString(" {0} ");
-        }
+        public override string ToString() => this.ToString(" {0} ");
     }
 }
