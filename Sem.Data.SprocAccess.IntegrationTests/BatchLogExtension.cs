@@ -7,6 +7,7 @@ namespace Sem.Data.SprocAccess.IntegrationTests
     using System;
     using System.Collections.Concurrent;
     using System.Collections.Generic;
+
     using Sem.Tools.Logging;
 
     /// <summary>
@@ -18,7 +19,7 @@ namespace Sem.Data.SprocAccess.IntegrationTests
         /// <summary>
         /// Queue to collect logging items.
         /// </summary>
-        private static readonly ConcurrentQueue<Tuple<LogCategories, LogLevel, LogScope, string>> Queue = new ConcurrentQueue<Tuple<LogCategories, LogLevel, LogScope, string>>();
+        private static readonly ConcurrentQueue<(LogCategories Category, LogLevel Level, LogScope Scope, string Message)> Queue = new ConcurrentQueue<(LogCategories Category, LogLevel Level, LogScope Scope, string Message)>();
 
         /// <summary>
         /// Lock to be able to pull a consistent set of items from the queue without other threads to interfere.
@@ -41,14 +42,14 @@ namespace Sem.Data.SprocAccess.IntegrationTests
             return (logCategories, logLevel, logScope, message) =>
             {
                 // ReSharper disable InconsistentlySynchronizedField
-                Queue.Enqueue(new Tuple<LogCategories, LogLevel, LogScope, string>(logCategories, logLevel, logScope, message));
+                Queue.Enqueue((logCategories, logLevel, logScope, message));
                 if (Queue.Count < batchSize)
                 {
                     return;
                 }
 
                 // ReSharper restore InconsistentlySynchronizedField
-                var items = new List<Tuple<LogCategories, LogLevel, LogScope, string>>();
+                var items = new List<(LogCategories Category, LogLevel Level, LogScope Scope, string Message)>();
                 lock (QueueLock)
                 {
                     if (Queue.Count < batchSize)
@@ -64,9 +65,9 @@ namespace Sem.Data.SprocAccess.IntegrationTests
                         }
                     }
 
-                    foreach (var item in items)
+                    foreach (var (category, level, scope, logMessage) in items)
                     {
-                        currentAction(item.Item1, item.Item2, item.Item3, item.Item4);
+                        currentAction(category, level, scope, logMessage);
                     }
                 }
             };
