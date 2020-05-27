@@ -1,4 +1,4 @@
-// <copyright file="ClassTxtDatabase.cs" company="Sven Erik Matzen">
+﻿// <copyright file="ClassTxtDatabase.cs" company="Sven Erik Matzen">
 // Copyright (c) Sven Erik Matzen. All rights reserved.
 // </copyright>
 namespace Sem.Data.SprocAccess.FileSystemTests
@@ -31,7 +31,7 @@ namespace Sem.Data.SprocAccess.FileSystemTests
             [TestMethod]
             public async Task ReadsIntFromCorrectColumn()
             {
-                var target = new TxtDatabase("Data");
+                await using var target = new TxtDatabase("Data");
                 var result = target.Execute("sample", async reader => new { Id = await reader.Get<int>(0).ConfigureAwait(false) });
                 await foreach (var item in result)
                 {
@@ -46,7 +46,7 @@ namespace Sem.Data.SprocAccess.FileSystemTests
             [TestMethod]
             public async Task ReadsDateTimeFromCorrectColumn()
             {
-                var target = new TxtDatabase("Data");
+                await using var target = new TxtDatabase("Data");
                 var result = target.Execute("sample", async reader => new { Date = await reader.Get<DateTime>(1).ConfigureAwait(false) });
                 await foreach (var item in result)
                 {
@@ -62,7 +62,7 @@ namespace Sem.Data.SprocAccess.FileSystemTests
             [TestMethod]
             public async Task ReadsCorrectFileWithParameters()
             {
-                var target = new TxtDatabase("Data");
+                await using var target = new TxtDatabase("Data");
                 var result = target.Execute("sample", async reader => new { Date = await reader.Get<DateTime>(1).ConfigureAwait(false) }, null, new KeyValuePair<string, object>("test", "value"));
                 await foreach (var item in result)
                 {
@@ -82,6 +82,7 @@ namespace Sem.Data.SprocAccess.FileSystemTests
                 var logEntries = new List<string>();
                 void LogMethod(LogCategories categories, LogLevel level, LogScope scope, string message)
                 {
+                    logEntries.Add(message);
                     logEntries.Add(message);
                 }
 
@@ -104,7 +105,7 @@ namespace Sem.Data.SprocAccess.FileSystemTests
             [ExcludeFromCodeCoverage]
             public async Task ReadsSecondResult()
             {
-                var target = new TxtDatabase("Data");
+                await using var target = new TxtDatabase("Data");
                 var result = target.Execute(
                     "sample",
                     async reader =>

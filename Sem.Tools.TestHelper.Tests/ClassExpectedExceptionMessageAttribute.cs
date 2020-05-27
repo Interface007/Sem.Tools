@@ -1,11 +1,15 @@
-﻿using System;
-using System.Diagnostics.CodeAnalysis;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿// <copyright file="ClassExpectedExceptionMessageAttribute.cs" company="Sven Erik Matzen">
+// Copyright (c) Sven Erik Matzen. All rights reserved.
+// </copyright>
 
 namespace Sem.Tools.TestHelper.Tests
 {
+    using System;
+    using System.Diagnostics.CodeAnalysis;
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
+
     /// <summary>
-    /// Tests the exception class <see cref="ExpectedExceptionMessageAttribute"/>
+    /// Tests the exception class <see cref="ExpectedExceptionMessageAttribute"/>.
     /// </summary>
     public static class ClassExpectedExceptionMessageAttribute
     {
@@ -24,7 +28,7 @@ namespace Sem.Tools.TestHelper.Tests
                 var target = new ExpectedExceptionMessageAttributeWrapper(typeof(ArgumentException), "matching string");
                 target.VerifyAccessor(new ArgumentException("matching string"));
             }
-        
+
             /// <summary>
             /// Wrong exception type should throw correct exception message.
             /// </summary>
@@ -36,7 +40,7 @@ namespace Sem.Tools.TestHelper.Tests
                 var target = new ExpectedExceptionMessageAttributeWrapper(typeof(ArgumentException), "matching string");
                 target.VerifyAccessor(new AccessViolationException());
             }
-        
+
             /// <summary>
             /// Wrong exception type should throw correct exception message.
             /// </summary>
@@ -75,6 +79,7 @@ namespace Sem.Tools.TestHelper.Tests
             [ExcludeFromCodeCoverage]
             [ExpectedExceptionMessage(typeof(ArgumentNullException), ".")]
             public void CtorThrowsExpectedExceptionWhenTypeIsNull() =>
+
                 // ReSharper disable once ObjectCreationAsStatement
                 new ExpectedExceptionMessageAttribute(null, string.Empty);
 
@@ -85,6 +90,7 @@ namespace Sem.Tools.TestHelper.Tests
             [ExcludeFromCodeCoverage]
             [ExpectedExceptionMessage(typeof(ArgumentException), "Expected exception type must derive from exception")]
             public void CtorThrowsExpectedExceptionWhenExceptionTypeNotInheritsException() =>
+
                 // ReSharper disable once ObjectCreationAsStatement
                 new ExpectedExceptionMessageAttribute(typeof(string), null);
         }
@@ -97,7 +103,7 @@ namespace Sem.Tools.TestHelper.Tests
             {
             }
 
-            public void VerifyAccessor(Exception exception) => base.Verify(exception);
+            public void VerifyAccessor(Exception exception) => this.Verify(exception);
         }
     }
 }

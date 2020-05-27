@@ -35,7 +35,7 @@ namespace Sem.Tools
 
             foreach (var num in shA256.ComputeHash(Encoding.UTF8.GetBytes(value)))
             {
-                stringBuilder.Append(num.ToString("x2", CultureInfo.InvariantCulture));
+                _ = stringBuilder.Append(num.ToString("x2", CultureInfo.InvariantCulture));
             }
 
             return stringBuilder.ToString();

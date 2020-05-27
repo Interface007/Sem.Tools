@@ -28,10 +28,7 @@ namespace Sem.Data.SprocAccess.FileSystem
         /// Initializes a new instance of the <see cref="TxtDatabase"/> class.
         /// </summary>
         /// <param name="baseFolder">The base folder for the data files.</param>
-        public TxtDatabase(string baseFolder)
-        {
-            this.baseFolder = baseFolder;
-        }
+        public TxtDatabase(string baseFolder) => this.baseFolder = baseFolder;
 
         /// <summary>
         /// Executes a "stored procedure" (aka. "SPROC") and maps the result to a series of POCOs.

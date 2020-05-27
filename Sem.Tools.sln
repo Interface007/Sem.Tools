@@ -29,11 +29,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sem.Data.SprocAccess.FileSy
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sem.Tools.Tests", "Sem.Tools.Tests\Sem.Tools.Tests.csproj", "{C5984BC4-5CFF-492E-B038-AABDB05A1131}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "00 Solution Items", "00 Solution Items", "{9EB11DEE-AE0D-4641-A965-67A701AC1E7D}"
-	ProjectSection(SolutionItems) = preProject
-		azure-pipelines.yml = azure-pipelines.yml
-	EndProjectSection
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sem.MdDocGenerator", "Sem.MdDocGenerator\Sem.MdDocGenerator.csproj", "{33581FB6-74C5-42EA-B406-A2D8E54EA710}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "05 Documentation", "05 Documentation", "{8D16712C-EF4F-4411-B81D-768F16CD5E24}"
@@ -59,6 +54,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{1B6940EA-1E0B-44CB-A9E4-115FF3E9EE8A}"
 	ProjectSection(SolutionItems) = preProject
 		.editorconfig = .editorconfig
+		azure-pipelines.yml = azure-pipelines.yml
 	EndProjectSection
 EndProject
 Global

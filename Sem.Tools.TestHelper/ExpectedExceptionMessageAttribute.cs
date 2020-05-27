@@ -107,7 +107,12 @@ namespace Sem.Tools.TestHelper
                     str = string.Format(CultureInfo.CurrentCulture, "Failed to get exception message for type {0}", exception.GetType());
                 }
 
-                stringBuilder.Append(string.Format(CultureInfo.CurrentCulture, "{0}{1}: {2}", flag ? string.Empty : " ---> ", exception.GetType(), str));
+                var indent = flag ? string.Empty : " ---> ";
+                _ = stringBuilder
+                    .Append(indent)
+                    .Append(exception.GetType())
+                    .Append(": ")
+                    .Append(str);
                 flag = false;
             }
 

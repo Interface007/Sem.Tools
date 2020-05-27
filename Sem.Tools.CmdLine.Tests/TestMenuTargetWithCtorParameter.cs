@@ -15,10 +15,7 @@ namespace Sem.Tools.CmdLine.Tests
         /// Initializes a new instance of the <see cref="TestMenuTargetWithCtorParameter"/> class.
         /// </summary>
         /// <param name="text">The value for the text property.</param>
-        public TestMenuTargetWithCtorParameter(string text)
-        {
-            this.Text = text;
-        }
+        public TestMenuTargetWithCtorParameter(string text) => this.Text = text;
 
         /// <summary>
         /// Gets or sets a simple property.
@@ -29,7 +26,7 @@ namespace Sem.Tools.CmdLine.Tests
         public async Task DoIt(TestMenuTargetWithCtorParameter container)
 #pragma warning restore 1591
         {
-            await Task.Delay(5);
+            await Task.Delay(5).ConfigureAwait(false);
             container.MustNotBeNull(nameof(container)).Text = this.Text;
         }
 

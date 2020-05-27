@@ -156,9 +156,9 @@ namespace Sem.Tools.Logging.Tests
             {
                 var logs1 = new List<string>();
                 var logs2 = new List<string>();
-                void log2(LogCategories categories, LogLevel level, LogScope scope, string message) => logs2.Add(message);
+                void Log2(LogCategories categories, LogLevel level, LogScope scope, string message) => logs2.Add(message);
                 LogScope.LogMethod = this.Log1;
-                using var target = LogScope.Create("test", log2);
+                using var target = LogScope.Create("test", Log2);
                 Assert.AreEqual("test - Starting scope test in member ExplicitOverridesDefaultMethod of ClassLogScope.cs.", logs2[0]);
             }
 

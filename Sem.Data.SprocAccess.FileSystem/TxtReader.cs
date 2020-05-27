@@ -108,7 +108,7 @@ namespace Sem.Data.SprocAccess.FileSystem
         /// <returns>The index of the column.</returns>
         public int IndexByName(string columnName)
         {
-            columnName.MustNotBeNullOrEmpty(nameof(columnName));
+            _ = columnName.MustNotBeNullOrEmpty(nameof(columnName));
             return Array.IndexOf(
                 this.fileLines[0].ToUpperInvariant().Split('\t'),
                 columnName.ToUpperInvariant());

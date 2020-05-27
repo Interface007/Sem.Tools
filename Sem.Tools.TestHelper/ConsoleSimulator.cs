@@ -1,6 +1,7 @@
 ﻿// <copyright file="ConsoleSimulator.cs" company="Sven Erik Matzen">
 // Copyright (c) Sven Erik Matzen. All rights reserved.
 // </copyright>
+
 namespace Sem.Tools.TestHelper
 {
     using System.Collections.Generic;
@@ -52,7 +53,7 @@ namespace Sem.Tools.TestHelper
         {
             if (this.lines.Count > 0)
             {
-                this.lines.Dequeue();
+                _ = this.lines.Dequeue();
             }
         }
 

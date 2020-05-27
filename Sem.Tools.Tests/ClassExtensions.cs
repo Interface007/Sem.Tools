@@ -75,7 +75,7 @@ namespace Sem.Tools.Tests
                 var x = (object)null;
 
                 // ReSharper disable once AssignNullToNotNullAttribute
-                x.MustNotBeNull("value");
+                _ = x.MustNotBeNull("value");
             }
 
             /// <summary>
@@ -106,7 +106,7 @@ namespace Sem.Tools.Tests
                 var x = (string)null;
 
                 // ReSharper disable once AssignNullToNotNullAttribute
-                x.MustNotBeNullOrEmpty("value");
+                _ = x.MustNotBeNullOrEmpty("value");
             }
 
             /// <summary>

@@ -24,27 +24,27 @@ namespace Sem.Tools
         public override TType Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
         {
             // "$type":
-            reader.Read();
-            reader.GetString();
+            _ = reader.Read();
+            _ = reader.GetString();
 
             // "{type name}",
-            reader.Read();
+            _ = reader.Read();
             var typeName = reader.GetString();
-            typeName.MustNotBeNull("type cannot be read");
+            _ = typeName.MustNotBeNull("type cannot be read");
 
             var returnType = Type.GetType(typeName);
-            typeName.MustNotBeNull("Problem creating type info for " + typeName + ".");
+            _ = typeName.MustNotBeNull("Problem creating type info for " + typeName + ".");
 
             // "Data":
-            reader.Read();
-            reader.GetString();
+            _ = reader.Read();
+            _ = reader.GetString();
 
             // now the object
-            reader.Read();
+            _ = reader.Read();
             var deserialize = (TType)JsonSerializer.Deserialize(ref reader, returnType);
 
             // forward to next element
-            reader.Read();
+            _ = reader.Read();
             return deserialize;
         }
 
@@ -54,8 +54,8 @@ namespace Sem.Tools
         /// <param name="options">An object that specifies serialization options to use.</param>
         public override void Write(Utf8JsonWriter writer, TType value, JsonSerializerOptions options)
         {
-            writer.MustNotBeNull(nameof(writer));
-            value.MustNotBeNull(nameof(value));
+            _ = writer.MustNotBeNull(nameof(writer));
+            _ = value.MustNotBeNull(nameof(value));
             writer.WriteStartObject();
 
             writer.WritePropertyName("$type");

@@ -86,7 +86,7 @@ namespace Sem.Tools.CmdLine
         /// <returns>A new menu item.</returns>
         public static MenuItem Print(Expression<Func<IAsyncEnumerable<string>>> action, string suffixForMenu = "")
         {
-            action.MustNotBeNull(nameof(action));
+            _ = action.MustNotBeNull(nameof(action));
             return Print(GetDescription(GetMethod(action)) + suffixForMenu, action.Compile());
         }
 
@@ -100,7 +100,7 @@ namespace Sem.Tools.CmdLine
         /// <returns>A new menu item.</returns>
         public static MenuItem Print(Expression<Func<Task<IEnumerable<string>>>> action, string suffixForMenu = "")
         {
-            action.MustNotBeNull(nameof(action));
+            _ = action.MustNotBeNull(nameof(action));
             return Print(GetDescription(GetMethod(action)) + suffixForMenu, action.Compile());
         }
 
@@ -113,7 +113,7 @@ namespace Sem.Tools.CmdLine
         /// <returns>A new menu item.</returns>
         public static MenuItem Print(Expression<Func<Task<string>>> action, string suffixForMenu = "")
         {
-            action.MustNotBeNull(nameof(action));
+            _ = action.MustNotBeNull(nameof(action));
             return Print(GetDescription(GetMethod(action)) + suffixForMenu, action.Compile());
         }
 
@@ -126,7 +126,7 @@ namespace Sem.Tools.CmdLine
         /// <returns>A new menu item.</returns>
         public static MenuItem Print(Expression<Action> action, string suffixForMenu = "")
         {
-            action.MustNotBeNull(nameof(action));
+            _ = action.MustNotBeNull(nameof(action));
             return Print(GetDescription(GetMethod(action)) + suffixForMenu, action.Compile());
         }
 
@@ -140,7 +140,7 @@ namespace Sem.Tools.CmdLine
         /// <returns>A new menu item.</returns>
         public static MenuItem Print<T1>(Action<T1> action, string suffixForMenu = "")
         {
-            action.MustNotBeNull(nameof(action));
+            _ = action.MustNotBeNull(nameof(action));
             var methodInfo = action.GetMethodInfo();
             return Print(GetDescription(methodInfo) + suffixForMenu, action);
         }
@@ -155,7 +155,7 @@ namespace Sem.Tools.CmdLine
         /// <returns>A new menu item.</returns>
         public static MenuItem Print<T1>(Func<T1, string> action, string suffixForMenu = "")
         {
-            action.MustNotBeNull(nameof(action));
+            _ = action.MustNotBeNull(nameof(action));
             var methodInfo = action.GetMethodInfo();
             return Print(GetDescription(methodInfo) + suffixForMenu, action);
         }
@@ -195,7 +195,7 @@ namespace Sem.Tools.CmdLine
         /// <returns>A new menu item.</returns>
         public static MenuItem Print(string displayString, Action action, string suffixForMenu = "")
         {
-            action.MustNotBeNull(nameof(action));
+            _ = action.MustNotBeNull(nameof(action));
             return new MenuItem(
                 displayString + suffixForMenu,
                 p =>
@@ -215,7 +215,7 @@ namespace Sem.Tools.CmdLine
         /// <returns>A new menu item.</returns>
         public static MenuItem Print<T1>(string displayString, Action<T1> action, string suffixForMenu = "")
         {
-            action.MustNotBeNull(nameof(action));
+            _ = action.MustNotBeNull(nameof(action));
             return new MenuItem(
                 displayString + suffixForMenu,
                 parameters =>
@@ -236,7 +236,7 @@ namespace Sem.Tools.CmdLine
         /// <returns>A new menu item.</returns>
         public static MenuItem Print<T1>(string displayString, Func<T1, string> action, string suffixForMenu = "")
         {
-            action.MustNotBeNull(nameof(action));
+            _ = action.MustNotBeNull(nameof(action));
             return new MenuItem(
                 displayString + suffixForMenu,
                 parameters =>
@@ -256,7 +256,7 @@ namespace Sem.Tools.CmdLine
         /// <returns>A new menu item.</returns>
         public static MenuItem Print(string displayString, Func<Task> action, string suffixForMenu = "")
         {
-            action.MustNotBeNull(nameof(action));
+            _ = action.MustNotBeNull(nameof(action));
             return new MenuItem(displayString + suffixForMenu, async p => await action().ConfigureAwait(false));
         }
 
@@ -270,7 +270,7 @@ namespace Sem.Tools.CmdLine
         /// <returns>A new menu item.</returns>
         public static MenuItem Print<T1>(string displayString, Func<T1, Task<string>> action, string suffixForMenu = "")
         {
-            action.MustNotBeNull(nameof(action));
+            _ = action.MustNotBeNull(nameof(action));
             return new MenuItem(displayString + suffixForMenu, async (parameters) =>
             {
                 var callParams = CallParams(action.GetMethodInfo(), parameters);
@@ -288,7 +288,7 @@ namespace Sem.Tools.CmdLine
         /// <returns>A new menu item.</returns>
         public static MenuItem Print<T1>(string displayString, Func<T1, Task> action, string suffixForMenu = "")
         {
-            action.MustNotBeNull(nameof(action));
+            _ = action.MustNotBeNull(nameof(action));
             return new MenuItem(displayString + suffixForMenu, async (parameters) =>
             {
                 var callParams = CallParams(action.GetMethodInfo(), parameters);
@@ -305,7 +305,7 @@ namespace Sem.Tools.CmdLine
         /// <returns>A new menu item.</returns>
         public static MenuItem Print(string displayString, Func<IAsyncEnumerable<string>> action, string suffixForMenu = "")
         {
-            action.MustNotBeNull(nameof(action));
+            _ = action.MustNotBeNull(nameof(action));
             return new MenuItem(
                 displayString + suffixForMenu,
                 async p =>
@@ -326,7 +326,7 @@ namespace Sem.Tools.CmdLine
         /// <returns>A new menu item.</returns>
         public static MenuItem Print(string displayString, Func<Task<IEnumerable<string>>> action, string suffixForMenu = "")
         {
-            action.MustNotBeNull(nameof(action));
+            _ = action.MustNotBeNull(nameof(action));
             return new MenuItem(
                 displayString + suffixForMenu,
                 async p =>
@@ -539,7 +539,7 @@ namespace Sem.Tools.CmdLine
         {
             var obj = CreateInstance<TClass>(methodInfo, parameters);
             var callParams = CallParams(methodInfo, parameters);
-            methodInfo.Invoke(obj, callParams);
+            _ = methodInfo.Invoke(obj, callParams);
         }
 
         /// <summary>
@@ -630,8 +630,7 @@ namespace Sem.Tools.CmdLine
                 .ToArray();
 
             var value = parameters.FirstOrDefault(x => x.GetType() == parameterType)
-                        ?? properties
-                            .FirstOrDefault(x => x.Name == parameterInfo.Name && x.Value.GetType() == parameterType)?.Value;
+                           ?? properties.FirstOrDefault(x => x.Name == parameterInfo.Name && x.Value.GetType() == parameterType)?.Value;
 
             if (value == null)
             {

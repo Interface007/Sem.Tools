@@ -19,10 +19,7 @@ namespace Sem.Tools.CmdLine.Tests
         /// Initializes a new instance of the <see cref="TestMenuTargetForFoundIssues"/> class.
         /// </summary>
         /// <param name="parameter">A simple ctor parameter.</param>
-        public TestMenuTargetForFoundIssues(TestMenuTargetComplexParameter parameter)
-        {
-            this.parameter = parameter;
-        }
+        public TestMenuTargetForFoundIssues(TestMenuTargetComplexParameter parameter) => this.parameter = parameter;
 
         /// <summary>
         /// Sample method of case 1 that was missing.

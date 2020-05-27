@@ -21,7 +21,8 @@ namespace Sem.Tools.Logging
         Exception = 1,
 
         /// <summary>
-        /// When writing logs: Specifies that this entry is a warning (less important than an <see cref="Exception"/>).
+        /// When writing logs: Specifies that this entry is a
+        /// ing (less important than an <see cref="Exception"/>).
         /// When configuring logger: will only allow exceptions and warnings to be logged.
         /// </summary>
         Warning = 2,
