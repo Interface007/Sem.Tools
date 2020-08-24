@@ -8,7 +8,7 @@ namespace Sem.Tools.CmdLine.Tests
     using System.Threading.Tasks;
 
     /// <summary>
-    /// A class containing method to create a menu from.
+    /// A class containing method that I want to use to to create a menu.
     /// </summary>
     [ExcludeFromCodeCoverage]
     public class TestMenuTargetForFoundIssues
