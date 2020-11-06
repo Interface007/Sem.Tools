@@ -15,28 +15,46 @@ namespace Sem.Tools.Logging
         None = 0,
 
         /// <summary>
-        /// When writing logs: Specifies that this entry is an exception.
-        /// When configuring logger: will only allow exceptions to be logged.
+        /// When writing logs: Specifies that this entry is a trace message (something that should be logged while debugging).
+        /// When configuring logger: will only allow any message to be logged.
         /// </summary>
-        Exception = 1,
+        Trace = 10000,
+
+        /// <summary>
+        /// When writing logs: Specifies that this entry is debugging information (less important than an <see cref="Information"/>).
+        /// When configuring logger: will only allow information, exceptions and warnings to be logged.
+        /// </summary>
+        Debug = 20000,
+
+        /// <summary>
+        /// When writing logs: Specifies that this entry is a information (less important than an <see cref="Exception"/> or a <see cref="Warning"/>).
+        /// When configuring logger: will only allow information, exceptions and warnings to be logged.
+        /// </summary>
+        Information = 30000,
 
         /// <summary>
         /// When writing logs: Specifies that this entry is a
         /// ing (less important than an <see cref="Exception"/>).
         /// When configuring logger: will only allow exceptions and warnings to be logged.
         /// </summary>
-        Warning = 2,
+        Warning = 40000,
 
         /// <summary>
-        /// When writing logs: Specifies that this entry is a information (less important than an <see cref="Exception"/> or a <see cref="Warning"/>).
-        /// When configuring logger: will only allow information, exceptions and warnings to be logged.
+        /// When writing logs: Specifies that this entry is an exception.
+        /// When configuring logger: will only allow exceptions to be logged.
         /// </summary>
-        Information = 3,
+        Error = 50000,
 
         /// <summary>
-        /// When writing logs: Specifies that this entry is a trace message (something that should be logged while debugging).
-        /// When configuring logger: will only allow any message to be logged.
+        /// When writing logs: Specifies that this entry is an exception.
+        /// When configuring logger: will only allow exceptions to be logged.
         /// </summary>
-        Trace = 4,
+        Exception = 60000,
+
+        /// <summary>
+        /// When writing logs: Specifies that this entry is absolutely critical to report - you cannot suppress reporting this.
+        /// When configuring logger: will only allow only this to be reported.
+        /// </summary>
+        Critical = int.MaxValue,
     }
 }

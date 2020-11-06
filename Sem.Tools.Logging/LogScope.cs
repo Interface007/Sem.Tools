@@ -80,6 +80,7 @@ namespace Sem.Tools.Logging
         /// <summary>
         /// Gets the hierarchical ID of the scope.
         /// </summary>
+        // ReSharper disable once MemberInitializerValueIgnored
         public string Id { get; } = "0000";
 
         /// <summary>
@@ -91,7 +92,7 @@ namespace Sem.Tools.Logging
         /// <param name="path">The path to the class file.</param>
         /// <returns>A new logging scope.</returns>
         public static LogScope Create(string scopeName, Action<LogCategories, LogLevel, LogScope, string> logMethod = null, [CallerMemberName] string member = "", [CallerFilePath] string path = "") =>
-            new LogScope(scopeName, member, path, null, logMethod);
+            new LogScope(scopeName, member, path ?? string.Empty, null, logMethod);
 
         /// <summary>
         /// Call this to indicate a method start.
@@ -113,7 +114,7 @@ namespace Sem.Tools.Logging
         /// <returns>A new scope.</returns>
         public LogScope Child(string childName, object value = null, [CallerMemberName] string member = "", [CallerFilePath] string path = "")
         {
-            var scope = new LogScope(childName, member, path, this, this.logMethod)
+            var scope = new LogScope(childName, member, path ?? string.Empty, this, this.logMethod)
             {
                 Level = this.Level,
                 Category = this.Category,
@@ -163,7 +164,7 @@ namespace Sem.Tools.Logging
         /// <param name="value">A value that should be included into the message as addition data.</param>
         public void Log(LogCategories logCategory, LogLevel logLevel, string message, object value = null)
         {
-            if (logLevel > this.Level || (logCategory & this.Category) == 0)
+            if (logLevel < this.Level || (logCategory & this.Category) == 0)
             {
                 return;
             }

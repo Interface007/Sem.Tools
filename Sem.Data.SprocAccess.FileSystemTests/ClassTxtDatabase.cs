@@ -80,20 +80,17 @@ namespace Sem.Data.SprocAccess.FileSystemTests
             public async Task LogsCorrectly()
             {
                 var logEntries = new List<string>();
-                void LogMethod(LogCategories categories, LogLevel level, LogScope scope, string message)
-                {
-                    logEntries.Add(message);
-                    logEntries.Add(message);
-                }
+                void LogMethod(LogCategories categories, LogLevel level, LogScope scope, string message) => logEntries.Add(message);
 
                 var target = new TxtDatabase("Data");
 
                 await using var log = LogScope.Create("db", LogMethod);
+                logEntries.Clear();
                 var result = target.Execute("sample", async reader => new { Date = await reader.Get<DateTime>(1).ConfigureAwait(false) }, log);
                 await foreach (var item in result)
                 {
                     var expected = new DateTime(2019, 12, 23, 22, 44, 33);
-                    Assert.AreEqual("MethodScope - scope value:  - Data: {\"sproc\":\"sample\",\"parameters\":[]}", logEntries[2]);
+                    Assert.AreEqual("MethodScope - scope value:  - Data: {\"sproc\":\"sample\",\"parameters\":[]}", logEntries[1]);
                 }
             }
 

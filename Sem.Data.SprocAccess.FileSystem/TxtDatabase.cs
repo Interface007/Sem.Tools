@@ -43,6 +43,8 @@ namespace Sem.Data.SprocAccess.FileSystem
         {
             await using var scope = logger?.MethodStart(new { sproc, parameters });
 
+            readerToObject.MustNotBeNull(nameof(readerToObject));
+
             // produce a file name that includes the parameters
             var fileName = parameters
                 .Aggregate("params-", (s, pair) => $"{s}-{pair.Key}={pair.Value}")
@@ -60,6 +62,10 @@ namespace Sem.Data.SprocAccess.FileSystem
 
         /// <summary>Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources asynchronously.</summary>
         /// <returns>A task that represents the asynchronous dispose operation.</returns>
-        public ValueTask DisposeAsync() => default;
+        public ValueTask DisposeAsync()
+        {
+            GC.SuppressFinalize(this);
+            return default;
+        }
     }
 }

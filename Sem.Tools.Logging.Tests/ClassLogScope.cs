@@ -100,7 +100,7 @@ namespace Sem.Tools.Logging.Tests
                 this.LogMessages.Clear();
 
                 using var target = logScope.Child("the child");
-                var expected = "Technical, Trace, /0004/0005, the child - Starting scope the child in member StartingChildScopeAddsIdToHierarchy of ClassLogScope.cs.";
+                const string expected = "Technical, Trace, /0004/0005, the child - Starting scope the child in member StartingChildScopeAddsIdToHierarchy of ClassLogScope.cs.";
 
                 Assert.AreEqual(1, this.LogMessages.Count);
                 Assert.AreEqual(expected, this.LogMessages[0]);
