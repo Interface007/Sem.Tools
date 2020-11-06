@@ -10,6 +10,7 @@ namespace Sem.Tools.Logging
     using System;
     using System.Globalization;
     using System.IO;
+    using System.Linq.Expressions;
     using System.Runtime.CompilerServices;
     using System.Text.Json;
     using System.Threading.Tasks;
@@ -169,7 +170,8 @@ namespace Sem.Tools.Logging
                 return;
             }
 
-            var data = value == null ? string.Empty : " - Data: " + JsonSerializer.Serialize(value, value.GetType());
+            var valueType = value?.GetType();
+            var data = value == null ? string.Empty : " - Data: " + (valueType.IsSubclassOf(typeof(Expression)) ? value.ToString() : JsonSerializer.Serialize(value, valueType));
             this.logMethod?.Invoke(logCategory, logLevel, this, this.scopeName + " - " + message + data);
         }
 
