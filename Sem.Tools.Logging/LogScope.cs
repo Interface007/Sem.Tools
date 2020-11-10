@@ -171,9 +171,30 @@ namespace Sem.Tools.Logging
             }
 
             var valueType = value?.GetType();
-            var data = value == null ? string.Empty : " - Data: " + (valueType.IsSubclassOf(typeof(Expression)) ? value.ToString() : JsonSerializer.Serialize(value, valueType));
+            string data;
+            if (value == null)
+            {
+                data = string.Empty;
+            }
+            else
+            {
+                try
+                {
+                    data = " - Data: " + Serialize(value, valueType);
+                }
+                catch
+                {
+                    data = " - Data: " + value;
+                }
+            }
+
             this.logMethod?.Invoke(logCategory, logLevel, this, this.scopeName + " - " + message + data);
         }
+
+        private static string Serialize(object value, Type valueType) =>
+                valueType.IsSubclassOf(typeof(Expression)) ? value.ToString() :
+                valueType.IsSubclassOf(typeof(Exception)) ? value.ToString() :
+                JsonSerializer.Serialize(value, valueType);
 
         private static string GetBasePath([CallerFilePath] string path = "") =>
             Path.GetDirectoryName(path);
