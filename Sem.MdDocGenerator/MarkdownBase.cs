@@ -53,7 +53,7 @@ namespace Sem.MdDocGenerator
         /// <param name="parts">The parts extracted from the node.</param>
         /// <returns>The markdown representing the documentation node.</returns>
         protected static string ToString(string pattern, string[] parts) =>
-            string.Format(CultureInfo.InvariantCulture, pattern, parts.Cast<object>());
+            string.Format(CultureInfo.InvariantCulture, pattern, parts.Cast<object>().ToArray());
 
         /// <summary>
         /// Converts the value into a code block.
@@ -64,7 +64,7 @@ namespace Sem.MdDocGenerator
         {
             var lines = value.MustNotBeNull(nameof(value)).Split(new[] { '\n' }, StringSplitOptions.RemoveEmptyEntries);
             var blank = lines[0].TakeWhile(x => x == ' ').Count() - 4;
-            return string.Join("\n", lines.Select(x => new string(x.SkipWhile((y, i) => i < blank).ToArray())));
+            return string.Join("\n", lines.Select(x => new string(x.SkipWhile((_, i) => i < blank).ToArray())));
         }
 
         /// <summary>

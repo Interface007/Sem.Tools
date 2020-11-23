@@ -28,7 +28,7 @@ guard methods for null-validation of method parameters.</Description>
 
   <ItemGroup>
     <PackageReference Include="JetBrains.Annotations" Version="2020.1.0" />
-    <PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="3.7.0" />
+    <PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="3.8.0" />
     <PackageReference Include="Microsoft.CodeAnalysis.FxCopAnalyzers" Version="3.3.1">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -42,8 +42,8 @@ guard methods for null-validation of method parameters.</Description>
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="System.Security.Cryptography.ProtectedData" Version="4.7.0" />
-    <PackageReference Include="System.Text.Json" Version="4.7.2" />
+    <PackageReference Include="System.Security.Cryptography.ProtectedData" Version="5.0.0" />
+    <PackageReference Include="System.Text.Json" Version="5.0.0" />
   </ItemGroup>
 
 </Project>
