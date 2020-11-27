@@ -90,7 +90,7 @@ namespace Sem.Data.SprocAccess.FileSystemTests
                 await foreach (var item in result)
                 {
                     var expected = new DateTime(2019, 12, 23, 22, 44, 33);
-                    Assert.AreEqual("MethodScope - scope value:  - Data: {\"sproc\":\"sample\",\"parameters\":[]}", logEntries[1]);
+                    Assert.AreEqual("Method Execute - scope value:  - Data: {\"sproc\":\"sample\",\"parameters\":[]}", logEntries[1]);
                 }
             }
 

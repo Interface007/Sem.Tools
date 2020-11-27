@@ -103,7 +103,7 @@ namespace Sem.Tools.Logging
         /// <param name="path">The path of the source file.</param>
         /// <returns>A new scope.</returns>
         public LogScope MethodStart(object value = null, [CallerMemberName] string member = "", [CallerFilePath] string path = "") =>
-            this.Child("MethodScope", value, member, path);
+            this.Child("Method " + member, value, member, path);
 
         /// <summary>
         /// Creates a new child scope.

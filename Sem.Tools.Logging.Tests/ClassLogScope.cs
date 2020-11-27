@@ -222,8 +222,8 @@ namespace Sem.Tools.Logging.Tests
                     await using var subScope = logScope.MethodStart(new { this.LogMessages.Count, test = "true" });
                 }
 
-                Assert.AreEqual("Technical, Trace, /0004/0005, MethodScope - Starting scope MethodScope in member ParametersAreCorrectlyLogged of ClassLogScope.cs.", this.LogMessages[0]);
-                Assert.AreEqual("Technical, Information, /0004/0005, MethodScope - scope value:  - Data: {\"Count\":0,\"test\":\"true\"}", this.LogMessages[1]);
+                Assert.AreEqual("Technical, Trace, /0004/0005, Method ParametersAreCorrectlyLogged - Starting scope Method ParametersAreCorrectlyLogged in member ParametersAreCorrectlyLogged of ClassLogScope.cs.", this.LogMessages[0]);
+                Assert.AreEqual("Technical, Information, /0004/0005, Method ParametersAreCorrectlyLogged - scope value:  - Data: {\"Count\":0,\"test\":\"true\"}", this.LogMessages[1]);
             }
         }
 
