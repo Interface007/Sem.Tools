@@ -29,15 +29,5 @@ namespace Sem.Tools.CmdLine.Tests
             await Task.Delay(5).ConfigureAwait(false);
             container.MustNotBeNull(nameof(container)).Sample.Text = this.Sample.Text;
         }
-
-#pragma warning disable 1591
-        public async Task DoIt() => await Task.Delay(5);
-#pragma warning restore 1591
-
-#pragma warning disable 1591
-        public void VoidDoIt()
-#pragma warning restore 1591
-        {
-        }
     }
 }

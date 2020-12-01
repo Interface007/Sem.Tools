@@ -35,10 +35,11 @@ namespace Sem.Tools.Logging
 
             this.Id = $"{parent?.Id}/{newId}";
 
-            var replace = !string.IsNullOrEmpty(LogScope.BasePath)
+            var replace = !string.IsNullOrEmpty(LogScope.BasePath) && !string.IsNullOrEmpty(path)
                 ? path.Replace(LogScope.BasePath, string.Empty, StringComparison.OrdinalIgnoreCase)
                 : path;
-            var pat = replace.Trim('\\').Trim('/');
+
+            var pat = replace?.Trim('\\').Trim('/');
             this.Log(LogCategories.Technical, LogLevel.Trace, $"Starting scope {scopeName} in member {member} of {pat}.");
         }
 
@@ -93,7 +94,7 @@ namespace Sem.Tools.Logging
         /// <param name="path">The path to the class file.</param>
         /// <returns>A new logging scope.</returns>
         public static LogScope Create(string scopeName, Action<LogCategories, LogLevel, LogScope, string> logMethod = null, [CallerMemberName] string member = "", [CallerFilePath] string path = "") =>
-            new LogScope(scopeName, member, path ?? string.Empty, null, logMethod);
+            new LogScope(scopeName, member, path, null, logMethod);
 
         /// <summary>
         /// Call this to indicate a method start.
@@ -115,7 +116,7 @@ namespace Sem.Tools.Logging
         /// <returns>A new scope.</returns>
         public LogScope Child(string childName, object value = null, [CallerMemberName] string member = "", [CallerFilePath] string path = "")
         {
-            var scope = new LogScope(childName, member, path ?? string.Empty, this, this.logMethod)
+            var scope = new LogScope(childName, member, path, this, this.logMethod)
             {
                 Level = this.Level,
                 Category = this.Category,
