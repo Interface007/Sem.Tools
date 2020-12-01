@@ -66,16 +66,21 @@ namespace Sem.Tools
         /// <param name="nameOfValue">The name of the value (usually the name of the parameter).</param>
         /// <returns> The original value of <paramref name="value"/>. </returns>
         [ContractAnnotation("value: null => halt")]
-        public static T MustNotBeNull<T>([NoEnumeration][JetBrains.Annotations.NotNull][ValidatedNotNull] this T value, string nameOfValue)
+        public static T MustNotBeNull<T>([NoEnumeration][NotNull][ValidatedNotNull] this T value, string nameOfValue)
             where T : class
-        {
-            if (value == null)
-            {
-                throw new ArgumentNullException(nameOfValue);
-            }
+            => value ?? throw new ArgumentNullException(nameOfValue);
 
-            return value;
-        }
+        /// <summary>
+        /// Throws an <see cref="ArgumentNullException"/> when passing NULL values to <paramref name="value" />.
+        /// </summary>
+        /// <typeparam name="T">The type of the parameter.</typeparam>
+        /// <param name="value">The value that must not be null.</param>
+        /// <param name="nameOfValue">The name of the value (usually the name of the parameter).</param>
+        /// <returns> The NON-Null value of <paramref name="value"/>. </returns>
+        [ContractAnnotation("value: null => halt")]
+        public static T MustNotBeNull<T>([ValidatedNotNull] this T? value, string nameOfValue)
+            where T : struct
+            => (object)value != null ? value.Value : throw new ArgumentNullException(nameOfValue);
 
         /// <summary>
         /// Extends all objects to have a simple JsonSerialization method.

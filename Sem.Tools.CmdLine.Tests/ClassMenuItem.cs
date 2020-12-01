@@ -187,6 +187,23 @@ namespace Sem.Tools.CmdLine.Tests
             }
 
             /// <summary>
+            /// Tests whether the show command accepts parameters for the ctor with an interface.
+            /// </summary>
+            /// <returns>A task to wait for.</returns>
+            [TestMethod]
+            public async Task CallingWithShowParametersWithInterface()
+            {
+                var userInput = new[] { "0", " ", " ", " ", };
+
+                var console = new ConsoleSimulator(userInput);
+                var instance = new TestMenuTargetWithCtorParameterWithInterface(new Sample { Text = "fail" });
+
+                var target = MenuItem.For<TestMenuTargetWithCtorParameterWithInterface>(x => x.DoIt(instance));
+                await new[] { target }.Show(console, new { sample = new Sample { Text = "hello" }, container = instance });
+                Assert.AreEqual("hello", instance.Sample.Text);
+            }
+
+            /// <summary>
             /// Sample void sync method with parameter.
             /// </summary>
             /// <param name="value">A simple parameter.</param>

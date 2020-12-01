@@ -629,8 +629,8 @@ namespace Sem.Tools.CmdLine
                 .SelectMany(x => x.GetType().GetProperties().Select(p => new { Value = p.GetValue(x), p.Name }))
                 .ToArray();
 
-            var value = parameters.FirstOrDefault(x => x.GetType() == parameterType)
-                           ?? properties.FirstOrDefault(x => x.Name == parameterInfo.Name && x.Value.GetType() == parameterType)?.Value;
+            var value = parameters.FirstOrDefault(x => parameterType.IsInstanceOfType(x))
+                           ?? properties.FirstOrDefault(x => x.Name == parameterInfo.Name && parameterType.IsInstanceOfType(x.Value))?.Value;
 
             if (value == null)
             {
