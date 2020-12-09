@@ -124,7 +124,7 @@ namespace Sem.Tools.Logging
 
             if (value != null)
             {
-                scope.Log(LogCategories.Technical, LogLevel.Information, "scope value: ", value);
+                scope.Log(LogCategories.Technical, LogLevel.Debug, "scope value: ", value);
             }
 
             return scope;

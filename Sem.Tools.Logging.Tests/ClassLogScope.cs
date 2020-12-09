@@ -223,7 +223,7 @@ namespace Sem.Tools.Logging.Tests
                 }
 
                 Assert.AreEqual("Technical, Trace, /0004/0005, Method ParametersAreCorrectlyLogged - Starting scope Method ParametersAreCorrectlyLogged in member ParametersAreCorrectlyLogged of ClassLogScope.cs.", this.LogMessages[0]);
-                Assert.AreEqual("Technical, Information, /0004/0005, Method ParametersAreCorrectlyLogged - scope value:  - Data: {\"Count\":0,\"test\":\"true\"}", this.LogMessages[1]);
+                Assert.AreEqual("Technical, Debug, /0004/0005, Method ParametersAreCorrectlyLogged - scope value:  - Data: {\"Count\":0,\"test\":\"true\"}", this.LogMessages[1]);
             }
         }
 
