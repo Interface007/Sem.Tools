@@ -57,6 +57,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		azure-pipelines.yml = azure-pipelines.yml
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sem.Data.SprocAccess.MicrosoftSqlServer", "Sem.Data.SprocAccess.MicrosoftSqlServer\Sem.Data.SprocAccess.MicrosoftSqlServer.csproj", "{DA8B1A97-2D1C-4191-A49A-FE6CF3B70D63}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -123,6 +125,10 @@ Global
 		{44AEBB38-11EC-4718-8150-B486D0AB4B77}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{44AEBB38-11EC-4718-8150-B486D0AB4B77}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{44AEBB38-11EC-4718-8150-B486D0AB4B77}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DA8B1A97-2D1C-4191-A49A-FE6CF3B70D63}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DA8B1A97-2D1C-4191-A49A-FE6CF3B70D63}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DA8B1A97-2D1C-4191-A49A-FE6CF3B70D63}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DA8B1A97-2D1C-4191-A49A-FE6CF3B70D63}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -143,6 +149,7 @@ Global
 		{03DB2EA5-746F-4591-9202-325A128A5964} = {CA13352C-39A6-44F0-B276-C9C6D11A6EB8}
 		{8ABF3A59-B089-414C-A0BC-7144B3B5D5A0} = {CA13352C-39A6-44F0-B276-C9C6D11A6EB8}
 		{44AEBB38-11EC-4718-8150-B486D0AB4B77} = {CA13352C-39A6-44F0-B276-C9C6D11A6EB8}
+		{DA8B1A97-2D1C-4191-A49A-FE6CF3B70D63} = {3D333F70-DAA6-4586-BF4F-9330BB52DFE9}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {75721008-2AE9-4CA2-BDA7-7351B84C8BD0}

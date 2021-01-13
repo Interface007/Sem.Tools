@@ -1,26 +1,27 @@
-﻿// <copyright file="SqlReader.cs" company="Sven Erik Matzen">
+﻿// <copyright file="MicrosoftSqlReader.cs" company="Sven Erik Matzen">
 // Copyright (c) Sven Erik Matzen. All rights reserved.
 // </copyright>
 
-namespace Sem.Data.SprocAccess.SqlServer
+namespace Sem.Data.SprocAccess.MicrosoftSqlServer
 {
     using System;
-    using System.Data.SqlClient;
     using System.Globalization;
     using System.Threading.Tasks;
+    using Microsoft.Data.SqlClient;
+    using Sem.Data.SprocAccess;
 
     /// <summary>
     /// SQL serer implementation of the reader interface <see cref="IReader"/>.
     /// </summary>
-    public sealed class SqlReader : IReader
+    public sealed class MicrosoftSqlReader : IExtendedReader
     {
         private readonly SqlDataReader sqlDataReader;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="SqlReader"/> class.
+        /// Initializes a new instance of the <see cref="MicrosoftSqlReader"/> class.
         /// </summary>
         /// <param name="sqlDataReader">The data reader to read from.</param>
-        public SqlReader(SqlDataReader sqlDataReader) => this.sqlDataReader = sqlDataReader;
+        public MicrosoftSqlReader(SqlDataReader sqlDataReader) => this.sqlDataReader = sqlDataReader;
 
         /// <summary>
         /// Advances to the next record.
@@ -44,8 +45,12 @@ namespace Sem.Data.SprocAccess.SqlServer
         /// <param name="index">The column index.</param>
         /// <param name="type">The type of the result.</param>
         /// <returns>The value of the column in the current row.</returns>
-        public Task<object> Get(int index, Type type) =>
-            Task.FromResult(Convert.ChangeType(this.sqlDataReader.GetValue(index), type, CultureInfo.InvariantCulture));
+        public Task<object> Get(int index, Type type)
+        {
+            var value = this.sqlDataReader.GetValue(index);
+            var result = Convert.ChangeType(value, type, CultureInfo.InvariantCulture);
+            return Task.FromResult(result);
+        }
 
         /// <summary>
         /// Advances to the next result set.
@@ -73,5 +78,12 @@ namespace Sem.Data.SprocAccess.SqlServer
         /// <inheritdoc />
         public void Dispose() =>
             this.sqlDataReader?.Dispose();
+        
+        public int FieldCount => this.sqlDataReader.FieldCount;
+
+        public string GetAsString(int index) =>
+            this.sqlDataReader.IsDBNull(index) ? string.Empty : this.sqlDataReader.GetValue(index).ToString();
+
+        public string NameByIndex(int index) => this.sqlDataReader.GetName(index);
     }
 }

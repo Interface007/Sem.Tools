@@ -39,7 +39,7 @@ namespace Sem.Data.SprocAccess.SqlServer
         /// <returns>A series of POCO instances.</returns>
         public async IAsyncEnumerable<T> Execute<T>(string sproc, Func<IReader, Task<T>> readerToObject, LogScope logger = null, params KeyValuePair<string, object>[] parameters)
         {
-            readerToObject.MustNotBeNull(nameof(readerToObject));
+            _ = readerToObject.MustNotBeNull(nameof(readerToObject));
             await using var scope = logger?.MethodStart(new { sproc, parameters });
             if (sproc.MustNotBeNullOrEmpty(nameof(sproc)).Contains('\'', StringComparison.Ordinal))
             {
@@ -54,7 +54,7 @@ namespace Sem.Data.SprocAccess.SqlServer
 
             foreach (var (key, value) in parameters)
             {
-                cmd.Parameters.AddWithValue(key, value);
+                _ = cmd.Parameters.AddWithValue(key, value);
             }
 
             await using var unused = scope?.Child("executing reader");
