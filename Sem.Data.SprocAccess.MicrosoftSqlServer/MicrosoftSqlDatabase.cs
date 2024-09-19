@@ -8,9 +8,9 @@ namespace Sem.Data.SprocAccess.MicrosoftSqlServer
     using System.Collections.Generic;
     using System.Threading.Tasks;
     using Microsoft.Data.SqlClient;
-    using SprocAccess;
-    using Tools;
-    using Tools.Logging;
+    using Sem.Data.SprocAccess;
+    using Sem.Tools;
+    using Sem.Tools.Logging;
 
     public class MicrosoftSqlDatabase : IDatabase
     {

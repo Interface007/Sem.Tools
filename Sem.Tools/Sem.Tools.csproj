@@ -1,9 +1,9 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.1</TargetFramework>
+    <TargetFramework>net8.0</TargetFramework>
     <LangVersion>latest</LangVersion>
-    <Version>1.0.10</Version>
+    <Version>1.2.0</Version>
     <Authors>Sven Erik Matzen</Authors>
     <Product>Sem.Tools</Product>
     <Description>Some generic tools like encrypting JSON converter, simple string hashing and 
@@ -27,14 +27,13 @@ guard methods for null-validation of method parameters.</Description>
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="JetBrains.Annotations" Version="2020.3.0" />
-    <PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="3.8.0" />
-    <PackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers" Version="5.0.3">
+    <PackageReference Include="JetBrains.Annotations" Version="2024.2.0" />
+    <PackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers" Version="8.0.0">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Microsoft.VisualStudio.Validation" Version="16.8.33" />
-    <PackageReference Include="Roslynator.Analyzers" Version="3.0.0">
+    <PackageReference Include="Microsoft.VisualStudio.Validation" Version="17.8.8" />
+    <PackageReference Include="Roslynator.Analyzers" Version="4.12.5">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
@@ -42,8 +41,8 @@ guard methods for null-validation of method parameters.</Description>
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="System.Security.Cryptography.ProtectedData" Version="5.0.0" />
-    <PackageReference Include="System.Text.Json" Version="5.0.1" />
+    <PackageReference Include="System.Security.Cryptography.ProtectedData" Version="8.0.0" />
+    <PackageReference Include="System.Text.Json" Version="8.0.4" />
   </ItemGroup>
 
 </Project>

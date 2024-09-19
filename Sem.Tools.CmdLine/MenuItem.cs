@@ -485,7 +485,7 @@ namespace Sem.Tools.CmdLine
         /// <returns>A documentation read from the file or generated from the name.</returns>
         private static string GetDocumentationFromXml(Type declaringType, string xPath, string name)
         {
-            var assemblyFolder = declaringType.Assembly.CodeBase.Replace("file:///", string.Empty, StringComparison.Ordinal);
+            var assemblyFolder = declaringType.Assembly.Location.Replace("file:///", string.Empty, StringComparison.Ordinal);
             var documentationXml = Path.ChangeExtension(Path.GetFullPath(assemblyFolder), ".XML");
 
             var description = string.Empty;
@@ -632,12 +632,7 @@ namespace Sem.Tools.CmdLine
             var value = parameters.FirstOrDefault(x => parameterType.IsInstanceOfType(x))
                            ?? properties.FirstOrDefault(x => x.Name == parameterInfo.Name && parameterType.IsInstanceOfType(x.Value))?.Value;
 
-            if (value == null)
-            {
-                throw new InvalidOperationException($"no value found for the parameter [{parameterInfo.Name}] of method [{methodInfo.Name}] with the type [{parameterType.Name}]");
-            }
-
-            return value;
+            return value ?? throw new InvalidOperationException($"no value found for the parameter [{parameterInfo.Name}] of method [{methodInfo.Name}] with the type [{parameterType.Name}]");
         }
     }
 }

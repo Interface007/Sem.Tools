@@ -23,6 +23,8 @@ namespace Sem.Data.SprocAccess.MicrosoftSqlServer
         /// <param name="sqlDataReader">The data reader to read from.</param>
         public MicrosoftSqlReader(SqlDataReader sqlDataReader) => this.sqlDataReader = sqlDataReader;
 
+        public int FieldCount => this.sqlDataReader.FieldCount;
+
         /// <summary>
         /// Advances to the next record.
         /// </summary>
@@ -78,8 +80,6 @@ namespace Sem.Data.SprocAccess.MicrosoftSqlServer
         /// <inheritdoc />
         public void Dispose() =>
             this.sqlDataReader?.Dispose();
-        
-        public int FieldCount => this.sqlDataReader.FieldCount;
 
         public string GetAsString(int index) =>
             this.sqlDataReader.IsDBNull(index) ? string.Empty : this.sqlDataReader.GetValue(index).ToString();

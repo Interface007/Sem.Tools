@@ -23,6 +23,9 @@ namespace Sem.Tools.Logging.Tests
             LogScope.IdFactory = x => $"{x.Id.Length:0000}";
         }
 
+        public LoggerTestBase()
+            => LogScope.LogMethod = null;
+
         /// <summary>
         /// Gets the logged messages.
         /// </summary>
