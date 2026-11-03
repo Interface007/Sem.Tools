@@ -1,0 +1,1928 @@
+{
+  "settings": {
+    "components": {
+      "code": true,
+      "binaries": false
+    },
+    "targetId": "net10.0",
+    "targetDisplayName": ".NETCoreApp,Version=v10.0"
+  },
+  "analysisStartTime": "2026-11-03T06:24:00.6742979Z",
+  "analysisEndTime": "2026-11-03T06:24:01.8764355Z",
+  "privacyModeHelpUrl": "https://go.microsoft.com/fwlink/?linkid=2270980",
+  "stats": {
+    "summary": {
+      "projects": 16,
+      "issues": 5,
+      "incidents": 56,
+      "effort": 56
+    },
+    "charts": {
+      "severity": {
+        "Mandatory": 17,
+        "Optional": 0,
+        "Potential": 39,
+        "Information": 0
+      },
+      "category": {
+        "NuGet": 3,
+        "Project": 16,
+        "Api": 37
+      }
+    }
+  },
+  "projects": [
+    {
+      "path": "Sem.Data.SprocAccess\\Sem.Data.SprocAccess.csproj",
+      "startingProject": true,
+      "issues": 1,
+      "storyPoints": 1,
+      "properties": {
+        "appName": "Sem.Data.SprocAccess",
+        "projectKind": "ClassLibrary",
+        "frameworks": [
+          "net8.0"
+        ],
+        "languages": [
+          "C#"
+        ],
+        "tools": [
+          "MSBuild"
+        ],
+        "isSdkStyle": true,
+        "isTestProject": false,
+        "numberOfFiles": 3,
+        "numberOfCodeFiles": 3,
+        "linesTotal": 92,
+        "linesOfCode": 92,
+        "totalApiScanned": 21,
+        "minLinesOfCodeToChange": 0,
+        "maxLinesOfCodeToChange": 0
+      },
+      "ruleInstances": [
+        {
+          "incidentId": "7f0ba782-0831-4637-9438-4acc1df789fc",
+          "ruleId": "Project.0002",
+          "projectPath": "Sem.Data.SprocAccess\\Sem.Data.SprocAccess.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "Current target framework: net8.0\nRecommended target framework: net10.0",
+              "protected": "Current target framework: net8.0\nRecommended target framework: net10.0"
+            },
+            "kind": "File",
+            "path": "Sem.Data.SprocAccess\\Sem.Data.SprocAccess.csproj",
+            "snippet": "Current target framework: net8.0\nRecommended target framework: net10.0",
+            "protectedSnippet": "Current target framework: net8.0\nRecommended target framework: net10.0",
+            "properties": {
+              "CurrentTargetFramework": "net8.0",
+              "RecommendedTargetFramework": "net10.0"
+            }
+          }
+        }
+      ],
+      "features": []
+    },
+    {
+      "path": "Sem.Data.SprocAccess.FileSystem\\Sem.Data.SprocAccess.FileSystem.csproj",
+      "startingProject": true,
+      "issues": 1,
+      "storyPoints": 1,
+      "properties": {
+        "appName": "Sem.Data.SprocAccess.FileSystem",
+        "projectKind": "ClassLibrary",
+        "frameworks": [
+          "net8.0"
+        ],
+        "languages": [
+          "C#"
+        ],
+        "tools": [
+          "MSBuild"
+        ],
+        "isSdkStyle": true,
+        "isTestProject": false,
+        "numberOfFiles": 3,
+        "numberOfCodeFiles": 3,
+        "linesTotal": 206,
+        "linesOfCode": 206,
+        "totalApiScanned": 154,
+        "minLinesOfCodeToChange": 0,
+        "maxLinesOfCodeToChange": 0
+      },
+      "ruleInstances": [
+        {
+          "incidentId": "46523bfc-149f-46c7-a117-226e16657cf4",
+          "ruleId": "Project.0002",
+          "projectPath": "Sem.Data.SprocAccess.FileSystem\\Sem.Data.SprocAccess.FileSystem.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "Current target framework: net8.0\nRecommended target framework: net10.0",
+              "protected": "Current target framework: net8.0\nRecommended target framework: net10.0"
+            },
+            "kind": "File",
+            "path": "Sem.Data.SprocAccess.FileSystem\\Sem.Data.SprocAccess.FileSystem.csproj",
+            "snippet": "Current target framework: net8.0\nRecommended target framework: net10.0",
+            "protectedSnippet": "Current target framework: net8.0\nRecommended target framework: net10.0",
+            "properties": {
+              "CurrentTargetFramework": "net8.0",
+              "RecommendedTargetFramework": "net10.0"
+            }
+          }
+        }
+      ],
+      "features": []
+    },
+    {
+      "path": "Sem.Data.SprocAccess.FileSystemTests\\Sem.Data.SprocAccess.FileSystemTests.csproj",
+      "startingProject": true,
+      "issues": 1,
+      "storyPoints": 1,
+      "properties": {
+        "appName": "Sem.Data.SprocAccess.FileSystemTests",
+        "projectKind": "DotNetCoreApp",
+        "frameworks": [
+          "net8.0"
+        ],
+        "languages": [
+          "C#"
+        ],
+        "tools": [
+          "MSBuild"
+        ],
+        "isSdkStyle": true,
+        "isTestProject": true,
+        "numberOfFiles": 7,
+        "numberOfCodeFiles": 5,
+        "linesTotal": 2874,
+        "linesOfCode": 235,
+        "totalApiScanned": 24,
+        "minLinesOfCodeToChange": 0,
+        "maxLinesOfCodeToChange": 0
+      },
+      "ruleInstances": [
+        {
+          "incidentId": "9929a7d1-15be-4996-a074-389f6bdece66",
+          "ruleId": "Project.0002",
+          "projectPath": "Sem.Data.SprocAccess.FileSystemTests\\Sem.Data.SprocAccess.FileSystemTests.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "Current target framework: net8.0\nRecommended target framework: net10.0",
+              "protected": "Current target framework: net8.0\nRecommended target framework: net10.0"
+            },
+            "kind": "File",
+            "path": "Sem.Data.SprocAccess.FileSystemTests\\Sem.Data.SprocAccess.FileSystemTests.csproj",
+            "snippet": "Current target framework: net8.0\nRecommended target framework: net10.0",
+            "protectedSnippet": "Current target framework: net8.0\nRecommended target framework: net10.0",
+            "properties": {
+              "CurrentTargetFramework": "net8.0",
+              "RecommendedTargetFramework": "net10.0"
+            }
+          }
+        }
+      ],
+      "features": []
+    },
+    {
+      "path": "Sem.Data.SprocAccess.IntegrationTests\\Sem.Data.SprocAccess.IntegrationTests.csproj",
+      "startingProject": true,
+      "issues": 2,
+      "storyPoints": 2,
+      "properties": {
+        "appName": "Sem.Data.SprocAccess.IntegrationTests",
+        "projectKind": "DotNetCoreApp",
+        "frameworks": [
+          "net8.0"
+        ],
+        "languages": [
+          "C#"
+        ],
+        "tools": [
+          "MSBuild"
+        ],
+        "isSdkStyle": true,
+        "isTestProject": false,
+        "numberOfFiles": 3,
+        "numberOfCodeFiles": 3,
+        "linesTotal": 134,
+        "linesOfCode": 134,
+        "totalApiScanned": 69,
+        "minLinesOfCodeToChange": 1,
+        "maxLinesOfCodeToChange": 1
+      },
+      "ruleInstances": [
+        {
+          "incidentId": "2ac1adf0-8550-4a23-9351-3b779f511311",
+          "ruleId": "Project.0002",
+          "projectPath": "Sem.Data.SprocAccess.IntegrationTests\\Sem.Data.SprocAccess.IntegrationTests.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "Current target framework: net8.0\nRecommended target framework: net10.0",
+              "protected": "Current target framework: net8.0\nRecommended target framework: net10.0"
+            },
+            "kind": "File",
+            "path": "Sem.Data.SprocAccess.IntegrationTests\\Sem.Data.SprocAccess.IntegrationTests.csproj",
+            "snippet": "Current target framework: net8.0\nRecommended target framework: net10.0",
+            "protectedSnippet": "Current target framework: net8.0\nRecommended target framework: net10.0",
+            "properties": {
+              "CurrentTargetFramework": "net8.0",
+              "RecommendedTargetFramework": "net10.0"
+            }
+          }
+        },
+        {
+          "incidentId": "2287ce78-fe2e-4d56-8689-11f5683f64dd",
+          "ruleId": "Api.0001",
+          "description": "API is unavailable in net8.0 ",
+          "projectPath": "Sem.Data.SprocAccess.IntegrationTests\\Sem.Data.SprocAccess.IntegrationTests.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "Console.WriteLine(await enumerable.CountAsync().ConfigureAwait(false));",
+              "protected": "T:System.Linq.AsyncEnumerable"
+            },
+            "kind": "File",
+            "path": "Sem.Data.SprocAccess.IntegrationTests\\Program.cs",
+            "snippet": "Console.WriteLine(await enumerable.CountAsync().ConfigureAwait(false));",
+            "protectedSnippet": "T:System.Linq.AsyncEnumerable",
+            "label": "T:System.Linq.AsyncEnumerable",
+            "properties": {
+              "CharCount": "1908"
+            },
+            "line": 48,
+            "column": 16
+          }
+        }
+      ],
+      "features": []
+    },
+    {
+      "path": "Sem.Data.SprocAccess.MicrosoftSqlServer\\Sem.Data.SprocAccess.MicrosoftSqlServer.csproj",
+      "startingProject": true,
+      "issues": 2,
+      "storyPoints": 2,
+      "properties": {
+        "appName": "Sem.Data.SprocAccess.MicrosoftSqlServer",
+        "projectKind": "ClassLibrary",
+        "frameworks": [
+          "net8.0"
+        ],
+        "languages": [
+          "C#"
+        ],
+        "tools": [
+          "MSBuild"
+        ],
+        "isSdkStyle": true,
+        "isTestProject": false,
+        "numberOfFiles": 3,
+        "numberOfCodeFiles": 3,
+        "linesTotal": 215,
+        "linesOfCode": 215,
+        "totalApiScanned": 206,
+        "minLinesOfCodeToChange": 0,
+        "maxLinesOfCodeToChange": 0
+      },
+      "ruleInstances": [
+        {
+          "incidentId": "ae4d3891-5d8b-4f6d-b45f-464fbf24130b",
+          "ruleId": "NuGet.0002",
+          "projectPath": "Sem.Data.SprocAccess.MicrosoftSqlServer\\Sem.Data.SprocAccess.MicrosoftSqlServer.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "System.Text.Encodings.Web, 11.0.0-rc.3.26522.148\n\nRecommendation:\n\nRemove System.Text.Encodings.Web, and replace with new package System.Text.Encodings.Web 10.0.14",
+              "protected": "System.Text.Encodings.Web, 11.0.0-rc.3.26522.148\n\nRecommendation:\n\nRemove System.Text.Encodings.Web, and replace with new package System.Text.Encodings.Web 10.0.14"
+            },
+            "kind": "File",
+            "path": "Sem.Data.SprocAccess.MicrosoftSqlServer\\Sem.Data.SprocAccess.MicrosoftSqlServer.csproj",
+            "snippet": "System.Text.Encodings.Web, 11.0.0-rc.3.26522.148\n\nRecommendation:\n\nRemove System.Text.Encodings.Web, and replace with new package System.Text.Encodings.Web 10.0.14",
+            "protectedSnippet": "System.Text.Encodings.Web, 11.0.0-rc.3.26522.148\n\nRecommendation:\n\nRemove System.Text.Encodings.Web, and replace with new package System.Text.Encodings.Web 10.0.14",
+            "label": "System.Text.Encodings.Web 11.0.0-rc.3.26522.148",
+            "properties": {
+              "PackageId": "System.Text.Encodings.Web",
+              "PackageVersion": "11.0.0-rc.3.26522.148",
+              "PackageNewVersion": "10.0.14",
+              "PackageReplacements": null
+            }
+          }
+        },
+        {
+          "incidentId": "9f6bd95e-c128-47ab-aa26-a7baac06a505",
+          "ruleId": "Project.0002",
+          "projectPath": "Sem.Data.SprocAccess.MicrosoftSqlServer\\Sem.Data.SprocAccess.MicrosoftSqlServer.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "Current target framework: net8.0\nRecommended target framework: net10.0",
+              "protected": "Current target framework: net8.0\nRecommended target framework: net10.0"
+            },
+            "kind": "File",
+            "path": "Sem.Data.SprocAccess.MicrosoftSqlServer\\Sem.Data.SprocAccess.MicrosoftSqlServer.csproj",
+            "snippet": "Current target framework: net8.0\nRecommended target framework: net10.0",
+            "protectedSnippet": "Current target framework: net8.0\nRecommended target framework: net10.0",
+            "properties": {
+              "CurrentTargetFramework": "net8.0",
+              "RecommendedTargetFramework": "net10.0"
+            }
+          }
+        }
+      ],
+      "features": []
+    },
+    {
+      "path": "Sem.Data.SprocAccess.SqlServer\\Sem.Data.SprocAccess.SqlServer.csproj",
+      "startingProject": true,
+      "issues": 2,
+      "storyPoints": 25,
+      "properties": {
+        "appName": "Sem.Data.SprocAccess.SqlServer",
+        "projectKind": "ClassLibrary",
+        "frameworks": [
+          "net8.0"
+        ],
+        "languages": [
+          "C#"
+        ],
+        "tools": [
+          "MSBuild"
+        ],
+        "isSdkStyle": true,
+        "isTestProject": false,
+        "numberOfFiles": 3,
+        "numberOfCodeFiles": 3,
+        "linesTotal": 162,
+        "linesOfCode": 162,
+        "totalApiScanned": 126,
+        "minLinesOfCodeToChange": 24,
+        "maxLinesOfCodeToChange": 24
+      },
+      "ruleInstances": [
+        {
+          "incidentId": "23a09923-134e-46b3-928d-af0a5178ec02",
+          "ruleId": "Project.0002",
+          "projectPath": "Sem.Data.SprocAccess.SqlServer\\Sem.Data.SprocAccess.SqlServer.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "Current target framework: net8.0\nRecommended target framework: net10.0",
+              "protected": "Current target framework: net8.0\nRecommended target framework: net10.0"
+            },
+            "kind": "File",
+            "path": "Sem.Data.SprocAccess.SqlServer\\Sem.Data.SprocAccess.SqlServer.csproj",
+            "snippet": "Current target framework: net8.0\nRecommended target framework: net10.0",
+            "protectedSnippet": "Current target framework: net8.0\nRecommended target framework: net10.0",
+            "properties": {
+              "CurrentTargetFramework": "net8.0",
+              "RecommendedTargetFramework": "net10.0"
+            }
+          }
+        },
+        {
+          "incidentId": "8f396d91-d031-41d0-9c5d-b68a18c17a45",
+          "ruleId": "Api.0002",
+          "description": "API is available in package System.Data.SqlClient, 4.8.6. Add package reference to System.Data.SqlClient, 4.8.6",
+          "projectPath": "Sem.Data.SprocAccess.SqlServer\\Sem.Data.SprocAccess.SqlServer.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "this.sqlDataReader",
+              "protected": "T:System.Data.SqlClient.SqlDataReader"
+            },
+            "kind": "File",
+            "path": "Sem.Data.SprocAccess.SqlServer\\SqlReader.cs",
+            "snippet": "this.sqlDataReader",
+            "protectedSnippet": "T:System.Data.SqlClient.SqlDataReader",
+            "label": "T:System.Data.SqlClient.SqlDataReader",
+            "properties": {
+              "PackageId": "System.Data.SqlClient",
+              "PackageNewVersion": "4.8.6",
+              "CharCount": "3020"
+            },
+            "line": 74,
+            "column": 12
+          }
+        },
+        {
+          "incidentId": "3d3cb680-bb31-41bf-aefe-96b797b2cd71",
+          "ruleId": "Api.0002",
+          "description": "API is available in package System.Data.SqlClient, 4.8.6. Add package reference to System.Data.SqlClient, 4.8.6",
+          "projectPath": "Sem.Data.SprocAccess.SqlServer\\Sem.Data.SprocAccess.SqlServer.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "this.sqlDataReader",
+              "protected": "T:System.Data.SqlClient.SqlDataReader"
+            },
+            "kind": "File",
+            "path": "Sem.Data.SprocAccess.SqlServer\\SqlReader.cs",
+            "snippet": "this.sqlDataReader",
+            "protectedSnippet": "T:System.Data.SqlClient.SqlDataReader",
+            "label": "T:System.Data.SqlClient.SqlDataReader",
+            "properties": {
+              "PackageId": "System.Data.SqlClient",
+              "PackageNewVersion": "4.8.6",
+              "CharCount": "3020"
+            },
+            "line": 70,
+            "column": 12
+          }
+        },
+        {
+          "incidentId": "e239e18f-a6a4-4ee3-ad81-d82692468d61",
+          "ruleId": "Api.0002",
+          "description": "API is available in package System.Data.SqlClient, 4.8.6. Add package reference to System.Data.SqlClient, 4.8.6",
+          "projectPath": "Sem.Data.SprocAccess.SqlServer\\Sem.Data.SprocAccess.SqlServer.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "this.sqlDataReader.GetOrdinal(columnName)",
+              "protected": "M:System.Data.SqlClient.SqlDataReader.GetOrdinal(System.String)"
+            },
+            "kind": "File",
+            "path": "Sem.Data.SprocAccess.SqlServer\\SqlReader.cs",
+            "snippet": "this.sqlDataReader.GetOrdinal(columnName)",
+            "protectedSnippet": "M:System.Data.SqlClient.SqlDataReader.GetOrdinal(System.String)",
+            "label": "M:System.Data.SqlClient.SqlDataReader.GetOrdinal(System.String)",
+            "properties": {
+              "PackageId": "System.Data.SqlClient",
+              "PackageNewVersion": "4.8.6",
+              "CharCount": "3020"
+            },
+            "line": 70,
+            "column": 12
+          }
+        },
+        {
+          "incidentId": "58f90316-f381-4b7f-85a2-db275fc6aa78",
+          "ruleId": "Api.0002",
+          "description": "API is available in package System.Data.SqlClient, 4.8.6. Add package reference to System.Data.SqlClient, 4.8.6",
+          "projectPath": "Sem.Data.SprocAccess.SqlServer\\Sem.Data.SprocAccess.SqlServer.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "this.sqlDataReader",
+              "protected": "T:System.Data.SqlClient.SqlDataReader"
+            },
+            "kind": "File",
+            "path": "Sem.Data.SprocAccess.SqlServer\\SqlReader.cs",
+            "snippet": "this.sqlDataReader",
+            "protectedSnippet": "T:System.Data.SqlClient.SqlDataReader",
+            "label": "T:System.Data.SqlClient.SqlDataReader",
+            "properties": {
+              "PackageId": "System.Data.SqlClient",
+              "PackageNewVersion": "4.8.6",
+              "CharCount": "3020"
+            },
+            "line": 61,
+            "column": 12
+          }
+        },
+        {
+          "incidentId": "ecf6f926-811f-4795-85c3-3605cf78ea78",
+          "ruleId": "Api.0002",
+          "description": "API is available in package System.Data.SqlClient, 4.8.6. Add package reference to System.Data.SqlClient, 4.8.6",
+          "projectPath": "Sem.Data.SprocAccess.SqlServer\\Sem.Data.SprocAccess.SqlServer.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "this.sqlDataReader",
+              "protected": "T:System.Data.SqlClient.SqlDataReader"
+            },
+            "kind": "File",
+            "path": "Sem.Data.SprocAccess.SqlServer\\SqlReader.cs",
+            "snippet": "this.sqlDataReader",
+            "protectedSnippet": "T:System.Data.SqlClient.SqlDataReader",
+            "label": "T:System.Data.SqlClient.SqlDataReader",
+            "properties": {
+              "PackageId": "System.Data.SqlClient",
+              "PackageNewVersion": "4.8.6",
+              "CharCount": "3020"
+            },
+            "line": 54,
+            "column": 12
+          }
+        },
+        {
+          "incidentId": "1fd8d589-d24c-43ed-839b-a2b8df963758",
+          "ruleId": "Api.0002",
+          "description": "API is available in package System.Data.SqlClient, 4.8.6. Add package reference to System.Data.SqlClient, 4.8.6",
+          "projectPath": "Sem.Data.SprocAccess.SqlServer\\Sem.Data.SprocAccess.SqlServer.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "this.sqlDataReader",
+              "protected": "T:System.Data.SqlClient.SqlDataReader"
+            },
+            "kind": "File",
+            "path": "Sem.Data.SprocAccess.SqlServer\\SqlReader.cs",
+            "snippet": "this.sqlDataReader",
+            "protectedSnippet": "T:System.Data.SqlClient.SqlDataReader",
+            "label": "T:System.Data.SqlClient.SqlDataReader",
+            "properties": {
+              "PackageId": "System.Data.SqlClient",
+              "PackageNewVersion": "4.8.6",
+              "CharCount": "3020"
+            },
+            "line": 47,
+            "column": 47
+          }
+        },
+        {
+          "incidentId": "b51ebdc1-f03a-4acd-97fa-253ea13a45c3",
+          "ruleId": "Api.0002",
+          "description": "API is available in package System.Data.SqlClient, 4.8.6. Add package reference to System.Data.SqlClient, 4.8.6",
+          "projectPath": "Sem.Data.SprocAccess.SqlServer\\Sem.Data.SprocAccess.SqlServer.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "this.sqlDataReader.GetValue(index)",
+              "protected": "M:System.Data.SqlClient.SqlDataReader.GetValue(System.Int32)"
+            },
+            "kind": "File",
+            "path": "Sem.Data.SprocAccess.SqlServer\\SqlReader.cs",
+            "snippet": "this.sqlDataReader.GetValue(index)",
+            "protectedSnippet": "M:System.Data.SqlClient.SqlDataReader.GetValue(System.Int32)",
+            "label": "M:System.Data.SqlClient.SqlDataReader.GetValue(System.Int32)",
+            "properties": {
+              "PackageId": "System.Data.SqlClient",
+              "PackageNewVersion": "4.8.6",
+              "CharCount": "3020"
+            },
+            "line": 47,
+            "column": 47
+          }
+        },
+        {
+          "incidentId": "62a7d161-9b3d-44df-a370-f691613eb6f6",
+          "ruleId": "Api.0002",
+          "description": "API is available in package System.Data.SqlClient, 4.8.6. Add package reference to System.Data.SqlClient, 4.8.6",
+          "projectPath": "Sem.Data.SprocAccess.SqlServer\\Sem.Data.SprocAccess.SqlServer.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "this.sqlDataReader",
+              "protected": "T:System.Data.SqlClient.SqlDataReader"
+            },
+            "kind": "File",
+            "path": "Sem.Data.SprocAccess.SqlServer\\SqlReader.cs",
+            "snippet": "this.sqlDataReader",
+            "protectedSnippet": "T:System.Data.SqlClient.SqlDataReader",
+            "label": "T:System.Data.SqlClient.SqlDataReader",
+            "properties": {
+              "PackageId": "System.Data.SqlClient",
+              "PackageNewVersion": "4.8.6",
+              "CharCount": "3020"
+            },
+            "line": 38,
+            "column": 12
+          }
+        },
+        {
+          "incidentId": "03ff5775-980a-4b54-8504-05b303c37fc0",
+          "ruleId": "Api.0002",
+          "description": "API is available in package System.Data.SqlClient, 4.8.6. Add package reference to System.Data.SqlClient, 4.8.6",
+          "projectPath": "Sem.Data.SprocAccess.SqlServer\\Sem.Data.SprocAccess.SqlServer.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "this.sqlDataReader",
+              "protected": "T:System.Data.SqlClient.SqlDataReader"
+            },
+            "kind": "File",
+            "path": "Sem.Data.SprocAccess.SqlServer\\SqlReader.cs",
+            "snippet": "this.sqlDataReader",
+            "protectedSnippet": "T:System.Data.SqlClient.SqlDataReader",
+            "label": "T:System.Data.SqlClient.SqlDataReader",
+            "properties": {
+              "PackageId": "System.Data.SqlClient",
+              "PackageNewVersion": "4.8.6",
+              "CharCount": "3020"
+            },
+            "line": 29,
+            "column": 12
+          }
+        },
+        {
+          "incidentId": "9178247c-f503-4137-b712-d53bf7ad124a",
+          "ruleId": "Api.0002",
+          "description": "API is available in package System.Data.SqlClient, 4.8.6. Add package reference to System.Data.SqlClient, 4.8.6",
+          "projectPath": "Sem.Data.SprocAccess.SqlServer\\Sem.Data.SprocAccess.SqlServer.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "public SqlReader(SqlDataReader sqlDataReader) =\u003E this.sqlDataReader = sqlDataReader;",
+              "protected": "T:System.Data.SqlClient.SqlDataReader"
+            },
+            "kind": "File",
+            "path": "Sem.Data.SprocAccess.SqlServer\\SqlReader.cs",
+            "snippet": "public SqlReader(SqlDataReader sqlDataReader) =\u003E this.sqlDataReader = sqlDataReader;",
+            "protectedSnippet": "T:System.Data.SqlClient.SqlDataReader",
+            "label": "T:System.Data.SqlClient.SqlDataReader",
+            "properties": {
+              "PackageId": "System.Data.SqlClient",
+              "PackageNewVersion": "4.8.6",
+              "CharCount": "3020"
+            },
+            "line": 22,
+            "column": 8
+          }
+        },
+        {
+          "incidentId": "2c3099b9-dac8-40b7-8a3e-388925c3a420",
+          "ruleId": "Api.0002",
+          "description": "API is available in package System.Data.SqlClient, 4.8.6. Add package reference to System.Data.SqlClient, 4.8.6",
+          "projectPath": "Sem.Data.SprocAccess.SqlServer\\Sem.Data.SprocAccess.SqlServer.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "this.sqlDataReader",
+              "protected": "T:System.Data.SqlClient.SqlDataReader"
+            },
+            "kind": "File",
+            "path": "Sem.Data.SprocAccess.SqlServer\\SqlReader.cs",
+            "snippet": "this.sqlDataReader",
+            "protectedSnippet": "T:System.Data.SqlClient.SqlDataReader",
+            "label": "T:System.Data.SqlClient.SqlDataReader",
+            "properties": {
+              "PackageId": "System.Data.SqlClient",
+              "PackageNewVersion": "4.8.6",
+              "CharCount": "3020"
+            },
+            "line": 22,
+            "column": 57
+          }
+        },
+        {
+          "incidentId": "a3a41674-613b-470e-b241-a94af00ed552",
+          "ruleId": "Api.0002",
+          "description": "API is available in package System.Data.SqlClient, 4.8.6. Add package reference to System.Data.SqlClient, 4.8.6",
+          "projectPath": "Sem.Data.SprocAccess.SqlServer\\Sem.Data.SprocAccess.SqlServer.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "sqlDataReader",
+              "protected": "T:System.Data.SqlClient.SqlDataReader"
+            },
+            "kind": "File",
+            "path": "Sem.Data.SprocAccess.SqlServer\\SqlReader.cs",
+            "snippet": "sqlDataReader",
+            "protectedSnippet": "T:System.Data.SqlClient.SqlDataReader",
+            "label": "T:System.Data.SqlClient.SqlDataReader",
+            "properties": {
+              "PackageId": "System.Data.SqlClient",
+              "PackageNewVersion": "4.8.6",
+              "CharCount": "3020"
+            },
+            "line": 16,
+            "column": 39
+          }
+        },
+        {
+          "incidentId": "299c29de-45bf-4051-a197-b3489e3cf3ba",
+          "ruleId": "Api.0002",
+          "description": "API is available in package System.Data.SqlClient, 4.8.6. Add package reference to System.Data.SqlClient, 4.8.6",
+          "projectPath": "Sem.Data.SprocAccess.SqlServer\\Sem.Data.SprocAccess.SqlServer.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "public SqlReader(SqlDataReader sqlDataReader) =\u003E this.sqlDataReader = sqlDataReader;",
+              "protected": "T:System.Data.SqlClient.SqlDataReader"
+            },
+            "kind": "File",
+            "path": "Sem.Data.SprocAccess.SqlServer\\SqlReader.cs",
+            "snippet": "public SqlReader(SqlDataReader sqlDataReader) =\u003E this.sqlDataReader = sqlDataReader;",
+            "protectedSnippet": "T:System.Data.SqlClient.SqlDataReader",
+            "label": "T:System.Data.SqlClient.SqlDataReader",
+            "properties": {
+              "PackageId": "System.Data.SqlClient",
+              "PackageNewVersion": "4.8.6",
+              "CharCount": "3020"
+            },
+            "line": 22,
+            "column": 8
+          }
+        },
+        {
+          "incidentId": "fb5b2359-4111-496d-8fb3-8e45858c46af",
+          "ruleId": "Api.0002",
+          "description": "API is available in package System.Data.SqlClient, 4.8.6. Add package reference to System.Data.SqlClient, 4.8.6",
+          "projectPath": "Sem.Data.SprocAccess.SqlServer\\Sem.Data.SprocAccess.SqlServer.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "this.sqlDataReader",
+              "protected": "T:System.Data.SqlClient.SqlDataReader"
+            },
+            "kind": "File",
+            "path": "Sem.Data.SprocAccess.SqlServer\\SqlReader.cs",
+            "snippet": "this.sqlDataReader",
+            "protectedSnippet": "T:System.Data.SqlClient.SqlDataReader",
+            "label": "T:System.Data.SqlClient.SqlDataReader",
+            "properties": {
+              "PackageId": "System.Data.SqlClient",
+              "PackageNewVersion": "4.8.6",
+              "CharCount": "3020"
+            },
+            "line": 22,
+            "column": 57
+          }
+        },
+        {
+          "incidentId": "9ab7d9a8-5cb0-465d-bba5-c1cc69778394",
+          "ruleId": "Api.0002",
+          "description": "API is available in package System.Data.SqlClient, 4.8.6. Add package reference to System.Data.SqlClient, 4.8.6",
+          "projectPath": "Sem.Data.SprocAccess.SqlServer\\Sem.Data.SprocAccess.SqlServer.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "await using var dataReader = await cmd.ExecuteReaderAsync().ConfigureAwait(false);",
+              "protected": "M:System.Data.SqlClient.SqlCommand.ExecuteReaderAsync"
+            },
+            "kind": "File",
+            "path": "Sem.Data.SprocAccess.SqlServer\\SqlDatabase.cs",
+            "snippet": "await using var dataReader = await cmd.ExecuteReaderAsync().ConfigureAwait(false);",
+            "protectedSnippet": "M:System.Data.SqlClient.SqlCommand.ExecuteReaderAsync",
+            "label": "M:System.Data.SqlClient.SqlCommand.ExecuteReaderAsync",
+            "properties": {
+              "PackageId": "System.Data.SqlClient",
+              "PackageNewVersion": "4.8.6",
+              "CharCount": "3527"
+            },
+            "line": 61,
+            "column": 12
+          }
+        },
+        {
+          "incidentId": "66de62cb-a760-429e-8c95-1e271f17fc0f",
+          "ruleId": "Api.0002",
+          "description": "API is available in package System.Data.SqlClient, 4.8.6. Add package reference to System.Data.SqlClient, 4.8.6",
+          "projectPath": "Sem.Data.SprocAccess.SqlServer\\Sem.Data.SprocAccess.SqlServer.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "_ = cmd.Parameters.AddWithValue(key, value);",
+              "protected": "T:System.Data.SqlClient.SqlParameterCollection"
+            },
+            "kind": "File",
+            "path": "Sem.Data.SprocAccess.SqlServer\\SqlDatabase.cs",
+            "snippet": "_ = cmd.Parameters.AddWithValue(key, value);",
+            "protectedSnippet": "T:System.Data.SqlClient.SqlParameterCollection",
+            "label": "T:System.Data.SqlClient.SqlParameterCollection",
+            "properties": {
+              "PackageId": "System.Data.SqlClient",
+              "PackageNewVersion": "4.8.6",
+              "CharCount": "3527"
+            },
+            "line": 56,
+            "column": 16
+          }
+        },
+        {
+          "incidentId": "fbe549df-db97-4594-b995-835c67b867b8",
+          "ruleId": "Api.0002",
+          "description": "API is available in package System.Data.SqlClient, 4.8.6. Add package reference to System.Data.SqlClient, 4.8.6",
+          "projectPath": "Sem.Data.SprocAccess.SqlServer\\Sem.Data.SprocAccess.SqlServer.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "_ = cmd.Parameters.AddWithValue(key, value);",
+              "protected": "P:System.Data.SqlClient.SqlCommand.Parameters"
+            },
+            "kind": "File",
+            "path": "Sem.Data.SprocAccess.SqlServer\\SqlDatabase.cs",
+            "snippet": "_ = cmd.Parameters.AddWithValue(key, value);",
+            "protectedSnippet": "P:System.Data.SqlClient.SqlCommand.Parameters",
+            "label": "P:System.Data.SqlClient.SqlCommand.Parameters",
+            "properties": {
+              "PackageId": "System.Data.SqlClient",
+              "PackageNewVersion": "4.8.6",
+              "CharCount": "3527"
+            },
+            "line": 56,
+            "column": 16
+          }
+        },
+        {
+          "incidentId": "fba206ba-faa3-451b-ab2c-c596e76e4129",
+          "ruleId": "Api.0002",
+          "description": "API is available in package System.Data.SqlClient, 4.8.6. Add package reference to System.Data.SqlClient, 4.8.6",
+          "projectPath": "Sem.Data.SprocAccess.SqlServer\\Sem.Data.SprocAccess.SqlServer.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "_ = cmd.Parameters.AddWithValue(key, value);",
+              "protected": "T:System.Data.SqlClient.SqlParameter"
+            },
+            "kind": "File",
+            "path": "Sem.Data.SprocAccess.SqlServer\\SqlDatabase.cs",
+            "snippet": "_ = cmd.Parameters.AddWithValue(key, value);",
+            "protectedSnippet": "T:System.Data.SqlClient.SqlParameter",
+            "label": "T:System.Data.SqlClient.SqlParameter",
+            "properties": {
+              "PackageId": "System.Data.SqlClient",
+              "PackageNewVersion": "4.8.6",
+              "CharCount": "3527"
+            },
+            "line": 56,
+            "column": 16
+          }
+        },
+        {
+          "incidentId": "7e223af3-be78-44fe-a053-784a9bcbb0c4",
+          "ruleId": "Api.0002",
+          "description": "API is available in package System.Data.SqlClient, 4.8.6. Add package reference to System.Data.SqlClient, 4.8.6",
+          "projectPath": "Sem.Data.SprocAccess.SqlServer\\Sem.Data.SprocAccess.SqlServer.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "_ = cmd.Parameters.AddWithValue(key, value);",
+              "protected": "M:System.Data.SqlClient.SqlParameterCollection.AddWithValue(System.String,System.Object)"
+            },
+            "kind": "File",
+            "path": "Sem.Data.SprocAccess.SqlServer\\SqlDatabase.cs",
+            "snippet": "_ = cmd.Parameters.AddWithValue(key, value);",
+            "protectedSnippet": "M:System.Data.SqlClient.SqlParameterCollection.AddWithValue(System.String,System.Object)",
+            "label": "M:System.Data.SqlClient.SqlParameterCollection.AddWithValue(System.String,System.Object)",
+            "properties": {
+              "PackageId": "System.Data.SqlClient",
+              "PackageNewVersion": "4.8.6",
+              "CharCount": "3527"
+            },
+            "line": 56,
+            "column": 16
+          }
+        },
+        {
+          "incidentId": "8d32f8d2-b2a5-44ee-92d8-4f0770179d25",
+          "ruleId": "Api.0002",
+          "description": "API is available in package System.Data.SqlClient, 4.8.6. Add package reference to System.Data.SqlClient, 4.8.6",
+          "projectPath": "Sem.Data.SprocAccess.SqlServer\\Sem.Data.SprocAccess.SqlServer.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "await using var cmd = new SqlCommand(sproc, con)\r\n            {\r\n                CommandType = System.Data.CommandType.StoredProcedure,\r\n            };",
+              "protected": "P:System.Data.SqlClient.SqlCommand.CommandType"
+            },
+            "kind": "File",
+            "path": "Sem.Data.SprocAccess.SqlServer\\SqlDatabase.cs",
+            "snippet": "await using var cmd = new SqlCommand(sproc, con)\r\n            {\r\n                CommandType = System.Data.CommandType.StoredProcedure,\r\n            };",
+            "protectedSnippet": "P:System.Data.SqlClient.SqlCommand.CommandType",
+            "label": "P:System.Data.SqlClient.SqlCommand.CommandType",
+            "properties": {
+              "PackageId": "System.Data.SqlClient",
+              "PackageNewVersion": "4.8.6",
+              "CharCount": "3527"
+            },
+            "line": 49,
+            "column": 12
+          }
+        },
+        {
+          "incidentId": "43a5d870-80b0-4829-9d82-fffa675b8a5a",
+          "ruleId": "Api.0002",
+          "description": "API is available in package System.Data.SqlClient, 4.8.6. Add package reference to System.Data.SqlClient, 4.8.6",
+          "projectPath": "Sem.Data.SprocAccess.SqlServer\\Sem.Data.SprocAccess.SqlServer.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "await using var cmd = new SqlCommand(sproc, con)\r\n            {\r\n                CommandType = System.Data.CommandType.StoredProcedure,\r\n            };",
+              "protected": "T:System.Data.SqlClient.SqlCommand"
+            },
+            "kind": "File",
+            "path": "Sem.Data.SprocAccess.SqlServer\\SqlDatabase.cs",
+            "snippet": "await using var cmd = new SqlCommand(sproc, con)\r\n            {\r\n                CommandType = System.Data.CommandType.StoredProcedure,\r\n            };",
+            "protectedSnippet": "T:System.Data.SqlClient.SqlCommand",
+            "label": "T:System.Data.SqlClient.SqlCommand",
+            "properties": {
+              "PackageId": "System.Data.SqlClient",
+              "PackageNewVersion": "4.8.6",
+              "CharCount": "3527"
+            },
+            "line": 49,
+            "column": 12
+          }
+        },
+        {
+          "incidentId": "b86be935-7014-4c7e-87df-1ec027b99f7a",
+          "ruleId": "Api.0002",
+          "description": "API is available in package System.Data.SqlClient, 4.8.6. Add package reference to System.Data.SqlClient, 4.8.6",
+          "projectPath": "Sem.Data.SprocAccess.SqlServer\\Sem.Data.SprocAccess.SqlServer.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "await using var cmd = new SqlCommand(sproc, con)\r\n            {\r\n                CommandType = System.Data.CommandType.StoredProcedure,\r\n            };",
+              "protected": "M:System.Data.SqlClient.SqlCommand.#ctor(System.String,System.Data.SqlClient.SqlConnection)"
+            },
+            "kind": "File",
+            "path": "Sem.Data.SprocAccess.SqlServer\\SqlDatabase.cs",
+            "snippet": "await using var cmd = new SqlCommand(sproc, con)\r\n            {\r\n                CommandType = System.Data.CommandType.StoredProcedure,\r\n            };",
+            "protectedSnippet": "M:System.Data.SqlClient.SqlCommand.#ctor(System.String,System.Data.SqlClient.SqlConnection)",
+            "label": "M:System.Data.SqlClient.SqlCommand.#ctor(System.String,System.Data.SqlClient.SqlConnection)",
+            "properties": {
+              "PackageId": "System.Data.SqlClient",
+              "PackageNewVersion": "4.8.6",
+              "CharCount": "3527"
+            },
+            "line": 49,
+            "column": 12
+          }
+        },
+        {
+          "incidentId": "9407e3aa-b889-443f-8e25-60267aaac3dc",
+          "ruleId": "Api.0002",
+          "description": "API is available in package System.Data.SqlClient, 4.8.6. Add package reference to System.Data.SqlClient, 4.8.6",
+          "projectPath": "Sem.Data.SprocAccess.SqlServer\\Sem.Data.SprocAccess.SqlServer.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "await using var con = new SqlConnection(this.connectionString);",
+              "protected": "T:System.Data.SqlClient.SqlConnection"
+            },
+            "kind": "File",
+            "path": "Sem.Data.SprocAccess.SqlServer\\SqlDatabase.cs",
+            "snippet": "await using var con = new SqlConnection(this.connectionString);",
+            "protectedSnippet": "T:System.Data.SqlClient.SqlConnection",
+            "label": "T:System.Data.SqlClient.SqlConnection",
+            "properties": {
+              "PackageId": "System.Data.SqlClient",
+              "PackageNewVersion": "4.8.6",
+              "CharCount": "3527"
+            },
+            "line": 48,
+            "column": 12
+          }
+        },
+        {
+          "incidentId": "d054d884-8ea5-4230-9cb6-ea6f72f71498",
+          "ruleId": "Api.0002",
+          "description": "API is available in package System.Data.SqlClient, 4.8.6. Add package reference to System.Data.SqlClient, 4.8.6",
+          "projectPath": "Sem.Data.SprocAccess.SqlServer\\Sem.Data.SprocAccess.SqlServer.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "await using var con = new SqlConnection(this.connectionString);",
+              "protected": "M:System.Data.SqlClient.SqlConnection.#ctor(System.String)"
+            },
+            "kind": "File",
+            "path": "Sem.Data.SprocAccess.SqlServer\\SqlDatabase.cs",
+            "snippet": "await using var con = new SqlConnection(this.connectionString);",
+            "protectedSnippet": "M:System.Data.SqlClient.SqlConnection.#ctor(System.String)",
+            "label": "M:System.Data.SqlClient.SqlConnection.#ctor(System.String)",
+            "properties": {
+              "PackageId": "System.Data.SqlClient",
+              "PackageNewVersion": "4.8.6",
+              "CharCount": "3527"
+            },
+            "line": 48,
+            "column": 12
+          }
+        }
+      ],
+      "features": []
+    },
+    {
+      "path": "Sem.MdDocGenerator\\Sem.MdDocGenerator.csproj",
+      "startingProject": true,
+      "issues": 1,
+      "storyPoints": 1,
+      "properties": {
+        "appName": "Sem.MdDocGenerator",
+        "projectKind": "DotNetCoreApp",
+        "frameworks": [
+          "net8.0"
+        ],
+        "languages": [
+          "C#"
+        ],
+        "tools": [
+          "MSBuild"
+        ],
+        "isSdkStyle": true,
+        "isTestProject": false,
+        "numberOfFiles": 21,
+        "numberOfCodeFiles": 21,
+        "linesTotal": 904,
+        "linesOfCode": 904,
+        "totalApiScanned": 702,
+        "minLinesOfCodeToChange": 0,
+        "maxLinesOfCodeToChange": 0
+      },
+      "ruleInstances": [
+        {
+          "incidentId": "e168a514-b654-4fd7-b3b9-ad4e2aafd526",
+          "ruleId": "Project.0002",
+          "projectPath": "Sem.MdDocGenerator\\Sem.MdDocGenerator.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "Current target framework: net8.0\nRecommended target framework: net10.0",
+              "protected": "Current target framework: net8.0\nRecommended target framework: net10.0"
+            },
+            "kind": "File",
+            "path": "Sem.MdDocGenerator\\Sem.MdDocGenerator.csproj",
+            "snippet": "Current target framework: net8.0\nRecommended target framework: net10.0",
+            "protectedSnippet": "Current target framework: net8.0\nRecommended target framework: net10.0",
+            "properties": {
+              "CurrentTargetFramework": "net8.0",
+              "RecommendedTargetFramework": "net10.0"
+            }
+          }
+        }
+      ],
+      "features": []
+    },
+    {
+      "path": "Sem.Tools.CmdLine\\Sem.Tools.CmdLine.csproj",
+      "startingProject": true,
+      "issues": 1,
+      "storyPoints": 1,
+      "properties": {
+        "appName": "Sem.Tools.CmdLine",
+        "projectKind": "ClassLibrary",
+        "frameworks": [
+          "net8.0"
+        ],
+        "languages": [
+          "C#"
+        ],
+        "tools": [
+          "MSBuild"
+        ],
+        "isSdkStyle": true,
+        "isTestProject": false,
+        "numberOfFiles": 4,
+        "numberOfCodeFiles": 4,
+        "linesTotal": 786,
+        "linesOfCode": 786,
+        "totalApiScanned": 682,
+        "minLinesOfCodeToChange": 0,
+        "maxLinesOfCodeToChange": 0
+      },
+      "ruleInstances": [
+        {
+          "incidentId": "0a31812f-7688-48b8-be62-1d2a7e1472bd",
+          "ruleId": "Project.0002",
+          "projectPath": "Sem.Tools.CmdLine\\Sem.Tools.CmdLine.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "Current target framework: net8.0\nRecommended target framework: net10.0",
+              "protected": "Current target framework: net8.0\nRecommended target framework: net10.0"
+            },
+            "kind": "File",
+            "path": "Sem.Tools.CmdLine\\Sem.Tools.CmdLine.csproj",
+            "snippet": "Current target framework: net8.0\nRecommended target framework: net10.0",
+            "protectedSnippet": "Current target framework: net8.0\nRecommended target framework: net10.0",
+            "properties": {
+              "CurrentTargetFramework": "net8.0",
+              "RecommendedTargetFramework": "net10.0"
+            }
+          }
+        }
+      ],
+      "features": []
+    },
+    {
+      "path": "Sem.Tools.CmdLine.TestProject\\Sem.Tools.CmdLine.TestProject.csproj",
+      "startingProject": true,
+      "issues": 1,
+      "storyPoints": 1,
+      "properties": {
+        "appName": "Sem.Tools.CmdLine.TestProject",
+        "projectKind": "ClassLibrary",
+        "frameworks": [
+          "net8.0"
+        ],
+        "languages": [
+          "C#"
+        ],
+        "tools": [
+          "MSBuild"
+        ],
+        "isSdkStyle": true,
+        "isTestProject": false,
+        "numberOfFiles": 2,
+        "numberOfCodeFiles": 2,
+        "linesTotal": 23,
+        "linesOfCode": 23,
+        "totalApiScanned": 3,
+        "minLinesOfCodeToChange": 0,
+        "maxLinesOfCodeToChange": 0
+      },
+      "ruleInstances": [
+        {
+          "incidentId": "38db7681-35dc-4334-9d52-f8799864945d",
+          "ruleId": "Project.0002",
+          "projectPath": "Sem.Tools.CmdLine.TestProject\\Sem.Tools.CmdLine.TestProject.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "Current target framework: net8.0\nRecommended target framework: net10.0",
+              "protected": "Current target framework: net8.0\nRecommended target framework: net10.0"
+            },
+            "kind": "File",
+            "path": "Sem.Tools.CmdLine.TestProject\\Sem.Tools.CmdLine.TestProject.csproj",
+            "snippet": "Current target framework: net8.0\nRecommended target framework: net10.0",
+            "protectedSnippet": "Current target framework: net8.0\nRecommended target framework: net10.0",
+            "properties": {
+              "CurrentTargetFramework": "net8.0",
+              "RecommendedTargetFramework": "net10.0"
+            }
+          }
+        }
+      ],
+      "features": []
+    },
+    {
+      "path": "Sem.Tools.CmdLine.Tests\\Sem.Tools.CmdLine.Tests.csproj",
+      "startingProject": true,
+      "issues": 1,
+      "storyPoints": 1,
+      "properties": {
+        "appName": "Sem.Tools.CmdLine.Tests",
+        "projectKind": "DotNetCoreApp",
+        "frameworks": [
+          "net8.0"
+        ],
+        "languages": [
+          "C#"
+        ],
+        "tools": [
+          "MSBuild"
+        ],
+        "isSdkStyle": true,
+        "isTestProject": true,
+        "numberOfFiles": 15,
+        "numberOfCodeFiles": 13,
+        "linesTotal": 3562,
+        "linesOfCode": 923,
+        "totalApiScanned": 146,
+        "minLinesOfCodeToChange": 0,
+        "maxLinesOfCodeToChange": 0
+      },
+      "ruleInstances": [
+        {
+          "incidentId": "4a2fe987-b746-46ba-b654-d9b749fe9418",
+          "ruleId": "Project.0002",
+          "projectPath": "Sem.Tools.CmdLine.Tests\\Sem.Tools.CmdLine.Tests.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "Current target framework: net8.0\nRecommended target framework: net10.0",
+              "protected": "Current target framework: net8.0\nRecommended target framework: net10.0"
+            },
+            "kind": "File",
+            "path": "Sem.Tools.CmdLine.Tests\\Sem.Tools.CmdLine.Tests.csproj",
+            "snippet": "Current target framework: net8.0\nRecommended target framework: net10.0",
+            "protectedSnippet": "Current target framework: net8.0\nRecommended target framework: net10.0",
+            "properties": {
+              "CurrentTargetFramework": "net8.0",
+              "RecommendedTargetFramework": "net10.0"
+            }
+          }
+        }
+      ],
+      "features": []
+    },
+    {
+      "path": "Sem.Tools\\Sem.Tools.csproj",
+      "startingProject": true,
+      "issues": 4,
+      "storyPoints": 15,
+      "properties": {
+        "appName": "Sem.Tools",
+        "projectKind": "ClassLibrary",
+        "frameworks": [
+          "net8.0"
+        ],
+        "languages": [
+          "C#"
+        ],
+        "tools": [
+          "MSBuild"
+        ],
+        "isSdkStyle": true,
+        "isTestProject": false,
+        "numberOfFiles": 9,
+        "numberOfCodeFiles": 9,
+        "linesTotal": 521,
+        "linesOfCode": 521,
+        "totalApiScanned": 340,
+        "minLinesOfCodeToChange": 12,
+        "maxLinesOfCodeToChange": 12
+      },
+      "ruleInstances": [
+        {
+          "incidentId": "a93cc92c-462c-449a-89b5-8040254bc27e",
+          "ruleId": "NuGet.0002",
+          "projectPath": "Sem.Tools\\Sem.Tools.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "System.Security.Cryptography.ProtectedData, 11.0.0-rc.3.26522.148\n\nRecommendation:\n\nRemove System.Security.Cryptography.ProtectedData, and replace with new package System.Security.Cryptography.ProtectedData 10.0.14",
+              "protected": "System.Security.Cryptography.ProtectedData, 11.0.0-rc.3.26522.148\n\nRecommendation:\n\nRemove System.Security.Cryptography.ProtectedData, and replace with new package System.Security.Cryptography.ProtectedData 10.0.14"
+            },
+            "kind": "File",
+            "path": "Sem.Tools\\Sem.Tools.csproj",
+            "snippet": "System.Security.Cryptography.ProtectedData, 11.0.0-rc.3.26522.148\n\nRecommendation:\n\nRemove System.Security.Cryptography.ProtectedData, and replace with new package System.Security.Cryptography.ProtectedData 10.0.14",
+            "protectedSnippet": "System.Security.Cryptography.ProtectedData, 11.0.0-rc.3.26522.148\n\nRecommendation:\n\nRemove System.Security.Cryptography.ProtectedData, and replace with new package System.Security.Cryptography.ProtectedData 10.0.14",
+            "label": "System.Security.Cryptography.ProtectedData 11.0.0-rc.3.26522.148",
+            "properties": {
+              "PackageId": "System.Security.Cryptography.ProtectedData",
+              "PackageVersion": "11.0.0-rc.3.26522.148",
+              "PackageNewVersion": "10.0.14",
+              "PackageReplacements": null
+            }
+          }
+        },
+        {
+          "incidentId": "ffa337dc-2aee-40f6-b897-ae55b70f78d3",
+          "ruleId": "NuGet.0002",
+          "projectPath": "Sem.Tools\\Sem.Tools.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "System.Text.Json, 11.0.0-rc.3.26522.148\n\nRecommendation:\n\nRemove System.Text.Json, and replace with new package System.Text.Json 10.0.14",
+              "protected": "System.Text.Json, 11.0.0-rc.3.26522.148\n\nRecommendation:\n\nRemove System.Text.Json, and replace with new package System.Text.Json 10.0.14"
+            },
+            "kind": "File",
+            "path": "Sem.Tools\\Sem.Tools.csproj",
+            "snippet": "System.Text.Json, 11.0.0-rc.3.26522.148\n\nRecommendation:\n\nRemove System.Text.Json, and replace with new package System.Text.Json 10.0.14",
+            "protectedSnippet": "System.Text.Json, 11.0.0-rc.3.26522.148\n\nRecommendation:\n\nRemove System.Text.Json, and replace with new package System.Text.Json 10.0.14",
+            "label": "System.Text.Json 11.0.0-rc.3.26522.148",
+            "properties": {
+              "PackageId": "System.Text.Json",
+              "PackageVersion": "11.0.0-rc.3.26522.148",
+              "PackageNewVersion": "10.0.14",
+              "PackageReplacements": null
+            }
+          }
+        },
+        {
+          "incidentId": "d6318cf6-917b-4ecf-83d8-aa9b98b5d777",
+          "ruleId": "Project.0002",
+          "projectPath": "Sem.Tools\\Sem.Tools.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "Current target framework: net8.0\nRecommended target framework: net10.0",
+              "protected": "Current target framework: net8.0\nRecommended target framework: net10.0"
+            },
+            "kind": "File",
+            "path": "Sem.Tools\\Sem.Tools.csproj",
+            "snippet": "Current target framework: net8.0\nRecommended target framework: net10.0",
+            "protectedSnippet": "Current target framework: net8.0\nRecommended target framework: net10.0",
+            "properties": {
+              "CurrentTargetFramework": "net8.0",
+              "RecommendedTargetFramework": "net10.0"
+            }
+          }
+        },
+        {
+          "incidentId": "29cea604-7593-4d50-921b-0750a72894fd",
+          "ruleId": "Api.0003",
+          "description": "Nullable JsonDocument properties deserialize to JsonValueKind.Null ",
+          "projectPath": "Sem.Tools\\Sem.Tools.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "using var doc = JsonDocument.Parse(value.ToJson());",
+              "protected": "T:System.Text.Json.JsonDocument"
+            },
+            "kind": "File",
+            "path": "Sem.Tools\\InheritanceConverter.cs",
+            "snippet": "using var doc = JsonDocument.Parse(value.ToJson());",
+            "protectedSnippet": "T:System.Text.Json.JsonDocument",
+            "label": "T:System.Text.Json.JsonDocument",
+            "properties": {
+              "CharCount": "3137"
+            },
+            "links": [
+              {
+                "title": "API documentation",
+                "url": "https://github.com/dotnet/docs/blob/main/docs/core/compatibility/serialization/9.0/jsondocument-props.md",
+                "isCustom": false
+              }
+            ],
+            "line": 66,
+            "column": 12
+          }
+        },
+        {
+          "incidentId": "3741d43f-c6c2-4892-8ef3-40a56540d754",
+          "ruleId": "Api.0003",
+          "description": "Breaking change: System.Text.Json metadata reader now unescapes metadata property names ",
+          "projectPath": "Sem.Tools\\Sem.Tools.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "var deserialize = (TType)JsonSerializer.Deserialize(ref reader, returnType);",
+              "protected": "M:System.Text.Json.JsonSerializer.Deserialize(System.Text.Json.Utf8JsonReader@,System.Type,System.Text.Json.JsonSerializerOptions)"
+            },
+            "kind": "File",
+            "path": "Sem.Tools\\InheritanceConverter.cs",
+            "snippet": "var deserialize = (TType)JsonSerializer.Deserialize(ref reader, returnType);",
+            "protectedSnippet": "M:System.Text.Json.JsonSerializer.Deserialize(System.Text.Json.Utf8JsonReader@,System.Type,System.Text.Json.JsonSerializerOptions)",
+            "label": "M:System.Text.Json.JsonSerializer.Deserialize(System.Text.Json.Utf8JsonReader@,System.Type,System.Text.Json.JsonSerializerOptions)",
+            "properties": {
+              "CharCount": "3137"
+            },
+            "links": [
+              {
+                "title": "API documentation",
+                "url": "https://github.com/dotnet/docs/blob/main/docs/core/compatibility/serialization/9.0/json-metadata-reader.md",
+                "isCustom": false
+              }
+            ],
+            "line": 43,
+            "column": 12
+          }
+        },
+        {
+          "incidentId": "3fcc5d98-2dde-4268-a49d-56593f931697",
+          "ruleId": "Api.0002",
+          "description": "API is available in package System.Security.Cryptography.ProtectedData, 8.0.0. Add package reference to System.Security.Cryptography.ProtectedData, 8.0.0",
+          "projectPath": "Sem.Tools\\Sem.Tools.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "DataProtectionScope.CurrentUser",
+              "protected": "T:System.Security.Cryptography.DataProtectionScope"
+            },
+            "kind": "File",
+            "path": "Sem.Tools\\EncryptionConverter.cs",
+            "snippet": "DataProtectionScope.CurrentUser",
+            "protectedSnippet": "T:System.Security.Cryptography.DataProtectionScope",
+            "label": "T:System.Security.Cryptography.DataProtectionScope",
+            "properties": {
+              "PackageId": "System.Security.Cryptography.ProtectedData",
+              "PackageNewVersion": "8.0.0",
+              "CharCount": "2203"
+            },
+            "line": 38,
+            "column": 134
+          }
+        },
+        {
+          "incidentId": "ea7844bb-e1d2-4744-854a-cbd018ac422d",
+          "ruleId": "Api.0002",
+          "description": "API is available in package System.Security.Cryptography.ProtectedData, 8.0.0. Add package reference to System.Security.Cryptography.ProtectedData, 8.0.0",
+          "projectPath": "Sem.Tools\\Sem.Tools.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "DataProtectionScope.CurrentUser",
+              "protected": "T:System.Security.Cryptography.DataProtectionScope"
+            },
+            "kind": "File",
+            "path": "Sem.Tools\\EncryptionConverter.cs",
+            "snippet": "DataProtectionScope.CurrentUser",
+            "protectedSnippet": "T:System.Security.Cryptography.DataProtectionScope",
+            "label": "T:System.Security.Cryptography.DataProtectionScope",
+            "properties": {
+              "PackageId": "System.Security.Cryptography.ProtectedData",
+              "PackageNewVersion": "8.0.0",
+              "CharCount": "2203"
+            },
+            "line": 38,
+            "column": 134
+          }
+        },
+        {
+          "incidentId": "bc2dbd8b-5bf1-4946-b03a-920d62f5939b",
+          "ruleId": "Api.0002",
+          "description": "API is available in package System.Security.Cryptography.ProtectedData, 8.0.0. Add package reference to System.Security.Cryptography.ProtectedData, 8.0.0",
+          "projectPath": "Sem.Tools\\Sem.Tools.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "DataProtectionScope.CurrentUser",
+              "protected": "F:System.Security.Cryptography.DataProtectionScope.CurrentUser"
+            },
+            "kind": "File",
+            "path": "Sem.Tools\\EncryptionConverter.cs",
+            "snippet": "DataProtectionScope.CurrentUser",
+            "protectedSnippet": "F:System.Security.Cryptography.DataProtectionScope.CurrentUser",
+            "label": "F:System.Security.Cryptography.DataProtectionScope.CurrentUser",
+            "properties": {
+              "PackageId": "System.Security.Cryptography.ProtectedData",
+              "PackageNewVersion": "8.0.0",
+              "CharCount": "2203"
+            },
+            "line": 38,
+            "column": 134
+          }
+        },
+        {
+          "incidentId": "f8c67324-7148-4259-9730-dc4af6dbc706",
+          "ruleId": "Api.0002",
+          "description": "API is available in package System.Security.Cryptography.ProtectedData, 8.0.0. Add package reference to System.Security.Cryptography.ProtectedData, 8.0.0",
+          "projectPath": "Sem.Tools\\Sem.Tools.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "ProtectedData.Unprotect(data, OptionalEntropy, DataProtectionScope.CurrentUser)",
+              "protected": "T:System.Security.Cryptography.ProtectedData"
+            },
+            "kind": "File",
+            "path": "Sem.Tools\\EncryptionConverter.cs",
+            "snippet": "ProtectedData.Unprotect(data, OptionalEntropy, DataProtectionScope.CurrentUser)",
+            "protectedSnippet": "T:System.Security.Cryptography.ProtectedData",
+            "label": "T:System.Security.Cryptography.ProtectedData",
+            "properties": {
+              "PackageId": "System.Security.Cryptography.ProtectedData",
+              "PackageNewVersion": "8.0.0",
+              "CharCount": "2203"
+            },
+            "line": 38,
+            "column": 87
+          }
+        },
+        {
+          "incidentId": "e37a5aaa-f189-4d93-8840-99fa929f964f",
+          "ruleId": "Api.0002",
+          "description": "API is available in package System.Security.Cryptography.ProtectedData, 8.0.0. Add package reference to System.Security.Cryptography.ProtectedData, 8.0.0",
+          "projectPath": "Sem.Tools\\Sem.Tools.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "ProtectedData.Unprotect(data, OptionalEntropy, DataProtectionScope.CurrentUser)",
+              "protected": "M:System.Security.Cryptography.ProtectedData.Unprotect(System.Byte[],System.Byte[],System.Security.Cryptography.DataProtectionScope)"
+            },
+            "kind": "File",
+            "path": "Sem.Tools\\EncryptionConverter.cs",
+            "snippet": "ProtectedData.Unprotect(data, OptionalEntropy, DataProtectionScope.CurrentUser)",
+            "protectedSnippet": "M:System.Security.Cryptography.ProtectedData.Unprotect(System.Byte[],System.Byte[],System.Security.Cryptography.DataProtectionScope)",
+            "label": "M:System.Security.Cryptography.ProtectedData.Unprotect(System.Byte[],System.Byte[],System.Security.Cryptography.DataProtectionScope)",
+            "properties": {
+              "PackageId": "System.Security.Cryptography.ProtectedData",
+              "PackageNewVersion": "8.0.0",
+              "CharCount": "2203"
+            },
+            "line": 38,
+            "column": 87
+          }
+        },
+        {
+          "incidentId": "b25a34f3-04dd-46a8-9039-33744ab42383",
+          "ruleId": "Api.0002",
+          "description": "API is available in package System.Security.Cryptography.ProtectedData, 8.0.0. Add package reference to System.Security.Cryptography.ProtectedData, 8.0.0",
+          "projectPath": "Sem.Tools\\Sem.Tools.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "DataProtectionScope.CurrentUser",
+              "protected": "T:System.Security.Cryptography.DataProtectionScope"
+            },
+            "kind": "File",
+            "path": "Sem.Tools\\EncryptionConverter.cs",
+            "snippet": "DataProtectionScope.CurrentUser",
+            "protectedSnippet": "T:System.Security.Cryptography.DataProtectionScope",
+            "label": "T:System.Security.Cryptography.DataProtectionScope",
+            "properties": {
+              "PackageId": "System.Security.Cryptography.ProtectedData",
+              "PackageNewVersion": "8.0.0",
+              "CharCount": "2203"
+            },
+            "line": 36,
+            "column": 134
+          }
+        },
+        {
+          "incidentId": "2cb0c995-b6b9-401e-b5d8-038f3460c88b",
+          "ruleId": "Api.0002",
+          "description": "API is available in package System.Security.Cryptography.ProtectedData, 8.0.0. Add package reference to System.Security.Cryptography.ProtectedData, 8.0.0",
+          "projectPath": "Sem.Tools\\Sem.Tools.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "DataProtectionScope.CurrentUser",
+              "protected": "T:System.Security.Cryptography.DataProtectionScope"
+            },
+            "kind": "File",
+            "path": "Sem.Tools\\EncryptionConverter.cs",
+            "snippet": "DataProtectionScope.CurrentUser",
+            "protectedSnippet": "T:System.Security.Cryptography.DataProtectionScope",
+            "label": "T:System.Security.Cryptography.DataProtectionScope",
+            "properties": {
+              "PackageId": "System.Security.Cryptography.ProtectedData",
+              "PackageNewVersion": "8.0.0",
+              "CharCount": "2203"
+            },
+            "line": 36,
+            "column": 134
+          }
+        },
+        {
+          "incidentId": "e5c3eaca-208b-4a80-84f5-e90a5f240ccb",
+          "ruleId": "Api.0002",
+          "description": "API is available in package System.Security.Cryptography.ProtectedData, 8.0.0. Add package reference to System.Security.Cryptography.ProtectedData, 8.0.0",
+          "projectPath": "Sem.Tools\\Sem.Tools.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "DataProtectionScope.CurrentUser",
+              "protected": "F:System.Security.Cryptography.DataProtectionScope.CurrentUser"
+            },
+            "kind": "File",
+            "path": "Sem.Tools\\EncryptionConverter.cs",
+            "snippet": "DataProtectionScope.CurrentUser",
+            "protectedSnippet": "F:System.Security.Cryptography.DataProtectionScope.CurrentUser",
+            "label": "F:System.Security.Cryptography.DataProtectionScope.CurrentUser",
+            "properties": {
+              "PackageId": "System.Security.Cryptography.ProtectedData",
+              "PackageNewVersion": "8.0.0",
+              "CharCount": "2203"
+            },
+            "line": 36,
+            "column": 134
+          }
+        },
+        {
+          "incidentId": "c8b1684c-155e-40cf-b334-e7aaf1a71293",
+          "ruleId": "Api.0002",
+          "description": "API is available in package System.Security.Cryptography.ProtectedData, 8.0.0. Add package reference to System.Security.Cryptography.ProtectedData, 8.0.0",
+          "projectPath": "Sem.Tools\\Sem.Tools.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "ProtectedData.Protect(Encoding.UTF8.GetBytes(value), OptionalEntropy, DataProtectionScope.CurrentUser)",
+              "protected": "T:System.Security.Cryptography.ProtectedData"
+            },
+            "kind": "File",
+            "path": "Sem.Tools\\EncryptionConverter.cs",
+            "snippet": "ProtectedData.Protect(Encoding.UTF8.GetBytes(value), OptionalEntropy, DataProtectionScope.CurrentUser)",
+            "protectedSnippet": "T:System.Security.Cryptography.ProtectedData",
+            "label": "T:System.Security.Cryptography.ProtectedData",
+            "properties": {
+              "PackageId": "System.Security.Cryptography.ProtectedData",
+              "PackageNewVersion": "8.0.0",
+              "CharCount": "2203"
+            },
+            "line": 36,
+            "column": 64
+          }
+        },
+        {
+          "incidentId": "31d4e83a-3aa6-489d-b963-b12c7ae35b1d",
+          "ruleId": "Api.0002",
+          "description": "API is available in package System.Security.Cryptography.ProtectedData, 8.0.0. Add package reference to System.Security.Cryptography.ProtectedData, 8.0.0",
+          "projectPath": "Sem.Tools\\Sem.Tools.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "ProtectedData.Protect(Encoding.UTF8.GetBytes(value), OptionalEntropy, DataProtectionScope.CurrentUser)",
+              "protected": "M:System.Security.Cryptography.ProtectedData.Protect(System.Byte[],System.Byte[],System.Security.Cryptography.DataProtectionScope)"
+            },
+            "kind": "File",
+            "path": "Sem.Tools\\EncryptionConverter.cs",
+            "snippet": "ProtectedData.Protect(Encoding.UTF8.GetBytes(value), OptionalEntropy, DataProtectionScope.CurrentUser)",
+            "protectedSnippet": "M:System.Security.Cryptography.ProtectedData.Protect(System.Byte[],System.Byte[],System.Security.Cryptography.DataProtectionScope)",
+            "label": "M:System.Security.Cryptography.ProtectedData.Protect(System.Byte[],System.Byte[],System.Security.Cryptography.DataProtectionScope)",
+            "properties": {
+              "PackageId": "System.Security.Cryptography.ProtectedData",
+              "PackageNewVersion": "8.0.0",
+              "CharCount": "2203"
+            },
+            "line": 36,
+            "column": 64
+          }
+        }
+      ],
+      "features": []
+    },
+    {
+      "path": "Sem.Tools.Logging\\Sem.Tools.Logging.csproj",
+      "startingProject": true,
+      "issues": 1,
+      "storyPoints": 1,
+      "properties": {
+        "appName": "Sem.Tools.Logging",
+        "projectKind": "ClassLibrary",
+        "frameworks": [
+          "net8.0"
+        ],
+        "languages": [
+          "C#"
+        ],
+        "tools": [
+          "MSBuild"
+        ],
+        "isSdkStyle": true,
+        "isTestProject": false,
+        "numberOfFiles": 5,
+        "numberOfCodeFiles": 5,
+        "linesTotal": 335,
+        "linesOfCode": 335,
+        "totalApiScanned": 213,
+        "minLinesOfCodeToChange": 0,
+        "maxLinesOfCodeToChange": 0
+      },
+      "ruleInstances": [
+        {
+          "incidentId": "482cec09-2892-483f-9e5f-269cfe2102e4",
+          "ruleId": "Project.0002",
+          "projectPath": "Sem.Tools.Logging\\Sem.Tools.Logging.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "Current target framework: net8.0\nRecommended target framework: net10.0",
+              "protected": "Current target framework: net8.0\nRecommended target framework: net10.0"
+            },
+            "kind": "File",
+            "path": "Sem.Tools.Logging\\Sem.Tools.Logging.csproj",
+            "snippet": "Current target framework: net8.0\nRecommended target framework: net10.0",
+            "protectedSnippet": "Current target framework: net8.0\nRecommended target framework: net10.0",
+            "properties": {
+              "CurrentTargetFramework": "net8.0",
+              "RecommendedTargetFramework": "net10.0"
+            }
+          }
+        }
+      ],
+      "features": []
+    },
+    {
+      "path": "Sem.Tools.Logging.Tests\\Sem.Tools.Logging.Tests.csproj",
+      "startingProject": true,
+      "issues": 1,
+      "storyPoints": 1,
+      "properties": {
+        "appName": "Sem.Tools.Logging.Tests",
+        "projectKind": "DotNetCoreApp",
+        "frameworks": [
+          "net8.0"
+        ],
+        "languages": [
+          "C#"
+        ],
+        "tools": [
+          "MSBuild"
+        ],
+        "isSdkStyle": true,
+        "isTestProject": true,
+        "numberOfFiles": 5,
+        "numberOfCodeFiles": 3,
+        "linesTotal": 3121,
+        "linesOfCode": 482,
+        "totalApiScanned": 43,
+        "minLinesOfCodeToChange": 0,
+        "maxLinesOfCodeToChange": 0
+      },
+      "ruleInstances": [
+        {
+          "incidentId": "fa354adc-9a23-4a0a-b8c5-a185bb752f1e",
+          "ruleId": "Project.0002",
+          "projectPath": "Sem.Tools.Logging.Tests\\Sem.Tools.Logging.Tests.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "Current target framework: net8.0\nRecommended target framework: net10.0",
+              "protected": "Current target framework: net8.0\nRecommended target framework: net10.0"
+            },
+            "kind": "File",
+            "path": "Sem.Tools.Logging.Tests\\Sem.Tools.Logging.Tests.csproj",
+            "snippet": "Current target framework: net8.0\nRecommended target framework: net10.0",
+            "protectedSnippet": "Current target framework: net8.0\nRecommended target framework: net10.0",
+            "properties": {
+              "CurrentTargetFramework": "net8.0",
+              "RecommendedTargetFramework": "net10.0"
+            }
+          }
+        }
+      ],
+      "features": []
+    },
+    {
+      "path": "Sem.Tools.TestHelper\\Sem.Tools.TestHelper.csproj",
+      "startingProject": true,
+      "issues": 1,
+      "storyPoints": 1,
+      "properties": {
+        "appName": "Sem.Tools.TestHelper",
+        "projectKind": "ClassLibrary",
+        "frameworks": [
+          "net8.0"
+        ],
+        "languages": [
+          "C#"
+        ],
+        "tools": [
+          "MSBuild"
+        ],
+        "isSdkStyle": true,
+        "isTestProject": false,
+        "numberOfFiles": 3,
+        "numberOfCodeFiles": 3,
+        "linesTotal": 202,
+        "linesOfCode": 202,
+        "totalApiScanned": 170,
+        "minLinesOfCodeToChange": 0,
+        "maxLinesOfCodeToChange": 0
+      },
+      "ruleInstances": [
+        {
+          "incidentId": "ae234b8b-a1f4-4475-8e8b-f694dfe02bdd",
+          "ruleId": "Project.0002",
+          "projectPath": "Sem.Tools.TestHelper\\Sem.Tools.TestHelper.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "Current target framework: net8.0\nRecommended target framework: net10.0",
+              "protected": "Current target framework: net8.0\nRecommended target framework: net10.0"
+            },
+            "kind": "File",
+            "path": "Sem.Tools.TestHelper\\Sem.Tools.TestHelper.csproj",
+            "snippet": "Current target framework: net8.0\nRecommended target framework: net10.0",
+            "protectedSnippet": "Current target framework: net8.0\nRecommended target framework: net10.0",
+            "properties": {
+              "CurrentTargetFramework": "net8.0",
+              "RecommendedTargetFramework": "net10.0"
+            }
+          }
+        }
+      ],
+      "features": []
+    },
+    {
+      "path": "Sem.Tools.TestHelper.Tests\\Sem.Tools.TestHelper.Tests.csproj",
+      "startingProject": true,
+      "issues": 1,
+      "storyPoints": 1,
+      "properties": {
+        "appName": "Sem.Tools.TestHelper.Tests",
+        "projectKind": "DotNetCoreApp",
+        "frameworks": [
+          "net8.0"
+        ],
+        "languages": [
+          "C#"
+        ],
+        "tools": [
+          "MSBuild"
+        ],
+        "isSdkStyle": true,
+        "isTestProject": true,
+        "numberOfFiles": 4,
+        "numberOfCodeFiles": 2,
+        "linesTotal": 2758,
+        "linesOfCode": 119,
+        "totalApiScanned": 2,
+        "minLinesOfCodeToChange": 0,
+        "maxLinesOfCodeToChange": 0
+      },
+      "ruleInstances": [
+        {
+          "incidentId": "9b199262-e009-4f2b-81d5-f9a6f4ddcb00",
+          "ruleId": "Project.0002",
+          "projectPath": "Sem.Tools.TestHelper.Tests\\Sem.Tools.TestHelper.Tests.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "Current target framework: net8.0\nRecommended target framework: net10.0",
+              "protected": "Current target framework: net8.0\nRecommended target framework: net10.0"
+            },
+            "kind": "File",
+            "path": "Sem.Tools.TestHelper.Tests\\Sem.Tools.TestHelper.Tests.csproj",
+            "snippet": "Current target framework: net8.0\nRecommended target framework: net10.0",
+            "protectedSnippet": "Current target framework: net8.0\nRecommended target framework: net10.0",
+            "properties": {
+              "CurrentTargetFramework": "net8.0",
+              "RecommendedTargetFramework": "net10.0"
+            }
+          }
+        }
+      ],
+      "features": []
+    },
+    {
+      "path": "Sem.Tools.Tests\\Sem.Tools.Tests.csproj",
+      "startingProject": true,
+      "issues": 1,
+      "storyPoints": 1,
+      "properties": {
+        "appName": "Sem.Tools.Tests",
+        "projectKind": "DotNetCoreApp",
+        "frameworks": [
+          "net8.0"
+        ],
+        "languages": [
+          "C#"
+        ],
+        "tools": [
+          "MSBuild"
+        ],
+        "isSdkStyle": true,
+        "isTestProject": true,
+        "numberOfFiles": 11,
+        "numberOfCodeFiles": 9,
+        "linesTotal": 3272,
+        "linesOfCode": 633,
+        "totalApiScanned": 19,
+        "minLinesOfCodeToChange": 0,
+        "maxLinesOfCodeToChange": 0
+      },
+      "ruleInstances": [
+        {
+          "incidentId": "28185d7d-2888-457e-95ab-817a000d0b95",
+          "ruleId": "Project.0002",
+          "projectPath": "Sem.Tools.Tests\\Sem.Tools.Tests.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "Current target framework: net8.0\nRecommended target framework: net10.0",
+              "protected": "Current target framework: net8.0\nRecommended target framework: net10.0"
+            },
+            "kind": "File",
+            "path": "Sem.Tools.Tests\\Sem.Tools.Tests.csproj",
+            "snippet": "Current target framework: net8.0\nRecommended target framework: net10.0",
+            "protectedSnippet": "Current target framework: net8.0\nRecommended target framework: net10.0",
+            "properties": {
+              "CurrentTargetFramework": "net8.0",
+              "RecommendedTargetFramework": "net10.0"
+            }
+          }
+        }
+      ],
+      "features": []
+    }
+  ],
+  "rules": {
+    "NuGet.0002": {
+      "id": "NuGet.0002",
+      "isFeature": false,
+      "description": "NuGet package upgrade is recommended for selected target framework.\n\nStandard .NET packages are recommended to have versions matching version of .NET that project targets.\n\nSome other packages also are known to work better for selected target frameworks.",
+      "label": "NuGet package upgrade is recommended",
+      "severity": "Potential",
+      "effort": 1,
+      "links": [
+        {
+          "url": "https://go.microsoft.com/fwlink/?linkid=2262530",
+          "isCustom": false
+        }
+      ]
+    },
+    "Project.0002": {
+      "id": "Project.0002",
+      "isFeature": false,
+      "description": "Project\u0027s target framework(s) needs to be changed to the new target framework that you selected for this upgrade.\n\nDuring upgrade target framework will be adjusted to corresponding platform when applicable. In some cases project would result in multiple target frameworks after the upgrade if it was using features that now have their own platforms in modern .NET frameworks (windows, iOS, Android etc).",
+      "label": "Project\u0027s target framework(s) needs to be changed",
+      "severity": "Mandatory",
+      "effort": 1,
+      "links": [
+        {
+          "title": "Overview of porting from .NET Framework to .NET",
+          "url": "https://go.microsoft.com/fwlink/?linkid=2265227",
+          "isCustom": false
+        },
+        {
+          "title": ".NET project SDKs",
+          "url": "https://go.microsoft.com/fwlink/?linkid=2265226",
+          "isCustom": false
+        }
+      ]
+    },
+    "Api.0003": {
+      "id": "Api.0003",
+      "isFeature": false,
+      "description": "API has a behavioral change in selected .NET version: code and binaries may behave differently at runtime without needing recompilation, but the new behavior might be undesirable and require updates.",
+      "label": "Behavioral change in selected .NET version",
+      "severity": "Potential",
+      "effort": 1
+    },
+    "Api.0002": {
+      "id": "Api.0002",
+      "isFeature": false,
+      "description": "API is source incompatible for selected .NET version: requires code changes to compile successfully when targeting a new version, such as removing obsolete APIs or changing method signatures.",
+      "label": "Source incompatible for selected .NET version",
+      "severity": "Potential",
+      "effort": 1,
+      "links": [
+        {
+          "title": "Breaking changes in .NET",
+          "url": "https://go.microsoft.com/fwlink/?linkid=2262679",
+          "isCustom": false
+        }
+      ]
+    },
+    "Api.0001": {
+      "id": "Api.0001",
+      "isFeature": false,
+      "description": "API is binary incompatible for selected .NET version: affects existing binaries, often requiring recompilation, because the API has changed in a way that prevents older binaries from loading or executing.",
+      "label": "Binary incompatible for selected .NET version",
+      "severity": "Mandatory",
+      "effort": 1,
+      "links": [
+        {
+          "title": "Breaking changes in .NET",
+          "url": "https://go.microsoft.com/fwlink/?linkid=2262679",
+          "isCustom": false
+        }
+      ]
+    }
+  }
+}
