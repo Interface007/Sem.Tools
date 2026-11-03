@@ -326,13 +326,17 @@ namespace Sem.Tools.CmdLine.Tests
             /// </summary>
             /// <returns>A <see cref="Task"/> representing the asynchronous unit test.</returns>
             [TestMethod]
-            [ExpectedExceptionMessage(typeof(InvalidOperationException), "no value found for the parameter \\[myParameter\\] of method \\[ThisIsAVoidMethod\\] with the type \\[String\\]")]
             public async Task NotMapsParametersByAnonymousTypePropertyName()
             {
                 var value = Guid.NewGuid().ToString("N", CultureInfo.InvariantCulture);
                 var menuTarget = new TestMenuTarget();
-                var target = MenuItem.MenuItemsFor<TestMenuTarget>(new { myParameterWrong = value, target = menuTarget });
-                await target[2].ActionWithParameters(Array.Empty<object>()).ConfigureAwait(false);
+                _ = await ExceptionAssert.ThrowsExactlyAsync<InvalidOperationException>(
+                    async () =>
+                    {
+                        var target = MenuItem.MenuItemsFor<TestMenuTarget>(new { myParameterWrong = value, target = menuTarget });
+                        await target[2].ActionWithParameters(Array.Empty<object>()).ConfigureAwait(false);
+                    },
+                    "no value found for the parameter \\[myParameter\\] of method \\[ThisIsAVoidMethod\\] with the type \\[String\\]").ConfigureAwait(false);
             }
 
             /// <summary>
@@ -426,12 +430,10 @@ namespace Sem.Tools.CmdLine.Tests
             /// Tests whether a wrong expression throws the expected exception.
             /// </summary>
             [TestMethod]
-            [ExpectedExceptionMessage(typeof(ArgumentException), "must be an expression with body of type MethodCallExpression")]
-            public void ThrowsCorrectException()
-            {
-                // ReSharper disable once UnusedVariable
-                var target = MenuItem.For<Print>(() => Task.CompletedTask);
-            }
+            public void ThrowsCorrectException() =>
+                ExceptionAssert.ThrowsExactly<ArgumentException>(
+                    () => MenuItem.For<Print>(() => Task.CompletedTask),
+                    "must be an expression with body of type MethodCallExpression");
 
             /// <summary>
             /// Tests whether the method extracts a menu item description

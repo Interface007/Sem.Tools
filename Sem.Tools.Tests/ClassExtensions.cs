@@ -68,14 +68,15 @@ namespace Sem.Tools.Tests
             /// Tests whether the method throws an exception for NULL-values.
             /// </summary>
             [TestMethod]
-            [ExpectedExceptionMessage(typeof(ArgumentNullException), "^Value cannot be null. \\(Parameter 'value'\\)$")]
             [ExcludeFromCodeCoverage]
             public void ThrowsExceptionForNullValue()
             {
                 var x = (object)null;
 
                 // ReSharper disable once AssignNullToNotNullAttribute
-                _ = x.MustNotBeNull("value");
+                _ = ExceptionAssert.ThrowsExactly<ArgumentNullException>(
+                    () => x.MustNotBeNull("value"),
+                    "^Value cannot be null. \\(Parameter 'value'\\)$");
             }
 
             /// <summary>
@@ -99,23 +100,22 @@ namespace Sem.Tools.Tests
             /// Tests whether the method throws an exception for NULL-values.
             /// </summary>
             [TestMethod]
-            [ExpectedException(typeof(ArgumentNullException))]
             [ExcludeFromCodeCoverage]
             public void ThrowsExceptionForNullValue()
             {
                 var x = (string)null;
 
                 // ReSharper disable once AssignNullToNotNullAttribute
-                _ = x.MustNotBeNullOrEmpty("value");
+                _ = Assert.ThrowsExactly<ArgumentNullException>(() => x.MustNotBeNullOrEmpty("value"));
             }
 
             /// <summary>
             /// Tests whether the method throws an exception for <see cref="string.Empty"/>.
             /// </summary>
             [TestMethod]
-            [ExpectedException(typeof(ArgumentNullException))]
             [ExcludeFromCodeCoverage]
-            public void ThrowsExceptionForEmptyValue() => string.Empty.MustNotBeNullOrEmpty("value");
+            public void ThrowsExceptionForEmptyValue() =>
+                Assert.ThrowsExactly<ArgumentNullException>(() => string.Empty.MustNotBeNullOrEmpty("value"));
 
             /// <summary>
             /// Tests whether the method accepts non-null values and returns them.
