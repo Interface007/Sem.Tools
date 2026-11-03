@@ -1,12 +1,12 @@
 # .NET Version Upgrade Progress
+**Progress**: 2/4 tasks complete <progress value="50" max="100"></progress> 50%
 **Progress**: 1/4 tasks complete <progress value="25" max="100"></progress> 25%
 **Status**: Not Started
-
 This scenario upgrades the Sem.Tools solution from .NET 8 to .NET 10 using an incremental top-down approach. It applies shared configuration updates, project target framework updates, and inline compatibility fixes while keeping behavior changes minimal. Validation is performed with a full solution build at the end.
 
 - ✅ 01-prepare-sdk-and-central-package-management: prepare-sdk-and-central-package-management ([Content](tasks/01-prepare-sdk-and-central-package-management/task.md), [Progress](tasks/01-prepare-sdk-and-central-package-management/progress-details.md))
 
-## Tasks
+- ✅ 02-upgrade-consumer-and-core-projects-to-net10: upgrade-consumer-and-core-projects-to-net10 ([Content](tasks/02-upgrade-consumer-and-core-projects-to-net10/task.md), [Progress](tasks/02-upgrade-consumer-and-core-projects-to-net10/progress-details.md))
 
 - 🔲 01-prepare-sdk-and-central-package-management: Prepare SDK and central package management
 - 🔲 02-upgrade-consumer-and-core-projects-to-net10: Upgrade consumer and core projects to net10
